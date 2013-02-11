@@ -1,0 +1,8 @@
+C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\bin\Release\Polakken.exe.config
+C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\bin\Release\Polakken.exe
+C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\bin\Release\Polakken.pdb
+C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\obj\Release\Polakken.csprojResolveAssemblyReference.cache
+C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\obj\Release\Polakken.Properties.Resources.resources
+C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\obj\Release\Polakken.csproj.GenerateResource.Cache
+C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\obj\Release\Polakken.exe
+C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\obj\Release\Polakken.pdb

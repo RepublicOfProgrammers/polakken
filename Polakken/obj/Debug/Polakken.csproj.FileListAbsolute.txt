@@ -14,3 +14,5 @@ C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGi
 C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\obj\Debug\Polakken.csprojResolveAssemblyReference.cache
 C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\obj\Debug\Polakken.Properties.Resources.resources
 C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\obj\Debug\Polakken.csproj.GenerateResource.Cache
+C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\bin\Debug\Database1.mdf
+C:\Users\Pravuz\Documents\Visual Studio 2012\Projects\RepublicOfProgrammers\myGit\Polakken\bin\Debug\Database1_log.ldf

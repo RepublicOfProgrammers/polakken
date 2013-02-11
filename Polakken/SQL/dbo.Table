@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Table]
+(
+	[DateTime] DATETIME NOT NULL PRIMARY KEY, 
+    [Degree] INT NOT NULL, 
+    [Status] TINYINT NOT NULL
+)

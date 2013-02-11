@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Polakken
 {
-    public partial class Form1 : Form
+    public partial class Gui : Form
     {
-        public Form1()
+        public Gui()
         {
             InitializeComponent();
         }
