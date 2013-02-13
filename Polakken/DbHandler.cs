@@ -14,8 +14,25 @@ namespace Polakken
         
         private string ConnectionString { get; set; }
 
-        private int initDb(){
+        //database tables & collums
+        public static readonly int DB_VERSION = 1;
+        public static readonly string TB_READINGS = "Readings";
+        public static readonly string TB_READINGS_DATE = "Date";
+        public static readonly string TB_READINGS_DEGREE = "Degree";
+        public static readonly string TB_READINGS_STATUS = "Status";
 
+        
+
+        public DbHandler()
+        {
+            if (initDb() == (int)dbStatus.NEW)
+            {
+
+            }
+        }
+
+        private int initDb()
+        {
             string fileName = "Database.sdf";
             string password = "fg8qaw890d89DS8";
 
@@ -41,7 +58,7 @@ namespace Polakken
  
             SqlCeCommand cmd;
  
-            string sql = "create table CoolPeople (" + "LastName nvarchar (40) not null, " + "FirstName nvarchar (40), " + "URL nvarchar (256) )"; 
+            string sql = "create table " + TB_READINGS + " (" + TB_READINGS_DATE + " datetime not null, " + TB_READINGS_DEGREE + " integer, " + TB_READINGS_STATUS + " bit )"; 
             cmd = new SqlCeCommand(sql, cn);
  
             try
@@ -62,13 +79,6 @@ namespace Polakken
                 cn.Close();
             }
             return (int)dbStatus.SUCCESS;
-        }
-
-        public DbHandler(){
-            if (initDb() == (int)dbStatus.NEW) { 
-                
-            }
-            
         }
     }
 }
