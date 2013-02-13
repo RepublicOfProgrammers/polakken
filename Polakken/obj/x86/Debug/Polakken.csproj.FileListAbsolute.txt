@@ -1,0 +1,2 @@
+c:\users\pravuz\documents\visual studio 2010\Projects\Republic of Programmers\Polakken\bin\Debug\Polakken.exe.config
+C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\bin\Debug\Polakken.exe.config

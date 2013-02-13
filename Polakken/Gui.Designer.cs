@@ -1,6 +1,6 @@
 ﻿namespace Polakken
 {
-    partial class Gui
+    partial class GUI
     {
         /// <summary>
         /// Required designer variable.

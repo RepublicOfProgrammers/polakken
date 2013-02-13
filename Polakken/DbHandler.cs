@@ -21,8 +21,6 @@ namespace Polakken
         public static readonly string TB_READINGS_DEGREE = "Degree";
         public static readonly string TB_READINGS_STATUS = "Status";
 
-        
-
         public DbHandler()
         {
             if (initDb() == (int)dbStatus.NEW)
