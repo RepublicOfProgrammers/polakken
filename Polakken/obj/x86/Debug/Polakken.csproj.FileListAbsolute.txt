@@ -1,2 +1,9 @@
 c:\users\pravuz\documents\visual studio 2010\Projects\Republic of Programmers\Polakken\bin\Debug\Polakken.exe.config
 C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\bin\Debug\Polakken.exe.config
+C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\bin\Debug\Polakken.exe
+C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\bin\Debug\Polakken.pdb
+C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.csprojResolveAssemblyReference.cache
+C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
+C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.csproj.GenerateResource.Cache
+C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.exe
+C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.pdb
