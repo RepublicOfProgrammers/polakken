@@ -65,11 +65,11 @@ namespace Polakken
          * PUBLIC METHODS: Her kan det lages flere metoder som polakken skal utnytte.
          */
 
-        public SqlCeResultSet getRowToDate(int dateTime)
-        {
-            SqlCeResultSet result_set;
-            return result_set;
-        }
+        //public SqlCeResultSet getRowToDate(int dateTime)
+        //{
+        //    SqlCeResultSet result_set;
+        //    return result_set;
+        //}
 
         public SqlCeDataReader getAllRows() 
         {

@@ -30,14 +30,19 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabOversikt = new System.Windows.Forms.TabPage();
+            this.txtSiste = new System.Windows.Forms.TextBox();
+            this.crtOversikt = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabInnstillinger = new System.Windows.Forms.TabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabOversikt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.crtOversikt)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabOversikt);
             this.tabControl1.Controls.Add(this.tabInnstillinger);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
@@ -48,13 +53,39 @@
             // 
             // tabOversikt
             // 
-            this.tabOversikt.BackColor = System.Drawing.Color.Transparent;
-            this.tabOversikt.Controls.Add(this.checkBox1);
+            this.tabOversikt.BackColor = System.Drawing.Color.Black;
+            this.tabOversikt.Controls.Add(this.txtSiste);
+            this.tabOversikt.Controls.Add(this.crtOversikt);
             this.tabOversikt.Location = new System.Drawing.Point(4, 22);
             this.tabOversikt.Name = "tabOversikt";
             this.tabOversikt.Size = new System.Drawing.Size(710, 452);
             this.tabOversikt.TabIndex = 0;
             this.tabOversikt.Text = "Oversikt";
+            this.tabOversikt.Click += new System.EventHandler(this.tabOversikt_Click);
+            // 
+            // txtSiste
+            // 
+            this.txtSiste.Font = new System.Drawing.Font("Arial Narrow", 80.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSiste.Location = new System.Drawing.Point(3, 106);
+            this.txtSiste.Multiline = true;
+            this.txtSiste.Name = "txtSiste";
+            this.txtSiste.Size = new System.Drawing.Size(175, 116);
+            this.txtSiste.TabIndex = 2;
+            this.txtSiste.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSiste.TextChanged += new System.EventHandler(this.txtSiste_TextChanged);
+            // 
+            // crtOversikt
+            // 
+            this.crtOversikt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.crtOversikt.BackColor = System.Drawing.Color.Black;
+            this.crtOversikt.BackSecondaryColor = System.Drawing.Color.White;
+            this.crtOversikt.Location = new System.Drawing.Point(-4, 257);
+            this.crtOversikt.Name = "crtOversikt";
+            this.crtOversikt.Size = new System.Drawing.Size(714, 199);
+            this.crtOversikt.TabIndex = 1;
+            this.crtOversikt.Text = "5";
             // 
             // tabInnstillinger
             // 
@@ -64,16 +95,6 @@
             this.tabInnstillinger.TabIndex = 1;
             this.tabInnstillinger.Text = "Innstillinger";
             this.tabInnstillinger.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(106, 85);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // GUI
             // 
@@ -87,6 +108,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabOversikt.ResumeLayout(false);
             this.tabOversikt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.crtOversikt)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -96,7 +118,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabOversikt;
         private System.Windows.Forms.TabPage tabInnstillinger;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart crtOversikt;
+        private System.Windows.Forms.TextBox txtSiste;
 
     }
 }
