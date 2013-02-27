@@ -28,45 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabOversikt = new System.Windows.Forms.TabPage();
+            this.tabInnstillinger = new System.Windows.Forms.TabPage();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tabControl1
             // 
-            this.textBox1.Location = new System.Drawing.Point(152, 140);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.tabControl1.Controls.Add(this.tabOversikt);
+            this.tabControl1.Controls.Add(this.tabInnstillinger);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(718, 478);
+            this.tabControl1.TabIndex = 0;
             // 
-            // pictureBox1
+            // tabOversikt
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(143, 252);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.tabOversikt.BackColor = System.Drawing.Color.Transparent;
+            this.tabOversikt.Location = new System.Drawing.Point(4, 22);
+            this.tabOversikt.Name = "tabOversikt";
+            this.tabOversikt.Size = new System.Drawing.Size(710, 452);
+            this.tabOversikt.TabIndex = 0;
+            this.tabOversikt.Text = "Oversikt";
+            // 
+            // tabInnstillinger
+            // 
+            this.tabInnstillinger.Location = new System.Drawing.Point(4, 22);
+            this.tabInnstillinger.Name = "tabInnstillinger";
+            this.tabInnstillinger.Size = new System.Drawing.Size(710, 452);
+            this.tabInnstillinger.TabIndex = 1;
+            this.tabInnstillinger.Text = "Innstillinger";
+            this.tabInnstillinger.UseVisualStyleBackColor = true;
             // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 444);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(742, 502);
+            this.Controls.Add(this.tabControl1);
             this.Name = "GUI";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.GUI_Load);
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabOversikt;
+        private System.Windows.Forms.TabPage tabInnstillinger;
+
     }
 }
 

@@ -14,6 +14,12 @@ namespace Polakken
         public GUI()
         {
             InitializeComponent();
+           
+        }
+
+        private void GUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

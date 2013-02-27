@@ -10,3 +10,10 @@ C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\po
 C:\IA2112\Polakken\polakken\Polakken\bin\Debug\Polakken.exe.config
 C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.exe
 C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.pdb
+C:\IA2112\Polakken\polakken\Polakken\bin\Debug\Polakken.exe
+C:\IA2112\Polakken\polakken\Polakken\bin\Debug\Polakken.pdb
+C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.GUI.resources
+C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
+C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\GenerateResource.write.1.tlog
