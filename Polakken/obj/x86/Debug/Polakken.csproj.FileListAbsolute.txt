@@ -17,3 +17,6 @@ C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.GUI.resources
 C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
 C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Stian\Desktop\HIT\IA2112\Prosjekt\polakken\polakken\Polakken\bin\Debug\Polakken.exe.config
+C:\Users\Stian\Desktop\HIT\IA2112\Prosjekt\polakken\polakken\Polakken\obj\x86\Debug\Polakken.exe
+C:\Users\Stian\Desktop\HIT\IA2112\Prosjekt\polakken\polakken\Polakken\obj\x86\Debug\Polakken.pdb
