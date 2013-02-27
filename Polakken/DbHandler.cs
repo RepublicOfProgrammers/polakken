@@ -12,9 +12,16 @@ namespace Polakken
     {
         //Status koder for tilkobling og oppretting til/av databasen
         private enum dbStatus :int { NEW = 0, EXISTING, SUCCESS, ERROR }
-        
-        private string ConnectionString { get; set; }
 
+        //tilkobling
+        
+        //Navn til databasen
+        private static string fileName = "Database.sdf";
+        //passord for å koble til databasen
+        private static string password = "fg8qaw890d89DS8";
+        private string ConnectionString = string.Format("DataSource=\"{0}\"; Password='{1}'", fileName, password);
+        private SqlCeConnection _connection;
+  
         //database tables & collums
         public static readonly int DB_VERSION = 1;
         public static readonly string TB_READINGS = "Readings";
@@ -40,15 +47,49 @@ namespace Polakken
             }
         }
 
-        //TODO: Her kan det lages flere metoder som polakken skal utnytte.
+        private void OpenDb()
+        {
+            if (_connection == null)
+                _connection = new SqlCeConnection(ConnectionString);
+
+            if (_connection.State == ConnectionState.Closed)
+                _connection.Open();
+        }
+        private void CloseDb() 
+        {
+            if (_connection.State == ConnectionState.Open)
+                _connection.Close();
+        }
+
+        /**
+         * PUBLIC METHODS: Her kan det lages flere metoder som polakken skal utnytte.
+         */
+
+        public SqlCeResultSet getRowToDate(int dateTime)
+        {
+            SqlCeResultSet result_set;
+            return result_set;
+        }
+
+        public SqlCeDataReader getAllRows() 
+        {
+            this.OpenDb();
+
+            string sql = "select * from " + TB_READINGS; //Henter alt som ligger i readings tabellen.
+ 
+            SqlCeCommand cmd = new SqlCeCommand(sql, _connection); //bygger en sql kommando fra stringen "sql" som skal kjøres på _connection
+            SqlCeDataReader data_reader = cmd.ExecuteReader();
+            
+            this.CloseDb();
+            return data_reader;
+        }
+
+        /**
+         * END PUBLIC METHODS!
+         */
 
         private int initDb()
         {
-            //Navn til databasen
-            string fileName = "Database.sdf";
-            //passord for å koble til databasen
-            string password = "fg8qaw890d89DS8";
-
             //sjekker om databasen allerede eksisterer
             if (File.Exists(fileName))
             {
@@ -57,7 +98,6 @@ namespace Polakken
             else 
             {
                 //Dersom den ikke eksisterer opprettes databasen. 
-                ConnectionString = string.Format("DataSource=\"{0}\"; Password='{1}'", fileName, password);
                 SqlCeEngine en = new SqlCeEngine(ConnectionString);
                 en.CreateDatabase();
 
@@ -67,7 +107,6 @@ namespace Polakken
                 { 
                     //TODO: gi melding til bruker om at noe gikk galt - se log. 
                 }
-
                 return (int)dbStatus.NEW;
             }
 
@@ -79,7 +118,6 @@ namespace Polakken
             
             if (cn.State==ConnectionState.Closed)
             {
-                //Åpner databasen dersom den ikke er åpen. 
                 cn.Open();
             }
  
