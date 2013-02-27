@@ -7,3 +7,6 @@ C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\po
 C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.csproj.GenerateResource.Cache
 C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.exe
 C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.pdb
+C:\IA2112\Polakken\polakken\Polakken\bin\Debug\Polakken.exe.config
+C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.exe
+C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.pdb
