@@ -31,7 +31,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabOversikt = new System.Windows.Forms.TabPage();
             this.tabInnstillinger = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
+            this.tabOversikt.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -47,6 +49,7 @@
             // tabOversikt
             // 
             this.tabOversikt.BackColor = System.Drawing.Color.Transparent;
+            this.tabOversikt.Controls.Add(this.checkBox1);
             this.tabOversikt.Location = new System.Drawing.Point(4, 22);
             this.tabOversikt.Name = "tabOversikt";
             this.tabOversikt.Size = new System.Drawing.Size(710, 452);
@@ -62,6 +65,16 @@
             this.tabInnstillinger.Text = "Innstillinger";
             this.tabInnstillinger.UseVisualStyleBackColor = true;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(106, 85);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -72,6 +85,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.GUI_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabOversikt.ResumeLayout(false);
+            this.tabOversikt.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -81,6 +96,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabOversikt;
         private System.Windows.Forms.TabPage tabInnstillinger;
+        private System.Windows.Forms.CheckBox checkBox1;
 
     }
 }
