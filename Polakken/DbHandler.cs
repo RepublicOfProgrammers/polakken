@@ -23,9 +23,18 @@ namespace Polakken
 
         public DbHandler()
         {
-            if (initDb() == (int)dbStatus.NEW)
+            int init_db_status = initDb();
+            int create_tables_status;
+            if (init_db_status == (int)dbStatus.NEW)
             {
-
+                create_tables_status = createTables();
+                if (create_tables_status == (int)dbStatus.SUCCESS) {
+                    
+                }
+            }
+            else if (init_db_status == (int)dbStatus.EXISTING) 
+            {
+            
             }
         }
 
@@ -36,14 +45,17 @@ namespace Polakken
 
             if (File.Exists(fileName))
             {
-                File.Delete(fileName);
+                return (int)dbStatus.EXISTING;
+            }
+            else 
+            {
+                ConnectionString = string.Format("DataSource=\"{0}\"; Password='{1}'", fileName, password);
+                SqlCeEngine en = new SqlCeEngine(ConnectionString);
+                en.CreateDatabase();
+
+                return (int)dbStatus.NEW;
             }
 
-            ConnectionString = string.Format("DataSource=\"{0}\"; Password='{1}'", fileName, password);
-            SqlCeEngine en = new SqlCeEngine(ConnectionString);
-            en.CreateDatabase();
-
-            return (int)dbStatus.NEW;
         }
 
         private int createTables() {
