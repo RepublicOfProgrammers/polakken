@@ -19,6 +19,9 @@ namespace Polakken
 
         private void GUI_Load(object sender, EventArgs e)
         {
+
+            // Graf:
+
             crtOversikt.ChartAreas.Add("tempOversikt");
             crtOversikt.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
             crtOversikt.ChartAreas["tempOversikt"].AxisX.Maximum = 20;

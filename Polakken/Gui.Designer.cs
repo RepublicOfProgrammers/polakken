@@ -45,10 +45,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabOversikt);
             this.tabControl1.Controls.Add(this.tabInnstillinger);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(12, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(718, 478);
+            this.tabControl1.Size = new System.Drawing.Size(740, 493);
             this.tabControl1.TabIndex = 0;
             // 
             // tabOversikt
@@ -58,7 +58,7 @@
             this.tabOversikt.Controls.Add(this.crtOversikt);
             this.tabOversikt.Location = new System.Drawing.Point(4, 22);
             this.tabOversikt.Name = "tabOversikt";
-            this.tabOversikt.Size = new System.Drawing.Size(710, 452);
+            this.tabOversikt.Size = new System.Drawing.Size(732, 467);
             this.tabOversikt.TabIndex = 0;
             this.tabOversikt.Text = "Oversikt";
             this.tabOversikt.Click += new System.EventHandler(this.tabOversikt_Click);
@@ -83,7 +83,7 @@
             this.crtOversikt.BackSecondaryColor = System.Drawing.Color.White;
             this.crtOversikt.Location = new System.Drawing.Point(-4, 257);
             this.crtOversikt.Name = "crtOversikt";
-            this.crtOversikt.Size = new System.Drawing.Size(714, 199);
+            this.crtOversikt.Size = new System.Drawing.Size(736, 214);
             this.crtOversikt.TabIndex = 1;
             this.crtOversikt.Text = "5";
             // 
@@ -100,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 502);
+            this.ClientSize = new System.Drawing.Size(764, 517);
             this.Controls.Add(this.tabControl1);
             this.Name = "GUI";
             this.Text = "Form1";
