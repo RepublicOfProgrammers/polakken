@@ -23,3 +23,6 @@ C:\Users\Stian\Desktop\HIT\IA2112\Prosjekt\polakken\polakken\Polakken\obj\x86\De
 E:\Skole\IA2112\git\polakken\Polakken\bin\Debug\Polakken.exe.config
 E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\Polakken.exe
 E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\Polakken.pdb
+C:\IA2112\Polakken\ny git\polakken\Polakken\bin\Debug\Polakken.exe.config
+C:\IA2112\Polakken\ny git\polakken\Polakken\obj\x86\Debug\Polakken.exe
+C:\IA2112\Polakken\ny git\polakken\Polakken\obj\x86\Debug\Polakken.pdb
