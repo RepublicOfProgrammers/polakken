@@ -16,6 +16,7 @@ namespace InstrumentDriverInterop.Ivi
             public System.Int64 reserved2;
         }
 
+
         /// <summary>
         /// Creates a new acquisition session.  You can perform static and dynamic acquisition operations with this session.
         /// 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlServerCe;
 using System.IO;
 
+
 namespace Polakken
 {
     class DbHandler

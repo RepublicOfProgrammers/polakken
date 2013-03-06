@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using InstrumentDriverInterop.Ivi;
 
-
 namespace Polakken
 {
     class SensorCom
