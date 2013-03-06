@@ -12,12 +12,10 @@ namespace Polakken
     {
         //Status koder for tilkobling og oppretting til/av databasen
         private enum dbStatus :int { NEW = 0, EXISTING, SUCCESS, ERROR }
-
-        //tilkobling
         
         //Navn til databasen
         private static string fileName = "Database.sdf";
-        //passord for å koble til databasen
+        //passord for å koble til databasen, og koblingsvariabel. 
         private static string password = "fg8qaw890d89DS8";
         private string ConnectionString = string.Format("DataSource=\"{0}\"; Password='{1}'", fileName, password);
         private SqlCeConnection _connection;
@@ -39,7 +37,7 @@ namespace Polakken
 
             if (init_db_status == (int)dbStatus.NEW)
             {
-
+                //gjør ingenting med dette foreløpig. 
             }
             else if (init_db_status == (int)dbStatus.EXISTING) 
             {
@@ -73,20 +71,62 @@ namespace Polakken
 
         public SqlCeDataReader getAllRows() 
         {
-            this.OpenDb();
+            string sql = "select * from " + TB_READINGS; //Henter alt som ligger i readings tabellen. 
+            return executeSql_Reader(sql);
+        }
+        
+        /**
+         * metoder som skal lages:
+         * SetReading
+         * GetReading
+         * EditReading
+         * DelReading
+         * DelReadings 
+        */
 
-            string sql = "select * from " + TB_READINGS; //Henter alt som ligger i readings tabellen.
- 
-            SqlCeCommand cmd = new SqlCeCommand(sql, _connection); //bygger en sql kommando fra stringen "sql" som skal kjøres på _connection
-            SqlCeDataReader data_reader = cmd.ExecuteReader();
-            
-            this.CloseDb();
-            return data_reader;
+        public int SetReading(int C, int status) 
+        {
+            string sql = "sql kode";
+            return executeSql_NonQuery(sql);
         }
 
         /**
          * END PUBLIC METHODS!
          */
+        private SqlCeDataReader executeSql_Reader(string sql)
+        {
+            this.OpenDb();
+            SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
+            SqlCeDataReader data_reader = null;
+            try { data_reader = cmd.ExecuteReader(); }
+            catch(SqlCeException){}
+            catch(Exception){}
+            finally{
+                this.CloseDb();
+            }
+            return data_reader;
+        }
+        private int executeSql_NonQuery(string sql) 
+        {
+            //kobler til databasen og åpner den
+            this.OpenDb();
+
+            //Henter inn sql koden fra metode argumentet sql, og lager en sqlcommand sammen med koblingen til databasen.
+            SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
+
+            //variabel som inneholder antall rader som blir påvirket av kommandoen
+            int affectedRows = 0;
+
+            //prøver å kjøre kommandoen. fanger opp errorer, men gjør ingenting med dem foreløpig. 
+            try { affectedRows = cmd.ExecuteNonQuery(); }
+            catch (SqlCeException){}
+            catch (Exception){}
+            finally
+            {
+                this.CloseDb();
+            }
+            return affectedRows;
+        }
 
         private int initDb()
         {
@@ -112,49 +152,17 @@ namespace Polakken
 
         }
 
-        private int createTables() {
-            //Kobler til databasen
-            SqlCeConnection cn = new SqlCeConnection(ConnectionString);
-            
-            if (cn.State==ConnectionState.Closed)
-            {
-                cn.Open();
-            }
- 
-            SqlCeCommand cmd;
- 
+        private int createTables() {           
             //SQL koden som skal kjøres for oppretting av tabellene i databasen. 
             string sql = "create table " + TB_READINGS + " (" + TB_READINGS_DATE + " datetime not null, " + TB_READINGS_DEGREE + " integer, " + TB_READINGS_STATUS + " bit )"; 
-            //Kjører SQL koden.
-            cmd = new SqlCeCommand(sql, cn);
-
-            //Default verdi som skal returneres, vil alltid være success dersom ingen errors fanges opp i try catch. 
-            int returnValue = (int)dbStatus.SUCCESS;
- 
-            try
-            {
-                cmd.ExecuteNonQuery();
-                //lblResults.Text = "Table Created.";
-            }
-            catch (SqlCeException sqlexception)
-            {
-                //TODO: skrive sqlexception koden til log
-
-                //returnerer error status som brukes for å si ifra til bruker at noe feil har skjedd.
-                returnValue = (int)dbStatus.ERROR;
-            } 
-            catch (Exception ex)
-            {
-                //TODO: skrive ex koden til log
-
-                returnValue = (int)dbStatus.ERROR;
-            }
-            finally
-            {
-                //Lukker databasen og tilkoblingen.
-                cn.Close();
-            }
-            return returnValue;
+            
+            //Kjører SQL koden. Integeren i inneholder antall rader påvirket av kommandoen, dersom denne er 0 har noe feil skjedd. 
+            int i = executeSql_NonQuery(sql);
+            
+            if (i != 0) 
+                return (int)dbStatus.SUCCESS;
+            else
+                return (int)dbStatus.ERROR;
         }
     }
 }
