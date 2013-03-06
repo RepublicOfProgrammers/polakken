@@ -39,11 +39,35 @@ namespace Polakken
             if (init_db_status == (int)dbStatus.NEW)
             {
                 //gjør ingenting med dette foreløpig. 
+
+                //lager eksempel verdier for testing, fjern dette før release
+                CreateDummyValues();
             }
             else if (init_db_status == (int)dbStatus.EXISTING) 
             {
             
             }
+        }
+        private void CreateDummyValues() 
+        {
+            DateTime time = DateTime.Now;
+            uint C = 20;
+            Boolean status = true;
+
+            string sql = string.Format("insert into {0} ({1},{2},{3}) values ({4}, {5}, {6})", TB_READINGS, TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, time, C, status);
+            executeSql_NonQuery(sql);
+
+            time.Subtract(DateTime.Now-TimeSpan.FromDays(1));
+            C = 16;
+            status = false;
+            sql = string.Format("insert into {0} ({1},{2},{3}) values ({4}, {5}, {6})", TB_READINGS, TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, time, C, status);
+            executeSql_NonQuery(sql);
+
+            time.Subtract(DateTime.Now - TimeSpan.FromDays(2));
+            C = 19;
+            status = false;
+            sql = string.Format("insert into {0} ({1},{2},{3}) values ({4}, {5}, {6})", TB_READINGS, TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, time, C, status);
+            executeSql_NonQuery(sql);
         }
 
         private void OpenDb()
@@ -64,26 +88,26 @@ namespace Polakken
          * PUBLIC METHODS: Her kan det lages flere metoder som polakken skal utnytte.
          */
 
-        //public SqlCeResultSet getRowToDate(int dateTime)
-        //{
-        //    SqlCeResultSet result_set;
-        //    return result_set;
-        //}
-
-        public SqlCeDataReader getAllRows() 
-        {
-            string sql = "select * from " + TB_READINGS; //Henter alt som ligger i readings tabellen. 
-            return executeSql_Reader(sql);
-        }
-        
         /**
          * TODO:
          * metoder som skal lages:
-         * GetReading
          * EditReading
          * DelReading
          * DelReadings 
         */
+
+        public SqlCeDataReader GetReadingToDate(DateTime dateTime) 
+        {
+            string sql = string.Format("select * from {0} where {1} = '{2}'", TB_READINGS, TB_READINGS_DATE, dateTime);
+            return executeSql_Reader(sql);
+        }
+
+        public SqlCeDataReader GetReadings() 
+        {
+            string sql = string.Format("select * from {0}", TB_READINGS); //Henter alt som ligger i readings tabellen. 
+            return executeSql_Reader(sql);
+        }
+        
 
         public int SetReading(DateTime time, int C, int status) 
         {
