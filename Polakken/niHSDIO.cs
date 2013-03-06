@@ -1640,7 +1640,7 @@ namespace InstrumentDriverInterop.Ivi
         public int WriteNamedWaveformFromFileHWS(string Waveform_Name, string File_Path, bool Use_Rate_From_Waveform, out int Waveform_Size)
         {
             int pInvokeResult = PInvoke.WriteNamedWaveformFromFileHWS(this._handle, Waveform_Name, File_Path, System.Convert.ToUInt16
-        /// (Use_Rate_From_Waveform), out Waveform_Size);
+         (Use_Rate_From_Waveform), out Waveform_Size);
             PInvoke.TestForError(this._handle, pInvokeResult);
             return pInvokeResult;
         }

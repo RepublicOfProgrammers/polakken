@@ -28,98 +28,146 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabOversikt = new System.Windows.Forms.TabPage();
-            this.txtSiste = new System.Windows.Forms.TextBox();
-            this.crtOversikt = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabInnstillinger = new System.Windows.Forms.TabPage();
-            this.tabControl1.SuspendLayout();
-            this.tabOversikt.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.crtOversikt)).BeginInit();
+            this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tbcPage = new System.Windows.Forms.TabControl();
+            this.tbpOne = new System.Windows.Forms.TabPage();
+            this.tbpTwo = new System.Windows.Forms.TabPage();
+            this.tbpThree = new System.Windows.Forms.TabPage();
+            this.grpInfo = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCurrent = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
+            this.tbcPage.SuspendLayout();
+            this.grpInfo.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // crtView
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabOversikt);
-            this.tabControl1.Controls.Add(this.tabInnstillinger);
-            this.tabControl1.Location = new System.Drawing.Point(12, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(740, 493);
-            this.tabControl1.TabIndex = 0;
+            this.crtView.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.crtView.BackColor = System.Drawing.Color.Transparent;
+            this.crtView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.crtView.BackSecondaryColor = System.Drawing.Color.White;
+            this.crtView.Location = new System.Drawing.Point(17, 435);
+            this.crtView.Name = "crtView";
+            this.crtView.Size = new System.Drawing.Size(884, 226);
+            this.crtView.TabIndex = 1;
+            this.crtView.Text = "5";
             // 
-            // tabOversikt
+            // tbcPage
             // 
-            this.tabOversikt.BackColor = System.Drawing.Color.Black;
-            this.tabOversikt.Controls.Add(this.txtSiste);
-            this.tabOversikt.Controls.Add(this.crtOversikt);
-            this.tabOversikt.Location = new System.Drawing.Point(4, 22);
-            this.tabOversikt.Name = "tabOversikt";
-            this.tabOversikt.Size = new System.Drawing.Size(732, 467);
-            this.tabOversikt.TabIndex = 0;
-            this.tabOversikt.Text = "Oversikt";
-            this.tabOversikt.Click += new System.EventHandler(this.tabOversikt_Click);
+            this.tbcPage.Controls.Add(this.tbpOne);
+            this.tbcPage.Controls.Add(this.tbpTwo);
+            this.tbcPage.Controls.Add(this.tbpThree);
+            this.tbcPage.Location = new System.Drawing.Point(236, 69);
+            this.tbcPage.Name = "tbcPage";
+            this.tbcPage.SelectedIndex = 0;
+            this.tbcPage.Size = new System.Drawing.Size(658, 360);
+            this.tbcPage.TabIndex = 2;
             // 
-            // txtSiste
+            // tbpOne
             // 
-            this.txtSiste.Font = new System.Drawing.Font("Arial Narrow", 80.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSiste.Location = new System.Drawing.Point(3, 106);
-            this.txtSiste.Multiline = true;
-            this.txtSiste.Name = "txtSiste";
-            this.txtSiste.Size = new System.Drawing.Size(175, 116);
-            this.txtSiste.TabIndex = 2;
-            this.txtSiste.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSiste.TextChanged += new System.EventHandler(this.txtSiste_TextChanged);
+            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.Chart;
+            this.tbpOne.Location = new System.Drawing.Point(4, 22);
+            this.tbpOne.Name = "tbpOne";
+            this.tbpOne.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpOne.Size = new System.Drawing.Size(650, 334);
+            this.tbpOne.TabIndex = 0;
+            this.tbpOne.Text = "Instillinger";
+            this.tbpOne.UseVisualStyleBackColor = true;
             // 
-            // crtOversikt
+            // tbpTwo
             // 
-            this.crtOversikt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.crtOversikt.BackColor = System.Drawing.Color.Black;
-            this.crtOversikt.BackSecondaryColor = System.Drawing.Color.White;
-            this.crtOversikt.Location = new System.Drawing.Point(-4, 257);
-            this.crtOversikt.Name = "crtOversikt";
-            this.crtOversikt.Size = new System.Drawing.Size(736, 214);
-            this.crtOversikt.TabIndex = 1;
-            this.crtOversikt.Text = "5";
+            this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.Chart;
+            this.tbpTwo.Location = new System.Drawing.Point(4, 22);
+            this.tbpTwo.Name = "tbpTwo";
+            this.tbpTwo.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpTwo.Size = new System.Drawing.Size(650, 334);
+            this.tbpTwo.TabIndex = 1;
+            this.tbpTwo.Text = "Databasen";
+            this.tbpTwo.UseVisualStyleBackColor = true;
             // 
-            // tabInnstillinger
+            // tbpThree
             // 
-            this.tabInnstillinger.Location = new System.Drawing.Point(4, 22);
-            this.tabInnstillinger.Name = "tabInnstillinger";
-            this.tabInnstillinger.Size = new System.Drawing.Size(710, 452);
-            this.tabInnstillinger.TabIndex = 1;
-            this.tabInnstillinger.Text = "Innstillinger";
-            this.tabInnstillinger.UseVisualStyleBackColor = true;
+            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.Chart;
+            this.tbpThree.Location = new System.Drawing.Point(4, 22);
+            this.tbpThree.Name = "tbpThree";
+            this.tbpThree.Size = new System.Drawing.Size(650, 334);
+            this.tbpThree.TabIndex = 2;
+            this.tbpThree.Text = "E-mail";
+            this.tbpThree.UseVisualStyleBackColor = true;
+            // 
+            // grpInfo
+            // 
+            this.grpInfo.BackColor = System.Drawing.Color.Transparent;
+            this.grpInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.grpInfo.Controls.Add(this.label1);
+            this.grpInfo.Controls.Add(this.txtCurrent);
+            this.grpInfo.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpInfo.ForeColor = System.Drawing.SystemColors.Control;
+            this.grpInfo.Location = new System.Drawing.Point(26, 69);
+            this.grpInfo.Name = "grpInfo";
+            this.grpInfo.Size = new System.Drawing.Size(207, 360);
+            this.grpInfo.TabIndex = 3;
+            this.grpInfo.TabStop = false;
+            this.grpInfo.Text = "INFO";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Siste avlesning";
+            // 
+            // txtCurrent
+            // 
+            this.txtCurrent.BackColor = System.Drawing.Color.Black;
+            this.txtCurrent.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCurrent.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrent.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtCurrent.Location = new System.Drawing.Point(6, 53);
+            this.txtCurrent.Name = "txtCurrent";
+            this.txtCurrent.Size = new System.Drawing.Size(100, 63);
+            this.txtCurrent.TabIndex = 0;
+            this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 517);
-            this.Controls.Add(this.tabControl1);
+            this.BackColor = System.Drawing.Color.LemonChiffon;
+            this.BackgroundImage = global::Polakken.Properties.Resources.Alfa2;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(908, 702);
+            this.Controls.Add(this.grpInfo);
+            this.Controls.Add(this.tbcPage);
+            this.Controls.Add(this.crtView);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GUI";
-            this.Text = "Form1";
+            this.Text = "Polakken";
+            this.TransparencyKey = System.Drawing.Color.LemonChiffon;
             this.Load += new System.EventHandler(this.GUI_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabOversikt.ResumeLayout(false);
-            this.tabOversikt.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.crtOversikt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtView)).EndInit();
+            this.tbcPage.ResumeLayout(false);
+            this.grpInfo.ResumeLayout(false);
+            this.grpInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabOversikt;
-        private System.Windows.Forms.TabPage tabInnstillinger;
-        private System.Windows.Forms.DataVisualization.Charting.Chart crtOversikt;
-        private System.Windows.Forms.TextBox txtSiste;
+        private System.Windows.Forms.DataVisualization.Charting.Chart crtView;
+        private System.Windows.Forms.TabControl tbcPage;
+        private System.Windows.Forms.TabPage tbpOne;
+        private System.Windows.Forms.TabPage tbpTwo;
+        private System.Windows.Forms.GroupBox grpInfo;
+        private System.Windows.Forms.TabPage tbpThree;
+        private System.Windows.Forms.TextBox txtCurrent;
+        private System.Windows.Forms.Label label1;
 
     }
 }
