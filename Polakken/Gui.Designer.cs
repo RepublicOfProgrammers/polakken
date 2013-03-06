@@ -34,8 +34,8 @@
             this.tbpTwo = new System.Windows.Forms.TabPage();
             this.tbpThree = new System.Windows.Forms.TabPage();
             this.grpInfo = new System.Windows.Forms.GroupBox();
-            this.txtCurrent = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtCurrent = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.tbcPage.SuspendLayout();
             this.grpInfo.SuspendLayout();
@@ -111,6 +111,16 @@
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = "INFO";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Siste avlesning";
+            // 
             // txtCurrent
             // 
             this.txtCurrent.BackColor = System.Drawing.Color.Black;
@@ -122,16 +132,6 @@
             this.txtCurrent.Size = new System.Drawing.Size(100, 63);
             this.txtCurrent.TabIndex = 0;
             this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Siste avlesning";
             // 
             // GUI
             // 

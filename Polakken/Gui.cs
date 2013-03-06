@@ -71,7 +71,7 @@ namespace Polakken
             crtView.Series["India"].Points.AddXY(16, -10);
 
 
-            txtCurrent.AppendText("40" + ");
+            txtCurrent.AppendText("40");
          
 
 
