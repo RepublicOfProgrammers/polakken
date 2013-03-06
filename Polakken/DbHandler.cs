@@ -77,8 +77,8 @@ namespace Polakken
         }
         
         /**
+         * TODO:
          * metoder som skal lages:
-         * SetReading
          * GetReading
          * EditReading
          * DelReading
@@ -87,7 +87,7 @@ namespace Polakken
 
         public int SetReading(DateTime time, int C, int status) 
         {
-            string sql = string.Format("insert into " + TB_READINGS + " ({0},{1},{2})" + " values ({3}, {4}, {5})", TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, time, C, status);
+            string sql = string.Format("insert into {0} ({1},{2},{3}) values ({4}, {5}, {6})", TB_READINGS, TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, time, C, status);
             return executeSql_NonQuery(sql);
         }
 
