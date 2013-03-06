@@ -36,6 +36,8 @@
             this.grpInfo = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCurrent = new System.Windows.Forms.TextBox();
+            this.btnLukk = new System.Windows.Forms.Button();
+            this.btnMinimize = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.tbcPage.SuspendLayout();
             this.grpInfo.SuspendLayout();
@@ -133,6 +135,35 @@
             this.txtCurrent.TabIndex = 0;
             this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnLukk
+            // 
+            this.btnLukk.BackColor = System.Drawing.Color.Transparent;
+            this.btnLukk.FlatAppearance.BorderSize = 0;
+            this.btnLukk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnLukk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnLukk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLukk.Location = new System.Drawing.Point(872, 22);
+            this.btnLukk.Name = "btnLukk";
+            this.btnLukk.Size = new System.Drawing.Size(21, 30);
+            this.btnLukk.TabIndex = 4;
+            this.btnLukk.UseVisualStyleBackColor = false;
+            this.btnLukk.Click += new System.EventHandler(this.btnLukk_Click);
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.ForeColor = System.Drawing.Color.Black;
+            this.btnMinimize.Location = new System.Drawing.Point(846, 22);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(21, 30);
+            this.btnMinimize.TabIndex = 5;
+            this.btnMinimize.UseVisualStyleBackColor = false;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,6 +172,8 @@
             this.BackgroundImage = global::Polakken.Properties.Resources.Alfa2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(908, 702);
+            this.Controls.Add(this.btnMinimize);
+            this.Controls.Add(this.btnLukk);
             this.Controls.Add(this.grpInfo);
             this.Controls.Add(this.tbcPage);
             this.Controls.Add(this.crtView);
@@ -168,6 +201,8 @@
         private System.Windows.Forms.TabPage tbpThree;
         private System.Windows.Forms.TextBox txtCurrent;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnLukk;
+        private System.Windows.Forms.Button btnMinimize;
 
     }
 }
