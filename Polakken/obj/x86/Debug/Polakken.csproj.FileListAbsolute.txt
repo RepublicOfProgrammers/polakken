@@ -23,3 +23,8 @@ C:\Users\Stian\Desktop\HIT\IA2112\Prosjekt\polakken\polakken\Polakken\obj\x86\De
 E:\Skole\IA2112\git\polakken\Polakken\bin\Debug\Polakken.exe.config
 E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\Polakken.exe
 E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\Polakken.pdb
+E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\Polakken.GUI.resources
+E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
+E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\GenerateResource.write.1.tlog

@@ -74,6 +74,7 @@
     <Compile Include="niHSDIO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regulation.cs" />
     <Compile Include="SensorCom.cs" />
     <EmbeddedResource Include="GUI.resx">
       <DependentUpon>GUI.cs</DependentUpon>
