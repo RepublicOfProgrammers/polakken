@@ -34,10 +34,10 @@
             this.tbpTwo = new System.Windows.Forms.TabPage();
             this.tbpThree = new System.Windows.Forms.TabPage();
             this.grpInfo = new System.Windows.Forms.GroupBox();
-            this.txtMinTid = new System.Windows.Forms.TextBox();
+            this.txtMinTime = new System.Windows.Forms.TextBox();
             this.lblMin = new System.Windows.Forms.Label();
             this.txtMin = new System.Windows.Forms.TextBox();
-            this.txtMaxTid = new System.Windows.Forms.TextBox();
+            this.txtMaxTime = new System.Windows.Forms.TextBox();
             this.lblMax = new System.Windows.Forms.Label();
             this.txtMax = new System.Windows.Forms.TextBox();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
@@ -109,10 +109,10 @@
             // 
             this.grpInfo.BackColor = System.Drawing.Color.Transparent;
             this.grpInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.grpInfo.Controls.Add(this.txtMinTid);
+            this.grpInfo.Controls.Add(this.txtMinTime);
             this.grpInfo.Controls.Add(this.lblMin);
             this.grpInfo.Controls.Add(this.txtMin);
-            this.grpInfo.Controls.Add(this.txtMaxTid);
+            this.grpInfo.Controls.Add(this.txtMaxTime);
             this.grpInfo.Controls.Add(this.lblMax);
             this.grpInfo.Controls.Add(this.txtMax);
             this.grpInfo.Controls.Add(this.txtCurrentTime);
@@ -127,17 +127,17 @@
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = "INFO";
             // 
-            // txtMinTid
+            // txtMinTime
             // 
-            this.txtMinTid.BackColor = System.Drawing.Color.Black;
-            this.txtMinTid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMinTid.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMinTid.ForeColor = System.Drawing.Color.White;
-            this.txtMinTid.Location = new System.Drawing.Point(46, 304);
-            this.txtMinTid.Name = "txtMinTid";
-            this.txtMinTid.Size = new System.Drawing.Size(107, 13);
-            this.txtMinTid.TabIndex = 8;
-            this.txtMinTid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMinTime.BackColor = System.Drawing.Color.Black;
+            this.txtMinTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMinTime.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMinTime.ForeColor = System.Drawing.Color.White;
+            this.txtMinTime.Location = new System.Drawing.Point(46, 304);
+            this.txtMinTime.Name = "txtMinTime";
+            this.txtMinTime.Size = new System.Drawing.Size(107, 13);
+            this.txtMinTime.TabIndex = 8;
+            this.txtMinTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblMin
             // 
@@ -161,17 +161,17 @@
             this.txtMin.TabIndex = 6;
             this.txtMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtMaxTid
+            // txtMaxTime
             // 
-            this.txtMaxTid.BackColor = System.Drawing.Color.Black;
-            this.txtMaxTid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMaxTid.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaxTid.ForeColor = System.Drawing.Color.White;
-            this.txtMaxTid.Location = new System.Drawing.Point(46, 219);
-            this.txtMaxTid.Name = "txtMaxTid";
-            this.txtMaxTid.Size = new System.Drawing.Size(107, 13);
-            this.txtMaxTid.TabIndex = 5;
-            this.txtMaxTid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaxTime.BackColor = System.Drawing.Color.Black;
+            this.txtMaxTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMaxTime.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaxTime.ForeColor = System.Drawing.Color.White;
+            this.txtMaxTime.Location = new System.Drawing.Point(46, 219);
+            this.txtMaxTime.Name = "txtMaxTime";
+            this.txtMaxTime.Size = new System.Drawing.Size(107, 13);
+            this.txtMaxTime.TabIndex = 5;
+            this.txtMaxTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblMax
             // 
@@ -298,10 +298,10 @@
         private System.Windows.Forms.Button btnLukk;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.TextBox txtCurrentTime;
-        private System.Windows.Forms.TextBox txtMaxTid;
+        private System.Windows.Forms.TextBox txtMaxTime;
         private System.Windows.Forms.Label lblMax;
         private System.Windows.Forms.TextBox txtMax;
-        private System.Windows.Forms.TextBox txtMinTid;
+        private System.Windows.Forms.TextBox txtMinTime;
         private System.Windows.Forms.Label lblMin;
         private System.Windows.Forms.TextBox txtMin;
 
