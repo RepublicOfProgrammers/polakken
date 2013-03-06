@@ -19,7 +19,7 @@ namespace Polakken
         private int redingFraMes;
         
         //ny måling
-        private void newread(int newread)
+        public void newread(int newread)
         {
             prevReading = reading;
             reading = newread;
