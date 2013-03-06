@@ -85,9 +85,16 @@ namespace Polakken
 
         }
 
-        private void txtSiste_TextChanged(object sender, EventArgs e)
-        {
+       
 
+        private void btnLukk_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 
  
