@@ -71,9 +71,17 @@ namespace Polakken
             crtView.Series["India"].Points.AddXY(16, -10);
 
 
-            txtCurrent.AppendText("40");
-         
+            txtCurrent.AppendText("42" + "°C");
+            txtCurrentTime.AppendText("06.03.2013" + " " + "13:37");
 
+            string hello = "666";
+            string world = "06.03.2013";
+            string c = "°C";
+            string t = "13:37";
+            txtMax.AppendText(hello + c);
+            txtMin.AppendText(hello + c);
+            txtMaxTid.AppendText(world + " " + t);
+            txtMinTid.AppendText(world + " " + t);
 
             
 
@@ -85,12 +93,19 @@ namespace Polakken
 
         }
 
-        private void txtSiste_TextChanged(object sender, EventArgs e)
-        {
+       
 
+        private void btnLukk_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
- 
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+       
      
     }
 }
