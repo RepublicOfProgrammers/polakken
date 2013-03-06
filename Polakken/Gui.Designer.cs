@@ -34,6 +34,7 @@
             this.tbpTwo = new System.Windows.Forms.TabPage();
             this.tbpThree = new System.Windows.Forms.TabPage();
             this.grpInfo = new System.Windows.Forms.GroupBox();
+            this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCurrent = new System.Windows.Forms.TextBox();
             this.btnLukk = new System.Windows.Forms.Button();
@@ -102,6 +103,7 @@
             // 
             this.grpInfo.BackColor = System.Drawing.Color.Transparent;
             this.grpInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.grpInfo.Controls.Add(this.txtCurrentTime);
             this.grpInfo.Controls.Add(this.label1);
             this.grpInfo.Controls.Add(this.txtCurrent);
             this.grpInfo.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,6 +114,18 @@
             this.grpInfo.TabIndex = 3;
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = "INFO";
+            // 
+            // txtCurrentTime
+            // 
+            this.txtCurrentTime.BackColor = System.Drawing.Color.Black;
+            this.txtCurrentTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCurrentTime.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentTime.ForeColor = System.Drawing.Color.White;
+            this.txtCurrentTime.Location = new System.Drawing.Point(6, 122);
+            this.txtCurrentTime.Name = "txtCurrentTime";
+            this.txtCurrentTime.Size = new System.Drawing.Size(129, 16);
+            this.txtCurrentTime.TabIndex = 2;
+            this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -131,7 +145,7 @@
             this.txtCurrent.ForeColor = System.Drawing.Color.LawnGreen;
             this.txtCurrent.Location = new System.Drawing.Point(6, 53);
             this.txtCurrent.Name = "txtCurrent";
-            this.txtCurrent.Size = new System.Drawing.Size(100, 63);
+            this.txtCurrent.Size = new System.Drawing.Size(129, 63);
             this.txtCurrent.TabIndex = 0;
             this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -203,6 +217,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLukk;
         private System.Windows.Forms.Button btnMinimize;
+        private System.Windows.Forms.TextBox txtCurrentTime;
 
     }
 }

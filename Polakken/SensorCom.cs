@@ -12,7 +12,7 @@ namespace Polakken
         string Sensor_name = "0xxxxx"; //navn til sensoren
         string Sensor_channel = "x"; //kanal sensor benytter
 
-        private void initReader() 
+        public void initReader() 
         {
             //variable declaration of local
             uint data;
