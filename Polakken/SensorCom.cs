@@ -20,7 +20,6 @@ namespace Polakken
         //    //variable declaration of local
         //    uint data;
 
-<<<<<<< HEAD
         //    my_niHSDIO = InstrumentDriverInterop.Ivi.niHSDIO.InitAcquisitionSession(Sensor_name, true, true, "");
         //    //initializing niHSDIO object
         //    my_niHSDIO.AssignStaticChannels(Sensor_channel);
@@ -29,10 +28,7 @@ namespace Polakken
         //    my_niHSDIO.Dispose(); //dispose of handle
         //}
         private double analogData;
-        public double temp()
-=======
-        public void initReader() 
->>>>>>> 9f6d9296a05c0116cf4cf6a9ac19487fc9d3f41f
+        public double temp() 
         {
             Task temperatureTask = new Task();
             AIChannel myAIChannel;
