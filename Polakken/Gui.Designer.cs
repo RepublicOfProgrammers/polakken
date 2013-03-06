@@ -30,12 +30,18 @@
         {
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tbcPage = new System.Windows.Forms.TabControl();
-            this.tbpOne = new System.Windows.Forms.TabPage();
+            this.lblMaxTemp = new System.Windows.Forms.TabPage();
             this.tbpTwo = new System.Windows.Forms.TabPage();
             this.tbpThree = new System.Windows.Forms.TabPage();
             this.grpInfo = new System.Windows.Forms.GroupBox();
+            this.txtMinTid = new System.Windows.Forms.TextBox();
+            this.lblMin = new System.Windows.Forms.Label();
+            this.txtMin = new System.Windows.Forms.TextBox();
+            this.txtMaxTid = new System.Windows.Forms.TextBox();
+            this.lblMax = new System.Windows.Forms.Label();
+            this.txtMax = new System.Windows.Forms.TextBox();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSiste = new System.Windows.Forms.Label();
             this.txtCurrent = new System.Windows.Forms.TextBox();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
@@ -58,7 +64,7 @@
             // 
             // tbcPage
             // 
-            this.tbcPage.Controls.Add(this.tbpOne);
+            this.tbcPage.Controls.Add(this.lblMaxTemp);
             this.tbcPage.Controls.Add(this.tbpTwo);
             this.tbcPage.Controls.Add(this.tbpThree);
             this.tbcPage.Location = new System.Drawing.Point(236, 69);
@@ -67,16 +73,16 @@
             this.tbcPage.Size = new System.Drawing.Size(658, 360);
             this.tbcPage.TabIndex = 2;
             // 
-            // tbpOne
+            // lblMaxTemp
             // 
-            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.Chart;
-            this.tbpOne.Location = new System.Drawing.Point(4, 22);
-            this.tbpOne.Name = "tbpOne";
-            this.tbpOne.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpOne.Size = new System.Drawing.Size(650, 334);
-            this.tbpOne.TabIndex = 0;
-            this.tbpOne.Text = "Instillinger";
-            this.tbpOne.UseVisualStyleBackColor = true;
+            this.lblMaxTemp.BackgroundImage = global::Polakken.Properties.Resources.Chart;
+            this.lblMaxTemp.Location = new System.Drawing.Point(4, 22);
+            this.lblMaxTemp.Name = "lblMaxTemp";
+            this.lblMaxTemp.Padding = new System.Windows.Forms.Padding(3);
+            this.lblMaxTemp.Size = new System.Drawing.Size(650, 334);
+            this.lblMaxTemp.TabIndex = 0;
+            this.lblMaxTemp.Text = "Instillinger";
+            this.lblMaxTemp.UseVisualStyleBackColor = true;
             // 
             // tbpTwo
             // 
@@ -103,8 +109,14 @@
             // 
             this.grpInfo.BackColor = System.Drawing.Color.Transparent;
             this.grpInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.grpInfo.Controls.Add(this.txtMinTid);
+            this.grpInfo.Controls.Add(this.lblMin);
+            this.grpInfo.Controls.Add(this.txtMin);
+            this.grpInfo.Controls.Add(this.txtMaxTid);
+            this.grpInfo.Controls.Add(this.lblMax);
+            this.grpInfo.Controls.Add(this.txtMax);
             this.grpInfo.Controls.Add(this.txtCurrentTime);
-            this.grpInfo.Controls.Add(this.label1);
+            this.grpInfo.Controls.Add(this.lblSiste);
             this.grpInfo.Controls.Add(this.txtCurrent);
             this.grpInfo.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpInfo.ForeColor = System.Drawing.SystemColors.Control;
@@ -115,27 +127,95 @@
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = "INFO";
             // 
+            // txtMinTid
+            // 
+            this.txtMinTid.BackColor = System.Drawing.Color.Black;
+            this.txtMinTid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMinTid.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMinTid.ForeColor = System.Drawing.Color.White;
+            this.txtMinTid.Location = new System.Drawing.Point(46, 304);
+            this.txtMinTid.Name = "txtMinTid";
+            this.txtMinTid.Size = new System.Drawing.Size(107, 13);
+            this.txtMinTid.TabIndex = 8;
+            this.txtMinTid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblMin
+            // 
+            this.lblMin.AutoSize = true;
+            this.lblMin.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMin.Location = new System.Drawing.Point(46, 237);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(107, 14);
+            this.lblMin.TabIndex = 7;
+            this.lblMin.Text = "Max Tempratur";
+            // 
+            // txtMin
+            // 
+            this.txtMin.BackColor = System.Drawing.Color.Black;
+            this.txtMin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMin.Font = new System.Drawing.Font("Lucida Sans", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMin.ForeColor = System.Drawing.Color.White;
+            this.txtMin.Location = new System.Drawing.Point(46, 256);
+            this.txtMin.Name = "txtMin";
+            this.txtMin.Size = new System.Drawing.Size(107, 44);
+            this.txtMin.TabIndex = 6;
+            this.txtMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtMaxTid
+            // 
+            this.txtMaxTid.BackColor = System.Drawing.Color.Black;
+            this.txtMaxTid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMaxTid.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaxTid.ForeColor = System.Drawing.Color.White;
+            this.txtMaxTid.Location = new System.Drawing.Point(46, 219);
+            this.txtMaxTid.Name = "txtMaxTid";
+            this.txtMaxTid.Size = new System.Drawing.Size(107, 13);
+            this.txtMaxTid.TabIndex = 5;
+            this.txtMaxTid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblMax
+            // 
+            this.lblMax.AutoSize = true;
+            this.lblMax.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMax.Location = new System.Drawing.Point(46, 152);
+            this.lblMax.Name = "lblMax";
+            this.lblMax.Size = new System.Drawing.Size(107, 14);
+            this.lblMax.TabIndex = 4;
+            this.lblMax.Text = "Max Tempratur";
+            // 
+            // txtMax
+            // 
+            this.txtMax.BackColor = System.Drawing.Color.Black;
+            this.txtMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMax.Font = new System.Drawing.Font("Lucida Sans", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMax.ForeColor = System.Drawing.Color.White;
+            this.txtMax.Location = new System.Drawing.Point(46, 171);
+            this.txtMax.Name = "txtMax";
+            this.txtMax.Size = new System.Drawing.Size(107, 44);
+            this.txtMax.TabIndex = 3;
+            this.txtMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // txtCurrentTime
             // 
             this.txtCurrentTime.BackColor = System.Drawing.Color.Black;
             this.txtCurrentTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCurrentTime.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentTime.ForeColor = System.Drawing.Color.White;
-            this.txtCurrentTime.Location = new System.Drawing.Point(6, 122);
+            this.txtCurrentTime.Location = new System.Drawing.Point(36, 119);
             this.txtCurrentTime.Name = "txtCurrentTime";
             this.txtCurrentTime.Size = new System.Drawing.Size(129, 16);
             this.txtCurrentTime.TabIndex = 2;
             this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label1
+            // lblSiste
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Siste avlesning";
+            this.lblSiste.AutoSize = true;
+            this.lblSiste.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSiste.Location = new System.Drawing.Point(41, 34);
+            this.lblSiste.Name = "lblSiste";
+            this.lblSiste.Size = new System.Drawing.Size(118, 16);
+            this.lblSiste.TabIndex = 1;
+            this.lblSiste.Text = "Siste avlesning";
             // 
             // txtCurrent
             // 
@@ -143,7 +223,7 @@
             this.txtCurrent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCurrent.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrent.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtCurrent.Location = new System.Drawing.Point(6, 53);
+            this.txtCurrent.Location = new System.Drawing.Point(36, 53);
             this.txtCurrent.Name = "txtCurrent";
             this.txtCurrent.Size = new System.Drawing.Size(129, 63);
             this.txtCurrent.TabIndex = 0;
@@ -209,15 +289,21 @@
 
         private System.Windows.Forms.DataVisualization.Charting.Chart crtView;
         private System.Windows.Forms.TabControl tbcPage;
-        private System.Windows.Forms.TabPage tbpOne;
+        private System.Windows.Forms.TabPage lblMaxTemp;
         private System.Windows.Forms.TabPage tbpTwo;
         private System.Windows.Forms.GroupBox grpInfo;
         private System.Windows.Forms.TabPage tbpThree;
         private System.Windows.Forms.TextBox txtCurrent;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSiste;
         private System.Windows.Forms.Button btnLukk;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.TextBox txtCurrentTime;
+        private System.Windows.Forms.TextBox txtMaxTid;
+        private System.Windows.Forms.Label lblMax;
+        private System.Windows.Forms.TextBox txtMax;
+        private System.Windows.Forms.TextBox txtMinTid;
+        private System.Windows.Forms.Label lblMin;
+        private System.Windows.Forms.TextBox txtMin;
 
     }
 }

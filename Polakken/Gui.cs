@@ -74,6 +74,14 @@ namespace Polakken
             txtCurrent.AppendText("42" + "°C");
             txtCurrentTime.AppendText("06.03.2013" + " " + "13:37");
 
+            string hello = "666";
+            string world = "06.03.2013";
+            string c = "°C";
+            string t = "13:37";
+            txtMax.AppendText(hello + c);
+            txtMin.AppendText(hello + c);
+            txtMaxTid.AppendText(world + " " + t);
+            txtMinTid.AppendText(world + " " + t);
 
             
 
