@@ -9,17 +9,17 @@ namespace Polakken
     {
         //variabler
         private Boolean status;
-        private int reading;
-        private int prevReading;
-        private int tolerance;
-        public int setpoint { get; set; }
+        private double reading;
+        private double prevReading;
+        private double tolerance;
+        public double setpoint { get; set; }
         private double difference;
         //temp variabler
-        private int mesInterval;
-        private int redingFraMes;
+        private double mesInterval;
+        private double redingFraMes;
         
         //ny måling
-        public void newread(int newread)
+        public void newread(double newread)
         {
             prevReading = reading;
             reading = newread;
