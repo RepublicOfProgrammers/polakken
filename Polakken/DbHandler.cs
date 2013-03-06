@@ -85,9 +85,9 @@ namespace Polakken
          * DelReadings 
         */
 
-        public int SetReading(int C, int status) 
+        public int SetReading(DateTime time, int C, int status) 
         {
-            string sql = "sql kode";
+            string sql = string.Format("insert into " + TB_READINGS + " ({0},{1},{2})" + " values ({3}, {4}, {5})", TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, time, C, status);
             return executeSql_NonQuery(sql);
         }
 
