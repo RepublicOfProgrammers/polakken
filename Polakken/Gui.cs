@@ -23,11 +23,12 @@ namespace Polakken
             // Graf:
 
             crtView.ChartAreas.Add("tempOversikt");
-            crtView.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
+            crtView.ChartAreas["tempOversikt"].AxisX.Minimum = -25;
             crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 50;
-            crtView.ChartAreas["tempOversikt"].AxisX.Interval = 1;
-            crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
-            crtView.ChartAreas["tempOversikt"].AxisY.Interval = 20;
+            crtView.ChartAreas["tempOversikt"].AxisX.Interval = 50;
+            crtView.ChartAreas["tempOversikt"].AxisY.Minimum = 0;
+            crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 50;
+            crtView.ChartAreas["tempOversikt"].AxisY.Interval = 10;
             crtView.ChartAreas["tempOversikt"].BackColor = Color.Transparent;
             crtView.ChartAreas["tempOversikt"].AxisX.MajorGrid.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.MajorGrid.LineColor = Color.DarkGray;
