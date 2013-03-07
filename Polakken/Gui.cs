@@ -24,10 +24,10 @@ namespace Polakken
 
             crtView.ChartAreas.Add("tempOversikt");
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
-            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 20;
+            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 50;
             crtView.ChartAreas["tempOversikt"].AxisX.Interval = 1;
-            crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -30;
-            crtView.ChartAreas["tempOversikt"].AxisY.Interval = 10;
+            crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
+            crtView.ChartAreas["tempOversikt"].AxisY.Interval = 20;
             crtView.ChartAreas["tempOversikt"].BackColor = Color.Transparent;
             crtView.ChartAreas["tempOversikt"].AxisX.MajorGrid.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.MajorGrid.LineColor = Color.DarkGray;
@@ -39,36 +39,46 @@ namespace Polakken
             
             
             
-            crtView.Series.Add("Pakistan");
-            crtView.Series.Add("India");
+            crtView.Series.Add("Temp");
+            crtView.Series.Add("MaxSet");
+            crtView.Series.Add("MinSet");
 
-            crtView.Series["Pakistan"].Color = Color.LawnGreen;
-            crtView.Series["India"].Color = Color.Red;
 
-            crtView.Series["Pakistan"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            crtView.Series["India"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            crtView.Series["Pakistan"].BorderWidth = 2;
-            crtView.Series["India"].BorderWidth = 2;
-            
+            crtView.Series["Temp"].Color = Color.LawnGreen;
+            crtView.Series["MaxSet"].Color = Color.Orange;
+            crtView.Series["MinSet"].Color = Color.SlateBlue;
+
+
+
+
+            crtView.Series["Temp"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            crtView.Series["MaxSet"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            crtView.Series["MinSet"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            crtView.Series["Temp"].BorderWidth = 2;
+            crtView.Series["MaxSet"].BorderWidth = 2;
+            crtView.Series["MinSet"].BorderWidth = 2;
                 
 
-            crtView.Series["Pakistan"].Points.AddXY(0, 0);
-            crtView.Series["India"].Points.AddXY(0, 0);
+            crtView.Series["Temp"].Points.AddXY(0, 0);
+            crtView.Series["MaxTemp"].Points.AddXY(0, 25);
+            crtView.Series["MinTemp"].Points.AddXY(0, 5);
 
-            crtView.Series["Pakistan"].Points.AddXY(1, 4);
-            crtView.Series["India"].Points.AddXY(1, 9);
+            crtView.Series["Temp"].Points.AddXY(1, 4);
+        
 
-            crtView.Series["Pakistan"].Points.AddXY(12, -10);
-            crtView.Series["India"].Points.AddXY(12, 20);
+            crtView.Series["Temp"].Points.AddXY(12, -10);
+         
 
-            crtView.Series["Pakistan"].Points.AddXY(13, 5);
-            crtView.Series["India"].Points.AddXY(13, 15);
+            crtView.Series["Temp"].Points.AddXY(13, 5);
+       
 
-            crtView.Series["Pakistan"].Points.AddXY(15, -100);
-            crtView.Series["India"].Points.AddXY(15, -34);
+            crtView.Series["Temp"].Points.AddXY(15, -100);
+         
 
-            crtView.Series["Pakistan"].Points.AddXY(16, -50);
-            crtView.Series["India"].Points.AddXY(16, -10);
+            crtView.Series["Temp"].Points.AddXY(16, -50);
+            crtView.Series["MaxTemp"].Points.AddXY(30, 25);
+            crtView.Series["MinTemp"].Points.AddXY(30, 5);
+   
 
 
             txtCurrent.AppendText("42" + "°C");
