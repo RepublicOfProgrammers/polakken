@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tbcPage = new System.Windows.Forms.TabControl();
-            this.lblMaxTemp = new System.Windows.Forms.TabPage();
-            this.tbpTwo = new System.Windows.Forms.TabPage();
-            this.tbpThree = new System.Windows.Forms.TabPage();
             this.grpInfo = new System.Windows.Forms.GroupBox();
             this.txtMinTime = new System.Windows.Forms.TextBox();
             this.lblMin = new System.Windows.Forms.Label();
@@ -45,9 +41,13 @@
             this.txtCurrent = new System.Windows.Forms.TextBox();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
+            this.tbcPage = new Polakken.CTabControl();
+            this.lblMaxTemp = new System.Windows.Forms.TabPage();
+            this.tbpTwo = new System.Windows.Forms.TabPage();
+            this.tbpThree = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
-            this.tbcPage.SuspendLayout();
             this.grpInfo.SuspendLayout();
+            this.tbcPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // crtView
@@ -61,49 +61,6 @@
             this.crtView.Size = new System.Drawing.Size(884, 226);
             this.crtView.TabIndex = 1;
             this.crtView.Text = "5";
-            // 
-            // tbcPage
-            // 
-            this.tbcPage.Controls.Add(this.lblMaxTemp);
-            this.tbcPage.Controls.Add(this.tbpTwo);
-            this.tbcPage.Controls.Add(this.tbpThree);
-            this.tbcPage.Location = new System.Drawing.Point(236, 69);
-            this.tbcPage.Name = "tbcPage";
-            this.tbcPage.SelectedIndex = 0;
-            this.tbcPage.Size = new System.Drawing.Size(658, 360);
-            this.tbcPage.TabIndex = 2;
-            // 
-            // lblMaxTemp
-            // 
-            this.lblMaxTemp.BackgroundImage = global::Polakken.Properties.Resources.Chart;
-            this.lblMaxTemp.Location = new System.Drawing.Point(4, 22);
-            this.lblMaxTemp.Name = "lblMaxTemp";
-            this.lblMaxTemp.Padding = new System.Windows.Forms.Padding(3);
-            this.lblMaxTemp.Size = new System.Drawing.Size(650, 334);
-            this.lblMaxTemp.TabIndex = 0;
-            this.lblMaxTemp.Text = "Instillinger";
-            this.lblMaxTemp.UseVisualStyleBackColor = true;
-            // 
-            // tbpTwo
-            // 
-            this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.Chart;
-            this.tbpTwo.Location = new System.Drawing.Point(4, 22);
-            this.tbpTwo.Name = "tbpTwo";
-            this.tbpTwo.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpTwo.Size = new System.Drawing.Size(650, 334);
-            this.tbpTwo.TabIndex = 1;
-            this.tbpTwo.Text = "Databasen";
-            this.tbpTwo.UseVisualStyleBackColor = true;
-            // 
-            // tbpThree
-            // 
-            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.Chart;
-            this.tbpThree.Location = new System.Drawing.Point(4, 22);
-            this.tbpThree.Name = "tbpThree";
-            this.tbpThree.Size = new System.Drawing.Size(650, 334);
-            this.tbpThree.TabIndex = 2;
-            this.tbpThree.Text = "E-mail";
-            this.tbpThree.UseVisualStyleBackColor = true;
             // 
             // grpInfo
             // 
@@ -258,6 +215,51 @@
             this.btnMinimize.UseVisualStyleBackColor = false;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
+            // tbcPage
+            // 
+            this.tbcPage.Controls.Add(this.lblMaxTemp);
+            this.tbcPage.Controls.Add(this.tbpTwo);
+            this.tbcPage.Controls.Add(this.tbpThree);
+            this.tbcPage.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tbcPage.ItemSize = new System.Drawing.Size(90, 30);
+            this.tbcPage.Location = new System.Drawing.Point(236, 69);
+            this.tbcPage.Name = "tbcPage";
+            this.tbcPage.SelectedIndex = 0;
+            this.tbcPage.Size = new System.Drawing.Size(658, 360);
+            this.tbcPage.TabIndex = 2;
+            // 
+            // lblMaxTemp
+            // 
+            this.lblMaxTemp.BackColor = System.Drawing.Color.Blue;
+            this.lblMaxTemp.BackgroundImage = global::Polakken.Properties.Resources.Chart;
+            this.lblMaxTemp.Location = new System.Drawing.Point(4, 34);
+            this.lblMaxTemp.Name = "lblMaxTemp";
+            this.lblMaxTemp.Padding = new System.Windows.Forms.Padding(3);
+            this.lblMaxTemp.Size = new System.Drawing.Size(650, 322);
+            this.lblMaxTemp.TabIndex = 0;
+            this.lblMaxTemp.Text = "Instillinger";
+            // 
+            // tbpTwo
+            // 
+            this.tbpTwo.BackColor = System.Drawing.Color.Blue;
+            this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.Chart;
+            this.tbpTwo.Location = new System.Drawing.Point(4, 34);
+            this.tbpTwo.Name = "tbpTwo";
+            this.tbpTwo.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpTwo.Size = new System.Drawing.Size(650, 322);
+            this.tbpTwo.TabIndex = 1;
+            this.tbpTwo.Text = "Databasen";
+            // 
+            // tbpThree
+            // 
+            this.tbpThree.BackColor = System.Drawing.Color.Blue;
+            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.Chart;
+            this.tbpThree.Location = new System.Drawing.Point(4, 34);
+            this.tbpThree.Name = "tbpThree";
+            this.tbpThree.Size = new System.Drawing.Size(650, 322);
+            this.tbpThree.TabIndex = 2;
+            this.tbpThree.Text = "E-mail";
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,9 +280,9 @@
             this.TransparencyKey = System.Drawing.Color.LemonChiffon;
             this.Load += new System.EventHandler(this.GUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).EndInit();
-            this.tbcPage.ResumeLayout(false);
             this.grpInfo.ResumeLayout(false);
             this.grpInfo.PerformLayout();
+            this.tbcPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -288,7 +290,7 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart crtView;
-        private System.Windows.Forms.TabControl tbcPage;
+        private CTabControl tbcPage;
         private System.Windows.Forms.TabPage lblMaxTemp;
         private System.Windows.Forms.TabPage tbpTwo;
         private System.Windows.Forms.GroupBox grpInfo;

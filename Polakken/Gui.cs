@@ -123,6 +123,7 @@ namespace Polakken
             this.DrawItem += new DrawItemEventHandler(this.RepaintControls);
 
             this.Invalidate();
+            
 
         }
 
@@ -146,7 +147,7 @@ namespace Polakken
 
                 font = new Font(e.Font, e.Font.Style);
 
-                back_brush = new SolidBrush(Color.DimGray);
+                back_brush = new SolidBrush(Color.Blue);
 
                 fore_brush = new SolidBrush(Color.White);
 
