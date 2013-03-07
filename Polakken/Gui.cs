@@ -23,10 +23,10 @@ namespace Polakken
             // Graf:
 
             crtView.ChartAreas.Add("tempOversikt");
-            crtView.ChartAreas["tempOversikt"].AxisX.Minimum = -25;
+            crtView.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
             crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 50;
-            crtView.ChartAreas["tempOversikt"].AxisX.Interval = 50;
-            crtView.ChartAreas["tempOversikt"].AxisY.Minimum = 0;
+            crtView.ChartAreas["tempOversikt"].AxisX.Interval = 5;
+            crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
             crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 50;
             crtView.ChartAreas["tempOversikt"].AxisY.Interval = 10;
             crtView.ChartAreas["tempOversikt"].BackColor = Color.Transparent;
@@ -37,48 +37,26 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisX.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.ForeColor = Color.GreenYellow;
-            
-            
-            
-            crtView.Series.Add("Temp");
+
+            crtView.Series.Add("temp");
+            crtView.Series["temp"].BorderColor = Color.LawnGreen;
+            crtView.Series["temp"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            crtView.Series["temp"].Points.AddXY(0, 10);
+            crtView.Series["temp"].Points.AddXY(20, 29);
+            crtView.Series["temp"].Points.AddXY(50, 15);
+
             crtView.Series.Add("MaxSet");
-            crtView.Series.Add("MinSet");
-
-
-            crtView.Series["Temp"].Color = Color.LawnGreen;
-            crtView.Series["MaxSet"].Color = Color.Orange;
-            crtView.Series["MinSet"].Color = Color.SlateBlue;
-
-
-
-
-            crtView.Series["Temp"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            crtView.Series["MaxSet"].BorderColor = Color.IndianRed;
             crtView.Series["MaxSet"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            crtView.Series["MinSet"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            crtView.Series["Temp"].BorderWidth = 2;
-            crtView.Series["MaxSet"].BorderWidth = 2;
-            crtView.Series["MinSet"].BorderWidth = 2;
-                
+            crtView.Series["MaxSet"].Points.AddXY(0, 30);
+            crtView.Series["MaxSet"].Points.AddXY(50, 30);
 
-            crtView.Series["Temp"].Points.AddXY(0, 0);
-            crtView.Series["MaxTemp"].Points.AddXY(0, 25);
-            crtView.Series["MinTemp"].Points.AddXY(0, 5);
-
-            crtView.Series["Temp"].Points.AddXY(1, 4);
-        
-
-            crtView.Series["Temp"].Points.AddXY(12, -10);
-         
-
-            crtView.Series["Temp"].Points.AddXY(13, 5);
-       
-
-            crtView.Series["Temp"].Points.AddXY(15, -100);
-         
-
-            crtView.Series["Temp"].Points.AddXY(16, -50);
-            crtView.Series["MaxTemp"].Points.AddXY(30, 25);
-            crtView.Series["MinTemp"].Points.AddXY(30, 5);
+            crtView.Series.Add("Max-Set");
+            crtView.Series["MaxSet"].BorderColor = Color.IndianRed;
+            crtView.Series["MaxSet"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            crtView.Series["MaxSet"].Points.AddXY(0, 30);
+            crtView.Series["MaxSet"].Points.AddXY(50, 30);
+           
    
 
 

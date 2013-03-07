@@ -66,7 +66,7 @@
             this.crtView.Name = "crtView";
             this.crtView.Size = new System.Drawing.Size(884, 226);
             this.crtView.TabIndex = 1;
-            this.crtView.Text = "5";
+            
             // 
             // grpInfo
             // 
