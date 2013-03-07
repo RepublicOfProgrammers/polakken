@@ -189,13 +189,15 @@
             // btnLukk
             // 
             this.btnLukk.BackColor = System.Drawing.Color.Transparent;
+            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.Close;
+            this.btnLukk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnLukk.FlatAppearance.BorderSize = 0;
             this.btnLukk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnLukk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnLukk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLukk.Location = new System.Drawing.Point(872, 22);
+            this.btnLukk.Location = new System.Drawing.Point(863, 22);
             this.btnLukk.Name = "btnLukk";
-            this.btnLukk.Size = new System.Drawing.Size(21, 30);
+            this.btnLukk.Size = new System.Drawing.Size(30, 30);
             this.btnLukk.TabIndex = 4;
             this.btnLukk.UseVisualStyleBackColor = false;
             this.btnLukk.Click += new System.EventHandler(this.btnLukk_Click);
@@ -203,14 +205,15 @@
             // btnMinimize
             // 
             this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
+            this.btnMinimize.BackgroundImage = global::Polakken.Properties.Resources.Minimize;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.ForeColor = System.Drawing.Color.Black;
-            this.btnMinimize.Location = new System.Drawing.Point(846, 22);
+            this.btnMinimize.Location = new System.Drawing.Point(834, 22);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(21, 30);
+            this.btnMinimize.Size = new System.Drawing.Size(33, 30);
             this.btnMinimize.TabIndex = 5;
             this.btnMinimize.UseVisualStyleBackColor = false;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
@@ -264,8 +267,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LemonChiffon;
-            this.BackgroundImage = global::Polakken.Properties.Resources.Alfa2;
+            this.BackColor = System.Drawing.Color.Silver;
+            this.BackgroundImage = global::Polakken.Properties.Resources.Alfa;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(908, 702);
             this.Controls.Add(this.btnMinimize);
@@ -277,7 +280,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GUI";
             this.Text = "Polakken";
-            this.TransparencyKey = System.Drawing.Color.LemonChiffon;
+            this.TransparencyKey = System.Drawing.Color.Silver;
             this.Load += new System.EventHandler(this.GUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).EndInit();
             this.grpInfo.ResumeLayout(false);

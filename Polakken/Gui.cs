@@ -177,14 +177,14 @@ namespace Polakken
             e.Graphics.FillRectangle(back_brush, bounds);
 
             e.Graphics.DrawString(tab_name, font, fore_brush, bounds, sf);
-
-            Brush background_brush = new SolidBrush(Color.DodgerBlue);
+            
+            Brush background_brush = new SolidBrush(Color.Black);
 
             Rectangle LastTabRect = this.GetTabRect(this.TabPages.Count - 1);
 
             Rectangle rect = new Rectangle();
 
-            rect.Location = new Point(LastTabRect.Right + this.Left, this.Top);
+            rect.Location = new Point(LastTabRect.Right + this.Left - this.Bounds.X, this.Top - this.Bounds.Y);
 
             rect.Size = new Size(this.Right - rect.Left, LastTabRect.Height);
 
