@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.grpInfo = new System.Windows.Forms.GroupBox();
             this.txtMinTime = new System.Windows.Forms.TextBox();
@@ -41,8 +42,18 @@
             this.txtCurrent = new System.Windows.Forms.TextBox();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
+            this.tbcPage = new System.Windows.Forms.TabControl();
+            this.tbpOne = new System.Windows.Forms.TabPage();
+            this.tbpTwo = new System.Windows.Forms.TabPage();
+            this.tbpThree = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
+            this.tbcPage.SuspendLayout();
+            this.tbpThree.SuspendLayout();
             this.SuspendLayout();
             // 
             // crtView
@@ -213,6 +224,81 @@
             this.btnMinimize.UseVisualStyleBackColor = false;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
+            // tbcPage
+            // 
+            this.tbcPage.Controls.Add(this.tbpOne);
+            this.tbcPage.Controls.Add(this.tbpTwo);
+            this.tbcPage.Controls.Add(this.tbpThree);
+            this.tbcPage.Location = new System.Drawing.Point(239, 69);
+            this.tbcPage.Name = "tbcPage";
+            this.tbcPage.SelectedIndex = 0;
+            this.tbcPage.Size = new System.Drawing.Size(654, 360);
+            this.tbcPage.TabIndex = 6;
+            // 
+            // tbpOne
+            // 
+            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.Tab;
+            this.tbpOne.Location = new System.Drawing.Point(4, 22);
+            this.tbpOne.Name = "tbpOne";
+            this.tbpOne.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpOne.Size = new System.Drawing.Size(646, 334);
+            this.tbpOne.TabIndex = 0;
+            this.tbpOne.Text = "Instillinger";
+            this.tbpOne.UseVisualStyleBackColor = true;
+            // 
+            // tbpTwo
+            // 
+            this.tbpTwo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbpTwo.BackgroundImage")));
+            this.tbpTwo.Location = new System.Drawing.Point(4, 22);
+            this.tbpTwo.Name = "tbpTwo";
+            this.tbpTwo.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpTwo.Size = new System.Drawing.Size(646, 334);
+            this.tbpTwo.TabIndex = 1;
+            this.tbpTwo.Text = "Databasen";
+            this.tbpTwo.UseVisualStyleBackColor = true;
+            // 
+            // tbpThree
+            // 
+            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.Tab;
+            this.tbpThree.Controls.Add(this.textBox4);
+            this.tbpThree.Controls.Add(this.textBox3);
+            this.tbpThree.Controls.Add(this.textBox2);
+            this.tbpThree.Controls.Add(this.textBox1);
+            this.tbpThree.Location = new System.Drawing.Point(4, 22);
+            this.tbpThree.Name = "tbpThree";
+            this.tbpThree.Size = new System.Drawing.Size(646, 334);
+            this.tbpThree.TabIndex = 2;
+            this.tbpThree.Text = "E-Mail";
+            this.tbpThree.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(16, 12);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(16, 64);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 1;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(16, 38);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 2;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(16, 90);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 3;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,6 +307,7 @@
             this.BackgroundImage = global::Polakken.Properties.Resources.Alfa;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(908, 702);
+            this.Controls.Add(this.tbcPage);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnLukk);
             this.Controls.Add(this.grpInfo);
@@ -234,6 +321,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).EndInit();
             this.grpInfo.ResumeLayout(false);
             this.grpInfo.PerformLayout();
+            this.tbcPage.ResumeLayout(false);
+            this.tbpThree.ResumeLayout(false);
+            this.tbpThree.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -253,6 +343,14 @@
         private System.Windows.Forms.TextBox txtMinTime;
         private System.Windows.Forms.Label lblMin;
         private System.Windows.Forms.TextBox txtMin;
+        private System.Windows.Forms.TabControl tbcPage;
+        private System.Windows.Forms.TabPage tbpOne;
+        private System.Windows.Forms.TabPage tbpTwo;
+        private System.Windows.Forms.TabPage tbpThree;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
 
     }
 }
