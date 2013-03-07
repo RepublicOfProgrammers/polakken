@@ -41,13 +41,8 @@
             this.txtCurrent = new System.Windows.Forms.TextBox();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
-            this.tbcPage = new Polakken.CTabControl();
-            this.lblMaxTemp = new System.Windows.Forms.TabPage();
-            this.tbpTwo = new System.Windows.Forms.TabPage();
-            this.tbpThree = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
-            this.tbcPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // crtView
@@ -218,51 +213,6 @@
             this.btnMinimize.UseVisualStyleBackColor = false;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
-            // tbcPage
-            // 
-            this.tbcPage.Controls.Add(this.lblMaxTemp);
-            this.tbcPage.Controls.Add(this.tbpTwo);
-            this.tbcPage.Controls.Add(this.tbpThree);
-            this.tbcPage.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tbcPage.ItemSize = new System.Drawing.Size(90, 30);
-            this.tbcPage.Location = new System.Drawing.Point(236, 69);
-            this.tbcPage.Name = "tbcPage";
-            this.tbcPage.SelectedIndex = 0;
-            this.tbcPage.Size = new System.Drawing.Size(658, 360);
-            this.tbcPage.TabIndex = 2;
-            // 
-            // lblMaxTemp
-            // 
-            this.lblMaxTemp.BackColor = System.Drawing.Color.Blue;
-            this.lblMaxTemp.BackgroundImage = global::Polakken.Properties.Resources.Chart;
-            this.lblMaxTemp.Location = new System.Drawing.Point(4, 34);
-            this.lblMaxTemp.Name = "lblMaxTemp";
-            this.lblMaxTemp.Padding = new System.Windows.Forms.Padding(3);
-            this.lblMaxTemp.Size = new System.Drawing.Size(650, 322);
-            this.lblMaxTemp.TabIndex = 0;
-            this.lblMaxTemp.Text = "Instillinger";
-            // 
-            // tbpTwo
-            // 
-            this.tbpTwo.BackColor = System.Drawing.Color.Blue;
-            this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.Chart;
-            this.tbpTwo.Location = new System.Drawing.Point(4, 34);
-            this.tbpTwo.Name = "tbpTwo";
-            this.tbpTwo.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpTwo.Size = new System.Drawing.Size(650, 322);
-            this.tbpTwo.TabIndex = 1;
-            this.tbpTwo.Text = "Databasen";
-            // 
-            // tbpThree
-            // 
-            this.tbpThree.BackColor = System.Drawing.Color.Blue;
-            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.Chart;
-            this.tbpThree.Location = new System.Drawing.Point(4, 34);
-            this.tbpThree.Name = "tbpThree";
-            this.tbpThree.Size = new System.Drawing.Size(650, 322);
-            this.tbpThree.TabIndex = 2;
-            this.tbpThree.Text = "E-mail";
-            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,7 +224,6 @@
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnLukk);
             this.Controls.Add(this.grpInfo);
-            this.Controls.Add(this.tbcPage);
             this.Controls.Add(this.crtView);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -285,7 +234,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).EndInit();
             this.grpInfo.ResumeLayout(false);
             this.grpInfo.PerformLayout();
-            this.tbcPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -293,11 +241,7 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart crtView;
-        private CTabControl tbcPage;
-        private System.Windows.Forms.TabPage lblMaxTemp;
-        private System.Windows.Forms.TabPage tbpTwo;
         private System.Windows.Forms.GroupBox grpInfo;
-        private System.Windows.Forms.TabPage tbpThree;
         private System.Windows.Forms.TextBox txtCurrent;
         private System.Windows.Forms.Label lblSiste;
         private System.Windows.Forms.Button btnLukk;
