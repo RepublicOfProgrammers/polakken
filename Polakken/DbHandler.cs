@@ -45,7 +45,7 @@ namespace Polakken
             }
             else if (init_db_status == (int)dbStatus.EXISTING) 
             {
-            
+               
             }
         }
         private void CreateDummyValues() 

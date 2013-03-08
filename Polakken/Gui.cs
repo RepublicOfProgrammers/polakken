@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlServerCe;
 
 namespace Polakken
 {
@@ -27,7 +28,8 @@ namespace Polakken
             // Graf:
 
             crtView.ChartAreas.Add("tempOversikt");
-            crtView.ChartAreas["tempOversikt"].AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            crtView.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
+            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 50;
             crtView.ChartAreas["tempOversikt"].AxisX.Interval = 1;
             crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
             crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 50;
@@ -46,11 +48,9 @@ namespace Polakken
             crtView.Series["temp"].Color = Color.LawnGreen;
             crtView.Series["temp"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             crtView.Series["temp"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            crtView.Series["temp"].Points.AddXY(4131.6084899700, 10);
-            crtView.Series["temp"].Points.AddXY(4131.6084899725, 40);
-            crtView.Series["temp"].Points.AddXY(4131.6084899750, 43);
-            crtView.Series["temp"].Points.AddXY(4131.6084899775, 5);
             crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            crtView.Series["temp"].Points.AddXY(1, 0);
+            crtView.Series["temp"].Points.AddXY(50, 20);
 
 
             //MAX/MIN TEST
@@ -92,34 +92,43 @@ namespace Polakken
             txtMaxTime.AppendText(MaxDTX.ToString());
             txtMinTime.AppendText(MinXValue.ToString());
 
-           
+
+
+
+            DbHandler DB = new DbHandler();
+            DataTable table = new DataTable();
             
-           
-            
+            DB.GetReadings();
+            //    while (DB.GetReadings().Read())
+            //    {
+            //        table.Rows.Add(new object[] { DB.GetReadings()[0], DB.GetReadings()[1], DB.GetReadings()[2] });
+            //    }
+            //    crtView.DataSource = table;
+            //    //add series
+            //    for (int i = 0; i < table.Rows.Count; i++)
+            //    {
+            //        if (crtView.Series.Where(x => x.Name == table.Rows[i][0].ToString()).Count() > 0)
+            //        {
 
+            //        }
+            //        else
+            //        {
+            //            crtView.Series.Add(table.Rows[i][0].ToString());
 
-            
-            
-            
-            
+            //        }
+            //    }
+            //    for (int i = 0; i < crtView.Series.Count; i++)
+            //    {
 
-            
-            
+            //        crtView.Series[i].XValueMember = "Date";
+            //        crtView.Series[i].YValueMembers = "Value";
 
-           
-           
-           
-           
-           
+            //        crtView.Series[i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 
-
-
-
-
-
-
+            //    }
+            //    crtView.DataBind();
+            //}
         }
-
         private void btnLukk_Click(object sender, EventArgs e)
         {
             this.Close();
