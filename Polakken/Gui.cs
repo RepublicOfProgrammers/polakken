@@ -39,50 +39,91 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.ForeColor = Color.GreenYellow;
 
             crtView.Series.Add("temp");
-            crtView.Series["temp"].BorderColor = Color.LawnGreen;
+            crtView.Series["temp"].Color = Color.LawnGreen;
             crtView.Series["temp"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             crtView.Series["temp"].Points.AddXY(0, 10);
+            crtView.Series["temp"].Points.AddXY(13, 40);
             crtView.Series["temp"].Points.AddXY(20, 29);
-            crtView.Series["temp"].Points.AddXY(50, 15);
-
+            crtView.Series["temp"].Points.AddXY(50, 5);
+            
+            
             crtView.Series.Add("MaxSet");
-            crtView.Series["MaxSet"].BorderColor = Color.IndianRed;
+            crtView.Series["MaxSet"].Color = Color.Orange;
             crtView.Series["MaxSet"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             crtView.Series["MaxSet"].Points.AddXY(0, 30);
             crtView.Series["MaxSet"].Points.AddXY(50, 30);
+            
 
-            crtView.Series.Add("Max-Set");
-            crtView.Series["MaxSet"].BorderColor = Color.IndianRed;
-            crtView.Series["MaxSet"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            crtView.Series["MaxSet"].Points.AddXY(0, 30);
-            crtView.Series["MaxSet"].Points.AddXY(50, 30);
+            crtView.Series.Add("MinSet");
+            crtView.Series["MinSet"].Color = Color.SlateBlue;
+            crtView.Series["MinSet"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            crtView.Series["MinSet"].Points.AddXY(0, 5);
+            crtView.Series["MinSet"].Points.AddXY(50, 5);
+
+            crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+
+
+
+            double MinY = double.MaxValue;
+            double SetMinY = MinY;
+            double greatestYValue = double.MinValue;
+            double MaxXValue = double.MinValue;
+            double MinXValue = double.MaxValue;
+            double CurrentSetMaxX = double.MinValue;
+            double CurrentSetMaxY = double.MinValue;
+            foreach (var ptSetMax in crtView.Series["MaxSet"].Points)
+            {
+                if (CurrentSetMaxX > ptSetMax.XValue)
+                {
+                    CurrentSetMaxX = ptSetMax.XValue;
+                    CurrentSetMaxY = ptSetMax.YValues[0];
+                }
+            }
+            foreach (var pt in crtView.Series["temp"].Points)
+            {
+                if (greatestYValue < pt.YValues[0])
+                {
+                    greatestYValue = pt.YValues[0];
+                    MaxXValue = pt.XValue;
+
+                }
+                if (pt.YValues[0] < MinY)
+                {
+                    MinY = pt.YValues[0];
+                    MinXValue = pt.XValue;
+                }
+               
+            }
+          
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    double d = crtView.Series["temp"].Points[i].YValues[0];
+
+            //    if (d > MaxLim)
+            //    {
+            //        txtMax.AppendText(d.ToString() + "°C");
+            //        txtMax.ForeColor = Color.Red;
+                    
+            //    }
+            //    else
+            //    {
+                            //    }
+            //}
+           txtCurrent.AppendText("42" + "°C");
+           txtCurrentTime.AppendText("06.03.2013" + " " + "13:37");
+           string c = "°C";
+           string t = "13:37";
+           txtMax.AppendText(greatestYValue + c);
+           txtMin.AppendText(MinY + c);
+           txtMaxTime.AppendText(MaxXValue + " " + t);
+           txtMinTime.AppendText(MinXValue + " " + t);   
+
+                    
+            
+
+
            
-   
-
-
-            txtCurrent.AppendText("42" + "°C");
-            txtCurrentTime.AppendText("06.03.2013" + " " + "13:37");
-
-            string hello = "666";
-            string world = "06.03.2013";
-            string c = "°C";
-            string t = "13:37";
-            txtMax.AppendText(hello + c);
-            txtMin.AppendText(hello + c);
-            txtMaxTime.AppendText(world + " " + t);
-            txtMinTime.AppendText(world + " " + t);
-            
-            
-
-            
         }
-
-        private void tabOversikt_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
 
         private void btnLukk_Click(object sender, EventArgs e)
         {
