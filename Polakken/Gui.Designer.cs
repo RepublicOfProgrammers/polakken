@@ -50,6 +50,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnMove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -298,6 +299,23 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
             // 
+            // btnMove
+            // 
+            this.btnMove.BackColor = System.Drawing.Color.Transparent;
+            this.btnMove.FlatAppearance.BorderSize = 0;
+            this.btnMove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnMove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnMove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMove.Location = new System.Drawing.Point(17, 22);
+            this.btnMove.Name = "btnMove";
+            this.btnMove.Size = new System.Drawing.Size(820, 30);
+            this.btnMove.TabIndex = 7;
+            this.btnMove.Text = "button1";
+            this.btnMove.UseVisualStyleBackColor = false;
+            this.btnMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseDown);
+            this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
+            this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,6 +324,7 @@
             this.BackgroundImage = global::Polakken.Properties.Resources.Alfa;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(908, 702);
+            this.Controls.Add(this.btnMove);
             this.Controls.Add(this.tbcPage);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnLukk);
@@ -350,6 +369,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnMove;
 
     }
 }

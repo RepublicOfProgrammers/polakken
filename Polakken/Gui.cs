@@ -11,10 +11,14 @@ namespace Polakken
 {
     public partial class GUI : Form
     {
+
+        int Move;
+        int MoveX;
+        int MoveY;
         public GUI()
         {
             InitializeComponent();
-           
+
         }
 
         private void GUI_Load(object sender, EventArgs e)
@@ -29,15 +33,15 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 50;
             crtView.ChartAreas["tempOversikt"].AxisY.Interval = 10;
             crtView.ChartAreas["tempOversikt"].BackColor = Color.Transparent;
-            crtView.ChartAreas["tempOversikt"].AxisX.MajorGrid.LineColor = Color.DarkGray; 
+            crtView.ChartAreas["tempOversikt"].AxisX.MajorGrid.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.MajorGrid.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
             crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.ForeColor = Color.GreenYellow;
             crtView.ChartAreas["tempOversikt"].AxisX.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.ForeColor = Color.GreenYellow;
-          
-            
+
+
             crtView.Series.Add("temp");
             crtView.Series["temp"].Color = Color.LawnGreen;
             crtView.Series["temp"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -47,7 +51,7 @@ namespace Polakken
             crtView.Series["temp"].Points.AddXY(4131.6084899750, 43);
             crtView.Series["temp"].Points.AddXY(4131.6084899775, 5);
             crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            
+
 
             //MAX/MIN TEST
 
@@ -58,7 +62,7 @@ namespace Polakken
             double MinXValue = double.MaxValue;
             double LastX = 0;
             double LastY = 0;
-            
+
             foreach (var pt in crtView.Series["temp"].Points)
             {
                 if (MaxYVlaue < pt.YValues[0])
@@ -74,25 +78,25 @@ namespace Polakken
                 }
                 LastX = pt.XValue;
                 LastY = pt.YValues[0];
-               
+
             }
 
 
             DateTime MaxDTX = DateTime.FromOADate(MaxXValue);
-            
-           txtCurrent.AppendText(LastY + "°C");
-           txtCurrentTime.AppendText(LastX.ToString());
-           string c = "°C";
-           txtMax.AppendText(MaxYVlaue + c);
-           txtMin.AppendText(MinYVlaue + c);
-           txtMaxTime.AppendText(MaxDTX.ToString());
-           txtMinTime.AppendText(MinXValue.ToString());   
 
-                    
-            
+            txtCurrent.AppendText(LastY + "°C");
+            txtCurrentTime.AppendText(LastX.ToString());
+            string c = "°C";
+            txtMax.AppendText(MaxYVlaue + c);
+            txtMin.AppendText(MinYVlaue + c);
+            txtMaxTime.AppendText(MaxDTX.ToString());
+            txtMinTime.AppendText(MinXValue.ToString());
 
 
-           
+
+
+
+
         }
 
         private void btnLukk_Click(object sender, EventArgs e)
@@ -105,9 +109,29 @@ namespace Polakken
             this.WindowState = FormWindowState.Minimized;
         }
 
-       
-     
-    }
 
-    
+        private void btnMove_MouseDown(object sender, MouseEventArgs e)
+        {
+            Move = 1;
+            MoveX = e.X;
+            MoveY = e.Y;
+        }
+
+        private void btnMove_MouseUp(object sender, MouseEventArgs e)
+        {
+            Move = 0;
+        }
+
+        private void btnMove_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Move == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - MoveX, MousePosition.Y - MoveY);
+            }
+
+
+        }
+
+
+    }
 }
