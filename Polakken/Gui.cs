@@ -12,7 +12,7 @@ namespace Polakken
     public partial class GUI : Form
     {
 
-        int Move;
+        int Mover;
         int MoveX;
         int MoveY;
         public GUI()
@@ -112,25 +112,26 @@ namespace Polakken
 
         private void btnMove_MouseDown(object sender, MouseEventArgs e)
         {
-            Move = 1;
+            Mover = 1;
             MoveX = e.X;
             MoveY = e.Y;
         }
 
         private void btnMove_MouseUp(object sender, MouseEventArgs e)
         {
-            Move = 0;
+            Mover = 0;
         }
 
         private void btnMove_MouseMove(object sender, MouseEventArgs e)
         {
-            if (Move == 1)
+            if (Mover == 1)
             {
                 this.SetDesktopLocation(MousePosition.X - MoveX, MousePosition.Y - MoveY);
             }
 
 
         }
+
 
 
     }

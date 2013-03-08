@@ -45,15 +45,22 @@
             this.tbcPage = new System.Windows.Forms.TabControl();
             this.tbpOne = new System.Windows.Forms.TabPage();
             this.tbpTwo = new System.Windows.Forms.TabPage();
+            this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.tbpThree = new System.Windows.Forms.TabPage();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
+            this.Readings = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Degree = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
+            this.tbpTwo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).BeginInit();
             this.tbpThree.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -249,6 +256,7 @@
             // tbpTwo
             // 
             this.tbpTwo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbpTwo.BackgroundImage")));
+            this.tbpTwo.Controls.Add(this.dgvDataBase);
             this.tbpTwo.Location = new System.Drawing.Point(4, 22);
             this.tbpTwo.Name = "tbpTwo";
             this.tbpTwo.Padding = new System.Windows.Forms.Padding(3);
@@ -256,6 +264,20 @@
             this.tbpTwo.TabIndex = 1;
             this.tbpTwo.Text = "Databasen";
             this.tbpTwo.UseVisualStyleBackColor = true;
+            // 
+            // dgvDataBase
+            // 
+            this.dgvDataBase.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dgvDataBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDataBase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Readings,
+            this.Date,
+            this.Degree,
+            this.Status});
+            this.dgvDataBase.Location = new System.Drawing.Point(7, 7);
+            this.dgvDataBase.Name = "dgvDataBase";
+            this.dgvDataBase.Size = new System.Drawing.Size(636, 324);
+            this.dgvDataBase.TabIndex = 0;
             // 
             // tbpThree
             // 
@@ -316,6 +338,30 @@
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
             // 
+            // Readings
+            // 
+            this.Readings.DataPropertyName = "TB_READINGS";
+            this.Readings.HeaderText = "Avlesninger";
+            this.Readings.Name = "Readings";
+            // 
+            // Date
+            // 
+            this.Date.DataPropertyName = "TB_DATE";
+            this.Date.HeaderText = "Dato";
+            this.Date.Name = "Date";
+            // 
+            // Degree
+            // 
+            this.Degree.DataPropertyName = "TB_DEGREE";
+            this.Degree.HeaderText = "Tempratur";
+            this.Degree.Name = "Degree";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "TB_STATUS";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +386,8 @@
             this.grpInfo.ResumeLayout(false);
             this.grpInfo.PerformLayout();
             this.tbcPage.ResumeLayout(false);
+            this.tbpTwo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).EndInit();
             this.tbpThree.ResumeLayout(false);
             this.tbpThree.PerformLayout();
             this.ResumeLayout(false);
@@ -370,6 +418,11 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnMove;
+        private System.Windows.Forms.DataGridView dgvDataBase;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Readings;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Degree;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
 
     }
 }
