@@ -36,8 +36,7 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisX.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.ForeColor = Color.GreenYellow;
-
-
+          
             
             crtView.Series.Add("temp");
             crtView.Series["temp"].Color = Color.LawnGreen;
@@ -47,22 +46,6 @@ namespace Polakken
             crtView.Series["temp"].Points.AddXY(4131.6084899725, 40);
             crtView.Series["temp"].Points.AddXY(4131.6084899750, 43);
             crtView.Series["temp"].Points.AddXY(4131.6084899775, 5);
-            
-
-           
-            crtView.Series.Add("MaxSet");
-            crtView.Series["MaxSet"].Color = Color.Red;
-            crtView.Series["MaxSet"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            crtView.Series["MaxSet"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-          
-            
-
-            crtView.Series.Add("MinSet");
-            crtView.Series["MinSet"].Color = Color.Blue;
-            crtView.Series["MinSet"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            crtView.Series["MinSet"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-         
-
             crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             
 
