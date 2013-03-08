@@ -92,6 +92,27 @@ namespace Polakken
             txtMaxTime.AppendText(MaxDTX.ToString());
             txtMinTime.AppendText(MinXValue.ToString());
 
+           
+            
+           
+            
+
+
+            
+            
+            
+            
+
+            
+            
+
+           
+           
+           
+           
+           
+
+
 
 
 
@@ -128,11 +149,14 @@ namespace Polakken
             {
                 this.SetDesktopLocation(MousePosition.X - MoveX, MousePosition.Y - MoveY);
             }
-
+            
 
         }
 
-
-
-    }
+            
+  }
 }
+
+
+
+   
