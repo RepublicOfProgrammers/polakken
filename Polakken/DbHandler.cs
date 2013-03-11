@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlServerCe;
 using System.IO;
+using System.Diagnostics;
 
 
 namespace Polakken
@@ -38,6 +39,7 @@ namespace Polakken
 
             if (init_db_status == (int)dbStatus.NEW)
             {
+               Debug.WriteLine("-- CONSTRUCTOR: Ny database, kjører CreateDummyValues()");
                 //gjør ingenting med dette foreløpig. 
 
                 //lager eksempel verdier for testing, fjern dette før release
@@ -47,6 +49,8 @@ namespace Polakken
             {
                
             }
+            Debug.WriteLine("-- CONSTRUCTOR: Starter debugging test");
+            DebugginTest();
         }
         private void CreateDummyValues() 
         {
@@ -54,20 +58,33 @@ namespace Polakken
             uint C = 20;
             Boolean status = true;
 
-            string sql = string.Format("insert into {0} ({1},{2},{3}) values ({4}, {5}, {6})", TB_READINGS, TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, time, C, status);
-            executeSql_NonQuery(sql);
+            string sql = "insert into " + TB_READINGS + "(" + TB_READINGS_DATE + ", " + TB_READINGS_DEGREE + ", " + TB_READINGS_STATUS + ") values(@date, @value, @status)";
+
+            Debug.WriteLine("-- DUMMYVALUES: kjører sql-kode");
+            executeSql_NonQuery(sql, time, C, status);
 
             time.Subtract(DateTime.Now-TimeSpan.FromDays(1));
             C = 16;
             status = false;
-            sql = string.Format("insert into {0} ({1},{2},{3}) values ({4}, {5}, {6})", TB_READINGS, TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, time, C, status);
-            executeSql_NonQuery(sql);
+            Debug.WriteLine("-- DUMMYVALUES: kjører sql-kode");
+            executeSql_NonQuery(sql, time, C, status);
 
             time.Subtract(DateTime.Now - TimeSpan.FromDays(2));
             C = 19;
             status = false;
-            sql = string.Format("insert into {0} ({1},{2},{3}) values ({4}, {5}, {6})", TB_READINGS, TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, time, C, status);
-            executeSql_NonQuery(sql);
+            Debug.WriteLine("-- DUMMYVALUES: kjører sql-kode");
+            executeSql_NonQuery(sql, time, C, status);
+        }
+        private void DebugginTest()
+        {
+            SqlCeDataReader mReader = GetLastReading();
+            mReader.Read();
+            DateTime dt = mReader.GetDateTime(0);
+            double value = mReader.GetDouble(1)/100.00;
+            Boolean status = mReader.GetBoolean(2);
+            Debug.WriteLine("--DEBUGTEST--");
+            Debug.WriteLine(TB_READINGS_DATE + "\t" + TB_READINGS_DEGREE + "\t" + TB_READINGS_STATUS);
+            Debug.WriteLine(dt + "\t" + value + "\t" + status);
         }
 
         private void OpenDb()
@@ -96,6 +113,12 @@ namespace Polakken
          * DelReadings 
         */
 
+        public SqlCeDataReader GetLastReading() 
+        {
+            string sql = string.Format("select max({0}), {1}, {2} from {3}", TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, TB_READINGS);
+            return executeSql_Reader(sql);
+        }
+
         public SqlCeDataReader GetReadingToDate(DateTime dateTime) 
         {
             string sql = string.Format("select * from {0} where {1} = '{2}'", TB_READINGS, TB_READINGS_DATE, dateTime);
@@ -118,14 +141,21 @@ namespace Polakken
         /**
          * END PUBLIC METHODS!
          */
+
         private SqlCeDataReader executeSql_Reader(string sql)
         {
             this.OpenDb();
             SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
             SqlCeDataReader data_reader = null;
             try { data_reader = cmd.ExecuteReader(); }
-            catch(SqlCeException){}
-            catch(Exception){}
+            catch(SqlCeException ssceE){
+                Debug.WriteLine("-- SQL_READER: Fanget SqlCeException:");
+                Debug.WriteLine(ssceE);
+            }
+            catch(Exception e){
+                Debug.WriteLine("-- SQL_READER: Fanget Exception:");
+                Debug.WriteLine(e);
+            }
             finally{
                 this.CloseDb();
             }
@@ -144,8 +174,50 @@ namespace Polakken
 
             //prøver å kjøre kommandoen. fanger opp errorer, men gjør ingenting med dem foreløpig. 
             try { affectedRows = cmd.ExecuteNonQuery(); }
-            catch (SqlCeException){}
-            catch (Exception){}
+            catch(SqlCeException ssceE){
+                Debug.WriteLine("-- SQL_READER: Fanget SqlCeException:");
+                Debug.WriteLine(ssceE);
+            }
+            catch(Exception e){
+                Debug.WriteLine("-- SQL_READER: Fanget Exception:");
+                Debug.WriteLine(e);
+            }
+            finally
+            {
+                this.CloseDb();
+            }
+            return affectedRows;
+        }
+
+        private int executeSql_NonQuery(string sql, DateTime time, uint C, Boolean status)
+        {
+            //kobler til databasen og åpner den
+            this.OpenDb();
+
+            //Henter inn sql koden fra metode argumentet sql, og lager en sqlcommand sammen med koblingen til databasen.
+            SqlCeCommand cmd;
+
+            //variabel som inneholder antall rader som blir påvirket av kommandoen
+            int affectedRows = 0;
+
+            //prøver å kjøre kommandoen. fanger opp errorer, men gjør ingenting med dem foreløpig. 
+            try { 
+                cmd = new SqlCeCommand(sql, _connection);
+                cmd.Parameters.AddWithValue("@date", time);
+                cmd.Parameters.AddWithValue("@value", C);
+                cmd.Parameters.AddWithValue("@status", status);
+                affectedRows = cmd.ExecuteNonQuery(); 
+            }
+            catch (SqlCeException ssceE)
+            {
+                Debug.WriteLine("-- SQL_READER: Fanget SqlCeException:");
+                Debug.WriteLine(ssceE);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("-- SQL_READER: Fanget Exception:");
+                Debug.WriteLine(e);
+            }
             finally
             {
                 this.CloseDb();
@@ -158,10 +230,12 @@ namespace Polakken
             //sjekker om databasen allerede eksisterer
             if (File.Exists(fileName))
             {
+                Debug.WriteLine("-- INITDB: Fant eksisterende database");
                 return (int)dbStatus.EXISTING;
             }
             else 
             {
+                Debug.WriteLine("-- INITDB: oppretter ny database...");
                 //Dersom den ikke eksisterer opprettes databasen. 
                 SqlCeEngine en = new SqlCeEngine(ConnectionString);
                 en.CreateDatabase();
@@ -172,6 +246,7 @@ namespace Polakken
                 { 
                     //TODO: gi melding til bruker om at noe gikk galt - se log. 
                 }
+                Debug.WriteLine("... Success");
                 return (int)dbStatus.NEW;
             }
 
@@ -179,7 +254,7 @@ namespace Polakken
 
         private int createTables() {           
             //SQL koden som skal kjøres for oppretting av tabellene i databasen. 
-            string sql = "create table " + TB_READINGS + " (" + TB_READINGS_DATE + " datetime not null, " + TB_READINGS_DEGREE + " integer, " + TB_READINGS_STATUS + " bit )"; 
+            string sql = "create table " + TB_READINGS + " (" + TB_READINGS_DATE + " datetime not null, " + TB_READINGS_DEGREE + " integer not null, " + TB_READINGS_STATUS + " bit not null)"; 
             
             //Kjører SQL koden. Integeren i inneholder antall rader påvirket av kommandoen, dersom denne er 0 har noe feil skjedd. 
             int i = executeSql_NonQuery(sql);

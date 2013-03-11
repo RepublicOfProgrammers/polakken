@@ -99,7 +99,7 @@ namespace Polakken
 
 
             DbHandler DB = new DbHandler();
-            DateTime test = DateTime.Today;
+            //DateTime test = DateTime.Today;
            
 
             //    while (DB.GetReadings().Read())

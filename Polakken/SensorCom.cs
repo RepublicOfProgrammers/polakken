@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 //using InstrumentDriverInterop.Ivi;
-using NationalInstruments;
+//using NationalInstruments;
 //using NationalInstruments.DAQmx;
 
 
