@@ -46,16 +46,16 @@
             this.tbpOne = new System.Windows.Forms.TabPage();
             this.tbpTwo = new System.Windows.Forms.TabPage();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
+            this.Readings = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Degree = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbpThree = new System.Windows.Forms.TabPage();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
-            this.Readings = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Degree = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -279,6 +279,30 @@
             this.dgvDataBase.Size = new System.Drawing.Size(636, 324);
             this.dgvDataBase.TabIndex = 0;
             // 
+            // Readings
+            // 
+            this.Readings.DataPropertyName = "TB_READINGS";
+            this.Readings.HeaderText = "Avlesninger";
+            this.Readings.Name = "Readings";
+            // 
+            // Date
+            // 
+            this.Date.DataPropertyName = "TB_DATE";
+            this.Date.HeaderText = "Dato";
+            this.Date.Name = "Date";
+            // 
+            // Degree
+            // 
+            this.Degree.DataPropertyName = "TB_DEGREE";
+            this.Degree.HeaderText = "Tempratur";
+            this.Degree.Name = "Degree";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "TB_STATUS";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            // 
             // tbpThree
             // 
             this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.Tab;
@@ -337,30 +361,6 @@
             this.btnMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseDown);
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
-            // 
-            // Readings
-            // 
-            this.Readings.DataPropertyName = "TB_READINGS";
-            this.Readings.HeaderText = "Avlesninger";
-            this.Readings.Name = "Readings";
-            // 
-            // Date
-            // 
-            this.Date.DataPropertyName = "TB_DATE";
-            this.Date.HeaderText = "Dato";
-            this.Date.Name = "Date";
-            // 
-            // Degree
-            // 
-            this.Degree.DataPropertyName = "TB_DEGREE";
-            this.Degree.HeaderText = "Tempratur";
-            this.Degree.Name = "Degree";
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "TB_STATUS";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
             // 
             // GUI
             // 

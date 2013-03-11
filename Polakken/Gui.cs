@@ -49,8 +49,11 @@ namespace Polakken
             crtView.Series["temp"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             crtView.Series["temp"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            crtView.Series["temp"].Points.AddXY(1, 0);
+            crtView.Series["temp"].Points.AddXY(1, 9);
+            crtView.Series["temp"].Points.AddXY(12, 32);
+            crtView.Series["temp"].Points.AddXY(30, 8);
             crtView.Series["temp"].Points.AddXY(50, 20);
+            
 
 
             //MAX/MIN TEST
@@ -96,9 +99,9 @@ namespace Polakken
 
 
             DbHandler DB = new DbHandler();
-            DataTable table = new DataTable();
-            
-            DB.GetReadings();
+            DateTime test = DateTime.Today;
+           
+
             //    while (DB.GetReadings().Read())
             //    {
             //        table.Rows.Add(new object[] { DB.GetReadings()[0], DB.GetReadings()[1], DB.GetReadings()[2] });
