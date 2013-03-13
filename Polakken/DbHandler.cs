@@ -16,9 +16,9 @@ namespace Polakken
         private enum dbStatus :int { NEW = 0, EXISTING, SUCCESS, ERROR }
         
         //Navn til databasen
-        private static string fileName = "Database.sdf";
+        private static readonly string fileName = "Database.sdf";
         //passord for å koble til databasen, og koblingsvariabel. 
-        private static string password = "fg8qaw890d89DS8";
+        private static readonly string password = "fg8qaw890d89DS8";
         private string ConnectionString = string.Format("DataSource=\"{0}\"; Password='{1}'", fileName, password);
         private SqlCeConnection _connection;
   
