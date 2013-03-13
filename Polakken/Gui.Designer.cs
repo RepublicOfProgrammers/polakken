@@ -44,6 +44,10 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.tbcPage = new System.Windows.Forms.TabControl();
             this.tbpOne = new System.Windows.Forms.TabPage();
+            this.txtAlarm = new System.Windows.Forms.TextBox();
+            this.txtInt = new System.Windows.Forms.TextBox();
+            this.txtTol = new System.Windows.Forms.TextBox();
+            this.txtSetPoint = new System.Windows.Forms.TextBox();
             this.btnSaveAll = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnAlarmDown = new System.Windows.Forms.Button();
@@ -70,10 +74,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.txtEmail1 = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
-            this.txtSetPoint = new System.Windows.Forms.TextBox();
-            this.txtTol = new System.Windows.Forms.TextBox();
-            this.txtInt = new System.Windows.Forms.TextBox();
-            this.txtAlarm = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -304,6 +304,62 @@
             this.tbpOne.Text = "Instillinger";
             this.tbpOne.UseVisualStyleBackColor = true;
             // 
+            // txtAlarm
+            // 
+            this.txtAlarm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtAlarm.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAlarm.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtAlarm.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlarm.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtAlarm.Location = new System.Drawing.Point(514, 81);
+            this.txtAlarm.Name = "txtAlarm";
+            this.txtAlarm.ReadOnly = true;
+            this.txtAlarm.Size = new System.Drawing.Size(71, 63);
+            this.txtAlarm.TabIndex = 28;
+            this.txtAlarm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtInt
+            // 
+            this.txtInt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtInt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtInt.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtInt.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInt.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtInt.Location = new System.Drawing.Point(361, 81);
+            this.txtInt.Name = "txtInt";
+            this.txtInt.ReadOnly = true;
+            this.txtInt.Size = new System.Drawing.Size(71, 63);
+            this.txtInt.TabIndex = 27;
+            this.txtInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTol
+            // 
+            this.txtTol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtTol.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTol.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtTol.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTol.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtTol.Location = new System.Drawing.Point(189, 81);
+            this.txtTol.Name = "txtTol";
+            this.txtTol.ReadOnly = true;
+            this.txtTol.Size = new System.Drawing.Size(71, 63);
+            this.txtTol.TabIndex = 26;
+            this.txtTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtSetPoint
+            // 
+            this.txtSetPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtSetPoint.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSetPoint.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtSetPoint.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold);
+            this.txtSetPoint.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtSetPoint.Location = new System.Drawing.Point(19, 81);
+            this.txtSetPoint.Name = "txtSetPoint";
+            this.txtSetPoint.ReadOnly = true;
+            this.txtSetPoint.Size = new System.Drawing.Size(71, 63);
+            this.txtSetPoint.TabIndex = 9;
+            this.txtSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btnSaveAll
             // 
             this.btnSaveAll.BackColor = System.Drawing.Color.Transparent;
@@ -494,6 +550,7 @@
             this.btnSetPointUp.Size = new System.Drawing.Size(30, 30);
             this.btnSetPointUp.TabIndex = 4;
             this.btnSetPointUp.UseVisualStyleBackColor = false;
+            this.btnSetPointUp.Click += new System.EventHandler(this.btnSetPointUp_Click);
             this.btnSetPointUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSetPointUp_MouseDown);
             this.btnSetPointUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnSetPointUp_MouseUp);
             // 
@@ -615,65 +672,10 @@
             this.btnMove.Size = new System.Drawing.Size(820, 30);
             this.btnMove.TabIndex = 7;
             this.btnMove.UseVisualStyleBackColor = false;
+            this.btnMove.Click += new System.EventHandler(this.btnMove_Click);
             this.btnMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseDown);
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
-            // 
-            // txtSetPoint
-            // 
-            this.txtSetPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtSetPoint.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSetPoint.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.txtSetPoint.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSetPoint.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtSetPoint.Location = new System.Drawing.Point(19, 81);
-            this.txtSetPoint.Name = "txtSetPoint";
-            this.txtSetPoint.ReadOnly = true;
-            this.txtSetPoint.Size = new System.Drawing.Size(71, 63);
-            this.txtSetPoint.TabIndex = 9;
-            this.txtSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTol
-            // 
-            this.txtTol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtTol.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTol.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.txtTol.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTol.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtTol.Location = new System.Drawing.Point(189, 81);
-            this.txtTol.Name = "txtTol";
-            this.txtTol.ReadOnly = true;
-            this.txtTol.Size = new System.Drawing.Size(71, 63);
-            this.txtTol.TabIndex = 26;
-            this.txtTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtInt
-            // 
-            this.txtInt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtInt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInt.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.txtInt.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInt.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtInt.Location = new System.Drawing.Point(361, 81);
-            this.txtInt.Name = "txtInt";
-            this.txtInt.ReadOnly = true;
-            this.txtInt.Size = new System.Drawing.Size(71, 63);
-            this.txtInt.TabIndex = 27;
-            this.txtInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtAlarm
-            // 
-            this.txtAlarm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtAlarm.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAlarm.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.txtAlarm.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAlarm.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtAlarm.Location = new System.Drawing.Point(514, 81);
-            this.txtAlarm.Name = "txtAlarm";
-            this.txtAlarm.ReadOnly = true;
-            this.txtAlarm.Size = new System.Drawing.Size(71, 63);
-            this.txtAlarm.TabIndex = 28;
-            this.txtAlarm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // GUI
             // 
