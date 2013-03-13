@@ -131,6 +131,11 @@ namespace Polakken
             //    }
             //    crtView.DataBind();
             //}
+
+            txtSetPoint.AppendText("hello");
+
+
+
         }
         private void btnLukk_Click(object sender, EventArgs e)
         {

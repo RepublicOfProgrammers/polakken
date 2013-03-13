@@ -48,19 +48,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnAlarmDown = new System.Windows.Forms.Button();
             this.btnAlarmUp = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnMesIDown = new System.Windows.Forms.Button();
             this.btnMesIUp = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnToleranceDown = new System.Windows.Forms.Button();
             this.btnToleranceUp = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSetPointDown = new System.Windows.Forms.Button();
             this.btnSetPointUp = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.tbpTwo = new System.Windows.Forms.TabPage();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.Readings = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +70,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.txtEmail1 = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
+            this.txtSetPoint = new System.Windows.Forms.TextBox();
+            this.txtTol = new System.Windows.Forms.TextBox();
+            this.txtInt = new System.Windows.Forms.TextBox();
+            this.txtAlarm = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -279,23 +279,23 @@
             // tbpOne
             // 
             this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.tableView1;
+            this.tbpOne.Controls.Add(this.txtAlarm);
+            this.tbpOne.Controls.Add(this.txtInt);
+            this.tbpOne.Controls.Add(this.txtTol);
+            this.tbpOne.Controls.Add(this.txtSetPoint);
             this.tbpOne.Controls.Add(this.btnSaveAll);
             this.tbpOne.Controls.Add(this.label4);
             this.tbpOne.Controls.Add(this.btnAlarmDown);
             this.tbpOne.Controls.Add(this.btnAlarmUp);
-            this.tbpOne.Controls.Add(this.textBox8);
             this.tbpOne.Controls.Add(this.label3);
             this.tbpOne.Controls.Add(this.btnMesIDown);
             this.tbpOne.Controls.Add(this.btnMesIUp);
-            this.tbpOne.Controls.Add(this.textBox7);
             this.tbpOne.Controls.Add(this.label2);
             this.tbpOne.Controls.Add(this.btnToleranceDown);
             this.tbpOne.Controls.Add(this.btnToleranceUp);
-            this.tbpOne.Controls.Add(this.textBox6);
             this.tbpOne.Controls.Add(this.label1);
             this.tbpOne.Controls.Add(this.btnSetPointDown);
             this.tbpOne.Controls.Add(this.btnSetPointUp);
-            this.tbpOne.Controls.Add(this.textBox5);
             this.tbpOne.Location = new System.Drawing.Point(4, 22);
             this.tbpOne.Name = "tbpOne";
             this.tbpOne.Padding = new System.Windows.Forms.Padding(3);
@@ -365,18 +365,6 @@
             this.btnAlarmUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAlarmUp_MouseDown);
             this.btnAlarmUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnAlarmUp_MouseUp);
             // 
-            // textBox8
-            // 
-            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.textBox8.Location = new System.Drawing.Point(514, 77);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(70, 70);
-            this.textBox8.TabIndex = 21;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -420,18 +408,6 @@
             this.btnMesIUp.UseVisualStyleBackColor = false;
             this.btnMesIUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMesIUp_MouseDown);
             this.btnMesIUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMesIUp_MouseUp);
-            // 
-            // textBox7
-            // 
-            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.textBox7.Location = new System.Drawing.Point(361, 75);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(70, 70);
-            this.textBox7.TabIndex = 17;
             // 
             // label2
             // 
@@ -477,18 +453,6 @@
             this.btnToleranceUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnToleranceUp_MouseDown);
             this.btnToleranceUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnToleranceUp_MouseUp);
             // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.textBox6.Location = new System.Drawing.Point(189, 75);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(70, 70);
-            this.textBox6.TabIndex = 13;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -532,18 +496,6 @@
             this.btnSetPointUp.UseVisualStyleBackColor = false;
             this.btnSetPointUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSetPointUp_MouseDown);
             this.btnSetPointUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnSetPointUp_MouseUp);
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.textBox5.Location = new System.Drawing.Point(19, 74);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(70, 70);
-            this.textBox5.TabIndex = 0;
             // 
             // tbpTwo
             // 
@@ -667,6 +619,62 @@
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
             // 
+            // txtSetPoint
+            // 
+            this.txtSetPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtSetPoint.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSetPoint.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtSetPoint.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSetPoint.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtSetPoint.Location = new System.Drawing.Point(19, 81);
+            this.txtSetPoint.Name = "txtSetPoint";
+            this.txtSetPoint.ReadOnly = true;
+            this.txtSetPoint.Size = new System.Drawing.Size(71, 63);
+            this.txtSetPoint.TabIndex = 9;
+            this.txtSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTol
+            // 
+            this.txtTol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtTol.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTol.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtTol.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTol.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtTol.Location = new System.Drawing.Point(189, 81);
+            this.txtTol.Name = "txtTol";
+            this.txtTol.ReadOnly = true;
+            this.txtTol.Size = new System.Drawing.Size(71, 63);
+            this.txtTol.TabIndex = 26;
+            this.txtTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtInt
+            // 
+            this.txtInt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtInt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtInt.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtInt.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInt.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtInt.Location = new System.Drawing.Point(361, 81);
+            this.txtInt.Name = "txtInt";
+            this.txtInt.ReadOnly = true;
+            this.txtInt.Size = new System.Drawing.Size(71, 63);
+            this.txtInt.TabIndex = 27;
+            this.txtInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtAlarm
+            // 
+            this.txtAlarm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtAlarm.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAlarm.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtAlarm.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlarm.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtAlarm.Location = new System.Drawing.Point(514, 81);
+            this.txtAlarm.Name = "txtAlarm";
+            this.txtAlarm.ReadOnly = true;
+            this.txtAlarm.Size = new System.Drawing.Size(71, 63);
+            this.txtAlarm.TabIndex = 28;
+            this.txtAlarm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -728,7 +736,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Degree;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.TextBox txtMinTime;
         private System.Windows.Forms.Button btnSetPointUp;
@@ -737,22 +744,23 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAlarmDown;
         private System.Windows.Forms.Button btnAlarmUp;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnMesIDown;
         private System.Windows.Forms.Button btnMesIUp;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnToleranceDown;
         private System.Windows.Forms.Button btnToleranceUp;
-        private System.Windows.Forms.TextBox textBox6;
 
         private System.Windows.Forms.Button btnSaveAll;
 
 
         private System.Windows.Forms.Button send;
+        private System.Windows.Forms.TextBox txtAlarm;
+        private System.Windows.Forms.TextBox txtInt;
+        private System.Windows.Forms.TextBox txtTol;
+        private System.Windows.Forms.TextBox txtSetPoint;
 
-        private System.Windows.Forms.Button button9;
+    
 
 
     }
