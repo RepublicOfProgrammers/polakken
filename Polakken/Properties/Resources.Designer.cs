@@ -83,9 +83,29 @@ namespace Polakken.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrowDownDown {
+            get {
+                object obj = ResourceManager.GetObject("arrowDownDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrowUp {
             get {
                 object obj = ResourceManager.GetObject("arrowUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrowUpDown {
+            get {
+                object obj = ResourceManager.GetObject("arrowUpDown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +133,9 @@ namespace Polakken.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Lagre1 {
+        internal static System.Drawing.Bitmap Lagre {
             get {
-                object obj = ResourceManager.GetObject("Lagre1", resourceCulture);
+                object obj = ResourceManager.GetObject("Lagre", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -274,16 +294,6 @@ namespace Polakken.Properties {
         internal static System.Drawing.Bitmap Tab {
             get {
                 object obj = ResourceManager.GetObject("Tab", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap tableView {
-            get {
-                object obj = ResourceManager.GetObject("tableView", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
