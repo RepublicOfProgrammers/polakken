@@ -133,4 +133,31 @@
   <data name="Tab" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tab1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="NationalInstruments_Common" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.Common.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NationalInstruments_Common1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.Common.msl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NationalInstruments_Common2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.Common.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="NationalInstruments_Common_Native" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.Common.Native.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NationalInstruments_DAQmx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.DAQmx.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NationalInstruments_DAQmx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.DAQmx.msl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NationalInstruments_DAQmx2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.DAQmx.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="NationalInstruments_MStudioCLM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.MStudioCLM.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NationalInstruments_NiLmClientDLL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.NiLmClientDLL.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
