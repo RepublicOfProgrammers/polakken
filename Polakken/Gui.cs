@@ -131,6 +131,11 @@ namespace Polakken
             //    }
             //    crtView.DataBind();
             //}
+
+            txtSetPoint.AppendText("hello");
+
+
+
         }
         private void btnLukk_Click(object sender, EventArgs e)
         {
@@ -165,19 +170,123 @@ namespace Polakken
 
         }
 
+
+        
+
+
+        private void send_Click(object sender, EventArgs e)
+        {
+            E_mail_handler email = new E_mail_handler();
+
+            email.client.Send("republicofprogrammers@gmail.com", txtEmail1.Text, "Hei", "Hei");
+
+            Console.WriteLine("Sent");
+        }
+
+            
+
         private void button9_MouseDown(object sender, MouseEventArgs e)
         {
-            this.button9.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
+            this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
         }
 
-        private void button9_MouseUp(object sender, MouseEventArgs e)
+        private void btnSaveAll_MouseUp(object sender, MouseEventArgs e)
         {
-            this.button9.BackgroundImage = global::Polakken.Properties.Resources.Lagre1;
+            this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.Lagre;
+            MessageBox.Show("Du har nå lagret de nye verdiene", "Suksess", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+
+        private void btnSetPointUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+        }
+
+        private void btnSetPointUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+        }
+
+        private void btnSetPointDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+        }
+
+        private void btnSetPointDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+        }
+
+        private void btnToleranceUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+        }
+
+        private void btnToleranceUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+        }
+
+        private void btnToleranceDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+        }
+
+        private void btnToleranceDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+        }
+
+        private void btnMesIUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btnMesIUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+        }
+
+        private void btnMesIUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.btnMesIUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+        }
+
+        private void btnMesIDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btnMesIDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+        }
+
+        private void btnMesIDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.btnMesIDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+        }
+
+        private void btnAlarmUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btnAlarmUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+        }
+
+        private void btnAlarmUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.btnAlarmUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+        }
+
+        private void btnAlarmDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btnAlarmDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+        }
+
+        private void btnAlarmDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.btnAlarmDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+        }
+
+        private void btnSaveAll_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
+        }
+
+      
      
 
    
+
   }
 }
 

@@ -14,22 +14,22 @@ namespace Polakken
         public double tolerance { get; set; }
         public double setpoint { get; set; }
         private double difference;
-        private double mesInterval;
+        public double mesInterval { get; set; }
 
         //constructor
-        public Regulation(double setpoint, double tolerance)
+        public Regulation(double setpoint, double tolerance, double mesInterval)
         {
             this.setpoint = setpoint;
             this.tolerance = tolerance;
-            //inn måleverdi fra sensorcom
-            //prevReading = reading;
+            this.mesInterval = mesInterval;
+            prevReading = reading;
         }
 
         //ny måling
         public void newread(double newread)
         {
             prevReading = reading;
-            reading = newread;
+            reading = newread;  
         }
 
         //regulering
