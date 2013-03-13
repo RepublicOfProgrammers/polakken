@@ -99,7 +99,7 @@ namespace Polakken
 
 
             DbHandler DB = new DbHandler();
-            //DateTime test = DateTime.Today;
+            DateTime test = DateTime.Today;
            
 
             //    while (DB.GetReadings().Read())
@@ -165,7 +165,19 @@ namespace Polakken
 
         }
 
-            
+        private void button9_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.button9.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
+        }
+
+        private void button9_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.button9.BackgroundImage = global::Polakken.Properties.Resources.Lagre1;
+        }
+
+     
+
+   
   }
 }
 
