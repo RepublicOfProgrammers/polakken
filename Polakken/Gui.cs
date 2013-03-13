@@ -179,6 +179,9 @@ namespace Polakken
             E_mail_handler email = new E_mail_handler();
 
             email.client.Send("republicofprogrammers@gmail.com", txtEmail1.Text, "Hei", "Hei");
+            email.client.Send("republicofprogrammers@gmail.com", txtEmail2.Text, "Hei", "Hei");
+            email.client.Send("republicofprogrammers@gmail.com", txtEmail3.Text, "Hei", "Hei");
+            email.client.Send("republicofprogrammers@gmail.com", txtEmail4.Text, "Hei", "Hei");
 
             MessageBox.Show("Mailen har blitt sendt");
         }
