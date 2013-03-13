@@ -290,6 +290,51 @@ namespace Polakken
         {
 
         }
+
+        private void txtCurrent_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMax_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCurrentTime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaxTime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMinTime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSetPoint_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtInt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAlarm_TextChanged(object sender, EventArgs e)
+        {
+
+        }
       
      
 

@@ -120,7 +120,7 @@
             // 
             this.txtCurrentTime.BackColor = System.Drawing.Color.Black;
             this.txtCurrentTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCurrentTime.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtCurrentTime.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtCurrentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentTime.ForeColor = System.Drawing.Color.White;
             this.txtCurrentTime.Location = new System.Drawing.Point(36, 119);
@@ -130,12 +130,13 @@
             this.txtCurrentTime.Size = new System.Drawing.Size(129, 15);
             this.txtCurrentTime.TabIndex = 2;
             this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCurrentTime.TextChanged += new System.EventHandler(this.txtCurrentTime_TextChanged);
             // 
             // txtMinTime
             // 
             this.txtMinTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtMinTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMinTime.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtMinTime.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtMinTime.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMinTime.ForeColor = System.Drawing.Color.White;
             this.txtMinTime.Location = new System.Drawing.Point(36, 309);
@@ -145,6 +146,7 @@
             this.txtMinTime.Size = new System.Drawing.Size(129, 20);
             this.txtMinTime.TabIndex = 8;
             this.txtMinTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMinTime.TextChanged += new System.EventHandler(this.txtMinTime_TextChanged);
             // 
             // lblMin
             // 
@@ -160,7 +162,7 @@
             // 
             this.txtMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtMin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMin.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtMin.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtMin.Font = new System.Drawing.Font("Lucida Sans", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMin.ForeColor = System.Drawing.Color.White;
             this.txtMin.Location = new System.Drawing.Point(46, 259);
@@ -169,12 +171,13 @@
             this.txtMin.Size = new System.Drawing.Size(107, 44);
             this.txtMin.TabIndex = 6;
             this.txtMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMin.TextChanged += new System.EventHandler(this.txtMin_TextChanged);
             // 
             // txtMaxTime
             // 
             this.txtMaxTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtMaxTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMaxTime.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtMaxTime.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtMaxTime.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaxTime.ForeColor = System.Drawing.Color.White;
             this.txtMaxTime.Location = new System.Drawing.Point(36, 221);
@@ -184,6 +187,7 @@
             this.txtMaxTime.Size = new System.Drawing.Size(129, 20);
             this.txtMaxTime.TabIndex = 5;
             this.txtMaxTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMaxTime.TextChanged += new System.EventHandler(this.txtMaxTime_TextChanged);
             // 
             // lblMax
             // 
@@ -199,7 +203,7 @@
             // 
             this.txtMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMax.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtMax.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtMax.Font = new System.Drawing.Font("Lucida Sans", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMax.ForeColor = System.Drawing.Color.White;
             this.txtMax.Location = new System.Drawing.Point(46, 171);
@@ -208,6 +212,7 @@
             this.txtMax.Size = new System.Drawing.Size(107, 44);
             this.txtMax.TabIndex = 3;
             this.txtMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMax.TextChanged += new System.EventHandler(this.txtMax_TextChanged);
             // 
             // lblSiste
             // 
@@ -223,7 +228,7 @@
             // 
             this.txtCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtCurrent.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCurrent.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtCurrent.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtCurrent.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrent.ForeColor = System.Drawing.Color.LawnGreen;
             this.txtCurrent.Location = new System.Drawing.Point(36, 53);
@@ -232,6 +237,7 @@
             this.txtCurrent.Size = new System.Drawing.Size(129, 63);
             this.txtCurrent.TabIndex = 0;
             this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCurrent.TextChanged += new System.EventHandler(this.txtCurrent_TextChanged);
             // 
             // btnLukk
             // 
@@ -308,7 +314,7 @@
             // 
             this.txtAlarm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtAlarm.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAlarm.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtAlarm.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtAlarm.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAlarm.ForeColor = System.Drawing.Color.LawnGreen;
             this.txtAlarm.Location = new System.Drawing.Point(514, 81);
@@ -317,12 +323,13 @@
             this.txtAlarm.Size = new System.Drawing.Size(71, 63);
             this.txtAlarm.TabIndex = 28;
             this.txtAlarm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAlarm.TextChanged += new System.EventHandler(this.txtAlarm_TextChanged);
             // 
             // txtInt
             // 
             this.txtInt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtInt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInt.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtInt.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtInt.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInt.ForeColor = System.Drawing.Color.LawnGreen;
             this.txtInt.Location = new System.Drawing.Point(361, 81);
@@ -331,12 +338,13 @@
             this.txtInt.Size = new System.Drawing.Size(71, 63);
             this.txtInt.TabIndex = 27;
             this.txtInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInt.TextChanged += new System.EventHandler(this.txtInt_TextChanged);
             // 
             // txtTol
             // 
             this.txtTol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtTol.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTol.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtTol.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtTol.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTol.ForeColor = System.Drawing.Color.LawnGreen;
             this.txtTol.Location = new System.Drawing.Point(189, 81);
@@ -350,7 +358,7 @@
             // 
             this.txtSetPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtSetPoint.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSetPoint.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtSetPoint.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtSetPoint.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold);
             this.txtSetPoint.ForeColor = System.Drawing.Color.LawnGreen;
             this.txtSetPoint.Location = new System.Drawing.Point(19, 81);
@@ -359,6 +367,7 @@
             this.txtSetPoint.Size = new System.Drawing.Size(71, 63);
             this.txtSetPoint.TabIndex = 9;
             this.txtSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSetPoint.TextChanged += new System.EventHandler(this.txtSetPoint_TextChanged);
             // 
             // btnSaveAll
             // 
