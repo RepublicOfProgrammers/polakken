@@ -150,10 +150,33 @@
     <None Include="Resources\Minimize.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\NationalInstruments.Common.msl" />
+    <None Include="Resources\NationalInstruments.DAQmx.msl" />
     <None Include="Resources\Tab.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tab1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NationalInstruments.Common.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NationalInstruments.Common.Native.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NationalInstruments.Common.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NationalInstruments.DAQmx.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NationalInstruments.DAQmx.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NationalInstruments.MStudioCLM.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NationalInstruments.NiLmClientDLL.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
