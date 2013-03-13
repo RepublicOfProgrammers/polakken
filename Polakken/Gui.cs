@@ -165,6 +165,15 @@ namespace Polakken
 
         }
 
+        private void send_Click(object sender, EventArgs e)
+        {
+            E_mail_handler email = new E_mail_handler();
+
+            email.client.Send("republicofprogrammers@gmail.com", txtEmail1.Text, "Hei", "Hei");
+
+            Console.WriteLine("Sent");
+        }
+
             
   }
 }
