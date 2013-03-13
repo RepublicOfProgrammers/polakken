@@ -352,11 +352,11 @@
             this.btnMove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMove.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnMove.Location = new System.Drawing.Point(17, 22);
             this.btnMove.Name = "btnMove";
             this.btnMove.Size = new System.Drawing.Size(820, 30);
             this.btnMove.TabIndex = 7;
-            this.btnMove.Text = "button1";
             this.btnMove.UseVisualStyleBackColor = false;
             this.btnMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseDown);
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
