@@ -165,7 +165,23 @@ namespace Polakken
 
         }
 
+<<<<<<< HEAD
         private void btnSaveAll_MouseDown(object sender, MouseEventArgs e)
+=======
+
+        private void send_Click(object sender, EventArgs e)
+        {
+            E_mail_handler email = new E_mail_handler();
+
+            email.client.Send("republicofprogrammers@gmail.com", txtEmail1.Text, "Hei", "Hei");
+
+            Console.WriteLine("Sent");
+        }
+
+            
+
+        private void button9_MouseDown(object sender, MouseEventArgs e)
+>>>>>>> 45333574a11f2c023eea087545323508d7d48bea
         {
             this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
         }
@@ -175,6 +191,7 @@ namespace Polakken
             this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.Lagre;
             MessageBox.Show("Du har nå lagret de nye verdiene", "Suksess", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+<<<<<<< HEAD
 
         private void btnSetPointUp_MouseDown(object sender, MouseEventArgs e)
         {
@@ -260,6 +277,8 @@ namespace Polakken
      
 
    
+=======
+>>>>>>> 45333574a11f2c023eea087545323508d7d48bea
   }
 }
 

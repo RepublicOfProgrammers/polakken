@@ -9,6 +9,11 @@ namespace Polakken
 {
     class E_mail_handler
     {
+       public SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+        {
+            Credentials = new NetworkCredential("republicofprogrammers@gmail.com", "polakken"),
+            EnableSsl = true
+        };
 
     }
 }

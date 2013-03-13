@@ -115,7 +115,12 @@ namespace Polakken
 
         public SqlCeDataReader GetLastReading() 
         {
-            string sql = string.Format("select max({0}), {1}, {2} from {3}", TB_READINGS_DATE, TB_READINGS_DEGREE, TB_READINGS_STATUS, TB_READINGS);
+            string sql = string.Format("select {0}, {1}, {2} from {3} " +
+            "where {0} = (select max({0}) form {3} as b)", 
+            TB_READINGS_DATE, 
+            TB_READINGS_DEGREE, 
+            TB_READINGS_STATUS, 
+            TB_READINGS);
             return executeSql_Reader(sql);
         }
 

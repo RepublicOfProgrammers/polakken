@@ -71,8 +71,9 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtEmail1 = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
+            this.send = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -134,8 +135,12 @@
             // 
             this.txtMinTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtMinTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+<<<<<<< HEAD
+            this.txtMinTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+=======
             this.txtMinTime.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtMinTime.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+>>>>>>> 378e212fc98a4f797200f794103710b468c31ad3
             this.txtMinTime.ForeColor = System.Drawing.Color.White;
             this.txtMinTime.Location = new System.Drawing.Point(36, 309);
             this.txtMinTime.Multiline = true;
@@ -159,13 +164,21 @@
             // 
             this.txtMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtMin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+<<<<<<< HEAD
+            this.txtMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+=======
             this.txtMin.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtMin.Font = new System.Drawing.Font("Lucida Sans", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+>>>>>>> 378e212fc98a4f797200f794103710b468c31ad3
             this.txtMin.ForeColor = System.Drawing.Color.White;
             this.txtMin.Location = new System.Drawing.Point(46, 259);
             this.txtMin.Name = "txtMin";
+<<<<<<< HEAD
+            this.txtMin.Size = new System.Drawing.Size(107, 42);
+=======
             this.txtMin.ReadOnly = true;
             this.txtMin.Size = new System.Drawing.Size(107, 44);
+>>>>>>> 378e212fc98a4f797200f794103710b468c31ad3
             this.txtMin.TabIndex = 6;
             this.txtMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -173,8 +186,12 @@
             // 
             this.txtMaxTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtMaxTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+<<<<<<< HEAD
+            this.txtMaxTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+=======
             this.txtMaxTime.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtMaxTime.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+>>>>>>> 378e212fc98a4f797200f794103710b468c31ad3
             this.txtMaxTime.ForeColor = System.Drawing.Color.White;
             this.txtMaxTime.Location = new System.Drawing.Point(36, 221);
             this.txtMaxTime.Multiline = true;
@@ -198,6 +215,28 @@
             // 
             this.txtMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
+<<<<<<< HEAD
+            this.txtMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMax.ForeColor = System.Drawing.Color.White;
+            this.txtMax.Location = new System.Drawing.Point(46, 171);
+            this.txtMax.Name = "txtMax";
+            this.txtMax.Size = new System.Drawing.Size(107, 42);
+            this.txtMax.TabIndex = 3;
+            this.txtMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtCurrentTime
+            // 
+            this.txtCurrentTime.BackColor = System.Drawing.Color.Black;
+            this.txtCurrentTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCurrentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentTime.ForeColor = System.Drawing.Color.White;
+            this.txtCurrentTime.Location = new System.Drawing.Point(36, 119);
+            this.txtCurrentTime.Name = "txtCurrentTime";
+            this.txtCurrentTime.Size = new System.Drawing.Size(129, 15);
+            this.txtCurrentTime.TabIndex = 2;
+            this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+=======
             this.txtMax.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtMax.Font = new System.Drawing.Font("Lucida Sans", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMax.ForeColor = System.Drawing.Color.White;
@@ -208,6 +247,7 @@
             this.txtMax.TabIndex = 3;
             this.txtMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+>>>>>>> 378e212fc98a4f797200f794103710b468c31ad3
             // lblSiste
             // 
             this.lblSiste.AutoSize = true;
@@ -222,6 +262,13 @@
             // 
             this.txtCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.txtCurrent.BorderStyle = System.Windows.Forms.BorderStyle.None;
+<<<<<<< HEAD
+            this.txtCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrent.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtCurrent.Location = new System.Drawing.Point(36, 53);
+            this.txtCurrent.Name = "txtCurrent";
+            this.txtCurrent.Size = new System.Drawing.Size(129, 60);
+=======
             this.txtCurrent.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtCurrent.Font = new System.Drawing.Font("Lucida Sans", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrent.ForeColor = System.Drawing.Color.LawnGreen;
@@ -229,6 +276,7 @@
             this.txtCurrent.Name = "txtCurrent";
             this.txtCurrent.ReadOnly = true;
             this.txtCurrent.Size = new System.Drawing.Size(129, 63);
+>>>>>>> 378e212fc98a4f797200f794103710b468c31ad3
             this.txtCurrent.TabIndex = 0;
             this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -598,11 +646,16 @@
             // 
             // tbpThree
             // 
+<<<<<<< HEAD
+            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.Tab;
+            this.tbpThree.Controls.Add(this.send);
+=======
             this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.tableView1;
+>>>>>>> 378e212fc98a4f797200f794103710b468c31ad3
             this.tbpThree.Controls.Add(this.textBox4);
             this.tbpThree.Controls.Add(this.textBox3);
             this.tbpThree.Controls.Add(this.textBox2);
-            this.tbpThree.Controls.Add(this.textBox1);
+            this.tbpThree.Controls.Add(this.txtEmail1);
             this.tbpThree.Location = new System.Drawing.Point(4, 22);
             this.tbpThree.Name = "tbpThree";
             this.tbpThree.Size = new System.Drawing.Size(646, 334);
@@ -631,12 +684,12 @@
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 1;
             // 
-            // textBox1
+            // txtEmail1
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtEmail1.Location = new System.Drawing.Point(16, 12);
+            this.txtEmail1.Name = "txtEmail1";
+            this.txtEmail1.Size = new System.Drawing.Size(100, 20);
+            this.txtEmail1.TabIndex = 0;
             // 
             // btnMove
             // 
@@ -654,6 +707,16 @@
             this.btnMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseDown);
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
+            // 
+            // send
+            // 
+            this.send.Location = new System.Drawing.Point(164, 53);
+            this.send.Name = "send";
+            this.send.Size = new System.Drawing.Size(75, 23);
+            this.send.TabIndex = 4;
+            this.send.Text = "button1";
+            this.send.UseVisualStyleBackColor = true;
+            this.send.Click += new System.EventHandler(this.send_Click);
             // 
             // GUI
             // 
@@ -709,7 +772,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtEmail1;
         private System.Windows.Forms.Button btnMove;
         private System.Windows.Forms.DataGridView dgvDataBase;
         private System.Windows.Forms.DataGridViewTextBoxColumn Readings;
@@ -734,7 +797,15 @@
         private System.Windows.Forms.Button btnToleranceDown;
         private System.Windows.Forms.Button btnToleranceUp;
         private System.Windows.Forms.TextBox textBox6;
+<<<<<<< HEAD
         private System.Windows.Forms.Button btnSaveAll;
+=======
+<<<<<<< HEAD
+        private System.Windows.Forms.Button send;
+=======
+        private System.Windows.Forms.Button button9;
+>>>>>>> 378e212fc98a4f797200f794103710b468c31ad3
+>>>>>>> 45333574a11f2c023eea087545323508d7d48bea
 
     }
 }
