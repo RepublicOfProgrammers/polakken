@@ -165,6 +165,18 @@ namespace Polakken
 
         }
 
+
+        private void send_Click(object sender, EventArgs e)
+        {
+            E_mail_handler email = new E_mail_handler();
+
+            email.client.Send("republicofprogrammers@gmail.com", txtEmail1.Text, "Hei", "Hei");
+
+            Console.WriteLine("Sent");
+        }
+
+            
+
         private void button9_MouseDown(object sender, MouseEventArgs e)
         {
             this.button9.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
@@ -174,10 +186,6 @@ namespace Polakken
         {
             this.button9.BackgroundImage = global::Polakken.Properties.Resources.Lagre1;
         }
-
-     
-
-   
   }
 }
 
