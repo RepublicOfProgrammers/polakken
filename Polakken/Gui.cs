@@ -179,7 +179,7 @@ namespace Polakken
 
             email.client.Send("republicofprogrammers@gmail.com", txtEmail1.Text, "Hei", "Hei");
 
-            Console.WriteLine("Sent");
+            MessageBox.Show("Mailen har blitt sendt");
         }
 
             
