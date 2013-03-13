@@ -21,15 +21,15 @@ namespace Polakken
         {
             this.setpoint = setpoint;
             this.tolerance = tolerance;
-            //inn måleverdi fra sensorcom
-            //prevReading = reading;
+            mesInterval = 0; //inn måleverdi fra sensorcom
+            prevReading = reading;
         }
 
         //ny måling
         public void newread(double newread)
         {
             prevReading = reading;
-            reading = newread;
+            reading = newread;  
         }
 
         //regulering

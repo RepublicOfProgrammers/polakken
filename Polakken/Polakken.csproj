@@ -178,6 +178,42 @@
   <ItemGroup>
     <None Include="Resources\NationalInstruments.NiLmClientDLL.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tableView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SmallUpT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SmallDownT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrowUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrowUp1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrowDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrowDown1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrowUp2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tableView1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lagre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lagre1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LagreDown.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
