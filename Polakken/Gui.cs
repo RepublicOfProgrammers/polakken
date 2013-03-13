@@ -165,9 +165,9 @@ namespace Polakken
 
         }
 
-<<<<<<< HEAD
-        private void btnSaveAll_MouseDown(object sender, MouseEventArgs e)
-=======
+
+        
+
 
         private void send_Click(object sender, EventArgs e)
         {
@@ -181,7 +181,6 @@ namespace Polakken
             
 
         private void button9_MouseDown(object sender, MouseEventArgs e)
->>>>>>> 45333574a11f2c023eea087545323508d7d48bea
         {
             this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
         }
@@ -191,7 +190,7 @@ namespace Polakken
             this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.Lagre;
             MessageBox.Show("Du har nå lagret de nye verdiene", "Suksess", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-<<<<<<< HEAD
+
 
         private void btnSetPointUp_MouseDown(object sender, MouseEventArgs e)
         {
@@ -273,12 +272,16 @@ namespace Polakken
             this.btnAlarmDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
         }
 
+        private void btnSaveAll_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
+        }
+
       
      
 
    
-=======
->>>>>>> 45333574a11f2c023eea087545323508d7d48bea
+
   }
 }
 
