@@ -94,6 +94,7 @@ namespace Polakken
             txtMin.AppendText(MinYVlaue + c);
             txtMaxTime.AppendText(MaxDTX.ToString());
             txtMinTime.AppendText(MinXValue.ToString());
+            txtSetPoint.Text = "00";
 
 
 
@@ -131,8 +132,6 @@ namespace Polakken
             //    }
             //    crtView.DataBind();
             //}
-
-            txtSetPoint.AppendText("hello");
 
 
 
@@ -282,6 +281,15 @@ namespace Polakken
             this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
         }
 
+        private void btnMove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSetPointUp_Click(object sender, EventArgs e)
+        {
+
+        }
       
      
 
