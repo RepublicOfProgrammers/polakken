@@ -50,7 +50,7 @@ namespace Polakken
                
             }
             Debug.WriteLine("-- CONSTRUCTOR: Starter debugging test");
-            DebugginTest();
+            DebugginTestTwo();
         }
         private void CreateDummyValues() 
         {
@@ -75,16 +75,26 @@ namespace Polakken
             Debug.WriteLine("-- DUMMYVALUES: kjører sql-kode");
             executeSql_NonQuery(sql, time, C, status);
         }
-        private void DebugginTest()
+        private void DebugginTestTwo()
         {
-            SqlCeDataReader mReader = GetLastReading();
-            mReader.Read();
-            DateTime dt = mReader.GetDateTime(0);
-            double value = mReader.GetDouble(1)/100.00;
-            Boolean status = mReader.GetBoolean(2);
+            this.OpenDb();
+            SqlCeDataReader mReader = GetReadings();
+
             Debug.WriteLine("--DEBUGTEST--");
             Debug.WriteLine(TB_READINGS_DATE + "\t" + TB_READINGS_DEGREE + "\t" + TB_READINGS_STATUS);
-            Debug.WriteLine(dt + "\t" + value + "\t" + status);
+            List<string> mValues = null;
+            while (mReader.Read())
+            {
+                for (int i = 0; i < 2; i++) 
+                {
+                    mValues.Add(mReader[i].ToString());   
+                    Debug.Write(mReader[i].ToString());
+                    Debug.Write("\t");
+                }
+                Debug.Write("\n");
+            }
+            mReader.Close();
+            this.CloseDb();
         }
 
         private void OpenDb()
@@ -149,7 +159,7 @@ namespace Polakken
 
         private SqlCeDataReader executeSql_Reader(string sql)
         {
-            this.OpenDb();
+            //this.OpenDb();
             SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
             SqlCeDataReader data_reader = null;
             try { data_reader = cmd.ExecuteReader(); }
@@ -162,7 +172,7 @@ namespace Polakken
                 Debug.WriteLine(e);
             }
             finally{
-                this.CloseDb();
+                //this.CloseDb();
             }
             return data_reader;
         }
