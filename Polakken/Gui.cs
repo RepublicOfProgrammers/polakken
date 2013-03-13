@@ -165,7 +165,7 @@ namespace Polakken
 
         }
 
-<<<<<<< HEAD
+
         private void send_Click(object sender, EventArgs e)
         {
             E_mail_handler email = new E_mail_handler();
@@ -176,7 +176,7 @@ namespace Polakken
         }
 
             
-=======
+
         private void button9_MouseDown(object sender, MouseEventArgs e)
         {
             this.button9.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
@@ -186,11 +186,6 @@ namespace Polakken
         {
             this.button9.BackgroundImage = global::Polakken.Properties.Resources.Lagre1;
         }
-
-     
-
-   
->>>>>>> 378e212fc98a4f797200f794103710b468c31ad3
   }
 }
 
