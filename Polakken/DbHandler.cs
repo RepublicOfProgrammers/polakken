@@ -82,12 +82,11 @@ namespace Polakken
 
             Debug.WriteLine("--DEBUGTEST--");
             Debug.WriteLine(TB_READINGS_DATE + "\t" + TB_READINGS_DEGREE + "\t" + TB_READINGS_STATUS);
-            List<string> mValues = null;
+            
             while (mReader.Read())
             {
-                for (int i = 0; i < 2; i++) 
-                {
-                    mValues.Add(mReader[i].ToString());   
+                for (int i = 0; i < 3; i++) 
+                {  
                     Debug.Write(mReader[i].ToString());
                     Debug.Write("\t");
                 }
