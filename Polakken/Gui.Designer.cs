@@ -43,7 +43,7 @@
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.tbcPage = new System.Windows.Forms.TabControl();
-            this.tbpOne = new System.Windows.Forms.TabPage();
+            this.btnTempUp = new System.Windows.Forms.TabPage();
             this.tbpTwo = new System.Windows.Forms.TabPage();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.Readings = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,9 +56,14 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
+            this.btnTempUp.SuspendLayout();
             this.tbpTwo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).BeginInit();
             this.tbpThree.SuspendLayout();
@@ -233,7 +238,7 @@
             // 
             // tbcPage
             // 
-            this.tbcPage.Controls.Add(this.tbpOne);
+            this.tbcPage.Controls.Add(this.btnTempUp);
             this.tbcPage.Controls.Add(this.tbpTwo);
             this.tbcPage.Controls.Add(this.tbpThree);
             this.tbcPage.Location = new System.Drawing.Point(239, 69);
@@ -242,16 +247,19 @@
             this.tbcPage.Size = new System.Drawing.Size(654, 360);
             this.tbcPage.TabIndex = 6;
             // 
-            // tbpOne
+            // btnTempUp
             // 
-            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.Tab;
-            this.tbpOne.Location = new System.Drawing.Point(4, 22);
-            this.tbpOne.Name = "tbpOne";
-            this.tbpOne.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpOne.Size = new System.Drawing.Size(646, 334);
-            this.tbpOne.TabIndex = 0;
-            this.tbpOne.Text = "Instillinger";
-            this.tbpOne.UseVisualStyleBackColor = true;
+            this.btnTempUp.BackgroundImage = global::Polakken.Properties.Resources.Tab;
+            this.btnTempUp.Controls.Add(this.textBox8);
+            this.btnTempUp.Controls.Add(this.textBox7);
+            this.btnTempUp.Controls.Add(this.textBox6);
+            this.btnTempUp.Controls.Add(this.textBox5);
+            this.btnTempUp.Location = new System.Drawing.Point(4, 22);
+            this.btnTempUp.Name = "btnTempUp";
+            this.btnTempUp.Padding = new System.Windows.Forms.Padding(3);
+            this.btnTempUp.Size = new System.Drawing.Size(646, 334);
+            this.btnTempUp.TabIndex = 0;
+            this.btnTempUp.UseVisualStyleBackColor = true;
             // 
             // tbpTwo
             // 
@@ -362,6 +370,50 @@
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
             // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Enabled = false;
+            this.textBox5.Location = new System.Drawing.Point(41, 130);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(66, 66);
+            this.textBox5.TabIndex = 0;
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.Enabled = false;
+            this.textBox6.Location = new System.Drawing.Point(189, 131);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(66, 66);
+            this.textBox6.TabIndex = 1;
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Enabled = false;
+            this.textBox7.Location = new System.Drawing.Point(366, 131);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(66, 66);
+            this.textBox7.TabIndex = 2;
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Enabled = false;
+            this.textBox8.Location = new System.Drawing.Point(528, 131);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(66, 66);
+            this.textBox8.TabIndex = 3;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,6 +438,8 @@
             this.grpInfo.ResumeLayout(false);
             this.grpInfo.PerformLayout();
             this.tbcPage.ResumeLayout(false);
+            this.btnTempUp.ResumeLayout(false);
+            this.btnTempUp.PerformLayout();
             this.tbpTwo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).EndInit();
             this.tbpThree.ResumeLayout(false);
@@ -410,7 +464,7 @@
         private System.Windows.Forms.Label lblMin;
         private System.Windows.Forms.TextBox txtMin;
         private System.Windows.Forms.TabControl tbcPage;
-        private System.Windows.Forms.TabPage tbpOne;
+        private System.Windows.Forms.TabPage btnTempUp;
         private System.Windows.Forms.TabPage tbpTwo;
         private System.Windows.Forms.TabPage tbpThree;
         private System.Windows.Forms.TextBox textBox4;
@@ -423,6 +477,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Degree;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox6;
 
     }
 }
