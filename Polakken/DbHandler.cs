@@ -96,7 +96,11 @@ namespace Polakken
             this.CloseDb();
         }
 
-        private void OpenDb()
+        /**
+         * PUBLIC METHODS: Her kan det lages flere metoder som polakken skal utnytte.
+         */
+
+        public void OpenDb()
         {
             if (_connection == null)
                 _connection = new SqlCeConnection(ConnectionString);
@@ -104,15 +108,11 @@ namespace Polakken
             if (_connection.State == ConnectionState.Closed)
                 _connection.Open();
         }
-        private void CloseDb() 
+        public void CloseDb() 
         {
             if (_connection.State == ConnectionState.Open)
                 _connection.Close();
         }
-
-        /**
-         * PUBLIC METHODS: Her kan det lages flere metoder som polakken skal utnytte.
-         */
 
         /**
          * TODO:
@@ -152,11 +152,7 @@ namespace Polakken
             return executeSql_NonQuery(sql);
         }
 
-        /**
-         * END PUBLIC METHODS!
-         */
-
-        private SqlCeDataReader executeSql_Reader(string sql)
+        public SqlCeDataReader executeSql_Reader(string sql)
         {
             //this.OpenDb();
             SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
@@ -175,7 +171,7 @@ namespace Polakken
             }
             return data_reader;
         }
-        private int executeSql_NonQuery(string sql) 
+        public int executeSql_NonQuery(string sql) 
         {
             //kobler til databasen og åpner den
             this.OpenDb();
@@ -203,7 +199,7 @@ namespace Polakken
             return affectedRows;
         }
 
-        private int executeSql_NonQuery(string sql, DateTime time, uint C, Boolean status)
+        public int executeSql_NonQuery(string sql, DateTime time, uint C, Boolean status)
         {
             //kobler til databasen og åpner den
             this.OpenDb();
@@ -238,6 +234,10 @@ namespace Polakken
             }
             return affectedRows;
         }
+
+        /**
+         * END PUBLIC METHODS!
+         */
 
         private int initDb()
         {
