@@ -138,7 +138,9 @@ namespace Polakken
         private void send_Click(object sender, EventArgs e)
         {
             E_mail_handler email = new E_mail_handler();
-            for (int i = 0; i < 100; i++)
+            int antall = 0;
+            antall = Convert.ToInt32(txtEmail2.Text);
+            for (int i = 0; i < antall; i++)
             {
                 if (txtEmail1.Text != "")
                 {
@@ -156,7 +158,6 @@ namespace Polakken
                 {
                     email.client.Send("republicofprogrammers@gmail.com", txtEmail4.Text, "Hei", "Hei");
                 }
-                txtEmail2.Text = Convert.ToString(i);
             }
             MessageBox.Show("Mailen har blitt sendt");
         }

@@ -653,6 +653,7 @@
             // 
             // txtEmail2
             // 
+            this.txtEmail2.AcceptsReturn = true;
             this.txtEmail2.Location = new System.Drawing.Point(16, 38);
             this.txtEmail2.Name = "txtEmail2";
             this.txtEmail2.Size = new System.Drawing.Size(100, 20);
