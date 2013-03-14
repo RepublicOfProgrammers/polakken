@@ -322,6 +322,7 @@
             this.txtAlarm.ReadOnly = true;
             this.txtAlarm.Size = new System.Drawing.Size(71, 60);
             this.txtAlarm.TabIndex = 28;
+            this.txtAlarm.Text = ":)";
             this.txtAlarm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAlarm.TextChanged += new System.EventHandler(this.txtAlarm_TextChanged);
             // 
@@ -337,6 +338,7 @@
             this.txtInt.ReadOnly = true;
             this.txtInt.Size = new System.Drawing.Size(71, 60);
             this.txtInt.TabIndex = 27;
+            this.txtInt.Text = "LO";
             this.txtInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtInt.TextChanged += new System.EventHandler(this.txtInt_TextChanged);
             // 
@@ -350,8 +352,13 @@
             this.txtTol.Location = new System.Drawing.Point(189, 81);
             this.txtTol.Name = "txtTol";
             this.txtTol.ReadOnly = true;
+<<<<<<< HEAD
+            this.txtTol.Size = new System.Drawing.Size(76, 63);
+=======
             this.txtTol.Size = new System.Drawing.Size(71, 60);
+>>>>>>> 9a204871bb782861f27295d0c0a3b2efdf7e1305
             this.txtTol.TabIndex = 26;
+            this.txtTol.Text = "YO";
             this.txtTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtSetPoint
@@ -366,6 +373,7 @@
             this.txtSetPoint.ReadOnly = true;
             this.txtSetPoint.Size = new System.Drawing.Size(71, 60);
             this.txtSetPoint.TabIndex = 9;
+            this.txtSetPoint.Text = "#";
             this.txtSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSetPoint.TextChanged += new System.EventHandler(this.txtSetPoint_TextChanged);
             // 
@@ -550,6 +558,7 @@
             // 
             this.btnSetPointUp.BackColor = System.Drawing.Color.Transparent;
             this.btnSetPointUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSetPointUp.BackgroundImage")));
+            this.btnSetPointUp.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnSetPointUp.FlatAppearance.BorderSize = 0;
             this.btnSetPointUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
