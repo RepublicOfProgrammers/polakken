@@ -176,21 +176,25 @@ namespace Polakken
         private void send_Click(object sender, EventArgs e)
         {
             E_mail_handler email = new E_mail_handler();
-            if (txtEmail1.Text != "")
+            for (int i = 0; i < 100; i++)
             {
-                email.client.Send("republicofprogrammers@gmail.com", txtEmail1.Text, "Hei", "Hei");
-            }
-            if (txtEmail2.Text != "")
-            {
-                email.client.Send("republicofprogrammers@gmail.com", txtEmail2.Text, "Hei", "Hei");
-            }
-            if (txtEmail3.Text != "")
-            {
-                email.client.Send("republicofprogrammers@gmail.com", txtEmail3.Text, "Hei", "Hei");
-            }
-            if (txtEmail4.Text != "")
-            {
-                email.client.Send("republicofprogrammers@gmail.com", txtEmail4.Text, "Hei", "Hei");
+                if (txtEmail1.Text != "")
+                {
+                    email.client.Send("republicofprogrammers@gmail.com", txtEmail1.Text, "Hei", "Hei");
+                }
+                //if (txtEmail2.Text != "")
+                //{
+                //    email.client.Send("republicofprogrammers@gmail.com", txtEmail2.Text, "Hei", "Hei");
+                //}
+                if (txtEmail3.Text != "")
+                {
+                    email.client.Send("republicofprogrammers@gmail.com", txtEmail3.Text, "Hei", "Hei");
+                }
+                if (txtEmail4.Text != "")
+                {
+                    email.client.Send("republicofprogrammers@gmail.com", txtEmail4.Text, "Hei", "Hei");
+                }
+                txtEmail2.Text = Convert.ToString(i);
             }
             MessageBox.Show("Mailen har blitt sendt");
         }
