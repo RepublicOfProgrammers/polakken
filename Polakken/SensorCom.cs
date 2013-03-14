@@ -11,6 +11,9 @@ namespace Polakken
 {
     class SensorCom
     {
+        //To do list:
+        //Built-in commando for å hente ut CJC-value til termoelementet
+        //Feilsøking for å oppdage hvis det skulle bli feil ved måleren (brutt signal)
         public double mesInterval {get; set;}
 
         public SensorCom(double mesInterval)
