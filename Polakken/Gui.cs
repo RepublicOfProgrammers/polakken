@@ -95,8 +95,79 @@ namespace Polakken
             txtMaxTime.AppendText(MaxDTX.ToString());
             txtMinTime.AppendText(MinXValue.ToString());
             txtSetPoint.Text = "00";
+            DataTable u = new DataTable();
+            DebugginTestTwo(u);
+            dgvDataBase.DataSource = u;
+           
+            
         }
+        public DataTable DebugginTestTwo(DataTable v)
+        {
 
+            DbHandler db = new DbHandler();
+            v.Columns.Add("ReadTime",typeof (string));
+            v.Columns.Add("Temprature",typeof (string));
+            v.Columns.Add("Status",typeof(string));
+
+
+            db.OpenDb();
+            SqlCeDataReader mReader = db.GetReadings();
+
+            while (mReader.Read())
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    var row = v.NewRow();
+                 string Reading = mReader[i].ToString();
+                 if (i == 1)
+                 {
+                     row["ReadTime"] = Reading;
+                 }
+                 if (i == 2)
+                 {
+                     row["Temprature"] = Reading;
+                 }
+                 if (i == 3)
+                 {
+                     row["Status"] = Reading;
+                 }
+                v.Rows.Add(row);
+                }
+                
+            }
+            
+            mReader.Close();
+            db.CloseDb();
+            return v;
+        }
+        //public DataTable DebugginTestTwo(DataTable v)
+        //{
+
+        //    DbHandler db = new DbHandler();
+        //    v.Columns.Add("Avlesningtid");
+        //    v.Columns.Add("Tempratur");
+        //    v.Columns.Add("Ovn Status");
+
+
+        //    db.OpenDb();
+        //    SqlCeDataReader mReader = db.GetReadings();
+
+        //    while (mReader.Read())
+        //    {
+        //        for (int i = 0; i < 3; i++)
+        //        {
+        //            string P = mReader[i].ToString();
+        //            v.Rows
+        //        }
+                
+        //    }
+            
+        //    mReader.Close();
+        //    db.CloseDb();
+        //    return v;
+        //}
+
+        
         //Form Hendelser
         private void btnLukk_Click(object sender, EventArgs e)
         {

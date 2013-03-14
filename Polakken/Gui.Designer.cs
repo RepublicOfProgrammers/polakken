@@ -62,12 +62,8 @@
             this.btnSetPointDown = new System.Windows.Forms.Button();
             this.btnSetPointUp = new System.Windows.Forms.Button();
             this.tbpTwo = new System.Windows.Forms.TabPage();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpSelect = new System.Windows.Forms.DateTimePicker();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
-            this.Readings = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Degree = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbpThree = new System.Windows.Forms.TabPage();
             this.send = new System.Windows.Forms.Button();
             this.txtEmail4 = new System.Windows.Forms.TextBox();
@@ -75,6 +71,7 @@
             this.txtEmail3 = new System.Windows.Forms.TextBox();
             this.txtEmail1 = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
+            this.dudTime = new System.Windows.Forms.DomainUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -379,8 +376,8 @@
             this.btnSaveAll.Size = new System.Drawing.Size(80, 32);
             this.btnSaveAll.TabIndex = 25;
             this.btnSaveAll.UseVisualStyleBackColor = false;
-            this.btnSaveAll.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnSaveAll_MouseUp);
             this.btnSaveAll.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSaveAll_MouseDown);
+            this.btnSaveAll.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnSaveAll_MouseUp);
             // 
             // label4
             // 
@@ -562,7 +559,8 @@
             // tbpTwo
             // 
             this.tbpTwo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbpTwo.BackgroundImage")));
-            this.tbpTwo.Controls.Add(this.dateTimePicker1);
+            this.tbpTwo.Controls.Add(this.dudTime);
+            this.tbpTwo.Controls.Add(this.dtpSelect);
             this.tbpTwo.Controls.Add(this.dgvDataBase);
             this.tbpTwo.Location = new System.Drawing.Point(4, 22);
             this.tbpTwo.Name = "tbpTwo";
@@ -572,52 +570,28 @@
             this.tbpTwo.Text = "Databasen";
             this.tbpTwo.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // dtpSelect
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(2, 12);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpSelect.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dtpSelect.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSelect.Location = new System.Drawing.Point(7, 12);
+            this.dtpSelect.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
+            this.dtpSelect.MinDate = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            this.dtpSelect.Name = "dtpSelect";
+            this.dtpSelect.Size = new System.Drawing.Size(78, 20);
+            this.dtpSelect.TabIndex = 1;
+            this.dtpSelect.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
             // 
             // dgvDataBase
             // 
             this.dgvDataBase.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.dgvDataBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDataBase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Readings,
-            this.Date,
-            this.Degree,
-            this.Status});
             this.dgvDataBase.GridColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvDataBase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvDataBase.Location = new System.Drawing.Point(202, 4);
             this.dgvDataBase.Name = "dgvDataBase";
             this.dgvDataBase.Size = new System.Drawing.Size(444, 324);
             this.dgvDataBase.TabIndex = 0;
-            // 
-            // Readings
-            // 
-            this.Readings.DataPropertyName = "TB_READINGS";
-            this.Readings.HeaderText = "Avlesninger";
-            this.Readings.Name = "Readings";
-            // 
-            // Date
-            // 
-            this.Date.DataPropertyName = "TB_DATE";
-            this.Date.HeaderText = "Dato";
-            this.Date.Name = "Date";
-            // 
-            // Degree
-            // 
-            this.Degree.DataPropertyName = "TB_DEGREE";
-            this.Degree.HeaderText = "Tempratur";
-            this.Degree.Name = "Degree";
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "TB_STATUS";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
             // 
             // tbpThree
             // 
@@ -690,6 +664,14 @@
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
             // 
+            // dudTime
+            // 
+            this.dudTime.Location = new System.Drawing.Point(7, 39);
+            this.dudTime.Name = "dudTime";
+            this.dudTime.Size = new System.Drawing.Size(103, 20);
+            this.dudTime.TabIndex = 2;
+            this.dudTime.Text = "Tidspunkt";
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -747,10 +729,6 @@
         private System.Windows.Forms.TextBox txtEmail1;
         private System.Windows.Forms.Button btnMove;
         private System.Windows.Forms.DataGridView dgvDataBase;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Readings;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Degree;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.TextBox txtMinTime;
         private System.Windows.Forms.Button btnSetPointUp;
@@ -774,7 +752,8 @@
         private System.Windows.Forms.TextBox txtInt;
         private System.Windows.Forms.TextBox txtTol;
         private System.Windows.Forms.TextBox txtSetPoint;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpSelect;
+        private System.Windows.Forms.DomainUpDown dudTime;
 
     
 
