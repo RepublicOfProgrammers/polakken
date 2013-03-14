@@ -95,47 +95,9 @@ namespace Polakken
             txtMaxTime.AppendText(MaxDTX.ToString());
             txtMinTime.AppendText(MinXValue.ToString());
             txtSetPoint.Text = "00";
-
-
-
-
-            DbHandler DB = new DbHandler();
-            DateTime test = DateTime.Today;
-           
-
-            //    while (DB.GetReadings().Read())
-            //    {
-            //        table.Rows.Add(new object[] { DB.GetReadings()[0], DB.GetReadings()[1], DB.GetReadings()[2] });
-            //    }
-            //    crtView.DataSource = table;
-            //    //add series
-            //    for (int i = 0; i < table.Rows.Count; i++)
-            //    {
-            //        if (crtView.Series.Where(x => x.Name == table.Rows[i][0].ToString()).Count() > 0)
-            //        {
-
-            //        }
-            //        else
-            //        {
-            //            crtView.Series.Add(table.Rows[i][0].ToString());
-
-            //        }
-            //    }
-            //    for (int i = 0; i < crtView.Series.Count; i++)
-            //    {
-
-            //        crtView.Series[i].XValueMember = "Date";
-            //        crtView.Series[i].YValueMembers = "Value";
-
-            //        crtView.Series[i].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-
-            //    }
-            //    crtView.DataBind();
-            //}
-
-
-
         }
+
+        //Form Hendelser
         private void btnLukk_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -171,7 +133,7 @@ namespace Polakken
 
 
         
-
+        //E-Mail
 
         private void send_Click(object sender, EventArgs e)
         {
@@ -200,8 +162,8 @@ namespace Polakken
         }
 
             
-
-        private void button9_MouseDown(object sender, MouseEventArgs e)
+        //Click Hendelser
+        private void btnSaveAll_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
         }
@@ -293,68 +255,7 @@ namespace Polakken
             this.btnAlarmDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
         }
 
-        private void btnSaveAll_MouseDown(object sender, MouseEventArgs e)
-        {
-            this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
-        }
-
-        private void btnMove_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSetPointUp_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCurrent_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMax_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCurrentTime_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMaxTime_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMinTime_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSetPoint_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtInt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtAlarm_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-      
-     
-
+   
    
 
   }

@@ -62,6 +62,7 @@
             this.btnSetPointDown = new System.Windows.Forms.Button();
             this.btnSetPointUp = new System.Windows.Forms.Button();
             this.tbpTwo = new System.Windows.Forms.TabPage();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.Readings = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,7 +131,6 @@
             this.txtCurrentTime.Size = new System.Drawing.Size(129, 15);
             this.txtCurrentTime.TabIndex = 2;
             this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCurrentTime.TextChanged += new System.EventHandler(this.txtCurrentTime_TextChanged);
             // 
             // txtMinTime
             // 
@@ -146,7 +146,6 @@
             this.txtMinTime.Size = new System.Drawing.Size(129, 20);
             this.txtMinTime.TabIndex = 8;
             this.txtMinTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMinTime.TextChanged += new System.EventHandler(this.txtMinTime_TextChanged);
             // 
             // lblMin
             // 
@@ -171,7 +170,6 @@
             this.txtMin.Size = new System.Drawing.Size(107, 42);
             this.txtMin.TabIndex = 6;
             this.txtMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMin.TextChanged += new System.EventHandler(this.txtMin_TextChanged);
             // 
             // txtMaxTime
             // 
@@ -187,7 +185,6 @@
             this.txtMaxTime.Size = new System.Drawing.Size(129, 20);
             this.txtMaxTime.TabIndex = 5;
             this.txtMaxTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMaxTime.TextChanged += new System.EventHandler(this.txtMaxTime_TextChanged);
             // 
             // lblMax
             // 
@@ -212,7 +209,6 @@
             this.txtMax.Size = new System.Drawing.Size(107, 42);
             this.txtMax.TabIndex = 3;
             this.txtMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMax.TextChanged += new System.EventHandler(this.txtMax_TextChanged);
             // 
             // lblSiste
             // 
@@ -237,7 +233,6 @@
             this.txtCurrent.Size = new System.Drawing.Size(129, 60);
             this.txtCurrent.TabIndex = 0;
             this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCurrent.TextChanged += new System.EventHandler(this.txtCurrent_TextChanged);
             // 
             // btnLukk
             // 
@@ -324,7 +319,6 @@
             this.txtAlarm.TabIndex = 28;
             this.txtAlarm.Text = ":)";
             this.txtAlarm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtAlarm.TextChanged += new System.EventHandler(this.txtAlarm_TextChanged);
             // 
             // txtInt
             // 
@@ -340,7 +334,6 @@
             this.txtInt.TabIndex = 27;
             this.txtInt.Text = "LO";
             this.txtInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtInt.TextChanged += new System.EventHandler(this.txtInt_TextChanged);
             // 
             // txtTol
             // 
@@ -352,11 +345,7 @@
             this.txtTol.Location = new System.Drawing.Point(189, 81);
             this.txtTol.Name = "txtTol";
             this.txtTol.ReadOnly = true;
-<<<<<<< HEAD
-            this.txtTol.Size = new System.Drawing.Size(76, 63);
-=======
             this.txtTol.Size = new System.Drawing.Size(71, 60);
->>>>>>> 9a204871bb782861f27295d0c0a3b2efdf7e1305
             this.txtTol.TabIndex = 26;
             this.txtTol.Text = "YO";
             this.txtTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -375,7 +364,6 @@
             this.txtSetPoint.TabIndex = 9;
             this.txtSetPoint.Text = "#";
             this.txtSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSetPoint.TextChanged += new System.EventHandler(this.txtSetPoint_TextChanged);
             // 
             // btnSaveAll
             // 
@@ -391,8 +379,8 @@
             this.btnSaveAll.Size = new System.Drawing.Size(80, 32);
             this.btnSaveAll.TabIndex = 25;
             this.btnSaveAll.UseVisualStyleBackColor = false;
-            this.btnSaveAll.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSaveAll_MouseDown);
             this.btnSaveAll.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnSaveAll_MouseUp);
+            this.btnSaveAll.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSaveAll_MouseDown);
             // 
             // label4
             // 
@@ -568,13 +556,13 @@
             this.btnSetPointUp.Size = new System.Drawing.Size(30, 30);
             this.btnSetPointUp.TabIndex = 4;
             this.btnSetPointUp.UseVisualStyleBackColor = false;
-            this.btnSetPointUp.Click += new System.EventHandler(this.btnSetPointUp_Click);
             this.btnSetPointUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSetPointUp_MouseDown);
             this.btnSetPointUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnSetPointUp_MouseUp);
             // 
             // tbpTwo
             // 
             this.tbpTwo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbpTwo.BackgroundImage")));
+            this.tbpTwo.Controls.Add(this.dateTimePicker1);
             this.tbpTwo.Controls.Add(this.dgvDataBase);
             this.tbpTwo.Location = new System.Drawing.Point(4, 22);
             this.tbpTwo.Name = "tbpTwo";
@@ -583,6 +571,13 @@
             this.tbpTwo.TabIndex = 1;
             this.tbpTwo.Text = "Databasen";
             this.tbpTwo.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(2, 12);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 1;
             // 
             // dgvDataBase
             // 
@@ -595,9 +590,9 @@
             this.Status});
             this.dgvDataBase.GridColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvDataBase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dgvDataBase.Location = new System.Drawing.Point(7, 7);
+            this.dgvDataBase.Location = new System.Drawing.Point(202, 4);
             this.dgvDataBase.Name = "dgvDataBase";
-            this.dgvDataBase.Size = new System.Drawing.Size(636, 324);
+            this.dgvDataBase.Size = new System.Drawing.Size(444, 324);
             this.dgvDataBase.TabIndex = 0;
             // 
             // Readings
@@ -690,7 +685,6 @@
             this.btnMove.Size = new System.Drawing.Size(820, 30);
             this.btnMove.TabIndex = 7;
             this.btnMove.UseVisualStyleBackColor = false;
-            this.btnMove.Click += new System.EventHandler(this.btnMove_Click);
             this.btnMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseDown);
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
@@ -779,6 +773,7 @@
         private System.Windows.Forms.TextBox txtInt;
         private System.Windows.Forms.TextBox txtTol;
         private System.Windows.Forms.TextBox txtSetPoint;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
 
     
 
