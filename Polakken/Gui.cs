@@ -35,7 +35,7 @@ namespace Polakken
             crtView.DataSource = u;
             crtView.ChartAreas.Add("tempOversikt");
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
-            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 50;
+            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 10;
             crtView.ChartAreas["tempOversikt"].AxisX.Interval = 1;
             crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
             crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 50;
@@ -48,7 +48,8 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisX.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.ForeColor = Color.GreenYellow;
-
+            crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Angle = 75;
+            
 
             crtView.Series.Add("temp");
             crtView.Series["temp"].Color = Color.LawnGreen;
@@ -59,46 +60,19 @@ namespace Polakken
             crtView.Series["temp"].YValueMembers = "Temprature";
             crtView.DataBind();
 
-            //MAX/MIN TEST
-
-            double MinYVlaue = double.MaxValue;
-            double MaxYVlaue = double.MinValue;
-            double MaxXValue = double.MinValue;
-            double MinXValue = double.MaxValue;
-            double LastX = 0;
-            double LastY = 0;
-           
+            //Instillger
             
-            foreach (var pt in crtView.Series["temp"].Points)
-            {
-                if (MaxYVlaue < pt.YValues[0])
-                {
-                    MaxYVlaue = pt.YValues[0];
-                    
+            double SetPoint = double.MinValue;
+            double tolerance = double.MinValue;
+            double mesurInterval = double.MinValue;
 
-                }
-                if (pt.YValues[0] < MinYVlaue)
-                {
-                    MinYVlaue = pt.YValues[0];
-                    MinXValue = pt.XValue;
-                }
-                LastX = pt.XValue;
-                LastY = pt.YValues[0];
-
-            }
-           
-            
-
-            DateTime MaxDTX = DateTime.FromOADate(MaxXValue);
-
-            txtCurrent.AppendText(LastY + "°C");
-            txtCurrentTime.AppendText(LastX.ToString());
-            string c = "°C";
-            txtMax.AppendText(MaxYVlaue + c);
-            txtMin.AppendText(MinYVlaue + c);
-            txtMaxTime.AppendText(MaxDTX.ToString());
-            txtMinTime.AppendText(MinXValue.ToString());
-            txtSetPoint.Text = "00";
+            Regulation reg = new Regulation(SetPoint, tolerance, mesurInterval);
+            SetPoint = reg.setpoint;
+            txtSetPoint.Text = SetPoint.ToString();
+            tolerance = reg.tolerance;
+            txtTol.Text = tolerance.ToString();
+            mesurInterval = reg.mesInterval;
+            txtInt = mesurInterval.ToString();
             
         }
         public DataTable DebugginTestTwo(DataTable v)
@@ -141,33 +115,7 @@ namespace Polakken
             db.CloseDb();
             return v;
         }
-        //public DataTable DebugginTestTwo(DataTable v)
-        //{
-
-        //    DbHandler db = new DbHandler();
-        //    v.Columns.Add("Avlesningtid");
-        //    v.Columns.Add("Tempratur");
-        //    v.Columns.Add("Ovn Status");
-
-
-        //    db.OpenDb();
-        //    SqlCeDataReader mReader = db.GetReadings();
-
-        //    while (mReader.Read())
-        //    {
-        //        for (int i = 0; i < 3; i++)
-        //        {
-        //            string P = mReader[i].ToString();
-        //            v.Rows
-        //        }
-                
-        //    }
-            
-        //    mReader.Close();
-        //    db.CloseDb();
-        //    return v;
-        //}
-
+          
         
         //Form Hendelser
         private void btnLukk_Click(object sender, EventArgs e)
@@ -323,6 +271,21 @@ namespace Polakken
         private void btnAlarmDown_MouseUp(object sender, MouseEventArgs e)
         {
             this.btnAlarmDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+        }
+
+        private void txtTol_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtInt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAlarm_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
    
