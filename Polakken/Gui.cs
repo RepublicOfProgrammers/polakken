@@ -24,9 +24,15 @@ namespace Polakken
 
         private void GUI_Load(object sender, EventArgs e)
         {
+            // Opprett DataTabell og fyll DataGridView
+
+            DataTable u = new DataTable();
+            DebugginTestTwo(u);
+            dgvDataBase.DataSource = u;
 
             // Graf:
 
+            crtView.DataSource = u;
             crtView.ChartAreas.Add("tempOversikt");
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
             crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 50;
@@ -49,29 +55,26 @@ namespace Polakken
             crtView.Series["temp"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             crtView.Series["temp"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            crtView.Series["temp"].Points.AddXY(1, 9);
-            crtView.Series["temp"].Points.AddXY(12, 32);
-            crtView.Series["temp"].Points.AddXY(30, 8);
-            crtView.Series["temp"].Points.AddXY(50, 20);
-            
-
+            crtView.Series["temp"].XValueMember = "ReadTime";
+            crtView.Series["temp"].YValueMembers = "Temprature";
+            crtView.DataBind();
 
             //MAX/MIN TEST
 
             double MinYVlaue = double.MaxValue;
-            double SetMinY = MinYVlaue;
             double MaxYVlaue = double.MinValue;
             double MaxXValue = double.MinValue;
             double MinXValue = double.MaxValue;
             double LastX = 0;
             double LastY = 0;
-
+           
+            
             foreach (var pt in crtView.Series["temp"].Points)
             {
                 if (MaxYVlaue < pt.YValues[0])
                 {
                     MaxYVlaue = pt.YValues[0];
-                    MaxXValue = pt.XValue;
+                    
 
                 }
                 if (pt.YValues[0] < MinYVlaue)
@@ -83,7 +86,8 @@ namespace Polakken
                 LastY = pt.YValues[0];
 
             }
-
+           
+            
 
             DateTime MaxDTX = DateTime.FromOADate(MaxXValue);
 
@@ -95,10 +99,6 @@ namespace Polakken
             txtMaxTime.AppendText(MaxDTX.ToString());
             txtMinTime.AppendText(MinXValue.ToString());
             txtSetPoint.Text = "00";
-            DataTable u = new DataTable();
-            DebugginTestTwo(u);
-            dgvDataBase.DataSource = u;
-           
             
         }
         public DataTable DebugginTestTwo(DataTable v)
@@ -115,24 +115,25 @@ namespace Polakken
 
             while (mReader.Read())
             {
+                var row = v.NewRow();
                 for (int i = 0; i < 3; i++)
                 {
-                    var row = v.NewRow();
+                    
                  string Reading = mReader[i].ToString();
-                 if (i == 1)
+                 if (i == 0)
                  {
                      row["ReadTime"] = Reading;
                  }
-                 if (i == 2)
+                 if (i == 1)
                  {
                      row["Temprature"] = Reading;
                  }
-                 if (i == 3)
+                 if (i == 2)
                  {
                      row["Status"] = Reading;
                  }
-                v.Rows.Add(row);
                 }
+                v.Rows.Add(row);
                 
             }
             
