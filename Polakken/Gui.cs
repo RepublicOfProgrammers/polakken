@@ -20,7 +20,7 @@ namespace Polakken
         double tolerance = 0.0;
         double mesurInterval = 0.0;
         DataTable u = new DataTable();
-        
+
         public GUI()
         {
             InitializeComponent();
@@ -31,15 +31,55 @@ namespace Polakken
         {
             // Opprett DataTabell og fyll DataGridView
 
-            
+
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
             DataTable LastReading = new DataTable();
             GetLast(LastReading);
-            
+            DataTable Equals = new DataTable();
+            equals(Equals);
 
-            
-                 
+
+            try
+            {
+
+                DataView viewStatus = new DataView(u);
+                DataTable distinctStatusValues = viewStatus.ToTable(true, "Status");
+                cboFilterStatus.DataSource = distinctStatusValues;
+                cboFilterStatus.DisplayMember = "Status";
+                cboFilterStatus.ValueMember = "Status";
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                DataView viewTemp = new DataView(u);
+                DataTable distinctTempValues = viewTemp.ToTable(true, "Temprature");
+                cboTempFilter.DataSource = distinctTempValues;
+                cboTempFilter.DisplayMember = "Temprautre";
+                cboTempFilter.ValueMember = "Temprature";
+            }
+            catch
+            {
+            }
+            try
+            {
+                DataView viewEquals = new DataView(Equals);
+                DataTable distinctTempValues = viewEquals.ToTable(true, "textEquals");
+                cboEqualsFilter.DataSource = distinctTempValues;
+                cboEqualsFilter.DisplayMember = "textEquals";
+                cboEqualsFilter.ValueMember = "valueEquals";
+            }
+            catch
+            {
+            }
+
+
+
+
+
             // Graf:
 
             crtView.DataSource = u;
@@ -59,7 +99,7 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisY.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.ForeColor = Color.GreenYellow;
             crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Angle = 75;
-            
+
 
             crtView.Series.Add("temp");
             crtView.Series["temp"].Color = Color.LawnGreen;
@@ -79,8 +119,20 @@ namespace Polakken
             txtTol.Text = tolerance.ToString();
             mesurInterval = reg.mesInterval;
             txtInt.Text = mesurInterval.ToString();
-            
-            
+
+
+        }
+
+        //Fyller Datatabellen for fortegn for filter
+
+        public DataTable equals(DataTable dtbEquals)
+        {
+            dtbEquals.Columns.Add("textEquals", typeof(string));
+            dtbEquals.Columns.Add("valueEquals", typeof(string));
+            dtbEquals.Rows.Add("Er lik", "==");
+            dtbEquals.Rows.Add("Større enn", ">");
+            dtbEquals.Rows.Add("Mindere enn", "<");
+            return dtbEquals;
         }
 
         //Koble Til Databasen og hente ut verdier
@@ -88,9 +140,9 @@ namespace Polakken
         {
 
             DbHandler db = new DbHandler();
-            v.Columns.Add("ReadTime",typeof (string));
-            v.Columns.Add("Temprature",typeof (string));
-            v.Columns.Add("Status",typeof(string));
+            v.Columns.Add("ReadTime", typeof(string));
+            v.Columns.Add("Temprature", typeof(string));
+            v.Columns.Add("Status", typeof(string));
 
 
             db.OpenDb();
@@ -101,25 +153,25 @@ namespace Polakken
                 var row = v.NewRow();
                 for (int i = 0; i < 3; i++)
                 {
-                    
-                 string Reading = mReader[i].ToString();
-                 if (i == 0)
-                 {
-                     row["ReadTime"] = Reading;
-                 }
-                 if (i == 1)
-                 {
-                     row["Temprature"] = Reading;
-                 }
-                 if (i == 2)
-                 {
-                     row["Status"] = Reading;
-                 }
+
+                    string Reading = mReader[i].ToString();
+                    if (i == 0)
+                    {
+                        row["ReadTime"] = Reading;
+                    }
+                    if (i == 1)
+                    {
+                        row["Temprature"] = Reading;
+                    }
+                    if (i == 2)
+                    {
+                        row["Status"] = Reading;
+                    }
                 }
                 v.Rows.Add(row);
-                
+
             }
-            
+
             mReader.Close();
             db.CloseDb();
             return v;
@@ -193,12 +245,12 @@ namespace Polakken
             {
                 this.SetDesktopLocation(MousePosition.X - MoveX, MousePosition.Y - MoveY);
             }
-            
+
 
         }
 
 
-        
+
         //E-Mail
 
         private void send_Click(object sender, EventArgs e)
@@ -232,7 +284,7 @@ namespace Polakken
         }
 
 
-            
+
         //Click Hendelser
         private void btnSaveAll_MouseDown(object sender, MouseEventArgs e)
         {
@@ -265,7 +317,7 @@ namespace Polakken
         private void btnSetPointDown_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
-            
+
         }
 
         private void btnSetPointDown_MouseUp(object sender, MouseEventArgs e)
@@ -281,7 +333,7 @@ namespace Polakken
                 SetPoint = ChangeSetPointSub;
                 txtSetPoint.Enabled = false;
                 this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
-                
+
             }
             txtSetPoint.Text = ChangeSetPointSub.ToString();
             SetPoint = ChangeSetPointSub;
@@ -352,24 +404,65 @@ namespace Polakken
         private void btnShowSelected_Click(object sender, EventArgs e)
         {
 
-            DataSet set = new DataSet();
-            set.Tables.Add(u);
-            DataView view = new DataView();
-            view.Table = set.Tables[0];
-            view.AllowDelete = true;
-            view.AllowEdit = true;
-            view.AllowNew = true;
-            view.RowFilter = "Temprature >= ";
-            dgvDataBase.DataSource = view;
+
         }
 
-        
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            dgvDataBase.DataSource = u;
+        }
 
-   
-   
+        private void chkFilterStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkFilterStatus.Checked)
+            {
+                cboFilterStatus.Enabled = true;
+            }
+            else
+            {
+                cboFilterStatus.Enabled = false;
+            }
 
-  }
+        }
+
+        private void chkFilterTemp_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkFilterTemp.Checked)
+            {
+                cboEqualsFilter.Enabled = true;
+                cboTempFilter.Enabled = true;
+            }
+            else
+            {
+                cboEqualsFilter.Enabled = false;
+                cboTempFilter.Enabled = false;
+            }
+        }
+
+        private void chkFilterDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkFilterDate.Checked)
+            {
+                dtpSelectFrom.Enabled = true;
+                dtpSelectTo.Enabled = true;
+               
+            }
+            else
+            {
+                dtpSelectFrom.Enabled = false;
+                dtpSelectTo.Enabled = false;
+            }
+        }
+
+
+
+
+
+
+
+    }
 }
+
 
 
 
