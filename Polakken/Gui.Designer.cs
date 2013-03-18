@@ -62,8 +62,7 @@
             this.btnSetPointDown = new System.Windows.Forms.Button();
             this.btnSetPointUp = new System.Windows.Forms.Button();
             this.tbpTwo = new System.Windows.Forms.TabPage();
-            this.dudTime = new System.Windows.Forms.DomainUpDown();
-            this.dtpSelect = new System.Windows.Forms.DateTimePicker();
+            this.dtpSelectFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.tbpThree = new System.Windows.Forms.TabPage();
             this.send = new System.Windows.Forms.Button();
@@ -72,6 +71,8 @@
             this.txtEmail3 = new System.Windows.Forms.TextBox();
             this.txtEmail1 = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
+            this.dtpSelectTo = new System.Windows.Forms.DateTimePicker();
+            this.btnShowSelected = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -315,7 +316,7 @@
             this.txtAlarm.Size = new System.Drawing.Size(71, 22);
             this.txtAlarm.TabIndex = 28;
             this.txtAlarm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtAlarm.TextChanged += new System.EventHandler(this.txtAlarm_TextChanged);
+           
             // 
             // txtInt
             // 
@@ -330,7 +331,7 @@
             this.txtInt.Size = new System.Drawing.Size(71, 22);
             this.txtInt.TabIndex = 27;
             this.txtInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtInt.TextChanged += new System.EventHandler(this.txtInt_TextChanged);
+           
             // 
             // txtTol
             // 
@@ -345,7 +346,7 @@
             this.txtTol.Size = new System.Drawing.Size(71, 22);
             this.txtTol.TabIndex = 26;
             this.txtTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTol.TextChanged += new System.EventHandler(this.txtTol_TextChanged);
+            
             // 
             // txtSetPoint
             // 
@@ -360,6 +361,7 @@
             this.txtSetPoint.Size = new System.Drawing.Size(71, 22);
             this.txtSetPoint.TabIndex = 9;
             this.txtSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+
             // 
             // btnSaveAll
             // 
@@ -558,8 +560,9 @@
             // tbpTwo
             // 
             this.tbpTwo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbpTwo.BackgroundImage")));
-            this.tbpTwo.Controls.Add(this.dudTime);
-            this.tbpTwo.Controls.Add(this.dtpSelect);
+            this.tbpTwo.Controls.Add(this.btnShowSelected);
+            this.tbpTwo.Controls.Add(this.dtpSelectTo);
+            this.tbpTwo.Controls.Add(this.dtpSelectFrom);
             this.tbpTwo.Controls.Add(this.dgvDataBase);
             this.tbpTwo.Location = new System.Drawing.Point(4, 22);
             this.tbpTwo.Name = "tbpTwo";
@@ -569,25 +572,17 @@
             this.tbpTwo.Text = "Databasen";
             this.tbpTwo.UseVisualStyleBackColor = true;
             // 
-            // dudTime
+            // dtpSelectFrom
             // 
-            this.dudTime.Location = new System.Drawing.Point(7, 39);
-            this.dudTime.Name = "dudTime";
-            this.dudTime.Size = new System.Drawing.Size(103, 20);
-            this.dudTime.TabIndex = 2;
-            this.dudTime.Text = "Tidspunkt";
-            // 
-            // dtpSelect
-            // 
-            this.dtpSelect.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.dtpSelect.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelect.Location = new System.Drawing.Point(7, 12);
-            this.dtpSelect.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
-            this.dtpSelect.MinDate = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
-            this.dtpSelect.Name = "dtpSelect";
-            this.dtpSelect.Size = new System.Drawing.Size(78, 20);
-            this.dtpSelect.TabIndex = 1;
-            this.dtpSelect.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            this.dtpSelectFrom.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dtpSelectFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSelectFrom.Location = new System.Drawing.Point(6, 12);
+            this.dtpSelectFrom.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
+            this.dtpSelectFrom.MinDate = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            this.dtpSelectFrom.Name = "dtpSelectFrom";
+            this.dtpSelectFrom.Size = new System.Drawing.Size(78, 20);
+            this.dtpSelectFrom.TabIndex = 1;
+            this.dtpSelectFrom.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
             // 
             // dgvDataBase
             // 
@@ -672,6 +667,28 @@
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
             // 
+            // dtpSelectTo
+            // 
+            this.dtpSelectTo.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dtpSelectTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSelectTo.Location = new System.Drawing.Point(118, 12);
+            this.dtpSelectTo.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
+            this.dtpSelectTo.MinDate = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            this.dtpSelectTo.Name = "dtpSelectTo";
+            this.dtpSelectTo.Size = new System.Drawing.Size(78, 20);
+            this.dtpSelectTo.TabIndex = 2;
+            this.dtpSelectTo.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            // 
+            // btnShowSelected
+            // 
+            this.btnShowSelected.Location = new System.Drawing.Point(65, 47);
+            this.btnShowSelected.Name = "btnShowSelected";
+            this.btnShowSelected.Size = new System.Drawing.Size(75, 23);
+            this.btnShowSelected.TabIndex = 3;
+            this.btnShowSelected.Text = "Vis";
+            this.btnShowSelected.UseVisualStyleBackColor = true;
+            this.btnShowSelected.Click += new System.EventHandler(this.btnShowSelected_Click);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -752,8 +769,9 @@
         private System.Windows.Forms.TextBox txtInt;
         private System.Windows.Forms.TextBox txtTol;
         private System.Windows.Forms.TextBox txtSetPoint;
-        private System.Windows.Forms.DateTimePicker dtpSelect;
-        private System.Windows.Forms.DomainUpDown dudTime;
+        private System.Windows.Forms.DateTimePicker dtpSelectFrom;
+        private System.Windows.Forms.Button btnShowSelected;
+        private System.Windows.Forms.DateTimePicker dtpSelectTo;
 
     
 

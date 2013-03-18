@@ -16,6 +16,11 @@ namespace Polakken
         int Mover;
         int MoveX;
         int MoveY;
+        double SetPoint = 0.0;
+        double tolerance = 0.0;
+        double mesurInterval = 0.0;
+        DataTable u = new DataTable();
+        
         public GUI()
         {
             InitializeComponent();
@@ -26,10 +31,15 @@ namespace Polakken
         {
             // Opprett DataTabell og fyll DataGridView
 
-            DataTable u = new DataTable();
+            
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
+            DataTable LastReading = new DataTable();
+            GetLast(LastReading);
+            
 
+            
+                 
             // Graf:
 
             crtView.DataSource = u;
@@ -61,10 +71,6 @@ namespace Polakken
             crtView.DataBind();
 
             //Instillger
-            
-            double SetPoint = double.MinValue;
-            double tolerance = double.MinValue;
-            double mesurInterval = double.MinValue;
 
             Regulation reg = new Regulation(SetPoint, tolerance, mesurInterval);
             SetPoint = reg.setpoint;
@@ -74,7 +80,10 @@ namespace Polakken
             mesurInterval = reg.mesInterval;
             txtInt.Text = mesurInterval.ToString();
             
+            
         }
+
+        //Koble Til Databasen og hente ut verdier
         public DataTable DebugginTestTwo(DataTable v)
         {
 
@@ -115,8 +124,45 @@ namespace Polakken
             db.CloseDb();
             return v;
         }
-          
-        
+        public DataTable GetLast(DataTable GetLastR)
+        {
+            DbHandler db = new DbHandler();
+            GetLastR.Columns.Add("ReadTime", typeof(DateTime));
+            GetLastR.Columns.Add("Temprature", typeof(string));
+            GetLastR.Columns.Add("Status", typeof(string));
+
+
+            db.OpenDb();
+            SqlCeDataReader mReader = db.GetReadings();
+
+            while (mReader.Read())
+            {
+                var row = GetLastR.NewRow();
+                for (int i = 0; i < 3; i++)
+                {
+
+                    string Reading = mReader[i].ToString();
+                    if (i == 0)
+                    {
+                        row["ReadTime"] = Reading;
+                    }
+                    if (i == 1)
+                    {
+                        row["Temprature"] = Reading;
+                    }
+                    if (i == 2)
+                    {
+                        row["Status"] = Reading;
+                    }
+                }
+                GetLastR.Rows.Add(row);
+
+            }
+
+            mReader.Close();
+            db.CloseDb();
+            return GetLastR;
+        }
         //Form Hendelser
         private void btnLukk_Click(object sender, EventArgs e)
         {
@@ -203,6 +249,12 @@ namespace Polakken
         private void btnSetPointUp_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+            this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+            txtSetPoint.Enabled = true;
+            double ChangeSetPointAdd = SetPoint;
+            ChangeSetPointAdd = ChangeSetPointAdd + 1;
+            SetPoint = ChangeSetPointAdd;
+            txtSetPoint.Text = ChangeSetPointAdd.ToString();
         }
 
         private void btnSetPointUp_MouseUp(object sender, MouseEventArgs e)
@@ -213,16 +265,33 @@ namespace Polakken
         private void btnSetPointDown_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            
         }
 
         private void btnSetPointDown_MouseUp(object sender, MouseEventArgs e)
         {
             this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+            double ChangeSetPointSub = SetPoint;
+            ChangeSetPointSub = ChangeSetPointSub - 1;
+            if (ChangeSetPointSub < 0)
+            {
+                MessageBox.Show("Nedre Grense Nådd", "FEIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ChangeSetPointSub = SetPoint;
+                txtSetPoint.Text = ChangeSetPointSub.ToString();
+                SetPoint = ChangeSetPointSub;
+                txtSetPoint.Enabled = false;
+                this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+                
+            }
+            txtSetPoint.Text = ChangeSetPointSub.ToString();
+            SetPoint = ChangeSetPointSub;
         }
 
         private void btnToleranceUp_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+            tolerance = tolerance + 1;
+            txtTol.Text = tolerance.ToString();
         }
 
         private void btnToleranceUp_MouseUp(object sender, MouseEventArgs e)
@@ -280,20 +349,21 @@ namespace Polakken
             this.btnAlarmDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
         }
 
-        private void txtTol_TextChanged(object sender, EventArgs e)
+        private void btnShowSelected_Click(object sender, EventArgs e)
         {
 
+            DataSet set = new DataSet();
+            set.Tables.Add(u);
+            DataView view = new DataView();
+            view.Table = set.Tables[0];
+            view.AllowDelete = true;
+            view.AllowEdit = true;
+            view.AllowNew = true;
+            view.RowFilter = "Temprature >= ";
+            dgvDataBase.DataSource = view;
         }
 
-        private void txtInt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtAlarm_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
    
    
