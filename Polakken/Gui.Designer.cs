@@ -597,6 +597,7 @@
             this.dgvDataBase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvDataBase.Location = new System.Drawing.Point(202, 4);
             this.dgvDataBase.Name = "dgvDataBase";
+            this.dgvDataBase.ReadOnly = true;
             this.dgvDataBase.Size = new System.Drawing.Size(444, 324);
             this.dgvDataBase.TabIndex = 0;
             // 

@@ -72,7 +72,7 @@ namespace Polakken
             tolerance = reg.tolerance;
             txtTol.Text = tolerance.ToString();
             mesurInterval = reg.mesInterval;
-            txtInt = mesurInterval.ToString();
+            txtInt.Text = mesurInterval.ToString();
             
         }
         public DataTable DebugginTestTwo(DataTable v)
