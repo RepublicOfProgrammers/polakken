@@ -158,7 +158,8 @@ namespace Polakken
         private void send_Click(object sender, EventArgs e)
         {
             E_mail_handler email = new E_mail_handler();
-
+            try
+            {
                 if (txtEmail1.Text != "")
                 {
                     email.client.Send("republicofprogrammers@gmail.com", txtEmail1.Text, "Hei", "Hei");
@@ -176,8 +177,14 @@ namespace Polakken
                     email.client.Send("republicofprogrammers@gmail.com", txtEmail4.Text, "Hei", "Hei");
                 }
                 MessageBox.Show("Mailen har blitt sendt");
-            }            
-        
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
             
         //Click Hendelser
