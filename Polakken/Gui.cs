@@ -20,6 +20,8 @@ namespace Polakken
         double tolerance = 0.0;
         double mesurInterval = 0.0;
         DataTable u = new DataTable();
+        
+        
 
         public GUI()
         {
@@ -29,8 +31,9 @@ namespace Polakken
 
         private void GUI_Load(object sender, EventArgs e)
         {
+            //
             // Opprett DataTabell og fyll DataGridView
-
+            //
 
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
@@ -38,6 +41,8 @@ namespace Polakken
             GetLast(LastReading);
             DataTable Equals = new DataTable();
             equals(Equals);
+            
+
 
 
             try
@@ -47,7 +52,8 @@ namespace Polakken
                 DataTable distinctStatusValues = viewStatus.ToTable(true, "Status");
                 cboFilterStatus.DataSource = distinctStatusValues;
                 cboFilterStatus.DisplayMember = "Status";
-                cboFilterStatus.ValueMember = "Status";
+                cboFilterTemp.ValueMember = "Status";
+
             }
             catch
             {
@@ -57,9 +63,9 @@ namespace Polakken
             {
                 DataView viewTemp = new DataView(u);
                 DataTable distinctTempValues = viewTemp.ToTable(true, "Temprature");
-                cboTempFilter.DataSource = distinctTempValues;
-                cboTempFilter.DisplayMember = "Temprautre";
-                cboTempFilter.ValueMember = "Temprature";
+                cboFilterTemp.DataSource = distinctTempValues;
+                cboFilterTemp.DisplayMember = "Temprature";
+                cboFilterTemp.ValueMember = "Temprature";
             }
             catch
             {
@@ -79,8 +85,9 @@ namespace Polakken
 
 
 
-
+            //
             // Graf:
+            //
 
             crtView.DataSource = u;
             crtView.ChartAreas.Add("tempOversikt");
@@ -110,7 +117,9 @@ namespace Polakken
             crtView.Series["temp"].YValueMembers = "Temprature";
             crtView.DataBind();
 
+            //
             //Instillger
+            //
 
             Regulation reg = new Regulation(SetPoint, tolerance, mesurInterval);
             SetPoint = reg.setpoint;
@@ -120,10 +129,17 @@ namespace Polakken
             mesurInterval = reg.mesInterval;
             txtInt.Text = mesurInterval.ToString();
 
+            //
+            //Filtrering av databasen
+            //
+
+
 
         }
 
+        //
         //Fyller Datatabellen for fortegn for filter
+        //
 
         public DataTable equals(DataTable dtbEquals)
         {
@@ -135,7 +151,10 @@ namespace Polakken
             return dtbEquals;
         }
 
+        //
         //Koble Til Databasen og hente ut verdier
+        //
+
         public DataTable DebugginTestTwo(DataTable v)
         {
 
@@ -215,7 +234,15 @@ namespace Polakken
             db.CloseDb();
             return GetLastR;
         }
+
+        //
+        //Første/Siste Dato
+        //
+
+        //
         //Form Hendelser
+        //
+
         private void btnLukk_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -250,8 +277,9 @@ namespace Polakken
         }
 
 
-
+        //
         //E-Mail
+        //
 
         private void send_Click(object sender, EventArgs e)
         {
@@ -284,8 +312,9 @@ namespace Polakken
         }
 
 
-
-        //Click Hendelser
+        //
+        //Hendelser
+        //
         private void btnSaveAll_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.LagreDown;
@@ -403,9 +432,50 @@ namespace Polakken
 
         private void btnShowSelected_Click(object sender, EventArgs e)
         {
+            DataView view = new DataView(u);
+            
 
 
-        }
+            if (chkFilterDate.Checked)
+            {
+                DateTime startDate;
+                DateTime endDate;
+                startDate = dtpSelectFrom.Value;
+                endDate = dtpSelectTo.Value;
+                MessageBox.Show(startDate + "   " + endDate);
+
+            }
+            if (chkFilterStatus.Checked)
+            {
+                string statusText = "";
+                int statusIndex;
+                statusIndex = cboFilterStatus.SelectedIndex;
+
+                if (statusIndex == 0)
+                {
+                    statusText = "'True'";
+                    view.RowFilter = "Status =" + statusText;
+                }
+                if (statusIndex == 1)
+                {
+                    statusText = "'False'";
+                    view.RowFilter = "Status =" + statusText;
+                }
+               
+                
+            } 
+             if (chkFilterTemp.Checked)
+                {   
+                   string a;
+                   a = cboFilterTemp.SelectedItem.ToString();
+                   MessageBox.Show(a);
+                }
+
+                dgvDataBase.DataSource = view;
+
+            }
+                
+        
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -430,12 +500,12 @@ namespace Polakken
             if (chkFilterTemp.Checked)
             {
                 cboEqualsFilter.Enabled = true;
-                cboTempFilter.Enabled = true;
+                cboFilterTemp.Enabled = true;
             }
             else
             {
                 cboEqualsFilter.Enabled = false;
-                cboTempFilter.Enabled = false;
+                cboFilterTemp.Enabled = false;
             }
         }
 
@@ -445,7 +515,7 @@ namespace Polakken
             {
                 dtpSelectFrom.Enabled = true;
                 dtpSelectTo.Enabled = true;
-               
+
             }
             else
             {
@@ -460,8 +530,11 @@ namespace Polakken
 
 
 
+
+
     }
 }
+
 
 
 

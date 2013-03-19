@@ -67,7 +67,7 @@
             this.chkFilterStatus = new System.Windows.Forms.CheckBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.cboEqualsFilter = new System.Windows.Forms.ComboBox();
-            this.cboTempFilter = new System.Windows.Forms.ComboBox();
+            this.cboFilterTemp = new System.Windows.Forms.ComboBox();
             this.cboFilterStatus = new System.Windows.Forms.ComboBox();
             this.btnShowSelected = new System.Windows.Forms.Button();
             this.dtpSelectTo = new System.Windows.Forms.DateTimePicker();
@@ -568,7 +568,7 @@
             this.tbpTwo.Controls.Add(this.chkFilterStatus);
             this.tbpTwo.Controls.Add(this.btnReset);
             this.tbpTwo.Controls.Add(this.cboEqualsFilter);
-            this.tbpTwo.Controls.Add(this.cboTempFilter);
+            this.tbpTwo.Controls.Add(this.cboFilterTemp);
             this.tbpTwo.Controls.Add(this.cboFilterStatus);
             this.tbpTwo.Controls.Add(this.btnShowSelected);
             this.tbpTwo.Controls.Add(this.dtpSelectTo);
@@ -631,11 +631,11 @@
             this.cboEqualsFilter.Size = new System.Drawing.Size(88, 21);
             this.cboEqualsFilter.TabIndex = 6;
             // 
-            // cboTempFilter
+            // cboFilterTemp
             // 
-            this.cboTempFilter.Enabled = false;
-            this.cboTempFilter.FormattingEnabled = true;
-            this.cboTempFilter.Items.AddRange(new object[] {
+            this.cboFilterTemp.Enabled = false;
+            this.cboFilterTemp.FormattingEnabled = true;
+            this.cboFilterTemp.Items.AddRange(new object[] {
             "5",
             "6",
             "7",
@@ -657,19 +657,15 @@
             "23",
             "24",
             "25"});
-            this.cboTempFilter.Location = new System.Drawing.Point(189, 247);
-            this.cboTempFilter.Name = "cboTempFilter";
-            this.cboTempFilter.Size = new System.Drawing.Size(56, 21);
-            this.cboTempFilter.TabIndex = 5;
+            this.cboFilterTemp.Location = new System.Drawing.Point(189, 247);
+            this.cboFilterTemp.Name = "cboFilterTemp";
+            this.cboFilterTemp.Size = new System.Drawing.Size(56, 21);
+            this.cboFilterTemp.TabIndex = 5;
             // 
             // cboFilterStatus
             // 
             this.cboFilterStatus.Enabled = false;
             this.cboFilterStatus.FormattingEnabled = true;
-            this.cboFilterStatus.Items.AddRange(new object[] {
-            "Ikke filtrer på ovn-status",
-            "Aktivert",
-            "Deaktivert"});
             this.cboFilterStatus.Location = new System.Drawing.Point(80, 189);
             this.cboFilterStatus.Name = "cboFilterStatus";
             this.cboFilterStatus.Size = new System.Drawing.Size(56, 21);
@@ -877,7 +873,7 @@
         private System.Windows.Forms.TextBox txtSetPoint;
         private System.Windows.Forms.Button btnShowSelected;
         private System.Windows.Forms.ComboBox cboFilterStatus;
-        private System.Windows.Forms.ComboBox cboTempFilter;
+        private System.Windows.Forms.ComboBox cboFilterTemp;
         private System.Windows.Forms.ComboBox cboEqualsFilter;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.CheckBox chkFilterStatus;
