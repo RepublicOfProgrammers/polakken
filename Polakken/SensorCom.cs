@@ -23,6 +23,12 @@ namespace Polakken
             cjc = cjcValue;
         }
 
+        public SensorCom(double mesInterval)
+        {
+            this.mesInterval = mesInterval;
+            cjc = 30;
+        }
+
         public double temp()
         {            
             Task temperatureTask = new Task();
