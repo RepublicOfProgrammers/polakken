@@ -15,10 +15,12 @@ namespace Polakken
         //Built-in commando for å hente ut CJC-value til termoelementet
         //Feilsøking for å oppdage hvis det skulle bli feil ved måleren (brutt signal)
         public double mesInterval {get; set;}
+        public double cjc { get; set; }
 
-        public SensorCom(double mesInterval)
+        public SensorCom(double mesInterval, double cjcValue)
         {
             this.mesInterval = mesInterval;
+            cjc = cjcValue;
         }
 
         public double temp()
@@ -26,7 +28,7 @@ namespace Polakken
             Task temperatureTask = new Task();
             AIChannel myAIChannel;
             myAIChannel = temperatureTask.AIChannels.CreateThermocoupleChannel("Dev1/ai0", "Temperature", 0, 100,
-                AIThermocoupleType.J, AITemperatureUnits.DegreesC, 30);
+                AIThermocoupleType.J, AITemperatureUnits.DegreesC, cjc);
 
             AnalogSingleChannelReader reader = new AnalogSingleChannelReader(temperatureTask.Stream);
             double analogData = reader.ReadSingleSample();
