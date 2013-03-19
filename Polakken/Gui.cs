@@ -111,7 +111,7 @@ namespace Polakken
             crtView.Series.Add("temp");
             crtView.Series["temp"].Color = Color.LawnGreen;
             crtView.Series["temp"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            crtView.Series["temp"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+            crtView.Series["temp"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
             crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             crtView.Series["temp"].XValueMember = "ReadTime";
             crtView.Series["temp"].YValueMembers = "Temprature";
@@ -144,10 +144,9 @@ namespace Polakken
         public DataTable equals(DataTable dtbEquals)
         {
             dtbEquals.Columns.Add("textEquals", typeof(string));
-            dtbEquals.Columns.Add("valueEquals", typeof(string));
-            dtbEquals.Rows.Add("Er lik", "==");
-            dtbEquals.Rows.Add("Større enn", ">");
-            dtbEquals.Rows.Add("Mindere enn", "<");
+            dtbEquals.Rows.Add("Er nøyaktig");
+            dtbEquals.Rows.Add("Over");
+            dtbEquals.Rows.Add("Under");
             return dtbEquals;
         }
 
@@ -433,42 +432,70 @@ namespace Polakken
         private void btnShowSelected_Click(object sender, EventArgs e)
         {
             DataView view = new DataView(u);
-            
+            string filterString = null;
+            string dateSpan = null;
 
 
             if (chkFilterDate.Checked)
             {
+
+                string dates = null;
                 DateTime startDate;
                 DateTime endDate;
-                startDate = dtpSelectFrom.Value;
-                endDate = dtpSelectTo.Value;
-                MessageBox.Show(startDate + "   " + endDate);
+                startDate = Convert.ToDateTime(dtpSelectFrom.Text);
+                endDate = Convert.ToDateTime(dtpSelectTo.Text);
+                dates = "ReadTime >" + "'" + startDate + "'" + "AND ReadTime <" + "'" + endDate + "'";
+                view.RowFilter = dates;
+                dateSpan = "AND ReadTime >" + "'" + startDate + "'" + "AND ReadTime <" + "'" + endDate + "'"; 
+
 
             }
             if (chkFilterStatus.Checked)
             {
-                string statusText = "";
+                
                 int statusIndex;
                 statusIndex = cboFilterStatus.SelectedIndex;
-
+                string statusText = null;
                 if (statusIndex == 0)
                 {
                     statusText = "'True'";
-                    view.RowFilter = "Status =" + statusText;
+                    filterString = "AND Status =" + statusText + dateSpan;
+                    view.RowFilter = "Status =" + statusText + dateSpan;
                 }
                 if (statusIndex == 1)
                 {
                     statusText = "'False'";
+                    filterString = "AND Status =" + statusText;
                     view.RowFilter = "Status =" + statusText;
                 }
                
                 
             } 
              if (chkFilterTemp.Checked)
-                {   
-                   string a;
-                   a = cboFilterTemp.SelectedItem.ToString();
-                   MessageBox.Show(a);
+                {
+                    string valueTempString = cboFilterTemp.Text;
+                    //int valueTempINT = Convert.ToInt32(valueTempString);
+                    
+                    int statusIndex;
+                    statusIndex = cboEqualsFilter.SelectedIndex;
+
+                    if (statusIndex == 0)
+                    {
+                        
+                        view.RowFilter = "Temprature =" + valueTempString + filterString +  dateSpan;
+                    
+                    }
+                    if (statusIndex == 1)
+                    {
+                        view.RowFilter = "Temprature >" + valueTempString + filterString + dateSpan;
+                        
+                    }
+                    if (statusIndex == 2)
+                    {
+                        view.RowFilter = "Temprature <" + valueTempString + filterString + dateSpan;
+                        
+                    }  
+                   
                 }
 
                 dgvDataBase.DataSource = view;

@@ -579,7 +579,7 @@
             this.tbpTwo.Padding = new System.Windows.Forms.Padding(3);
             this.tbpTwo.Size = new System.Drawing.Size(646, 334);
             this.tbpTwo.TabIndex = 1;
-            this.tbpTwo.Text = "Databasen";
+            this.tbpTwo.Text = "Tabelloversikt";
             this.tbpTwo.UseVisualStyleBackColor = true;
             // 
             // chkFilterDate
@@ -701,7 +701,7 @@
             this.dtpSelectFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpSelectFrom.Location = new System.Drawing.Point(80, 142);
             this.dtpSelectFrom.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
-            this.dtpSelectFrom.MinDate = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            this.dtpSelectFrom.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectFrom.Name = "dtpSelectFrom";
             this.dtpSelectFrom.Size = new System.Drawing.Size(73, 20);
             this.dtpSelectFrom.TabIndex = 1;
@@ -731,7 +731,7 @@
             this.tbpThree.Name = "tbpThree";
             this.tbpThree.Size = new System.Drawing.Size(646, 334);
             this.tbpThree.TabIndex = 2;
-            this.tbpThree.Text = "E-Mail";
+            this.tbpThree.Text = "Mottaker";
             this.tbpThree.UseVisualStyleBackColor = true;
             // 
             // send
