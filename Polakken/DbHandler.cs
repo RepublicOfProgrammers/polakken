@@ -117,25 +117,25 @@ namespace Polakken
          * PUBLIC METHODS: Her kan det lages flere metoder som polakken skal utnytte.
          */
         
-        public int DelReadings_Temp(DateTime fraDato, DateTime tilDato)
+        public int DelReadings(DateTime fraDato, DateTime tilDato) //Sletter oppføringer i temp-databasen fra-til dato
         {
             string sql = string.Format("delete from {0} where {1} < {2} and {1} > {3}", TB_READINGS, TB_READINGS_DATE, tilDato, fraDato);
             return executeSql_NonQuery(sql);
         }
 
-        public int DelReading_Temp(DateTime datetime)
+        public int DelReading(DateTime datetime) // Sletter en oppføring i databasen for temperaturer
         {
             string sql = string.Format("delete from {0} where {1} = {2}", TB_READINGS, TB_READINGS_DATE, datetime);
             return executeSql_NonQuery(sql);
         }
 
-        public int DelReading_Email(string email)
+        public int DelEmail(string email) // Sletter en oppføring i databasen for e-post
         {
             string sql = string.Format("delete from {0} where {1} = {2}", TB_EMAIL, TB_EMAIL_ADRESS, email);
             return executeSql_NonQuery(sql);
         }
 
-        public SqlCeDataReader GetLastReading()
+        public SqlCeDataReader GetLastReading() //henter siste måling fra temp-databasen
         {
             string sql = string.Format("select {0}, {1}, {2} from {3} " +
             "where {0} = (select max({0}) form {3} as b)",
@@ -146,7 +146,7 @@ namespace Polakken
             return executeSql_Reader(sql);
         }
 
-        public SqlCeDataReader GetReadingToDate(DateTime dateTime)
+        public SqlCeDataReader GetReadingToDate(DateTime dateTime) //henter ut en selektert oppføring i tempdatabasen
         {
             string sql = string.Format("select * from {0} where {1} = '{2}'", TB_READINGS, TB_READINGS_DATE, dateTime);
             return executeSql_Reader(sql);
@@ -164,12 +164,12 @@ namespace Polakken
             return executeSql_Reader(sql);
         }
 
-        public int SetReading(DateTime time, int C, Boolean status)
+        public int SetReading(DateTime time, int C, Boolean status) //Sender parameterne videre
         {
             return executeSql_NonQuery(time, C, status);
         }
 
-        public int AddEmail(string email)
+        public int AddEmail(string email) //legger til epost i epostdatabasen
         {
             return executeSql_NonQuery_Email(email);
         }
