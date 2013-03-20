@@ -12,7 +12,7 @@ namespace Polakken
 {
     public partial class GUI : Form
     {
-
+        
         int Mover;
         int MoveX;
         int MoveY;
@@ -34,7 +34,7 @@ namespace Polakken
             //
             // Opprett DataTabell og fyll DataGridView
             //
-
+            CreateValues();
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
             DataTable LastReading = new DataTable();
@@ -92,8 +92,8 @@ namespace Polakken
             crtView.DataSource = u;
             crtView.ChartAreas.Add("tempOversikt");
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
-            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 10;
-            crtView.ChartAreas["tempOversikt"].AxisX.Interval = 1;
+            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 336;
+            crtView.ChartAreas["tempOversikt"].AxisX.Interval = 48;
             crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
             crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 50;
             crtView.ChartAreas["tempOversikt"].AxisY.Interval = 10;
@@ -105,7 +105,7 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisX.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.ForeColor = Color.GreenYellow;
-            crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Angle = 75;
+            crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Angle = 0;
 
 
             crtView.Series.Add("temp");
@@ -233,10 +233,32 @@ namespace Polakken
             db.CloseDb();
             return GetLastR;
         }
+        private void CreateValues()
+        {
+            Random rnd = new Random();
+            DbHandler db = new DbHandler();
+            DateTime time = DateTime.Today;
+            
+            Boolean t = true;
+            Boolean f = false;
+            for (int i = 0; i < 2; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    int C = rnd.Next(-5, 50);
+                    DateTime newday = time.AddDays(i);
+                    db.SetReading(newday, C, t);
 
-        //
-        //Første/Siste Dato
-        //
+                }
+                else
+                {
+                    int C = rnd.Next(-5, 50);
+                    DateTime newday = time.AddDays(i);
+                    db.SetReading(newday, C, f);
+                }
+            }
+        }
+
 
         //
         //Form Hendelser
@@ -280,35 +302,6 @@ namespace Polakken
         //E-Mail
         //
 
-        private void send_Click(object sender, EventArgs e)
-        {
-            E_mail_handler email = new E_mail_handler();
-            try
-            {
-                if (txtEmail1.Text != "")
-                {
-                    email.client.Send("republicofprogrammers@gmail.com", txtEmail1.Text, "Hei", "Hei");
-                }
-                if (txtEmail2.Text != "")
-                {
-                    email.client.Send("republicofprogrammers@gmail.com", txtEmail2.Text, "Hei", "Hei");
-                }
-                if (txtEmail3.Text != "")
-                {
-                    email.client.Send("republicofprogrammers@gmail.com", txtEmail3.Text, "Hei", "Hei");
-                }
-                if (txtEmail4.Text != "")
-                {
-                    email.client.Send("republicofprogrammers@gmail.com", txtEmail4.Text, "Hei", "Hei");
-                }
-                MessageBox.Show("Mailen har blitt sendt");
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
 
         //
@@ -551,6 +544,9 @@ namespace Polakken
             }
         }
 
+       
+
+       
 
 
 

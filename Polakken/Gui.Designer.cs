@@ -74,11 +74,6 @@
             this.dtpSelectFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.tbpThree = new System.Windows.Forms.TabPage();
-            this.send = new System.Windows.Forms.Button();
-            this.txtEmail4 = new System.Windows.Forms.TextBox();
-            this.txtEmail2 = new System.Windows.Forms.TextBox();
-            this.txtEmail3 = new System.Windows.Forms.TextBox();
-            this.txtEmail1 = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
@@ -86,7 +81,6 @@
             this.tbpOne.SuspendLayout();
             this.tbpTwo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).BeginInit();
-            this.tbpThree.SuspendLayout();
             this.SuspendLayout();
             // 
             // crtView
@@ -722,56 +716,12 @@
             // tbpThree
             // 
             this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.tableView1;
-            this.tbpThree.Controls.Add(this.send);
-            this.tbpThree.Controls.Add(this.txtEmail4);
-            this.tbpThree.Controls.Add(this.txtEmail2);
-            this.tbpThree.Controls.Add(this.txtEmail3);
-            this.tbpThree.Controls.Add(this.txtEmail1);
             this.tbpThree.Location = new System.Drawing.Point(4, 22);
             this.tbpThree.Name = "tbpThree";
             this.tbpThree.Size = new System.Drawing.Size(646, 334);
             this.tbpThree.TabIndex = 2;
             this.tbpThree.Text = "Mottaker";
             this.tbpThree.UseVisualStyleBackColor = true;
-            // 
-            // send
-            // 
-            this.send.Location = new System.Drawing.Point(164, 53);
-            this.send.Name = "send";
-            this.send.Size = new System.Drawing.Size(75, 23);
-            this.send.TabIndex = 4;
-            this.send.Text = "Send";
-            this.send.UseVisualStyleBackColor = true;
-            this.send.Click += new System.EventHandler(this.send_Click);
-            // 
-            // txtEmail4
-            // 
-            this.txtEmail4.Location = new System.Drawing.Point(16, 90);
-            this.txtEmail4.Name = "txtEmail4";
-            this.txtEmail4.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail4.TabIndex = 3;
-            // 
-            // txtEmail2
-            // 
-            this.txtEmail2.AcceptsReturn = true;
-            this.txtEmail2.Location = new System.Drawing.Point(16, 38);
-            this.txtEmail2.Name = "txtEmail2";
-            this.txtEmail2.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail2.TabIndex = 2;
-            // 
-            // txtEmail3
-            // 
-            this.txtEmail3.Location = new System.Drawing.Point(16, 64);
-            this.txtEmail3.Name = "txtEmail3";
-            this.txtEmail3.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail3.TabIndex = 1;
-            // 
-            // txtEmail1
-            // 
-            this.txtEmail1.Location = new System.Drawing.Point(16, 12);
-            this.txtEmail1.Name = "txtEmail1";
-            this.txtEmail1.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail1.TabIndex = 0;
             // 
             // btnMove
             // 
@@ -819,8 +769,6 @@
             this.tbpTwo.ResumeLayout(false);
             this.tbpTwo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).EndInit();
-            this.tbpThree.ResumeLayout(false);
-            this.tbpThree.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -842,10 +790,6 @@
         private System.Windows.Forms.TabPage tbpOne;
         private System.Windows.Forms.TabPage tbpTwo;
         private System.Windows.Forms.TabPage tbpThree;
-        private System.Windows.Forms.TextBox txtEmail4;
-        private System.Windows.Forms.TextBox txtEmail2;
-        private System.Windows.Forms.TextBox txtEmail3;
-        private System.Windows.Forms.TextBox txtEmail1;
         private System.Windows.Forms.Button btnMove;
         private System.Windows.Forms.DataGridView dgvDataBase;
         private System.Windows.Forms.TextBox txtCurrentTime;
@@ -864,9 +808,6 @@
         private System.Windows.Forms.Button btnToleranceUp;
 
         private System.Windows.Forms.Button btnSaveAll;
-
-
-        private System.Windows.Forms.Button send;
         private System.Windows.Forms.TextBox txtAlarm;
         private System.Windows.Forms.TextBox txtInt;
         private System.Windows.Forms.TextBox txtTol;
