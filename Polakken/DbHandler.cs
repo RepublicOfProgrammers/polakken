@@ -7,7 +7,6 @@ using System.Data.SqlServerCe;
 using System.IO;
 using System.Diagnostics;
 
-
 namespace Polakken
 {
     class DbHandler
@@ -16,14 +15,13 @@ namespace Polakken
         private enum dbStatus : int { NEW = 0, EXISTING, SUCCESS, ERROR }
 
         //Navn til databasen
-        private static readonly string fileName = "Database.sdf";
+        private static readonly string fileName = "Database_v-1.sdf";
         //passord for å koble til databasen, og koblingsvariabel. 
         private static readonly string password = "fg8qaw890d89DS8";
         private string ConnectionString = string.Format("DataSource=\"{0}\"; Password='{1}'", fileName, password);
         private SqlCeConnection _connection;
 
         //database tables & collums
-        public static readonly int DB_VERSION = 1;
         public static readonly string TB_READINGS = "Readings";
         public static readonly string TB_READINGS_DATE = "Date";
         public static readonly string TB_READINGS_DEGREE = "Degree";
@@ -319,7 +317,12 @@ namespace Polakken
             if (File.Exists(fileName))
             {
                 Debug.WriteLine("-- INITDB: Fant eksisterende database");
-                return (int)dbStatus.EXISTING;
+ 
+                ///TODO: Mens vi tester/utvikler skal følgende 2 linjer være stående:
+                File.Delete(fileName);
+                return initDb();
+
+                //return (int)dbStatus.EXISTING;
             }
             else
             {
