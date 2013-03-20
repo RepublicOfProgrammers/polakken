@@ -17,11 +17,15 @@ namespace Polakken
 
         public void send(string til)
         {
-                
-            client.Send("republicofprogrammers@gmail.com", til, "Hei", "Hei");
-            
+            try
+            {
+                client.Send("republicofprogrammers@gmail.com", til, "Hei", "Hei");
+            }
 
+            catch(Exception)
+            {
 
+            }
         }
 
     }

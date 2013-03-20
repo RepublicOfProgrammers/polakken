@@ -18,14 +18,26 @@ namespace Polakken
 
        public static void mottaMail()
        {
-           ImapClient ic = new ImapClient("imap.gmail.com", "republicofprogrammers@gmail.com", "polakken",
-                ImapClient.AuthMethods.Login, 993, true);
-           ic.SelectMailbox("INBOX");
-           MailMessage[] mail = ic.GetMessages(0, 10, false);
-           Console.WriteLine("Fra: {0}\n", mail[0].From);
-           Console.WriteLine("Emne: {0}\n", mail[0].Subject);
-           Console.WriteLine("Innhold: {0}", StripHTML(mail[0].BodyHtml));
-           ic.Dispose();
+           try
+           {
+               string fra;
+               string emne;
+               string innhold;
+               ImapClient ic = new ImapClient("imap.gmail.com", "republicofprogrammers@gmail.com", "polakken",
+                    ImapClient.AuthMethods.Login, 993, true);
+               ic.SelectMailbox("INBOX");
+               MailMessage[] mail = ic.GetMessages(0, 10, false);
+               fra = Convert.ToString(mail[0].From);
+               emne = Convert.ToString(mail[0].Subject);
+               innhold = Convert.ToString(StripHTML(mail[0].BodyHtml));
+               ic.Dispose();
+           }
+
+           catch (Exception)
+           {
+
+           }
+
        }
     }
 }
