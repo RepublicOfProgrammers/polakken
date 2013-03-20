@@ -34,7 +34,7 @@ namespace Polakken
             //
             // Opprett DataTabell og fyll DataGridView
             //
-
+            CreateValues();
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
             DataTable LastReading = new DataTable();
@@ -92,8 +92,8 @@ namespace Polakken
             crtView.DataSource = u;
             crtView.ChartAreas.Add("tempOversikt");
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
-            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 10;
-            crtView.ChartAreas["tempOversikt"].AxisX.Interval = 1;
+            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 336;
+            crtView.ChartAreas["tempOversikt"].AxisX.Interval = 48;
             crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
             crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 50;
             crtView.ChartAreas["tempOversikt"].AxisY.Interval = 10;
@@ -105,7 +105,7 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisX.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.ForeColor = Color.GreenYellow;
-            crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Angle = 75;
+            crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Angle = 0;
 
 
             crtView.Series.Add("temp");
@@ -238,19 +238,23 @@ namespace Polakken
             Random rnd = new Random();
             DbHandler db = new DbHandler();
             DateTime time = DateTime.Today;
-            int C = rnd.Next(0, 35);
+            
             Boolean t = true;
             Boolean f = false;
-            for (int i = 0; i < 5000; i++)
+            for (int i = 0; i < 2; i++)
             {
                 if (i % 2 == 0)
                 {
+                    int C = rnd.Next(-5, 50);
                     DateTime newday = time.AddDays(i);
-                   
+                    db.SetReading(newday, C, t);
+
                 }
                 else
                 {
+                    int C = rnd.Next(-5, 50);
                     DateTime newday = time.AddDays(i);
+                    db.SetReading(newday, C, f);
                 }
             }
         }
