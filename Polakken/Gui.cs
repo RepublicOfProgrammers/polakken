@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
+using System.Net;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace Polakken
 {
@@ -20,7 +24,7 @@ namespace Polakken
         double tolerance = 0.0;
         double mesurInterval = 0.0;
         DataTable u = new DataTable();
-        
+        DataTable GetEmails = new DataTable();
         
 
         public GUI()
@@ -37,8 +41,10 @@ namespace Polakken
             CreateValues();
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
-            DataTable LastReading = new DataTable();
-            GetLast(LastReading);
+            ////DataTable LastReading = new DataTable();
+            ////GetLast(LastReading);
+            GetEmail(GetEmails);
+            dgvEmail.DataSource = GetEmails;
             DataTable Equals = new DataTable();
             equals(Equals);
             
@@ -55,10 +61,10 @@ namespace Polakken
                 cboFilterTemp.ValueMember = "Status";
 
             }
-            catch
+            catch (Exception)
             {
             }
-
+           
             try
             {
                 DataView viewTemp = new DataView(u);
@@ -67,7 +73,7 @@ namespace Polakken
                 cboFilterTemp.DisplayMember = "Temprature";
                 cboFilterTemp.ValueMember = "Temprature";
             }
-            catch
+            catch (Exception)
             {
             }
             try
@@ -77,6 +83,16 @@ namespace Polakken
                 cboEqualsFilter.DataSource = distinctTempValues;
                 cboEqualsFilter.DisplayMember = "textEquals";
                 cboEqualsFilter.ValueMember = "valueEquals";
+            }
+            catch(Exception)
+            {
+            }
+            try
+            {
+                DataView viewDeleteEmail = new DataView(GetEmails);
+                cboDelEmail.DataSource = viewDeleteEmail;
+                cboDelEmail.DisplayMember = "Adresser";
+                cboDelEmail.ValueMember = "Adresser";
             }
             catch
             {
@@ -233,12 +249,39 @@ namespace Polakken
             db.CloseDb();
             return GetLastR;
         }
+        public DataTable GetEmail(DataTable GetEmails)
+        {
+            Debug.WriteLine("er i get email");
+            DbHandler db = new DbHandler();
+            GetEmails.Columns.Add("Adresser", typeof(string));
+            db.OpenDb();
+            SqlCeDataReader emReader = db.GetEmails();
+
+            while (emReader.Read())
+            {
+                var row = GetEmails.NewRow();
+                for (int i = 0; i < 1; i++)
+                {
+
+                    string Reading = emReader[i].ToString();
+                    row["Adresser"] = Reading;
+                    
+                }
+                GetEmails.Rows.Add(row);
+
+            }
+
+            emReader.Close();
+            db.CloseDb();
+            return GetEmails;
+        }
         private void CreateValues()
         {
             Random rnd = new Random();
             DbHandler db = new DbHandler();
             DateTime time = DateTime.Today;
-            
+             
+
             Boolean t = true;
             Boolean f = false;
             for (int i = 0; i < 2; i++)
@@ -256,7 +299,10 @@ namespace Polakken
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, f);
                 }
+                string emaildummy = "johndoe@apple.com";
+                db.AddEmail(emaildummy);
             }
+
         }
 
 
@@ -544,6 +590,21 @@ namespace Polakken
             }
         }
 
+        private void btnAddEmail_Click(object sender, EventArgs e)
+        {
+            string inputText = txtAddEmail.Text;
+            if (!Regex.IsMatch(inputText,
+                   @"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))" +
+                   @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$"))
+            {
+                MessageBox.Show("Ugyldig Email", "FEIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            DbHandler db = new DbHandler();
+            db.AddEmail(inputText);
+
+        }
+
+        
        
 
        

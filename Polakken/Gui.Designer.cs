@@ -74,13 +74,19 @@
             this.dtpSelectFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.tbpThree = new System.Windows.Forms.TabPage();
+            this.dgvEmail = new System.Windows.Forms.DataGridView();
+            this.btnAddEmail = new System.Windows.Forms.Button();
             this.btnMove = new System.Windows.Forms.Button();
+            this.txtAddEmail = new System.Windows.Forms.TextBox();
+            this.cboDelEmail = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
             this.tbpOne.SuspendLayout();
             this.tbpTwo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).BeginInit();
+            this.tbpThree.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // crtView
@@ -716,12 +722,34 @@
             // tbpThree
             // 
             this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.tableView1;
+            this.tbpThree.Controls.Add(this.cboDelEmail);
+            this.tbpThree.Controls.Add(this.dgvEmail);
+            this.tbpThree.Controls.Add(this.btnAddEmail);
+            this.tbpThree.Controls.Add(this.txtAddEmail);
             this.tbpThree.Location = new System.Drawing.Point(4, 22);
             this.tbpThree.Name = "tbpThree";
             this.tbpThree.Size = new System.Drawing.Size(646, 334);
             this.tbpThree.TabIndex = 2;
             this.tbpThree.Text = "Mottaker";
             this.tbpThree.UseVisualStyleBackColor = true;
+            // 
+            // dgvEmail
+            // 
+            this.dgvEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmail.Location = new System.Drawing.Point(455, 12);
+            this.dgvEmail.Name = "dgvEmail";
+            this.dgvEmail.Size = new System.Drawing.Size(188, 322);
+            this.dgvEmail.TabIndex = 2;
+            // 
+            // btnAddEmail
+            // 
+            this.btnAddEmail.Location = new System.Drawing.Point(34, 58);
+            this.btnAddEmail.Name = "btnAddEmail";
+            this.btnAddEmail.Size = new System.Drawing.Size(75, 23);
+            this.btnAddEmail.TabIndex = 1;
+            this.btnAddEmail.Text = "button1";
+            this.btnAddEmail.UseVisualStyleBackColor = true;
+            this.btnAddEmail.Click += new System.EventHandler(this.btnAddEmail_Click);
             // 
             // btnMove
             // 
@@ -739,6 +767,21 @@
             this.btnMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseDown);
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
+            // 
+            // txtAddEmail
+            // 
+            this.txtAddEmail.Location = new System.Drawing.Point(34, 31);
+            this.txtAddEmail.Name = "txtAddEmail";
+            this.txtAddEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtAddEmail.TabIndex = 0;
+            // 
+            // cboDelEmail
+            // 
+            this.cboDelEmail.FormattingEnabled = true;
+            this.cboDelEmail.Location = new System.Drawing.Point(34, 165);
+            this.cboDelEmail.Name = "cboDelEmail";
+            this.cboDelEmail.Size = new System.Drawing.Size(121, 21);
+            this.cboDelEmail.TabIndex = 3;
             // 
             // GUI
             // 
@@ -769,6 +812,9 @@
             this.tbpTwo.ResumeLayout(false);
             this.tbpTwo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).EndInit();
+            this.tbpThree.ResumeLayout(false);
+            this.tbpThree.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmail)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -822,6 +868,10 @@
         private System.Windows.Forms.CheckBox chkFilterDate;
         private System.Windows.Forms.DateTimePicker dtpSelectTo;
         private System.Windows.Forms.DateTimePicker dtpSelectFrom;
+        private System.Windows.Forms.DataGridView dgvEmail;
+        private System.Windows.Forms.Button btnAddEmail;
+        private System.Windows.Forms.TextBox txtAddEmail;
+        private System.Windows.Forms.ComboBox cboDelEmail;
 
     
 
