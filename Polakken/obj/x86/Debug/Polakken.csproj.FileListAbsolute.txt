@@ -47,3 +47,14 @@ C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\obj\x86\
 C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\bin\Debug\Polakken.exe
 C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\bin\Debug\Polakken.pdb
+C:\IA2112\Polakken\Polakken\polakken\Polakken\bin\Debug\Polakken.exe.config
+C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.exe
+C:\IA2112\Polakken\Polakken\polakken\Polakken\bin\Debug\Polakken.exe
+C:\IA2112\Polakken\Polakken\polakken\Polakken\bin\Debug\Polakken.pdb
+C:\IA2112\Polakken\Polakken\polakken\Polakken\bin\Debug\NationalInstruments.DAQmx.dll
+C:\IA2112\Polakken\Polakken\polakken\Polakken\bin\Debug\NationalInstruments.DAQmx.xml
+C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.GUI.resources
+C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
+C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.csproj.GenerateResource.Cache
+C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.pdb
+C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.csprojResolveAssemblyReference.cache

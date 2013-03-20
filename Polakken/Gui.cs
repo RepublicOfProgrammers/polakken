@@ -61,7 +61,7 @@ namespace Polakken
                 cboFilterTemp.ValueMember = "Status";
 
             }
-            catch
+            catch (Exception)
             {
             }
            
@@ -73,7 +73,7 @@ namespace Polakken
                 cboFilterTemp.DisplayMember = "Temprature";
                 cboFilterTemp.ValueMember = "Temprature";
             }
-            catch
+            catch (Exception)
             {
             }
             try
@@ -84,7 +84,7 @@ namespace Polakken
                 cboEqualsFilter.DisplayMember = "textEquals";
                 cboEqualsFilter.ValueMember = "valueEquals";
             }
-            catch
+            catch(Exception)
             {
             }
             try

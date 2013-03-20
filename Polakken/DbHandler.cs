@@ -40,20 +40,20 @@ namespace Polakken
             //initialiserer databasen, henter ut status/resultat-kode
             int init_db_status = initDb();
 
-            if (init_db_status == (int)dbStatus.NEW)
-            {
-                Debug.WriteLine("-- CONSTRUCTOR: Ny database, kjører CreateDummyValues()");
-                //gjør ingenting med dette foreløpig. 
+            //if (init_db_status == (int)dbStatus.NEW)
+            //{
+            //    Debug.WriteLine("-- CONSTRUCTOR: Ny database, kjører CreateDummyValues()");
+            //    gjør ingenting med dette foreløpig. 
 
-                //lager eksempel verdier for testing, fjern dette før release
-                //CreateDummyValues();
-            }
-            else if (init_db_status == (int)dbStatus.EXISTING)
-            {
+            //    lager eksempel verdier for testing, fjern dette før release
+            //    CreateDummyValues();
+            //}
+            //else if (init_db_status == (int)dbStatus.EXISTING)
+            //{
 
-            }
-            Debug.WriteLine("-- CONSTRUCTOR: Starter debugging test");
-            DebugginTestTwo();
+            //}
+            //Debug.WriteLine("-- CONSTRUCTOR: Starter debugging test");
+            //DebugginTestTwo();
         }
 
         //private void CreateDummyValues()
@@ -164,7 +164,12 @@ namespace Polakken
             return executeSql_Reader(sql);
         }
 
-        public int SetReading(DateTime time, int C, Boolean status) //Sender parameterne videre
+
+        //public int SetReading(DateTime time, int C, Boolean status) //Sender parameterne videre
+
+        
+        public int SetReading(DateTime time, int C, Boolean status)
+
         {
             return executeSql_NonQuery(time, C, status);
         }
@@ -319,10 +324,10 @@ namespace Polakken
                 Debug.WriteLine("-- INITDB: Fant eksisterende database");
  
                 ///TODO: Mens vi tester/utvikler skal følgende 2 linjer være stående:
-                File.Delete(fileName);
-                return initDb();
+                //File.Delete(fileName);
+                //return initDb();
 
-                //return (int)dbStatus.EXISTING;
+                return (int)dbStatus.EXISTING;
             }
             else
             {
