@@ -12,7 +12,7 @@ namespace Polakken
 {
     public partial class GUI : Form
     {
-
+        
         int Mover;
         int MoveX;
         int MoveY;
@@ -233,10 +233,28 @@ namespace Polakken
             db.CloseDb();
             return GetLastR;
         }
+        private void CreateValues()
+        {
+            Random rnd = new Random();
+            DbHandler db = new DbHandler();
+            DateTime time = DateTime.Today;
+            int C = rnd.Next(0, 35);
+            Boolean t = true;
+            Boolean f = false;
+            for (int i = 0; i < 5000; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    DateTime newday = time.AddDays(i);
+                   
+                }
+                else
+                {
+                    DateTime newday = time.AddDays(i);
+                }
+            }
+        }
 
-        //
-        //Første/Siste Dato
-        //
 
         //
         //Form Hendelser
