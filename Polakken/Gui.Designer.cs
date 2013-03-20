@@ -733,46 +733,46 @@
             this.tbpThree.TabIndex = 2;
             this.tbpThree.Text = "Mottaker";
             this.tbpThree.UseVisualStyleBackColor = true;
-            // 
-            // send
-            // 
-            this.send.Location = new System.Drawing.Point(164, 53);
-            this.send.Name = "send";
-            this.send.Size = new System.Drawing.Size(75, 23);
-            this.send.TabIndex = 4;
-            this.send.Text = "Send";
-            this.send.UseVisualStyleBackColor = true;
-            this.send.Click += new System.EventHandler(this.send_Click);
-            // 
-            // txtEmail4
-            // 
-            this.txtEmail4.Location = new System.Drawing.Point(16, 90);
-            this.txtEmail4.Name = "txtEmail4";
-            this.txtEmail4.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail4.TabIndex = 3;
-            // 
-            // txtEmail2
-            // 
-            this.txtEmail2.AcceptsReturn = true;
-            this.txtEmail2.Location = new System.Drawing.Point(16, 38);
-            this.txtEmail2.Name = "txtEmail2";
-            this.txtEmail2.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail2.TabIndex = 2;
-            // 
-            // txtEmail3
-            // 
-            this.txtEmail3.Location = new System.Drawing.Point(16, 64);
-            this.txtEmail3.Name = "txtEmail3";
-            this.txtEmail3.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail3.TabIndex = 1;
-            // 
-            // txtEmail1
-            // 
-            this.txtEmail1.Location = new System.Drawing.Point(16, 12);
-            this.txtEmail1.Name = "txtEmail1";
-            this.txtEmail1.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail1.TabIndex = 0;
-            // 
+            //// 
+            //// send
+            //// 
+            //this.send.Location = new System.Drawing.Point(164, 53);
+            //this.send.Name = "send";
+            //this.send.Size = new System.Drawing.Size(75, 23);
+            //this.send.TabIndex = 4;
+            //this.send.Text = "Send";
+            //this.send.UseVisualStyleBackColor = true;
+            //this.send.Click += new System.EventHandler(this.send_Click);
+            //// 
+            //// txtEmail4
+            //// 
+            //this.txtEmail4.Location = new System.Drawing.Point(16, 90);
+            //this.txtEmail4.Name = "txtEmail4";
+            //this.txtEmail4.Size = new System.Drawing.Size(100, 20);
+            //this.txtEmail4.TabIndex = 3;
+            //// 
+            //// txtEmail2
+            //// 
+            //this.txtEmail2.AcceptsReturn = true;
+            //this.txtEmail2.Location = new System.Drawing.Point(16, 38);
+            //this.txtEmail2.Name = "txtEmail2";
+            //this.txtEmail2.Size = new System.Drawing.Size(100, 20);
+            //this.txtEmail2.TabIndex = 2;
+            //// 
+            //// txtEmail3
+            //// 
+            //this.txtEmail3.Location = new System.Drawing.Point(16, 64);
+            //this.txtEmail3.Name = "txtEmail3";
+            //this.txtEmail3.Size = new System.Drawing.Size(100, 20);
+            //this.txtEmail3.TabIndex = 1;
+            //// 
+            //// txtEmail1
+            //// 
+            //this.txtEmail1.Location = new System.Drawing.Point(16, 12);
+            //this.txtEmail1.Name = "txtEmail1";
+            //this.txtEmail1.Size = new System.Drawing.Size(100, 20);
+            //this.txtEmail1.TabIndex = 0;
+            //// 
             // btnMove
             // 
             this.btnMove.BackColor = System.Drawing.Color.Transparent;
