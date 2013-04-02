@@ -47,7 +47,7 @@ namespace Polakken
             dgvEmail.DataSource = GetEmails;
             DataTable Equals = new DataTable();
             equals(Equals);
-            
+            txtCount.Text = this.dgvDataBase.Rows.Count.ToString() + " Rader";
 
 
 
@@ -72,6 +72,7 @@ namespace Polakken
                 cboFilterTemp.DataSource = distinctTempValues;
                 cboFilterTemp.DisplayMember = "Temprature";
                 cboFilterTemp.ValueMember = "Temprature";
+                
             }
             catch (Exception)
             {
@@ -133,6 +134,22 @@ namespace Polakken
             crtView.Series["temp"].YValueMembers = "Temprature";
             crtView.DataBind();
 
+
+            //
+            //TabellVisning
+            //
+            dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDataBase.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvDataBase.DefaultCellStyle.BackColor = Color.LightGray;
+            dgvDataBase.DefaultCellStyle.SelectionBackColor = Color.LawnGreen;
+            dgvDataBase.DefaultCellStyle.SelectionForeColor = Color.Black;
+            
+            //
+            //Email TabellVisning
+            //
+            dgvEmail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+
             //
             //Instillger
             //
@@ -174,39 +191,73 @@ namespace Polakken
         {
 
             DbHandler db = new DbHandler();
-            v.Columns.Add("ReadTime", typeof(string));
-            v.Columns.Add("Temprature", typeof(string));
-            v.Columns.Add("Status", typeof(string));
-
-
-            db.OpenDb();
-            SqlCeDataReader mReader = db.GetReadings();
-
-            while (mReader.Read())
+            if (v.Columns.Contains("ReadTime") & v.Columns.Contains("Temprature") & v.Columns.Contains("Status"))
             {
-                var row = v.NewRow();
-                for (int i = 0; i < 3; i++)
+                db.OpenDb();
+                SqlCeDataReader mReader = db.GetReadings();
+
+                while (mReader.Read())
                 {
+                    var row = v.NewRow();
+                    for (int i = 0; i < 3; i++)
+                    {
 
-                    string Reading = mReader[i].ToString();
-                    if (i == 0)
-                    {
-                        row["ReadTime"] = Reading;
+                        string Reading = mReader[i].ToString();
+                        if (i == 0)
+                        {
+                            row["ReadTime"] = Reading;
+                        }
+                        if (i == 1)
+                        {
+                            row["Temprature"] = Reading;
+                        }
+                        if (i == 2)
+                        {
+                            row["Status"] = Reading;
+                        }
                     }
-                    if (i == 1)
-                    {
-                        row["Temprature"] = Reading;
-                    }
-                    if (i == 2)
-                    {
-                        row["Status"] = Reading;
-                    }
+                    v.Rows.Add(row);
+
                 }
-                v.Rows.Add(row);
 
+                mReader.Close();
+            }
+            else
+            {
+                v.Columns.Add("ReadTime", typeof(string));
+                v.Columns.Add("Temprature", typeof(string));
+                v.Columns.Add("Status", typeof(string));
+
+                db.OpenDb();
+                SqlCeDataReader mReader = db.GetReadings();
+
+                while (mReader.Read())
+                {
+                    var row = v.NewRow();
+                    for (int i = 0; i < 3; i++)
+                    {
+
+                        string Reading = mReader[i].ToString();
+                        if (i == 0)
+                        {
+                            row["ReadTime"] = Reading;
+                        }
+                        if (i == 1)
+                        {
+                            row["Temprature"] = Reading;
+                        }
+                        if (i == 2)
+                        {
+                            row["Status"] = Reading;
+                        }
+                    }
+                    v.Rows.Add(row);
+
+                }
+
+                mReader.Close();
             }
 
-            mReader.Close();
             db.CloseDb();
             return v;
         }
@@ -253,38 +304,64 @@ namespace Polakken
         {
             Debug.WriteLine("er i get email");
             DbHandler db = new DbHandler();
-            GetEmails.Columns.Add("Adresser", typeof(string));
-            db.OpenDb();
-            SqlCeDataReader emReader = db.GetEmails();
-
-            while (emReader.Read())
+            if (GetEmails.Columns.Contains("Adresser"))
             {
-                var row = GetEmails.NewRow();
-                for (int i = 0; i < 1; i++)
+                db.OpenDb();
+                SqlCeDataReader emReader = db.GetEmails();
+
+                while (emReader.Read())
                 {
+                    var row = GetEmails.NewRow();
+                    for (int i = 0; i < 1; i++)
+                    {
 
-                    string Reading = emReader[i].ToString();
-                    row["Adresser"] = Reading;
-                    
+                        string Reading = emReader[i].ToString();
+                        row["Adresser"] = Reading;
+
+                    }
+                    GetEmails.Rows.Add(row);
+
                 }
-                GetEmails.Rows.Add(row);
 
+                emReader.Close();
             }
+            else
+            {
+                GetEmails.Columns.Add("Adresser", typeof(string));
+                db.OpenDb();
+                SqlCeDataReader emReader = db.GetEmails();
 
-            emReader.Close();
+                while (emReader.Read())
+                {
+                    var row = GetEmails.NewRow();
+                    for (int i = 0; i < 1; i++)
+                    {
+
+                        string Reading = emReader[i].ToString();
+                        row["Adresser"] = Reading;
+
+                    }
+                    GetEmails.Rows.Add(row);
+
+                }
+
+                emReader.Close();
+            }
+            
             db.CloseDb();
             return GetEmails;
         }
         private void CreateValues()
         {
             Random rnd = new Random();
+            Random rnd2 = new Random();
             DbHandler db = new DbHandler();
             DateTime time = DateTime.Today;
              
 
             Boolean t = true;
             Boolean f = false;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 50; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -299,7 +376,9 @@ namespace Polakken
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, f);
                 }
-                string emaildummy = "johndoe@apple.com";
+                int R = rnd2.Next(500, 9999999);
+                string emaildummy = R.ToString() + "@apple.com";
+                
                 db.AddEmail(emaildummy);
             }
 
@@ -538,14 +617,19 @@ namespace Polakken
                 }
 
                 dgvDataBase.DataSource = view;
-
+                txtCount.Text = view.Count.ToString() + "Rader";
             }
                 
         
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            CreateValues();
+            dgvDataBase.DataSource = null;
+            u.Clear();
+            DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
+            txtCount.Text = this.dgvDataBase.Rows.Count.ToString() + " Rader";
         }
 
         private void chkFilterStatus_CheckedChanged(object sender, EventArgs e)
@@ -598,10 +682,19 @@ namespace Polakken
                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$"))
             {
                 MessageBox.Show("Ugyldig Email", "FEIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            DbHandler db = new DbHandler();
-            db.AddEmail(inputText);
 
+            }
+            else
+            {
+                DbHandler db = new DbHandler();
+                db.AddEmail(inputText);
+                dgvEmail.DataSource = null;
+                GetEmails.Clear();
+                GetEmail(GetEmails);
+                dgvEmail.DataSource = GetEmails;
+            }
+           
+            
         }
 
         

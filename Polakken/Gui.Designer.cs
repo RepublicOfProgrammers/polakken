@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.grpInfo = new System.Windows.Forms.GroupBox();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
@@ -62,6 +64,7 @@
             this.btnSetPointDown = new System.Windows.Forms.Button();
             this.btnSetPointUp = new System.Windows.Forms.Button();
             this.tbpTwo = new System.Windows.Forms.TabPage();
+            this.txtCount = new System.Windows.Forms.TextBox();
             this.chkFilterDate = new System.Windows.Forms.CheckBox();
             this.chkFilterTemp = new System.Windows.Forms.CheckBox();
             this.chkFilterStatus = new System.Windows.Forms.CheckBox();
@@ -74,11 +77,11 @@
             this.dtpSelectFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.tbpThree = new System.Windows.Forms.TabPage();
+            this.cboDelEmail = new System.Windows.Forms.ComboBox();
             this.dgvEmail = new System.Windows.Forms.DataGridView();
             this.btnAddEmail = new System.Windows.Forms.Button();
-            this.btnMove = new System.Windows.Forms.Button();
             this.txtAddEmail = new System.Windows.Forms.TextBox();
-            this.cboDelEmail = new System.Windows.Forms.ComboBox();
+            this.btnMove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -563,6 +566,7 @@
             // tbpTwo
             // 
             this.tbpTwo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbpTwo.BackgroundImage")));
+            this.tbpTwo.Controls.Add(this.txtCount);
             this.tbpTwo.Controls.Add(this.chkFilterDate);
             this.tbpTwo.Controls.Add(this.chkFilterTemp);
             this.tbpTwo.Controls.Add(this.chkFilterStatus);
@@ -581,6 +585,13 @@
             this.tbpTwo.TabIndex = 1;
             this.tbpTwo.Text = "Tabelloversikt";
             this.tbpTwo.UseVisualStyleBackColor = true;
+            // 
+            // txtCount
+            // 
+            this.txtCount.Location = new System.Drawing.Point(251, 308);
+            this.txtCount.Name = "txtCount";
+            this.txtCount.Size = new System.Drawing.Size(70, 20);
+            this.txtCount.TabIndex = 11;
             // 
             // chkFilterDate
             // 
@@ -710,12 +721,22 @@
             // dgvDataBase
             // 
             this.dgvDataBase.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LawnGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDataBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDataBase.GridColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvDataBase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvDataBase.Location = new System.Drawing.Point(303, 4);
             this.dgvDataBase.Name = "dgvDataBase";
             this.dgvDataBase.ReadOnly = true;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightGray;
+            this.dgvDataBase.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDataBase.Size = new System.Drawing.Size(343, 324);
             this.dgvDataBase.TabIndex = 0;
             // 
@@ -733,6 +754,14 @@
             this.tbpThree.Text = "Mottaker";
             this.tbpThree.UseVisualStyleBackColor = true;
             // 
+            // cboDelEmail
+            // 
+            this.cboDelEmail.FormattingEnabled = true;
+            this.cboDelEmail.Location = new System.Drawing.Point(34, 165);
+            this.cboDelEmail.Name = "cboDelEmail";
+            this.cboDelEmail.Size = new System.Drawing.Size(121, 21);
+            this.cboDelEmail.TabIndex = 3;
+            // 
             // dgvEmail
             // 
             this.dgvEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -743,13 +772,20 @@
             // 
             // btnAddEmail
             // 
-            this.btnAddEmail.Location = new System.Drawing.Point(34, 58);
+            this.btnAddEmail.Location = new System.Drawing.Point(34, 89);
             this.btnAddEmail.Name = "btnAddEmail";
             this.btnAddEmail.Size = new System.Drawing.Size(75, 23);
             this.btnAddEmail.TabIndex = 1;
             this.btnAddEmail.Text = "button1";
             this.btnAddEmail.UseVisualStyleBackColor = true;
             this.btnAddEmail.Click += new System.EventHandler(this.btnAddEmail_Click);
+            // 
+            // txtAddEmail
+            // 
+            this.txtAddEmail.Location = new System.Drawing.Point(34, 63);
+            this.txtAddEmail.Name = "txtAddEmail";
+            this.txtAddEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtAddEmail.TabIndex = 0;
             // 
             // btnMove
             // 
@@ -767,21 +803,6 @@
             this.btnMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseDown);
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
-            // 
-            // txtAddEmail
-            // 
-            this.txtAddEmail.Location = new System.Drawing.Point(34, 31);
-            this.txtAddEmail.Name = "txtAddEmail";
-            this.txtAddEmail.Size = new System.Drawing.Size(100, 20);
-            this.txtAddEmail.TabIndex = 0;
-            // 
-            // cboDelEmail
-            // 
-            this.cboDelEmail.FormattingEnabled = true;
-            this.cboDelEmail.Location = new System.Drawing.Point(34, 165);
-            this.cboDelEmail.Name = "cboDelEmail";
-            this.cboDelEmail.Size = new System.Drawing.Size(121, 21);
-            this.cboDelEmail.TabIndex = 3;
             // 
             // GUI
             // 
@@ -872,6 +893,7 @@
         private System.Windows.Forms.Button btnAddEmail;
         private System.Windows.Forms.TextBox txtAddEmail;
         private System.Windows.Forms.ComboBox cboDelEmail;
+        private System.Windows.Forms.TextBox txtCount;
 
     
 
