@@ -16,13 +16,15 @@ namespace Polakken
               (inputString, HTML_TAG_PATTERN, string.Empty);
         }
 
+       public static string fra { get; set; }
+       public static string emne { get; set; }
+       public static string innhold { get; set; }
+
        public static void mottaMail()
        {
            try
            {
-               string fra;
-               string emne;
-               string innhold;
+
                ImapClient ic = new ImapClient("imap.gmail.com", "republicofprogrammers@gmail.com", "polakken",
                     ImapClient.AuthMethods.Login, 993, true);
                ic.SelectMailbox("INBOX");
