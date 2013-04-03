@@ -140,9 +140,7 @@ namespace Polakken
             //
             dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDataBase.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dgvDataBase.DefaultCellStyle.BackColor = Color.LightGray;
-            dgvDataBase.DefaultCellStyle.SelectionBackColor = Color.LawnGreen;
-            dgvDataBase.DefaultCellStyle.SelectionForeColor = Color.Black;
+         
             
             //
             //Email TabellVisning
@@ -351,6 +349,15 @@ namespace Polakken
             db.CloseDb();
             return GetEmails;
         }
+
+        private void DelEmails(int indexNumber)
+        {
+            DbHandler db = new DbHandler();
+            db.DelEmail(indexNumber);
+
+        }
+
+
         private void CreateValues()
         {
             Random rnd = new Random();

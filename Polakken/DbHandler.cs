@@ -89,9 +89,9 @@ namespace Polakken
             return executeSql_NonQuery(sql);
         }
 
-        public int DelEmail(string email) // Sletter en oppføring i databasen for e-post
+        public int DelEmail(int idnr) // Sletter en oppføring i databasen for e-post
         {
-            string sql = string.Format("delete from {0} where {1} = {2}", TB_EMAIL, TB_EMAIL_ADRESS, email);
+            string sql = string.Format("delete from {0} where {1} = {2}", TB_EMAIL, TB_EMAIL_ADRESS, idnr);
             return executeSql_NonQuery(sql);
         }
 
@@ -114,7 +114,7 @@ namespace Polakken
 
         public SqlCeDataReader GetEmails()
         {
-            string sql = string.Format("select {0} from {1}", TB_EMAIL_ADRESS, TB_EMAIL); //Henter alt som ligger i email tabellen. 
+            string sql = string.Format("select * from {0}", TB_EMAIL); //Henter alt som ligger i email tabellen. 
             return executeSql_Reader(sql);
         }
 
@@ -303,7 +303,7 @@ namespace Polakken
         {
             //SQL koden som skal kjøres for oppretting av tabellene i databasene. 
             string sql = "create table " + TB_READINGS + " (" + TB_READINGS_DATE + " datetime not null, " + TB_READINGS_DEGREE + " integer not null, " + TB_READINGS_STATUS + " bit not null)";
-            string sql1 = "create table " + TB_EMAIL + " (" + TB_EMAIL_NUMBER + " int identity (1,1) primary key, " + TB_EMAIL_ADRESS + " nvarchar(80) not null)";
+            string sql1 = "create table " + TB_EMAIL + " (" + TB_EMAIL_NUMBER + " int identity (1,1) primary key, " + TB_EMAIL_ADRESS + " nvarchar(80) not null unique)";
 
             //Kjører SQL koden. Integeren i og j inneholder antall rader påvirket av kommandoen, dersom en av disse er 0 har noe feil skjedd. 
             int i = executeSql_NonQuery(sql);
