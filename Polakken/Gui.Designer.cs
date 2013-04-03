@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.grpInfo = new System.Windows.Forms.GroupBox();
-            this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.txtMinTime = new System.Windows.Forms.TextBox();
             this.lblMin = new System.Windows.Forms.Label();
             this.txtMin = new System.Windows.Forms.TextBox();
@@ -66,6 +65,9 @@
             this.btnSetPointDown = new System.Windows.Forms.Button();
             this.btnSetPointUp = new System.Windows.Forms.Button();
             this.tbpTwo = new System.Windows.Forms.TabPage();
+            this.btnDelReading = new System.Windows.Forms.Button();
+            this.dtpDelTo = new System.Windows.Forms.DateTimePicker();
+            this.dtpDelFrom = new System.Windows.Forms.DateTimePicker();
             this.chkFilterDate = new System.Windows.Forms.CheckBox();
             this.chkFilterTemp = new System.Windows.Forms.CheckBox();
             this.chkFilterStatus = new System.Windows.Forms.CheckBox();
@@ -84,9 +86,7 @@
             this.btnAddEmail = new System.Windows.Forms.Button();
             this.txtAddEmail = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
-            this.dtpDelFrom = new System.Windows.Forms.DateTimePicker();
-            this.dtpDelTo = new System.Windows.Forms.DateTimePicker();
-            this.btnDelReading = new System.Windows.Forms.Button();
+            this.txtCurrentTime = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -129,20 +129,6 @@
             this.grpInfo.TabIndex = 3;
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = "INFO";
-            // 
-            // txtCurrentTime
-            // 
-            this.txtCurrentTime.BackColor = System.Drawing.Color.Black;
-            this.txtCurrentTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCurrentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentTime.ForeColor = System.Drawing.Color.White;
-            this.txtCurrentTime.Location = new System.Drawing.Point(36, 119);
-            this.txtCurrentTime.Multiline = true;
-            this.txtCurrentTime.Name = "txtCurrentTime";
-            this.txtCurrentTime.ReadOnly = true;
-            this.txtCurrentTime.Size = new System.Drawing.Size(129, 15);
-            this.txtCurrentTime.TabIndex = 2;
-            this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtMinTime
             // 
@@ -583,6 +569,38 @@
             this.tbpTwo.Text = "Tabelloversikt";
             this.tbpTwo.UseVisualStyleBackColor = true;
             // 
+            // btnDelReading
+            // 
+            this.btnDelReading.Location = new System.Drawing.Point(22, 68);
+            this.btnDelReading.Name = "btnDelReading";
+            this.btnDelReading.Size = new System.Drawing.Size(75, 23);
+            this.btnDelReading.TabIndex = 13;
+            this.btnDelReading.Text = "button1";
+            this.btnDelReading.UseVisualStyleBackColor = true;
+            this.btnDelReading.Click += new System.EventHandler(this.btnDelReading_Click);
+            // 
+            // dtpDelTo
+            // 
+            this.dtpDelTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDelTo.Location = new System.Drawing.Point(116, 43);
+            this.dtpDelTo.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
+            this.dtpDelTo.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
+            this.dtpDelTo.Name = "dtpDelTo";
+            this.dtpDelTo.Size = new System.Drawing.Size(73, 20);
+            this.dtpDelTo.TabIndex = 12;
+            this.dtpDelTo.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            // 
+            // dtpDelFrom
+            // 
+            this.dtpDelFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDelFrom.Location = new System.Drawing.Point(24, 43);
+            this.dtpDelFrom.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
+            this.dtpDelFrom.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
+            this.dtpDelFrom.Name = "dtpDelFrom";
+            this.dtpDelFrom.Size = new System.Drawing.Size(73, 20);
+            this.dtpDelFrom.TabIndex = 11;
+            this.dtpDelFrom.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            // 
             // chkFilterDate
             // 
             this.chkFilterDate.AutoSize = true;
@@ -709,31 +727,43 @@
             // dgvDataBase
             // 
             this.dgvDataBase.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LawnGreen;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvDataBase.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LawnGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDataBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvDataBase.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDataBase.GridColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvDataBase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dgvDataBase.Location = new System.Drawing.Point(308, 0);
+            this.dgvDataBase.Location = new System.Drawing.Point(358, -1);
             this.dgvDataBase.Name = "dgvDataBase";
             this.dgvDataBase.ReadOnly = true;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.dgvDataBase.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvDataBase.Size = new System.Drawing.Size(339, 334);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvDataBase.RowHeadersWidth = 20;
+            this.dgvDataBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvDataBase.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvDataBase.ShowEditingIcon = false;
+            this.dgvDataBase.Size = new System.Drawing.Size(290, 339);
             this.dgvDataBase.TabIndex = 0;
             // 
             // tbpThree
@@ -772,17 +802,18 @@
             // 
             this.dgvEmail.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvEmail.Location = new System.Drawing.Point(468, 0);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvEmail.Location = new System.Drawing.Point(436, 0);
             this.dgvEmail.Name = "dgvEmail";
-            this.dgvEmail.Size = new System.Drawing.Size(182, 334);
+            this.dgvEmail.RowHeadersWidth = 20;
+            this.dgvEmail.Size = new System.Drawing.Size(214, 334);
             this.dgvEmail.TabIndex = 2;
             // 
             // btnAddEmail
@@ -819,37 +850,19 @@
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
             // 
-            // dtpDelFrom
+            // txtCurrentTime
             // 
-            this.dtpDelFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelFrom.Location = new System.Drawing.Point(24, 43);
-            this.dtpDelFrom.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
-            this.dtpDelFrom.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
-            this.dtpDelFrom.Name = "dtpDelFrom";
-            this.dtpDelFrom.Size = new System.Drawing.Size(73, 20);
-            this.dtpDelFrom.TabIndex = 11;
-            this.dtpDelFrom.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
-            // 
-            // dtpDelTo
-            // 
-            this.dtpDelTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelTo.Location = new System.Drawing.Point(116, 43);
-            this.dtpDelTo.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
-            this.dtpDelTo.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
-            this.dtpDelTo.Name = "dtpDelTo";
-            this.dtpDelTo.Size = new System.Drawing.Size(73, 20);
-            this.dtpDelTo.TabIndex = 12;
-            this.dtpDelTo.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
-            // 
-            // btnDelReading
-            // 
-            this.btnDelReading.Location = new System.Drawing.Point(22, 68);
-            this.btnDelReading.Name = "btnDelReading";
-            this.btnDelReading.Size = new System.Drawing.Size(75, 23);
-            this.btnDelReading.TabIndex = 13;
-            this.btnDelReading.Text = "button1";
-            this.btnDelReading.UseVisualStyleBackColor = true;
-            this.btnDelReading.Click += new System.EventHandler(this.btnDelReading_Click);
+            this.txtCurrentTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtCurrentTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCurrentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentTime.ForeColor = System.Drawing.Color.White;
+            this.txtCurrentTime.Location = new System.Drawing.Point(36, 119);
+            this.txtCurrentTime.Multiline = true;
+            this.txtCurrentTime.Name = "txtCurrentTime";
+            this.txtCurrentTime.ReadOnly = true;
+            this.txtCurrentTime.Size = new System.Drawing.Size(129, 20);
+            this.txtCurrentTime.TabIndex = 9;
+            this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // GUI
             // 
@@ -906,7 +919,6 @@
         private System.Windows.Forms.TabPage tbpThree;
         private System.Windows.Forms.Button btnMove;
         private System.Windows.Forms.DataGridView dgvDataBase;
-        private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.TextBox txtMinTime;
         private System.Windows.Forms.Button btnSetPointUp;
         private System.Windows.Forms.Button btnSetPointDown;
@@ -944,6 +956,7 @@
         private System.Windows.Forms.DateTimePicker dtpDelTo;
         private System.Windows.Forms.DateTimePicker dtpDelFrom;
         private System.Windows.Forms.Button btnDelReading;
+        private System.Windows.Forms.TextBox txtCurrentTime;
 
     
 
