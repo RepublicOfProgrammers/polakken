@@ -51,7 +51,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AE.Net.Mail">
-      <HintPath>..\..\..\polakken1\polakken\Polakken\AE.Net.Mail\Debug\AE.Net.Mail.dll</HintPath>
+      <HintPath>Resources\AE.Net.Mail.dll</HintPath>
     </Reference>
     <Reference Include="NationalInstruments.Common, Version=12.0.40.253, Culture=neutral, PublicKeyToken=dc6ad606294fc298, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
