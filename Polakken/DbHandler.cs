@@ -119,7 +119,7 @@ namespace Polakken
         
         public int DelReadings(DateTime fraDato, DateTime tilDato) //Sletter oppføringer i temp-databasen fra-til dato
         {
-            string sql = string.Format("delete from {0} where {1} < {2} and {1} > {3}", TB_READINGS, TB_READINGS_DATE, tilDato, fraDato);
+            string sql = string.Format("delete from {0} where {1} < '{2}' and {1} > '{3}'", TB_READINGS, TB_READINGS_DATE, tilDato, fraDato);
             return executeSql_NonQuery(sql);
         }
 
