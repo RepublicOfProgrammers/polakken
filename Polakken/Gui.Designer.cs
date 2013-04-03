@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.grpInfo = new System.Windows.Forms.GroupBox();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
@@ -77,6 +79,7 @@
             this.dtpSelectFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.tbpThree = new System.Windows.Forms.TabPage();
+            this.btnDelEmail = new System.Windows.Forms.Button();
             this.cboDelEmail = new System.Windows.Forms.ComboBox();
             this.dgvEmail = new System.Windows.Forms.DataGridView();
             this.btnAddEmail = new System.Windows.Forms.Button();
@@ -588,7 +591,7 @@
             // 
             // txtCount
             // 
-            this.txtCount.Location = new System.Drawing.Point(251, 308);
+            this.txtCount.Location = new System.Drawing.Point(232, 311);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(70, 20);
             this.txtCount.TabIndex = 11;
@@ -625,7 +628,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(170, 298);
+            this.btnReset.Location = new System.Drawing.Point(142, 298);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 7;
@@ -720,29 +723,38 @@
             // 
             // dgvDataBase
             // 
-            this.dgvDataBase.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LawnGreen;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvDataBase.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LawnGreen;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDataBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDataBase.GridColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvDataBase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dgvDataBase.Location = new System.Drawing.Point(303, 4);
+            this.dgvDataBase.Location = new System.Drawing.Point(308, 0);
             this.dgvDataBase.Name = "dgvDataBase";
             this.dgvDataBase.ReadOnly = true;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightGray;
-            this.dgvDataBase.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDataBase.Size = new System.Drawing.Size(343, 324);
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.dgvDataBase.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvDataBase.Size = new System.Drawing.Size(339, 334);
             this.dgvDataBase.TabIndex = 0;
             // 
             // tbpThree
             // 
             this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.tableView1;
+            this.tbpThree.Controls.Add(this.btnDelEmail);
             this.tbpThree.Controls.Add(this.cboDelEmail);
             this.tbpThree.Controls.Add(this.dgvEmail);
             this.tbpThree.Controls.Add(this.btnAddEmail);
@@ -754,6 +766,15 @@
             this.tbpThree.Text = "Mottaker";
             this.tbpThree.UseVisualStyleBackColor = true;
             // 
+            // btnDelEmail
+            // 
+            this.btnDelEmail.Location = new System.Drawing.Point(34, 218);
+            this.btnDelEmail.Name = "btnDelEmail";
+            this.btnDelEmail.Size = new System.Drawing.Size(75, 23);
+            this.btnDelEmail.TabIndex = 4;
+            this.btnDelEmail.Text = "button1";
+            this.btnDelEmail.UseVisualStyleBackColor = true;
+            // 
             // cboDelEmail
             // 
             this.cboDelEmail.FormattingEnabled = true;
@@ -764,10 +785,19 @@
             // 
             // dgvEmail
             // 
+            this.dgvEmail.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmail.Location = new System.Drawing.Point(455, 12);
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvEmail.Location = new System.Drawing.Point(455, 0);
             this.dgvEmail.Name = "dgvEmail";
-            this.dgvEmail.Size = new System.Drawing.Size(188, 322);
+            this.dgvEmail.Size = new System.Drawing.Size(188, 334);
             this.dgvEmail.TabIndex = 2;
             // 
             // btnAddEmail
@@ -894,6 +924,7 @@
         private System.Windows.Forms.TextBox txtAddEmail;
         private System.Windows.Forms.ComboBox cboDelEmail;
         private System.Windows.Forms.TextBox txtCount;
+        private System.Windows.Forms.Button btnDelEmail;
 
     
 
