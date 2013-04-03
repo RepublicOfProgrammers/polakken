@@ -13,6 +13,7 @@ namespace Polakken
         [STAThread]
         static void Main()
         {
+            new Logger();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI());

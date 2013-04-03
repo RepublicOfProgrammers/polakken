@@ -49,6 +49,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AE.Net.Mail">
       <HintPath>Resources\AE.Net.Mail.dll</HintPath>
@@ -85,6 +89,7 @@
       <DependentUpon>GUI.cs</DependentUpon>
     </Compile>
     <Compile Include="mottaMail.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="niHSDIO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
