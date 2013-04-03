@@ -47,7 +47,7 @@ namespace Polakken
             dgvEmail.DataSource = GetEmails;
             DataTable Equals = new DataTable();
             equals(Equals);
-            txtCount.Text = this.dgvDataBase.Rows.Count.ToString() + " Rader";
+            
 
 
 
@@ -145,6 +145,7 @@ namespace Polakken
             //
             //Email TabellVisning
             //
+            dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvEmail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
 
@@ -310,12 +311,19 @@ namespace Polakken
                 while (emReader.Read())
                 {
                     var row = GetEmails.NewRow();
-                    for (int i = 0; i < 1; i++)
+                    for (int i = 0; i < 2; i++)
                     {
 
                         string Reading = emReader[i].ToString();
-                        row["Adresser"] = Reading;
-
+                        if (i == 0)
+                        {
+                            row["Index"] = Reading; 
+                        }
+                        if (i == 1)
+                        {
+                            
+                            row["Adresser"] = Reading;
+                        }
                     }
                     GetEmails.Rows.Add(row);
 
@@ -325,6 +333,8 @@ namespace Polakken
             }
             else
             {
+                
+                GetEmails.Columns.Add("Index", typeof(int));
                 GetEmails.Columns.Add("Adresser", typeof(string));
                 db.OpenDb();
                 SqlCeDataReader emReader = db.GetEmails();
@@ -332,12 +342,20 @@ namespace Polakken
                 while (emReader.Read())
                 {
                     var row = GetEmails.NewRow();
-                    for (int i = 0; i < 1; i++)
+                    for (int i = 0; i < 2; i++)
                     {
 
                         string Reading = emReader[i].ToString();
-                        row["Adresser"] = Reading;
-
+                        if (i == 0)
+                        {
+                            row["Index"] = Reading;
+                        }
+                        if (i == 1)
+                        {
+                            row["Adresser"] = Reading;
+                           
+                        }
+                       
                     }
                     GetEmails.Rows.Add(row);
 
@@ -356,7 +374,15 @@ namespace Polakken
             db.DelEmail(indexNumber);
 
         }
-
+        private void DelReadings()    
+        {
+            DbHandler db = new DbHandler();
+            DateTime delFrom = DateTime.MinValue;
+            DateTime delTo = DateTime.MaxValue;
+            delTo = dtpDelTo.Value;
+            delFrom = dtpDelFrom.Value;
+            db.DelReadings(delFrom, delTo);
+        }
 
         private void CreateValues()
         {
@@ -624,7 +650,7 @@ namespace Polakken
                 }
 
                 dgvDataBase.DataSource = view;
-                txtCount.Text = view.Count.ToString() + "Rader";
+            
             }
                 
         
@@ -636,7 +662,7 @@ namespace Polakken
             u.Clear();
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
-            txtCount.Text = this.dgvDataBase.Rows.Count.ToString() + " Rader";
+      
         }
 
         private void chkFilterStatus_CheckedChanged(object sender, EventArgs e)
@@ -700,22 +726,18 @@ namespace Polakken
                 GetEmail(GetEmails);
                 dgvEmail.DataSource = GetEmails;
             }
-           
-            
+
+
         }
 
-        
-       
-
-       
-
-
-
-
-
-
-
-
+        private void btnDelReading_Click(object sender, EventArgs e)
+        {
+            DelReadings();
+            dgvDataBase.DataSource = null;
+            u.Clear();
+            DebugginTestTwo(u);
+            dgvDataBase.DataSource = u;
+        }
     }
 }
 
