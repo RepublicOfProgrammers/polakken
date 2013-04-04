@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.Net.Mail;
+using System.Data.SqlServerCe;
+using System.Diagnostics;
+using System.Data;
 
 namespace Polakken
 {
@@ -15,17 +18,62 @@ namespace Polakken
              EnableSsl = true
          };
 
-        public void send(string til)
+        public void nyTabell()
         {
-            try
+            DataTable sendEmail = new DataTable();
+            GetEmail(sendEmail);
+
+        //    MySQLProcessor.DTTable(mysqlCommand, out sendEmail);
+
+        //    // on all table's rows
+        //    foreach (DataRow dtRow in sendEmail.Rows)
+        //    {
+        //        // on all table's columns
+        //        foreach (DataColumn dc in sendEmail.Columns)
+        //        {
+        //            var field1 = dtRow[dc].ToString();
+        //        }
+        //    }
+        }
+
+        public DataTable GetEmail(DataTable GetEmails)
+        {
+            Debug.WriteLine("er i get email");
+            DbHandler db = new DbHandler();
+
+
+
+            GetEmails.Columns.Add("Adresser", typeof(string));
+            db.OpenDb();
+            SqlCeDataReader emReader = db.GetEmails();
+
+            while (emReader.Read())
             {
-                client.Send("republicofprogrammers@gmail.com", til, "Hei", "Hei");
+                var row = GetEmails.NewRow();
+                for (int i = 0; i < 2; i++)
+                {
+
+                    string Reading = emReader[i].ToString();
+                    row["Adresser"] = Reading;
+
+                }
+                GetEmails.Rows.Add(row);
+
             }
 
-            catch(Exception)
-            {
+            emReader.Close();
 
-            }
+
+            db.CloseDb();
+
+            
+
+            return GetEmails;
+        }
+
+        public void send()
+        {
+            client.Send("republicofprogrammers@gmail.com", "", "Hei", "Hei");
         }
 
     }
