@@ -11,6 +11,8 @@ namespace Polakken
 {
     class DbHandler
     {
+        private string thismodule = "DbHandler";
+
         //Status koder for tilkobling og oppretting til/av databasen
         private enum dbStatus : int { NEW = 0, EXISTING, SUCCESS, ERROR }
 
@@ -37,6 +39,7 @@ namespace Polakken
          */
         public DbHandler()
         {
+            Logger.Info("Starter konstruksjon", thismodule);
             //initialiserer databasen, henter ut status/resultat-kode
             int init_db_status = initDb();
 
@@ -54,49 +57,6 @@ namespace Polakken
             //}
             //Debug.WriteLine("-- CONSTRUCTOR: Starter debugging test");
             //DebugginTestTwo();
-        }
-
-        //private void CreateDummyValues()
-        //{
-        //    DateTime time = DateTime.Now;
-        //    uint C = 20;
-        //    Boolean status = true;
-
-        //    Debug.WriteLine("-- DUMMYVALUES: kjører sql-kode");
-        //    executeSql_NonQuery(time, C, status);
-
-        //    time.Subtract(DateTime.Now - TimeSpan.FromDays(1));
-        //    C = 16;
-        //    status = false;
-        //    Debug.WriteLine("-- DUMMYVALUES: kjører sql-kode");
-        //    executeSql_NonQuery(time, C, status);
-
-        //    time.Subtract(DateTime.Now - TimeSpan.FromDays(2));
-        //    C = 19;
-        //    status = false;
-        //    Debug.WriteLine("-- DUMMYVALUES: kjører sql-kode");
-        //    executeSql_NonQuery(time, C, status);
-        //}
-
-        private void DebugginTestTwo()
-        {
-            this.OpenDb();
-            SqlCeDataReader mReader = GetReadings();
-
-            Debug.WriteLine("--DEBUGTEST--");
-            Debug.WriteLine(TB_READINGS_DATE + "\t" + TB_READINGS_DEGREE + "\t" + TB_READINGS_STATUS);
-
-            while (mReader.Read())
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    Debug.Write(mReader[i].ToString());
-                    Debug.Write("\t");
-                }
-                Debug.Write("\n");
-            }
-            mReader.Close();
-            this.CloseDb();
         }
         
         public void OpenDb()
@@ -119,7 +79,7 @@ namespace Polakken
         
         public int DelReadings(DateTime fraDato, DateTime tilDato) //Sletter oppføringer i temp-databasen fra-til dato
         {
-            string sql = string.Format("delete from {0} where {1} < {2} and {1} > {3}", TB_READINGS, TB_READINGS_DATE, tilDato, fraDato);
+            string sql = string.Format("delete from {0} where {1} < '{2}' and {1} > '{3}'", TB_READINGS, TB_READINGS_DATE, fraDato, tilDato);
             return executeSql_NonQuery(sql);
         }
 
@@ -194,13 +154,11 @@ namespace Polakken
             try { data_reader = cmd.ExecuteReader(); }
             catch (SqlCeException ssceE)
             {
-                Debug.WriteLine("-- SQL_READER: Fanget SqlCeException:");
-                Debug.WriteLine(ssceE);
+                Logger.Error(ssceE, thismodule);
             }
             catch (Exception e)
             {
-                Debug.WriteLine("-- SQL_READER: Fanget Exception:");
-                Debug.WriteLine(e);
+                Logger.Error(e, thismodule);
             }
             finally
             {
@@ -223,13 +181,11 @@ namespace Polakken
             try { affectedRows = cmd.ExecuteNonQuery(); }
             catch (SqlCeException ssceE)
             {
-                Debug.WriteLine("-- SQL_NONQUERY: Fanget SqlCeException:");
-                Debug.WriteLine(ssceE);
+                Logger.Error(ssceE, thismodule);
             }
             catch (Exception e)
             {
-                Debug.WriteLine("-- SQL_NONQUERY: Fanget Exception:");
-                Debug.WriteLine(e);
+                Logger.Error(e, thismodule);
             }
             finally
             {
@@ -263,13 +219,11 @@ namespace Polakken
             }
             catch (SqlCeException ssceE)
             {
-                Debug.WriteLine("-- SQL_NONQUERY: Fanget SqlCeException:");
-                Debug.WriteLine(ssceE);
+                Logger.Error(ssceE, thismodule);
             }
             catch (Exception e)
             {
-                Debug.WriteLine("-- SQL_NONQUERY: Fanget Exception:");
-                Debug.WriteLine(e);
+                Logger.Error(e, thismodule);
             }
             finally
             {
@@ -301,13 +255,11 @@ namespace Polakken
             }
             catch (SqlCeException ssceE)
             {
-                Debug.WriteLine("-- SQL_NONQUERY: Fanget SqlCeException:");
-                Debug.WriteLine(ssceE);
+                Logger.Error(ssceE, thismodule);
             }
             catch (Exception e)
             {
-                Debug.WriteLine("-- SQL_NONQUERY: Fanget Exception:");
-                Debug.WriteLine(e);
+                Logger.Error(e, thismodule);
             }
             finally
             {
@@ -321,7 +273,7 @@ namespace Polakken
             //sjekker om databasen allerede eksisterer
             if (File.Exists(fileName))
             {
-                Debug.WriteLine("-- INITDB: Fant eksisterende database");
+                Logger.Info("Fant eksisterende database", thismodule);
  
                 ///TODO: Mens vi tester/utvikler skal følgende 2 linjer være stående:
                 //File.Delete(fileName);
@@ -331,7 +283,7 @@ namespace Polakken
             }
             else
             {
-                Debug.WriteLine("-- INITDB: oppretter ny database...");
+                Logger.Info("Oppretter ny database...", thismodule);
                 //Dersom den ikke eksisterer opprettes databasen. 
                 SqlCeEngine en = new SqlCeEngine(ConnectionString);
                 en.CreateDatabase();
@@ -342,7 +294,7 @@ namespace Polakken
                 {
                     //TODO: gi melding til bruker om at noe gikk galt - se log. 
                 }
-                Debug.WriteLine("... Success");
+                Logger.Info("...Success", thismodule);
                 return (int)dbStatus.NEW;
             }
         }

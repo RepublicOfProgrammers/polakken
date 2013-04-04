@@ -41,13 +41,13 @@ namespace Polakken
             CreateValues();
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
-            ////DataTable LastReading = new DataTable();
-            ////GetLast(LastReading);
+            DataTable LastReading = new DataTable();
+            GetLast(LastReading);
             GetEmail(GetEmails);
             dgvEmail.DataSource = GetEmails;
             DataTable Equals = new DataTable();
             equals(Equals);
-            txtCount.Text = this.dgvDataBase.Rows.Count.ToString() + " Rader";
+            populateTxtbox();
 
 
 
@@ -145,6 +145,7 @@ namespace Polakken
             //
             //Email TabellVisning
             //
+            dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvEmail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
 
@@ -300,7 +301,7 @@ namespace Polakken
         }
         public DataTable GetEmail(DataTable GetEmails)
         {
-            Debug.WriteLine("er i get email");
+            
             DbHandler db = new DbHandler();
             if (GetEmails.Columns.Contains("Adresser"))
             {
@@ -310,12 +311,19 @@ namespace Polakken
                 while (emReader.Read())
                 {
                     var row = GetEmails.NewRow();
-                    for (int i = 0; i < 1; i++)
+                    for (int i = 0; i < 2; i++)
                     {
 
                         string Reading = emReader[i].ToString();
-                        row["Adresser"] = Reading;
-
+                        if (i == 0)
+                        {
+                            row["Index"] = Reading; 
+                        }
+                        if (i == 1)
+                        {
+                            
+                            row["Adresser"] = Reading;
+                        }
                     }
                     GetEmails.Rows.Add(row);
 
@@ -325,6 +333,8 @@ namespace Polakken
             }
             else
             {
+                
+                GetEmails.Columns.Add("Index", typeof(int));
                 GetEmails.Columns.Add("Adresser", typeof(string));
                 db.OpenDb();
                 SqlCeDataReader emReader = db.GetEmails();
@@ -332,12 +342,20 @@ namespace Polakken
                 while (emReader.Read())
                 {
                     var row = GetEmails.NewRow();
-                    for (int i = 0; i < 1; i++)
+                    for (int i = 0; i < 2; i++)
                     {
 
                         string Reading = emReader[i].ToString();
-                        row["Adresser"] = Reading;
-
+                        if (i == 0)
+                        {
+                            row["Index"] = Reading;
+                        }
+                        if (i == 1)
+                        {
+                            row["Adresser"] = Reading;
+                           
+                        }
+                       
                     }
                     GetEmails.Rows.Add(row);
 
@@ -356,7 +374,15 @@ namespace Polakken
             db.DelEmail(indexNumber);
 
         }
-
+        private void DelReadings()    
+        {
+            DbHandler db = new DbHandler();
+            DateTime delFrom = DateTime.MinValue;
+            DateTime delTo = DateTime.MaxValue;
+            delTo = dtpDelTo.Value;
+            delFrom = dtpDelFrom.Value;
+            db.DelReadings(delFrom, delTo);
+        }
 
         private void CreateValues()
         {
@@ -368,18 +394,18 @@ namespace Polakken
 
             Boolean t = true;
             Boolean f = false;
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 20; i++)
             {
                 if (i % 2 == 0)
                 {
-                    int C = rnd.Next(-5, 50);
+                    int C = i + 5;
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, t);
 
                 }
                 else
                 {
-                    int C = rnd.Next(-5, 50);
+                   int C = i - 5;
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, f);
                 }
@@ -429,7 +455,38 @@ namespace Polakken
 
         }
 
+        private void populateTxtbox()
+        {
+            int maxTemp = int.MinValue;
+            int maxTempTest = int.MinValue;
+            int minTemp = int.MaxValue;
+            int minTempTest = int.MaxValue;
+            string Celcius = "°C";
+            foreach (DataRow row in u.Rows)
+            {
+                txtCurrent.Text = row["Temprature"].ToString() + Celcius;
+                DateTime dt = DateTime.Parse(row["ReadTime"].ToString());
+                txtCurrentTime.Text = dt.ToString();
 
+                maxTempTest = int.Parse(row["Temprature"].ToString());
+                if (maxTemp < maxTempTest)
+                {
+                    maxTemp = maxTempTest;
+                    DateTime maxDT = DateTime.Parse(row["ReadTime"].ToString());
+                    txtMaxTime.Text = maxDT.ToString();
+                    txtMax.Text = maxTemp.ToString() + Celcius;
+                }
+                minTempTest = int.Parse(row["Temprature"].ToString());
+                if (minTemp > minTempTest)
+                {
+                    minTemp = minTempTest;
+                    DateTime minDT = DateTime.Parse(row["ReadTime"].ToString());
+                    txtMinTime.Text = minDT.ToString();
+                    txtMin.Text = minTemp.ToString() + Celcius;
+                }
+
+            }
+        }
         //
         //E-Mail
         //
@@ -556,6 +613,10 @@ namespace Polakken
 
         private void btnShowSelected_Click(object sender, EventArgs e)
         {
+            if (dtpSelectFrom.Value > dtpSelectTo.Value)
+            {
+                MessageBox.Show("Startdato kan ikke være større en sluttdato", "Datofeil", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             DataView view = new DataView(u);
             string filterString = null;
             string dateSpan = null;
@@ -563,15 +624,16 @@ namespace Polakken
 
             if (chkFilterDate.Checked)
             {
-
                 string dates = null;
                 DateTime startDate;
                 DateTime endDate;
-                startDate = Convert.ToDateTime(dtpSelectFrom.Text);
-                endDate = Convert.ToDateTime(dtpSelectTo.Text);
-                dates = "ReadTime >" + "'" + startDate + "'" + "AND ReadTime <" + "'" + endDate + "'";
+                startDate = dtpSelectFrom.Value;
+                endDate = dtpSelectTo.Value;
+                dates = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
                 view.RowFilter = dates;
-                dateSpan = "AND ReadTime >" + "'" + startDate + "'" + "AND ReadTime <" + "'" + endDate + "'"; 
+                dateSpan = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "AND ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
+
+                
 
 
             }
@@ -624,7 +686,7 @@ namespace Polakken
                 }
 
                 dgvDataBase.DataSource = view;
-                txtCount.Text = view.Count.ToString() + "Rader";
+            
             }
                 
         
@@ -636,7 +698,8 @@ namespace Polakken
             u.Clear();
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
-            txtCount.Text = this.dgvDataBase.Rows.Count.ToString() + " Rader";
+            populateTxtbox();
+      
         }
 
         private void chkFilterStatus_CheckedChanged(object sender, EventArgs e)
@@ -699,23 +762,20 @@ namespace Polakken
                 GetEmails.Clear();
                 GetEmail(GetEmails);
                 dgvEmail.DataSource = GetEmails;
+                txtAddEmail.Clear();
             }
-           
-            
+
+
         }
 
-        
-       
-
-       
-
-
-
-
-
-
-
-
+        private void btnDelReading_Click(object sender, EventArgs e)
+        {
+            DelReadings();
+            dgvDataBase.DataSource = null;
+            u.Clear();
+            DebugginTestTwo(u);
+            dgvDataBase.DataSource = u;
+        }
     }
 }
 

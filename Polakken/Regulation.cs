@@ -26,7 +26,7 @@ namespace Polakken
         }
 
         //ny måling
-        public void newread(double newread)
+        public void newRead(double newread)
         {
             prevReading = reading;
             reading = newread;  
@@ -57,6 +57,7 @@ namespace Polakken
             {
                 difference = (reading - prevReading) / (prevReading - setpoint);
                 System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval)); //må omgjøre slik at intervallet blir i millisekunder. 
+                status = false;
             }
 
             return status;
