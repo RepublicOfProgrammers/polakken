@@ -22,21 +22,28 @@ namespace Polakken
 
         
 
-
         public void nyTabell()
         {
-            GUI gui = new GUI();
-
-            DataTable sendEmail = new DataTable();
-            gui.GetEmail(sendEmail);
-
-            string mailTil;
-
-            // on all table's rows
-            foreach (DataRow dtRow in sendEmail.Rows)
+            try
             {
-                mailTil = dtRow["Adresser"].ToString();
-                client.Send("republicofprogrammers@gmail.com", mailTil, "Hei", "Hei");
+
+                GUI gui = new GUI();
+
+                DataTable sendEmail = new DataTable();
+                gui.GetEmail(sendEmail);
+
+                string mailTil;
+
+                // on all table's rows
+                foreach (DataRow dtRow in sendEmail.Rows)
+                {
+                    mailTil = dtRow["Adresser"].ToString();
+                    client.Send("republicofprogrammers@gmail.com", mailTil, "Hei", "Hei");
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
