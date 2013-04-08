@@ -91,7 +91,7 @@ namespace Polakken
 
         public int DelEmail(int idnr) // Sletter en oppføring i databasen for e-post
         {
-            string sql = string.Format("delete from {0} where {1} = {2}", TB_EMAIL, TB_EMAIL_ADRESS, idnr);
+            string sql = string.Format("delete * from {0} where {1} = {2}", TB_EMAIL, TB_EMAIL_NUMBER, idnr);
             return executeSql_NonQuery(sql);
         }
 
