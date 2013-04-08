@@ -382,6 +382,7 @@ namespace Polakken
             delTo = dtpDelTo.Value;
             delFrom = dtpDelFrom.Value;
             db.DelReadings(delFrom, delTo);
+            MessageBox.Show("");
         }
 
         private void CreateValues()
