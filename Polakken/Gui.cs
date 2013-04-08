@@ -93,7 +93,7 @@ namespace Polakken
                 DataView viewDeleteEmail = new DataView(GetEmails);
                 cboDelEmail.DataSource = viewDeleteEmail;
                 cboDelEmail.DisplayMember = "Adresser";
-                cboDelEmail.ValueMember = "Adresser";
+                cboDelEmail.ValueMember = "Index";
             }
             catch
             {
@@ -409,15 +409,16 @@ namespace Polakken
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, f);
                 }
-                string emaildummy;
-                string emaildummy2;
-                emaildummy = "alexandergjerseth@gmail.com";
-                emaildummy2 = "sglittum@gmail.com";
-
-                db.AddEmail(emaildummy);
-                db.AddEmail(emaildummy2);
+                
             }
+            string emaildummy;
+            string emaildummy2;
+                
+            emaildummy = "alexandergjerseth@gmail.com";
+            emaildummy2 = "sglittum@gmail.com";
 
+            db.AddEmail(emaildummy);
+            db.AddEmail(emaildummy2);
         }
 
 
@@ -490,12 +491,6 @@ namespace Polakken
 
             }
         }
-        //
-        //E-Mail
-        //
-
-
-
         //
         //Hendelser
         //
@@ -759,13 +754,23 @@ namespace Polakken
             }
             else
             {
-                DbHandler db = new DbHandler();
-                db.AddEmail(inputText);
-                dgvEmail.DataSource = null;
-                GetEmails.Clear();
-                GetEmail(GetEmails);
-                dgvEmail.DataSource = GetEmails;
-                txtAddEmail.Clear();
+                string searchEmail = inputText;
+                var foundAdress = GetEmails.Select("Adresser = '" + searchEmail + "'");
+                if (foundAdress.Length != 0)
+                {
+                    MessageBox.Show("Emailen Eksisterer alerede", "FEIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    DbHandler db = new DbHandler();
+                    db.AddEmail(inputText);
+                    dgvEmail.DataSource = null;
+                    GetEmails.Clear();
+                    GetEmail(GetEmails);
+                    dgvEmail.DataSource = GetEmails;
+                    txtAddEmail.Clear();
+                }
+               
             }
 
 
@@ -773,6 +778,7 @@ namespace Polakken
 
         private void btnDelReading_Click(object sender, EventArgs e)
         {
+
             DelReadings();
             dgvDataBase.DataSource = null;
             u.Clear();
@@ -782,8 +788,14 @@ namespace Polakken
 
         private void btnDelEmail_Click(object sender, EventArgs e)
         {
-            E_mail_handler eHandler = new E_mail_handler();
-            eHandler.nyTabell();
+            DbHandler db = new DbHandler();
+            int DelIndex = Convert.ToInt32(cboDelEmail.SelectedValue);
+            db.DelEmail(DelIndex);
+            dgvEmail.DataSource = null;
+            GetEmails.Clear();
+            GetEmail(GetEmails);
+            dgvEmail.DataSource = GetEmails;
+            
         }
 
         private void mottaMail_Click(object sender, EventArgs e)
