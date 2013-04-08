@@ -409,10 +409,13 @@ namespace Polakken
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, f);
                 }
-                int R = rnd2.Next(500, 9999999);
-                string emaildummy = R.ToString() + "@apple.com";
-                
+                string emaildummy;
+                string emaildummy2;
+                emaildummy = "alexandergjerseth@gmail.com";
+                emaildummy2 = "sglittum@gmail.com";
+
                 db.AddEmail(emaildummy);
+                db.AddEmail(emaildummy2);
             }
 
         }
@@ -785,7 +788,8 @@ namespace Polakken
 
         private void btnDelEmail_Click(object sender, EventArgs e)
         {
-
+            E_mail_handler eHandler = new E_mail_handler();
+            eHandler.nyTabell();
         }
     }
 }
