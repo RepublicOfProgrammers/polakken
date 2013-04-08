@@ -798,6 +798,13 @@ namespace Polakken
             dgvEmail.DataSource = GetEmails;
             
         }
+
+        private void mottaMail_Click(object sender, EventArgs e)
+        {
+            MottaMail.mottaMail();
+            MottaMail.StripHTML(MottaMail.innhold);
+            MottaMail.getCommand();
+        }
     }
 }
 
