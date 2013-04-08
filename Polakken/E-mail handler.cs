@@ -36,14 +36,8 @@ namespace Polakken
             foreach (DataRow dtRow in sendEmail.Rows)
             {
                 mailTil = dtRow["Adresser"].ToString();
-                string ræv;
+                client.Send("republicofprogrammers@gmail.com", mailTil, "Hei", "Hei");
             }
-        }
-
-
-        public void send()
-        {
-            client.Send("republicofprogrammers@gmail.com", "", "Hei", "Hei");
         }
 
     }
