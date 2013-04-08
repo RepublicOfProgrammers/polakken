@@ -25,10 +25,10 @@ namespace Polakken
 
         public void nyTabell()
         {
-            GUI piss = new GUI();
+            GUI gui = new GUI();
 
             DataTable sendEmail = new DataTable();
-            piss.GetEmail(sendEmail);
+            gui.GetEmail(sendEmail);
 
             string mailTil;
 

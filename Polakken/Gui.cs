@@ -776,6 +776,17 @@ namespace Polakken
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
         }
+
+        private void mottaMail_Click(object sender, EventArgs e)
+        {
+            MottaMail mottaMail = new MottaMail();
+            
+        }
+
+        private void btnDelEmail_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
