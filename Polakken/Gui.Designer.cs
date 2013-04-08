@@ -87,6 +87,7 @@
             this.btnAddEmail = new System.Windows.Forms.Button();
             this.txtAddEmail = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
+            this.mottaMail = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -783,6 +784,7 @@
             // tbpThree
             // 
             this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.tableView1;
+            this.tbpThree.Controls.Add(this.mottaMail);
             this.tbpThree.Controls.Add(this.btnDelEmail);
             this.tbpThree.Controls.Add(this.cboDelEmail);
             this.tbpThree.Controls.Add(this.dgvEmail);
@@ -864,6 +866,16 @@
             this.btnMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseDown);
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
+            // 
+            // mottaMail
+            // 
+            this.mottaMail.Location = new System.Drawing.Point(306, 63);
+            this.mottaMail.Name = "mottaMail";
+            this.mottaMail.Size = new System.Drawing.Size(75, 23);
+            this.mottaMail.TabIndex = 5;
+            this.mottaMail.Text = "button1";
+            this.mottaMail.UseVisualStyleBackColor = true;
+            this.mottaMail.Click += new System.EventHandler(this.mottaMail_Click);
             // 
             // GUI
             // 
@@ -958,6 +970,7 @@
         private System.Windows.Forms.DateTimePicker dtpDelFrom;
         private System.Windows.Forms.Button btnDelReading;
         private System.Windows.Forms.TextBox txtCurrentTime;
+        private System.Windows.Forms.Button mottaMail;
 
     
 

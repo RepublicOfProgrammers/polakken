@@ -785,6 +785,13 @@ namespace Polakken
             E_mail_handler eHandler = new E_mail_handler();
             eHandler.nyTabell();
         }
+
+        private void mottaMail_Click(object sender, EventArgs e)
+        {
+            MottaMail.mottaMail();
+            MottaMail.StripHTML(MottaMail.innhold);
+            MottaMail.getCommand();
+        }
     }
 }
 
