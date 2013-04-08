@@ -778,6 +778,7 @@ namespace Polakken
 
         private void btnDelReading_Click(object sender, EventArgs e)
         {
+
             DelReadings();
             dgvDataBase.DataSource = null;
             u.Clear();
