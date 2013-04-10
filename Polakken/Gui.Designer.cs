@@ -94,6 +94,7 @@
             this.btnAddEmail = new System.Windows.Forms.Button();
             this.txtAddEmail = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
+            this.btnLog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -119,6 +120,7 @@
             // 
             this.grpInfo.BackColor = System.Drawing.Color.Transparent;
             this.grpInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.grpInfo.Controls.Add(this.btnLog);
             this.grpInfo.Controls.Add(this.txtCurrentTime);
             this.grpInfo.Controls.Add(this.txtMinTime);
             this.grpInfo.Controls.Add(this.lblMin);
@@ -968,6 +970,15 @@
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
             // 
+            // btnLog
+            // 
+            this.btnLog.Location = new System.Drawing.Point(59, 331);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(75, 23);
+            this.btnLog.TabIndex = 10;
+            this.btnLog.UseVisualStyleBackColor = true;
+            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1068,6 +1079,7 @@
         private System.Windows.Forms.DateTimePicker dtpSelectFromTime;
         private System.Windows.Forms.CheckBox chkSetTol;
         private System.Windows.Forms.ComboBox cboSelectDelete;
+        private System.Windows.Forms.Button btnLog;
 
     
 

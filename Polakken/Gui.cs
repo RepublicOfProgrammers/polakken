@@ -28,6 +28,7 @@ namespace Polakken
         string delToString;
         string delFromString;
         public static bool test = false;
+        DateTime NOW = DateTime.Now;
 
         public GUI()
         {
@@ -123,7 +124,7 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisY.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.ForeColor = Color.GreenYellow;
             crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Angle = 0;
-
+            crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 100;
 
             crtView.Series.Add("temp");
             crtView.Series["temp"].Color = Color.LawnGreen;
@@ -174,8 +175,16 @@ namespace Polakken
             dtpSelectToTime.Format = DateTimePickerFormat.Time;
             dtpDelFromTime.ShowUpDown = true;
             dtpDelToTime.ShowUpDown = true;
-            dtpSelectFromTime.ShowUpDown = true;
-            dtpSelectToTime.ShowUpDown = true;
+            dtpDelFromTime.ShowUpDown = true;
+            dtpDelToTime.ShowUpDown = true;
+            dtpSelectFrom.Value = NOW.AddDays(-10);
+            dtpSelectTo.Value = NOW;
+            dtpDelFrom.Value = NOW.AddDays(-10);
+            dtpDelTo.Value = NOW;
+            dtpDelFrom.Enabled = false;
+            dtpDelTo.Enabled = false;
+            dtpDelFromTime.Enabled = false;
+            dtpDelToTime.Enabled = false;
             
             //
             //SetPointButton
@@ -363,8 +372,6 @@ namespace Polakken
         {
             DbHandler db = new DbHandler();
             db.DelReadings(delFromString, delToString);
-            MessageBox.Show(delToString + delFromString);
-           
         }
 
         private void CreateValues()
@@ -372,7 +379,7 @@ namespace Polakken
             Random rnd = new Random();
             Random rnd2 = new Random();
             DbHandler db = new DbHandler();
-            DateTime time = DateTime.Today;
+            DateTime time = DateTime.Now;
              
 
             Boolean t = true;
@@ -381,14 +388,14 @@ namespace Polakken
             {
                 if (i % 2 == 0)
                 {
-                    int C = i + 5;
+                    int C = i + 15;
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, t);
 
                 }
                 else
                 {
-                   int C = i - 5;
+                   int C = i + 22;
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, f);
                 }
@@ -782,8 +789,8 @@ namespace Polakken
                 DateTime added = last.AddDays(50);
                 delFrom = first;
                 delTo = added;
-                delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
-                delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
+                delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
             }
             if (cboSelectDelete.SelectedIndex == 1)
             {
@@ -796,9 +803,9 @@ namespace Polakken
                 DateTime minus1 = now.AddDays(-1);
                 delFrom = minus30;
                 delTo = minus1;
-                delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
-                delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
-                MessageBox.Show(delToString);
+                delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
+               
             }
             if (cboSelectDelete.SelectedIndex == 2)
             {
@@ -812,8 +819,8 @@ namespace Polakken
                 {
                     MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil",MessageBoxButtons.YesNo);
                 }
-                delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
-                delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
+                delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
             }
             if (cboSelectDelete.SelectedIndex == 3)
             {
@@ -821,8 +828,8 @@ namespace Polakken
                 dtpDelToTime.Enabled = false;
                 delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
                 delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
-                delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
-                delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
+                delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
             }
             if (cboSelectDelete.SelectedIndex == -1)
             {
@@ -933,6 +940,13 @@ namespace Polakken
                 dtpDelToTime.Enabled = false;
                
             }
+
+        }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            Log logForm = new Log();
+            logForm.Show();
 
         }
 
