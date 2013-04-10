@@ -27,7 +27,7 @@ namespace Polakken
         DataTable GetEmails = new DataTable();
         string delToString;
         string delFromString;
-        public bool test = false;
+        public static bool test = false;
 
         public GUI()
         {
@@ -810,7 +810,7 @@ namespace Polakken
                 delTo = dtpDelTo.Value.Date + dtpDelToTime.Value.TimeOfDay;
                 if (delFrom > delTo)
                 {
-                    MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil");
+                    MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil",MessageBoxButtons.YesNo);
                 }
                 delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
                 delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
