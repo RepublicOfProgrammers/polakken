@@ -28,7 +28,7 @@ namespace Polakken
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI());
+            Application.Run(new GUI()); 
         }
 
         /// <summary>
@@ -44,7 +44,14 @@ namespace Polakken
             }
             else
             {
-                mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI.test);
+                if (GUI.test == false)
+                {
+                    mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI.test);
+                }
+                else
+                {
+                    mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), Regulation.status);
+                }
                 Logger.Info("Utført måling, og skrevet til database.", "Polakken");
                 Thread.Sleep(SensorCom.mesInterval);
             }

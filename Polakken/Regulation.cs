@@ -16,17 +16,29 @@ namespace Polakken
         public static int setpoint { get; set; }
         private static double difference;
         public static int mesInterval { get; set; }
+        private static string loggerInfo;
 
         //ny måling
-        public static void newRead(double newread)
-        {
-            prevReading = reading;
-            reading = newread;  
-        }
+        //public static void newRead(double newread)
+        //{
+        //    prevReading = reading;
+        //    reading = newread;
+        //}
 
         //regulering
-        public static  Boolean regulator()
+        public static Boolean regulator(double newread)
         {
+            if (reading == null)
+            {
+                prevReading = newread;
+                reading = newread;
+            }
+            else
+            {
+                prevReading = reading;
+                reading = newread;
+            }
+
             //temperatur under min toleranse, skrur på ovnen. 
             if ((reading + tolerance) < setpoint)
             {
@@ -51,7 +63,9 @@ namespace Polakken
                 System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval * 60000)); //må omgjøre slik at intervallet blir i millisekunder. 
                 status = false;
             }
-
+            //sender info til loggen om regulering. 
+            loggerInfo = "Gjort regulering og status for varme kilde er satt til " + Convert.ToString(status);
+            Logger.Info(loggerInfo, module);
             return status;
         }
 
