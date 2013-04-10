@@ -1,0 +1,8 @@
+Kommandoer:
+
+
+STP (tall)     Endrer setpunktet for temperaturen
+INT (tall)     Endrer måleintervallet i minutter
+STS (tall)     Får opp statusen til programmet. Irrelevant hvilket tall man velger.
+TLR (tall)     Endrer toleransen over hvor mye temperaturen kan avvike
+ALG (tall)     Endrer alarmgrensen
