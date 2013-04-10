@@ -88,6 +88,10 @@
             this.btnAddEmail = new System.Windows.Forms.Button();
             this.txtAddEmail = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
+            this.dtpDelFromTime = new System.Windows.Forms.DateTimePicker();
+            this.dtpDelToTime = new System.Windows.Forms.DateTimePicker();
+            this.dtpSelectFromTime = new System.Windows.Forms.DateTimePicker();
+            this.dtpSelectToTime = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -562,6 +566,10 @@
             // tbpTwo
             // 
             this.tbpTwo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tbpTwo.BackgroundImage")));
+            this.tbpTwo.Controls.Add(this.dtpSelectToTime);
+            this.tbpTwo.Controls.Add(this.dtpSelectFromTime);
+            this.tbpTwo.Controls.Add(this.dtpDelToTime);
+            this.tbpTwo.Controls.Add(this.dtpDelFromTime);
             this.tbpTwo.Controls.Add(this.btnDelReading);
             this.tbpTwo.Controls.Add(this.dtpDelTo);
             this.tbpTwo.Controls.Add(this.dtpDelFrom);
@@ -583,10 +591,11 @@
             this.tbpTwo.TabIndex = 1;
             this.tbpTwo.Text = "Tabelloversikt";
             this.tbpTwo.UseVisualStyleBackColor = true;
+            this.tbpTwo.Click += new System.EventHandler(this.tbpTwo_Click);
             // 
             // btnDelReading
             // 
-            this.btnDelReading.Location = new System.Drawing.Point(22, 68);
+            this.btnDelReading.Location = new System.Drawing.Point(22, 92);
             this.btnDelReading.Name = "btnDelReading";
             this.btnDelReading.Size = new System.Drawing.Size(75, 23);
             this.btnDelReading.TabIndex = 13;
@@ -619,7 +628,7 @@
             // chkFilterDate
             // 
             this.chkFilterDate.AutoSize = true;
-            this.chkFilterDate.Location = new System.Drawing.Point(5, 192);
+            this.chkFilterDate.Location = new System.Drawing.Point(5, 148);
             this.chkFilterDate.Name = "chkFilterDate";
             this.chkFilterDate.Size = new System.Drawing.Size(15, 14);
             this.chkFilterDate.TabIndex = 10;
@@ -719,7 +728,7 @@
             // 
             this.dtpSelectTo.Enabled = false;
             this.dtpSelectTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectTo.Location = new System.Drawing.Point(116, 211);
+            this.dtpSelectTo.Location = new System.Drawing.Point(116, 167);
             this.dtpSelectTo.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectTo.MinDate = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
             this.dtpSelectTo.Name = "dtpSelectTo";
@@ -731,7 +740,7 @@
             // 
             this.dtpSelectFrom.Enabled = false;
             this.dtpSelectFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectFrom.Location = new System.Drawing.Point(24, 211);
+            this.dtpSelectFrom.Location = new System.Drawing.Point(24, 167);
             this.dtpSelectFrom.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectFrom.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectFrom.Name = "dtpSelectFrom";
@@ -877,6 +886,52 @@
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
             // 
+            // dtpDelFromTime
+            // 
+            this.dtpDelFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDelFromTime.Location = new System.Drawing.Point(24, 69);
+            this.dtpDelFromTime.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
+            this.dtpDelFromTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
+            this.dtpDelFromTime.Name = "dtpDelFromTime";
+            this.dtpDelFromTime.Size = new System.Drawing.Size(73, 20);
+            this.dtpDelFromTime.TabIndex = 14;
+            this.dtpDelFromTime.Value = new System.DateTime(2013, 4, 7, 0, 0, 0, 0);
+            // 
+            // dtpDelToTime
+            // 
+            this.dtpDelToTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDelToTime.Location = new System.Drawing.Point(116, 71);
+            this.dtpDelToTime.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
+            this.dtpDelToTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
+            this.dtpDelToTime.Name = "dtpDelToTime";
+            this.dtpDelToTime.Size = new System.Drawing.Size(73, 20);
+            this.dtpDelToTime.TabIndex = 15;
+            this.dtpDelToTime.Value = new System.DateTime(2013, 4, 7, 0, 0, 0, 0);
+            // 
+            // dtpSelectFromTime
+            // 
+            this.dtpSelectFromTime.Enabled = false;
+            this.dtpSelectFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSelectFromTime.Location = new System.Drawing.Point(24, 193);
+            this.dtpSelectFromTime.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
+            this.dtpSelectFromTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
+            this.dtpSelectFromTime.Name = "dtpSelectFromTime";
+            this.dtpSelectFromTime.Size = new System.Drawing.Size(73, 20);
+            this.dtpSelectFromTime.TabIndex = 16;
+            this.dtpSelectFromTime.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            // 
+            // dtpSelectToTime
+            // 
+            this.dtpSelectToTime.Enabled = false;
+            this.dtpSelectToTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSelectToTime.Location = new System.Drawing.Point(116, 193);
+            this.dtpSelectToTime.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
+            this.dtpSelectToTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
+            this.dtpSelectToTime.Name = "dtpSelectToTime";
+            this.dtpSelectToTime.Size = new System.Drawing.Size(73, 20);
+            this.dtpSelectToTime.TabIndex = 17;
+            this.dtpSelectToTime.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -971,6 +1026,10 @@
         private System.Windows.Forms.Button btnDelReading;
         private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.Button mottaMail;
+        private System.Windows.Forms.DateTimePicker dtpDelToTime;
+        private System.Windows.Forms.DateTimePicker dtpDelFromTime;
+        private System.Windows.Forms.DateTimePicker dtpSelectToTime;
+        private System.Windows.Forms.DateTimePicker dtpSelectFromTime;
 
     
 

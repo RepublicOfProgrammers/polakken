@@ -174,7 +174,7 @@ namespace Polakken
         /// <summary>
         /// Oppretter en ny avlesing i databasen.
         /// </summary>
-        /// <param name="time">ISO-8601 formatert slik: yy.MM.dd hh:mm:ss</param>
+        /// <param name="time">ISO-8601 formatert slik: yy.MM.ddThh:mm:ss</param>
         /// <param name="C">Temperatur i Celcius (ganget med 100. Del på 100 og tolk som double ved uthenting).</param>
         /// <param name="status">Varmeovn på = true, av = false</param>
         /// <returns>Returnerer 0 eller 1. Dersom linjen er opprettet vil metoden returnere 1. </returns>
