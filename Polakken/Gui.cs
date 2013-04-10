@@ -27,7 +27,7 @@ namespace Polakken
         DataTable GetEmails = new DataTable();
         string delToString;
         string delFromString;
-        bool test = false;
+        public bool test = false;
 
         public GUI()
         {
@@ -184,6 +184,12 @@ namespace Polakken
             this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
             this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
             this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+
+            //
+            //Delete btn
+            //
+
+                btnDelReading.Enabled = false;
         }
 
         //
@@ -759,7 +765,69 @@ namespace Polakken
 
         private void btnDelReading_Click(object sender, EventArgs e)
         {
+            DateTime delFrom = DateTime.MinValue;
+            DateTime delTo = DateTime.MinValue;
 
+
+
+            if (cboSelectDelete.SelectedIndex == 0)
+            {
+                dtpDelFrom.Enabled = false;
+                dtpDelFromTime.Enabled = false;
+                dtpDelTo.Enabled = false;
+                dtpDelToTime.Enabled = false;
+                string dateInString = " 2000.01.01 00:00:00";
+                DateTime first = DateTime.Parse(dateInString);
+                DateTime last = DateTime.Now;
+                DateTime added = last.AddDays(50);
+                delFrom = first;
+                delTo = added;
+                delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
+            }
+            if (cboSelectDelete.SelectedIndex == 1)
+            {
+                dtpDelFrom.Enabled = false;
+                dtpDelFromTime.Enabled = false;
+                dtpDelTo.Enabled = false;
+                dtpDelToTime.Enabled = false;
+                DateTime now = DateTime.Now;
+                DateTime minus30 = now.AddDays(-30);
+                DateTime minus1 = now.AddDays(-1);
+                delFrom = minus30;
+                delTo = minus1;
+                delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
+                MessageBox.Show(delToString);
+            }
+            if (cboSelectDelete.SelectedIndex == 2)
+            {
+                dtpDelFrom.Enabled = true;
+                dtpDelFromTime.Enabled = true;
+                dtpDelTo.Enabled = true;
+                dtpDelToTime.Enabled = true;
+                delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
+                delTo = dtpDelTo.Value.Date + dtpDelToTime.Value.TimeOfDay;
+                if (delFrom > delTo)
+                {
+                    MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil");
+                }
+                delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
+            }
+            if (cboSelectDelete.SelectedIndex == 3)
+            {
+                dtpDelTo.Enabled = false;
+                dtpDelToTime.Enabled = false;
+                delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
+                delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
+                delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
+            }
+            if (cboSelectDelete.SelectedIndex == -1)
+            {
+                btnDelReading.Enabled = false;
+            }
             DelReadings();
             dgvDataBase.DataSource = null;
             u.Clear();
@@ -831,68 +899,41 @@ namespace Polakken
 
         private void cboSelectDelete_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DateTime delFrom = DateTime.MinValue;
-            DateTime delTo = DateTime.MinValue;
-           
-           
-
             if (cboSelectDelete.SelectedIndex == 0)
             {
-                dtpSelectFrom.Enabled = false;
-                dtpSelectFromTime.Enabled = false;
-                dtpSelectTo.Enabled = false;
-                dtpSelectToTime.Enabled = false;
-                string dateInString = " 2000.01.01 00:00:00";
-                DateTime first = DateTime.Parse(dateInString);
-                DateTime last = DateTime.Now;
-                delFrom = first;
-                delTo = last;
-                delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
-                delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
+                btnDelReading.Enabled = true;
+                dtpDelFrom.Enabled = false;
+                dtpDelFromTime.Enabled = false;
+                dtpDelTo.Enabled = false;
+                dtpDelToTime.Enabled = false;
+               
             }
             if (cboSelectDelete.SelectedIndex == 1)
             {
-                dtpSelectFrom.Enabled = false;
-                dtpSelectFromTime.Enabled = false;
-                dtpSelectTo.Enabled = false;
-                dtpSelectToTime.Enabled = false;
-                DateTime now = DateTime.Now;
-                DateTime minus30 = now.AddDays(-30);
-                DateTime minus1 = now.AddDays(-1);
-                delFrom = minus30;
-                delTo = minus1;
-                delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
-                delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
-                MessageBox.Show(delToString);
+                btnDelReading.Enabled = true;
+                dtpDelFrom.Enabled = false;
+                dtpDelFromTime.Enabled = false;
+                dtpDelTo.Enabled = false;
+                dtpDelToTime.Enabled = false;
+             
             }
             if (cboSelectDelete.SelectedIndex == 2)
             {
-                dtpSelectFrom.Enabled = true;
-                dtpSelectFromTime.Enabled = true;
-                dtpSelectTo.Enabled = true;
-                dtpSelectToTime.Enabled = true;
-                delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
-                delTo = dtpDelTo.Value.Date + dtpDelToTime.Value.TimeOfDay;
-                if (delFrom > delTo)
-                {
-                    MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil");
-                }
-                delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
-                delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
+                btnDelReading.Enabled = true;
+                dtpDelFrom.Enabled = true;
+                dtpDelFromTime.Enabled = true;
+                dtpDelTo.Enabled = true;
+                dtpDelToTime.Enabled = true;
+                
             }
             if (cboSelectDelete.SelectedIndex == 3)
             {
-                dtpSelectTo.Enabled = false;
-                dtpSelectToTime.Enabled = false;
-                delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
-                delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
-                delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
-                delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
+                btnDelReading.Enabled = true;
+                dtpDelTo.Enabled = false;
+                dtpDelToTime.Enabled = false;
+               
             }
-            if (cboSelectDelete.SelectedIndex == -1)
-            {
-                btnDelReading.Enabled = false;
-            }
+
         }
 
 
