@@ -355,10 +355,10 @@ namespace Polakken
         }
         private void DelReadings()    
         {
-            //DbHandler db = new DbHandler();
-            //db.DelReadings(delFromString, delToString);
-            //MessageBox.Show(delToString + delFromString);
-
+            DbHandler db = new DbHandler();
+            db.DelReadings(delFromString, delToString);
+            MessageBox.Show(delToString + delFromString);
+           
         }
 
         private void CreateValues()
@@ -838,6 +838,10 @@ namespace Polakken
 
             if (cboSelectDelete.SelectedIndex == 0)
             {
+                dtpSelectFrom.Enabled = false;
+                dtpSelectFromTime.Enabled = false;
+                dtpSelectTo.Enabled = false;
+                dtpSelectToTime.Enabled = false;
                 string dateInString = " 2000.01.01 00:00:00";
                 DateTime first = DateTime.Parse(dateInString);
                 DateTime last = DateTime.Now;
@@ -848,6 +852,10 @@ namespace Polakken
             }
             if (cboSelectDelete.SelectedIndex == 1)
             {
+                dtpSelectFrom.Enabled = false;
+                dtpSelectFromTime.Enabled = false;
+                dtpSelectTo.Enabled = false;
+                dtpSelectToTime.Enabled = false;
                 DateTime now = DateTime.Now;
                 DateTime minus30 = now.AddDays(-30);
                 DateTime minus1 = now.AddDays(-1);
@@ -859,6 +867,10 @@ namespace Polakken
             }
             if (cboSelectDelete.SelectedIndex == 2)
             {
+                dtpSelectFrom.Enabled = true;
+                dtpSelectFromTime.Enabled = true;
+                dtpSelectTo.Enabled = true;
+                dtpSelectToTime.Enabled = true;
                 delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
                 delTo = dtpDelTo.Value.Date + dtpDelToTime.Value.TimeOfDay;
                 if (delFrom > delTo)
@@ -870,6 +882,8 @@ namespace Polakken
             }
             if (cboSelectDelete.SelectedIndex == 3)
             {
+                dtpSelectTo.Enabled = false;
+                dtpSelectToTime.Enabled = false;
                 delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
                 delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
                 delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
