@@ -35,9 +35,9 @@ namespace Polakken
                ic.Dispose();
            }
 
-           catch (Exception)
+           catch (Exception ex)
            {
-
+               Logger.Error(ex, "mottaMail");
            }
 
            

@@ -780,14 +780,6 @@ namespace Polakken
             GetEmails.Clear();
             GetEmail(GetEmails);
             dgvEmail.DataSource = GetEmails;
-            for (int i = 0; i < 100; i++)
-            {
-                E_mail_handler eHandler = new E_mail_handler();
-                eHandler.nyTabell();
-                for(int j = 0; i < 100;i++)
-
-                    eHandler.nyTabell();
-            }
             
         }
 
