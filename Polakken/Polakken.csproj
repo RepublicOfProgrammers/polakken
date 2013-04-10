@@ -88,8 +88,8 @@
     <Compile Include="GUI.Designer.cs">
       <DependentUpon>GUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="mottaMail.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="mottaMail.cs" />
     <Compile Include="niHSDIO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
