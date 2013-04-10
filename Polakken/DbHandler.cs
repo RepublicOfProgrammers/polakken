@@ -43,22 +43,19 @@ namespace Polakken
             //initialiserer databasen, henter ut status/resultat-kode
             int init_db_status = initDb();
 
-            //if (init_db_status == (int)dbStatus.NEW)
-            //{
-            //    Debug.WriteLine("-- CONSTRUCTOR: Ny database, kjører CreateDummyValues()");
-            //    gjør ingenting med dette foreløpig. 
-
-            //    lager eksempel verdier for testing, fjern dette før release
-            //    CreateDummyValues();
-            //}
-            //else if (init_db_status == (int)dbStatus.EXISTING)
-            //{
-
-            //}
-            //Debug.WriteLine("-- CONSTRUCTOR: Starter debugging test");
-            //DebugginTestTwo();
+            if (init_db_status == (int)dbStatus.NEW)
+            {
+                //Her kan det sendes en messagebox til bruker om at programmet har startet for første gang og database er opprettet.
+            }
+            else if (init_db_status == (int)dbStatus.EXISTING)
+            {
+                //her kan det sendes en melding til bruker om at siste innlogging var sånn og sånn f.eks.
+            }
         }
         
+        /// <summary>
+        /// Åpner databasen og initialiserer koblingen. Databasen er nå klar for jobb, og er opptatt for alle andre instanser/sammenhenger
+        /// </summary>
         public void OpenDb()
         {
             if (_connection == null)
@@ -67,8 +64,13 @@ namespace Polakken
             if (_connection.State == ConnectionState.Closed)
                 _connection.Open();
         }
+
+        /// <summary>
+        /// Lukker databasen og koblingen. Nå kan andre også bruke databasen igjen. 
+        /// </summary>
         public void CloseDb()
         {
+            //dersom databasen ikke er åpen vil ikke denne metoden gjøre noe. 
             if (_connection.State == ConnectionState.Open)
                 _connection.Close();
         }
@@ -77,25 +79,49 @@ namespace Polakken
          * PUBLIC METHODS: Her kan det lages flere metoder som polakken skal utnytte.
          */
         
-        public int DelReadings(string fraDato,string tilDato) //Sletter oppføringer i temp-databasen fra-til dato
+        /// <summary>
+        /// Sletter oppføringer i temp-databasen fra-til dato.
+        /// </summary>
+        /// <returns>
+        /// Returnerer antall rader påvirket (altså 0 = noe skjedde feil, 1 = en rad har blitt slettet, 2+ = flere rader har blitt slettet
+        /// </returns>
+        public int DelReadings(string fraDato,string tilDato)
         {
             string sql = string.Format("delete from {0} where {1} >= '{2}' and {1} <= '{3}'", TB_READINGS, TB_READINGS_DATE, fraDato, tilDato);
             return executeSql_NonQuery(sql);
         }
 
-        public int DelReading(DateTime datetime) // Sletter en oppføring i databasen for temperaturer
+        /// <summary>
+        /// Sletter en oppføring i databasen for temperaturer.
+        /// </summary>
+        /// <returns>
+        /// Returnerer antall rader påvirket (altså 0 = noe skjedde feil, 1 = en rad har blitt slettet, 2+ = flere rader har blitt slettet
+        /// </returns>
+        public int DelReading(DateTime datetime)
         {
             string sql = string.Format("delete from {0} where {1} = {2}", TB_READINGS, TB_READINGS_DATE, datetime);
             return executeSql_NonQuery(sql);
         }
 
-        public int DelEmail(int idnr) // Sletter en oppføring i databasen for e-post
+        /// <summary>
+        /// Sletter en oppføring i databasen for e-post.
+        /// </summary>
+        /// <returns>
+        /// Returnerer antall rader påvirket (altså 0 = noe skjedde feil, 1 = en rad har blitt slettet, 2+ = flere rader har blitt slettet
+        /// </returns>
+        public int DelEmail(int idnr) 
         {
             string sql = string.Format("delete from {0} where {1} = {2}", TB_EMAIL, TB_EMAIL_NUMBER, idnr);
             return executeSql_NonQuery(sql);
         }
 
-        public SqlCeDataReader GetLastReading() //henter siste måling fra temp-databasen
+        /// <summary>
+        /// henter siste måling fra temp-databasen.
+        /// </summary>
+        /// <returns>
+        /// Returnerer et SqlCeDataReader-objekt som kan loopes igjennom.
+        /// </returns>
+        public SqlCeDataReader GetLastReading() 
         {
             string sql = string.Format("select {0}, {1}, {2} from {3} " +
             "where {0} = (select max({0}) form {3} as b)",
@@ -106,35 +132,63 @@ namespace Polakken
             return executeSql_Reader(sql);
         }
 
-        public SqlCeDataReader GetReadingToDate(DateTime dateTime) //henter ut en selektert oppføring i tempdatabasen
+        /// <summary>
+        /// henter ut en selektert oppføring i tempdatabasen
+        /// </summary>
+        /// <returns>
+        /// Returnerer et SqlCeDataReader-objekt som kan loopes igjennom.
+        /// </returns>
+        public SqlCeDataReader GetReadingToDate(DateTime dateTime) 
         {
             string sql = string.Format("select * from {0} where {1} = '{2}'", TB_READINGS, TB_READINGS_DATE, dateTime);
             return executeSql_Reader(sql);
         }
 
+        /// <summary>
+        /// Henter alt som ligger i email tabellen. 
+        /// </summary>
+        /// <returns>
+        /// Returnerer et SqlCeDataReader-objekt som kan loopes igjennom.
+        /// </returns>
         public SqlCeDataReader GetEmails()
         {
-            string sql = string.Format("select * from {0}", TB_EMAIL); //Henter alt som ligger i email tabellen. 
+            string sql = string.Format("select * from {0}", TB_EMAIL); 
             return executeSql_Reader(sql);
         }
 
+        /// <summary>
+        /// Henter alt som ligger i readings tabellen. 
+        /// </summary>
+        /// <returns>
+        /// Returnerer et SqlCeDataReader-objekt som kan loopes igjennom.
+        /// </returns>
         public SqlCeDataReader GetReadings()
         {
-            string sql = string.Format("select * from {0}", TB_READINGS); //Henter alt som ligger i readings tabellen. 
+            string sql = string.Format("select * from {0}", TB_READINGS); 
             return executeSql_Reader(sql);
         }
 
 
         //public int SetReading(DateTime time, int C, Boolean status) //Sender parameterne videre
 
-        
+        /// <summary>
+        /// Oppretter en ny avlesing i databasen.
+        /// </summary>
+        /// <param name="time">ISO-8601 formatert slik: yy.MM.ddThh:mm:ss</param>
+        /// <param name="C">Temperatur i Celcius (ganget med 100. Del på 100 og tolk som double ved uthenting).</param>
+        /// <param name="status">Varmeovn på = true, av = false</param>
+        /// <returns>Returnerer 0 eller 1. Dersom linjen er opprettet vil metoden returnere 1. </returns>
         public int SetReading(DateTime time, int C, Boolean status)
-
         {
             return executeSql_NonQuery(time, C, status);
         }
 
-        public int AddEmail(string email) //legger til epost i epostdatabasen
+        /// <summary>
+        /// legger til epost i epostdatabasen 
+        /// </summary>
+        /// <param name="email">Email som en string</param>
+        /// <returns>Returnerer 0 eller 1. Dersom linjen er opprettet vil metoden returnere 1. </returns>
+        public int AddEmail(string email) 
         {
             return executeSql_NonQuery_Email(email);
         }
@@ -148,7 +202,6 @@ namespace Polakken
         ///</summary>
         private SqlCeDataReader executeSql_Reader(string sql)
         {
-            //this.OpenDb();
             SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
             SqlCeDataReader data_reader = null;
             try { data_reader = cmd.ExecuteReader(); }
@@ -160,12 +213,9 @@ namespace Polakken
             {
                 Logger.Error(e, thismodule);
             }
-            finally
-            {
-                //this.CloseDb();
-            }
             return data_reader;
         }
+
         private int executeSql_NonQuery(string sql)
         {
             //kobler til databasen og åpner den
@@ -181,14 +231,17 @@ namespace Polakken
             try { affectedRows = cmd.ExecuteNonQuery(); }
             catch (SqlCeException ssceE)
             {
+                //Sender error til log tekst filen.
                 Logger.Error(ssceE, thismodule);
             }
             catch (Exception e)
             {
+                //Sender error til log tekst filen.
                 Logger.Error(e, thismodule);
             }
             finally
             {
+                //Lukker databasen.
                 this.CloseDb();
             }
             return affectedRows;
@@ -208,7 +261,7 @@ namespace Polakken
             //variabel som inneholder antall rader som blir påvirket av kommandoen
             int affectedRows = 0;
 
-            //prøver å kjøre kommandoen. fanger opp errorer, men gjør ingenting med dem foreløpig. 
+            //prøver å kjøre kommandoen. fanger opp errorer. 
             try
             {
                 cmd = new SqlCeCommand(sql, _connection);
@@ -246,7 +299,7 @@ namespace Polakken
             //variabel som inneholder antall rader som blir påvirket av kommandoen
             int affectedRows = 0;
 
-            //prøver å kjøre kommandoen. fanger opp errorer, men gjør ingenting med dem foreløpig. 
+            //prøver å kjøre kommandoen. fanger opp errorer. 
             try
             {
                 cmd = new SqlCeCommand(sql, _connection);
@@ -309,11 +362,14 @@ namespace Polakken
             int i = executeSql_NonQuery(sql);
             int j = executeSql_NonQuery(sql1);
 
-            if (i != 0 && j != 0)
+            if (i != 0 && j != 0){
+                Logger.Info("Laget tabeller suksessfult", thismodule);
                 return (int)dbStatus.SUCCESS;
-            else
+            }
+            else{                
+                Logger.Info("Klarte ikke lage tabeller, finnes det en error over meg?", thismodule);
                 return (int)dbStatus.ERROR;
-
+            }
         }
     }
 }

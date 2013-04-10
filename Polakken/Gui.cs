@@ -41,8 +41,6 @@ namespace Polakken
             CreateValues();
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
-            DataTable LastReading = new DataTable();
-            GetLast(LastReading);
             GetEmail(GetEmails);
             dgvEmail.DataSource = GetEmails;
             DataTable Equals = new DataTable();
@@ -162,9 +160,23 @@ namespace Polakken
             txtInt.Text = mesurInterval.ToString();
 
             //
-            //Filtrering av databasen
+            //DateTimePickers
             //
+            dtpDelFrom.Format = DateTimePickerFormat.Short;
+            dtpDelTo.Format = DateTimePickerFormat.Short;
+            dtpDelFromTime.Format = DateTimePickerFormat.Time;
+            dtpDelToTime.Format = DateTimePickerFormat.Time;
+            dtpSelectFrom.Format = DateTimePickerFormat.Short;
+            dtpSelectTo.Format = DateTimePickerFormat.Short;
+            dtpSelectFromTime.Format = DateTimePickerFormat.Time;
+            dtpSelectToTime.Format = DateTimePickerFormat.Time;
+            dtpDelFromTime.ShowUpDown = true;
+            dtpDelToTime.ShowUpDown = true;
+            dtpSelectFromTime.ShowUpDown = true;
+            dtpSelectToTime.ShowUpDown = true;
+            
 
+            
 
 
         }
@@ -260,45 +272,7 @@ namespace Polakken
             db.CloseDb();
             return v;
         }
-        public DataTable GetLast(DataTable GetLastR)
-        {
-            DbHandler db = new DbHandler();
-            GetLastR.Columns.Add("ReadTime", typeof(DateTime));
-            GetLastR.Columns.Add("Temprature", typeof(string));
-            GetLastR.Columns.Add("Status", typeof(string));
-
-
-            db.OpenDb();
-            SqlCeDataReader mReader = db.GetReadings();
-
-            while (mReader.Read())
-            {
-                var row = GetLastR.NewRow();
-                for (int i = 0; i < 3; i++)
-                {
-
-                    string Reading = mReader[i].ToString();
-                    if (i == 0)
-                    {
-                        row["ReadTime"] = Reading;
-                    }
-                    if (i == 1)
-                    {
-                        row["Temprature"] = Reading;
-                    }
-                    if (i == 2)
-                    {
-                        row["Status"] = Reading;
-                    }
-                }
-                GetLastR.Rows.Add(row);
-
-            }
-
-            mReader.Close();
-            db.CloseDb();
-            return GetLastR;
-        }
+       
         public DataTable GetEmail(DataTable GetEmails)
         {
             
@@ -380,11 +354,16 @@ namespace Polakken
             DateTime delFrom = DateTime.MinValue;
             DateTime delTo = DateTime.MaxValue;
             delTo = dtpDelTo.Value;
-            delFrom = dtpDelFrom.Value;
+            delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
+            delTo = dtpDelTo.Value.Date + dtpDelToTime.Value.TimeOfDay;
+            if (delFrom > delTo)
+            {
+                MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil");
+            }
             string delToString;
             string delFromString;
-            delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
-            delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
+            delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
+            delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
             db.DelReadings(delFromString, delToString);
             MessageBox.Show(delToString + delFromString);
 
@@ -817,6 +796,11 @@ namespace Polakken
             MottaMail.mottaMail();
             MottaMail.StripHTML(MottaMail.innhold);
             MottaMail.getCommand();
+        }
+
+        private void tbpTwo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
