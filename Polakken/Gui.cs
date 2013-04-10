@@ -175,10 +175,13 @@ namespace Polakken
             dtpSelectFromTime.ShowUpDown = true;
             dtpSelectToTime.ShowUpDown = true;
             
-
-            
-
-
+            //
+            //SetPointButton
+            //
+            this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+            this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
         }
 
         //
@@ -350,22 +353,9 @@ namespace Polakken
         }
         private void DelReadings()    
         {
-            DbHandler db = new DbHandler();
-            DateTime delFrom = DateTime.MinValue;
-            DateTime delTo = DateTime.MaxValue;
-            delTo = dtpDelTo.Value;
-            delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
-            delTo = dtpDelTo.Value.Date + dtpDelToTime.Value.TimeOfDay;
-            if (delFrom > delTo)
-            {
-                MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil");
-            }
-            string delToString;
-            string delFromString;
-            delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
-            delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
-            db.DelReadings(delFromString, delToString);
-            MessageBox.Show(delToString + delFromString);
+            //DbHandler db = new DbHandler();
+            //db.DelReadings(delFromString, delToString);
+            //MessageBox.Show(delToString + delFromString);
 
         }
 
@@ -610,8 +600,8 @@ namespace Polakken
                 string dates = null;
                 DateTime startDate;
                 DateTime endDate;
-                startDate = dtpSelectFrom.Value;
-                endDate = dtpSelectTo.Value;
+                startDate = dtpSelectFrom.Value.Date + dtpSelectFromTime.Value.TimeOfDay;
+                endDate = dtpSelectTo.Value.Date + dtpSelectToTime.Value.TimeOfDay;
                 dates = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
                 view.RowFilter = dates;
                 dateSpan = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "AND ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
@@ -718,12 +708,16 @@ namespace Polakken
             {
                 dtpSelectFrom.Enabled = true;
                 dtpSelectTo.Enabled = true;
+                dtpSelectFromTime.Enabled = true;
+                dtpSelectToTime.Enabled = true;
 
             }
             else
             {
                 dtpSelectFrom.Enabled = false;
                 dtpSelectTo.Enabled = false;
+                dtpSelectFromTime.Enabled = false;
+                dtpSelectToTime.Enabled = false;
             }
         }
 
@@ -794,6 +788,91 @@ namespace Polakken
         {
 
         }
+
+        private void chkSetTol_CheckedChanged(object sender, EventArgs e)
+        {
+            bool test = false;
+            if (chkSetTol.Checked)
+            {
+                test = true;
+                lblSet.Enabled = true;
+                lblTol.Enabled = true;
+                btnSetPointUp.Enabled = true;
+                btnSetPointDown.Enabled = true;
+                btnToleranceDown.Enabled = true;
+                btnToleranceUp.Enabled = true;
+                txtSetPoint.Enabled = true;
+                txtTol.Enabled = true;
+                this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+                this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+                this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+                this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+            }
+            else
+            {
+                test = false;
+                lblSet.Enabled = false;
+                lblTol.Enabled = false;
+                btnSetPointUp.Enabled = false;
+                btnSetPointDown.Enabled = false;
+                btnToleranceDown.Enabled = false;
+                btnToleranceUp.Enabled = false;
+                txtSetPoint.Enabled = false;
+                txtTol.Enabled = false;
+                this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+                this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+                this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+                this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            }
+            
+        }
+
+        private void cboSelectDelete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DateTime delFrom = DateTime.MinValue;
+            DateTime delTo = DateTime.MaxValue;
+            delTo = dtpDelTo.Value;
+           
+
+            if (cboSelectDelete.SelectedIndex == 0)
+            {
+                string dateInString = " 2000.01.01 00:00:00";
+                DateTime first = DateTime.Parse(dateInString);
+                DateTime last = DateTime.Now;
+                delFrom = first;
+                delTo = last;
+                string delToString;
+                string delFromString;
+                delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
+            }
+            if (cboSelectDelete.SelectedIndex == 1)
+            {
+                DateTime now = DateTime.Now;
+                DateTime minus30 = now.AddDays(-30);
+                MessageBox.Show(minus30.ToString());
+            }
+            if (cboSelectDelete.SelectedIndex == 2)
+            {
+                delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
+                delTo = dtpDelTo.Value.Date + dtpDelToTime.Value.TimeOfDay;
+                if (delFrom > delTo)
+                {
+                    MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil");
+                }
+                string delToString;
+                string delFromString;
+                delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
+            }
+            if (cboSelectDelete.SelectedIndex == 3)
+            {
+                dtpDelTo.Enabled = false;
+                dtpDelToTime.Enabled = false;
+            }
+        }
+
+
     }
 }
 

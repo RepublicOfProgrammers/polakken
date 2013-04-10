@@ -52,6 +52,7 @@ namespace Polakken
            int length;
            string command;
            string value;
+           string response;
            int intvalue = 0;
            bool success = true;
 
@@ -77,19 +78,30 @@ namespace Polakken
                    switch (command)
                    {
                        case "STP":
-                           result = "setpunkt";
+                           Regulation.setpoint = intvalue;
+                           response = "Setpunktet har blitt endret til " + Convert.ToString(Regulation.setpoint);
+                           E_mail_handler.sendToOne("Endring av setpunkt", response, fra);
                            break;
                        case "INT":
-                           result = "interval";
+                           SensorCom.mesInterval = intvalue;
+                           response = "Måleintervallet har blitt endret til " + Convert.ToString(SensorCom.mesInterval);
+                           E_mail_handler.sendToOne("Endring av Måleinterval", response, fra);
                            break;
                        case "STS":
                            result = "status";
                            break;
                        case "TLR":
-                           result = "toleranse";
+                           Regulation.tolerance = intvalue;
+                           response = "Toleransen har blitt endret til " + Convert.ToString(Regulation.tolerance);
+                           E_mail_handler.sendToOne("Endring av toleranse", response, fra);
                            break;
                        case "ALG":
-                           result = "alarmgrense";
+                           SensorCom.alarmGrense = intvalue;
+                           response = "Alarmgrensen har blitt endret til " + Convert.ToString(SensorCom.alarmGrense);
+                           E_mail_handler.sendToOne("Endring av toleranse", response, fra);
+                           break;
+                       case "HLP":
+                           result = "hjelp";
                            break;
                        default:
                            result = "ugyldig commando";

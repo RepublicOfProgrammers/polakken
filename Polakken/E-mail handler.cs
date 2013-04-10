@@ -10,9 +10,9 @@ using System.Data;
 
 namespace Polakken
 {
-    class E_mail_handler
+    static class E_mail_handler
     {
-        public SmtpClient client = new SmtpClient("smtp.gmail.com", 587) //Lager en ny SmtpClient med host-navn og port
+        public static  SmtpClient client = new SmtpClient("smtp.gmail.com", 587) //Lager en ny SmtpClient med host-navn og port
          {
              Credentials = new NetworkCredential("republicofprogrammers@gmail.com", "polakken"), //Login-informasjon for emailen vi sender fra
              EnableSsl = true //Legger til sikkerhetslaget Ssl
@@ -47,7 +47,7 @@ namespace Polakken
         //    }
         //}
 
-        public void sendFromString(string subject, string body)
+        public static void sendToAll(string subject, string body)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace Polakken
             }
         }
 
-        public void sendFromStringEmail(string subject, string body, string mailAdress)
+        public static void sendToOne(string subject, string body, string mailAdress)
         {
             try
             {
