@@ -9,7 +9,7 @@ namespace Polakken
     {
         //variabler
         private static string module = "Regulation";
-        private static Boolean status;
+        public static Boolean status;
         private static double reading;
         private static double prevReading;
         public static int tolerance { get; set; }
