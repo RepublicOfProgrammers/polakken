@@ -13,8 +13,11 @@ namespace Polakken
         private static string module = "SensorCom";
         public static int alarmLimit { get; set; }
         public static int mesInterval 
-        { 
-            get; 
+        {
+            get
+            {
+                return mesInterval;
+            }
             set 
             {
                 Regulation.mesInterval = mesInterval;
