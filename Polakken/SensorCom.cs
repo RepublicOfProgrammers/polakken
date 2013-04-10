@@ -28,7 +28,6 @@ namespace Polakken
         {
             try
             {
-                //Debug.WriteLine("<<TempDebug>>");
                 Task temperatureTask = new Task();
                 AIChannel myAIChannel;
                 myAIChannel = temperatureTask.AIChannels.CreateThermocoupleChannel("Dev1/ai0", "Temperature", 0, 100,
@@ -36,14 +35,13 @@ namespace Polakken
 
                 AnalogSingleChannelReader reader = new AnalogSingleChannelReader(temperatureTask.Stream);
                 double analogData = reader.ReadSingleSample();
-                //Debug.WriteLine(analogData);
                 return analogData;
             }
             catch (Exception e)
             {
                 Logger.Error(e, module);
                 return 999;
-                //999 vil være en "feilkode", exceptionen bør også logges. 
+                //999 vil være en "feilkode"
             }
         }
     }

@@ -45,6 +45,19 @@ namespace Polakken
 
        }
 
+       public static string help()
+       {
+           string help = "";
+           // Read each line of the file into a string array. Each element 
+           // of the array is one line of the file. 
+           string lines = System.IO.File.ReadAllText("hjelpPolakken.txt");
+
+           // Display the file contents by using a foreach loop.
+           
+
+           return help;
+       }
+
        public static void getCommand()
        {
            string status = ""; //alle tilfeller av result byttes ut med tilhørende kommandoer. 
@@ -56,7 +69,7 @@ namespace Polakken
            int intvalue = 0;
            bool success = true;
 
-           string ugyldig = "Du har oppgitt en ugyldig kommando, send \"HLP 1\" for liste over kommandoer";
+           string ugyldig = "Du har oppgitt en ugyldig kommando, send \"HLP 1\" for liste over kommandoer eller \"HLP 0\" for hele hjelp filen";
 
            innhold = innhold.TrimEnd('\r', '\n');
            if (innhold.Length > 3)
@@ -80,33 +93,52 @@ namespace Polakken
                    switch (command)
                    {
                        case "STP":
+                           //E-mail kommando for endring av setpunkt. 
                            Regulation.setpoint = intvalue;
                            response = "Setpunktet har blitt endret til " + Convert.ToString(Regulation.setpoint);
                            E_mail_handler.sendToOne("Endring av setpunkt", response, fra);
                            break;
                        case "INT":
+                           //E-mail kommando for endring av måleinterval. 
                            SensorCom.mesInterval = intvalue;
                            response = "Måleintervallet har blitt endret til " + Convert.ToString(SensorCom.mesInterval);
                            E_mail_handler.sendToOne("Endring av måleinterval", response, fra);
                            break;
                        case "STS":
+                           //E-mail kommando for å få status sendt på mail. 
                            string temp = Convert.ToString(Math.Round(SensorCom.temp(), 0));
                            string alarm = Convert.ToString(SensorCom.alarmLimit);
                            string interval = Convert.ToString(SensorCom.mesInterval);
-                           status = "Status: \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;
+                           DateTime now = DateTime.Now;
+                           string time = now.ToString();
+                            
+                           if (GUI.test == false)
+                           {
+                               status = "Status " + time + " :\r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;
+                           }
+                           else
+                           {
+                               string setpoint = Convert.ToString(Regulation.setpoint);
+                               string tolerance = Convert.ToString(Regulation.tolerance);
+                               status = "Status " + time + " :\r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval + "\r\nSetpunkt: " + 
+                                   setpoint + "\r\nToleranse: " + tolerance;
+                           }
                            E_mail_handler.sendToOne("Status", status, fra);
                            break;
                        case "TLR":
+                           //E-mail kommando for endring av toleranse. 
                            Regulation.tolerance = intvalue;
                            response = "Toleransen har blitt endret til " + Convert.ToString(Regulation.tolerance);
                            E_mail_handler.sendToOne("Endring av toleranse", response, fra);
                            break;
                        case "ALG":
+                           //E-mail kommando for endring av alarmgrense.
                            SensorCom.alarmLimit = intvalue;
                            response = "Alarmgrensen har blitt endret til " + Convert.ToString(SensorCom.alarmLimit);
                            E_mail_handler.sendToOne("Endring av alarmgrense", response, fra);
                            break;
                        case "HLP":
+                           //E-mail kommando for å få tilsendt hjelp teksten. 
                            //Hjelp
                            break;
                        default:
