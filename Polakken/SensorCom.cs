@@ -11,7 +11,7 @@ namespace Polakken
     static class SensorCom
     {
         private static string module = "SensorCom";
-        public static int alarmGrense { get; set; }
+        public static int alarmLimit { get; set; }
         public static int mesInterval 
         { 
             get; 

@@ -19,6 +19,7 @@ namespace Polakken
        public static string fra { get; set; }
        public static string emne { get; set; }
        public static string innhold { get; set; }
+       private static string module = "mottaMail";
 
        public static void mottaMail()
        {
@@ -46,8 +47,7 @@ namespace Polakken
 
        public static void getCommand()
        {
-           string error; //feilmeldingen, logges som alt annet. 
-           string result = ""; //alle tilfeller av result byttes ut med tilhørende kommandoer. 
+           string status = ""; //alle tilfeller av result byttes ut med tilhørende kommandoer. 
            //innhold = "INT 55\r\n"; //hentes inn fra mail, bør byttes ut overalt med den stringen. 
            int length;
            string command;
@@ -55,6 +55,8 @@ namespace Polakken
            string response;
            int intvalue = 0;
            bool success = true;
+
+           string ugyldig = "Du har oppgitt en ugyldig kommando, send \"HLP 1\" for liste over kommandoer";
 
            innhold = innhold.TrimEnd('\r', '\n');
            if (innhold.Length > 3)
@@ -69,8 +71,8 @@ namespace Polakken
                }
                catch (Exception ex)
                {
-                   error = ex.ToString();
-                   result = "ugyldig commando";
+                   Logger.Error(ex, module);
+                   E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
                    success = false;
                }
                if (success == true)
@@ -85,10 +87,14 @@ namespace Polakken
                        case "INT":
                            SensorCom.mesInterval = intvalue;
                            response = "Måleintervallet har blitt endret til " + Convert.ToString(SensorCom.mesInterval);
-                           E_mail_handler.sendToOne("Endring av Måleinterval", response, fra);
+                           E_mail_handler.sendToOne("Endring av måleinterval", response, fra);
                            break;
                        case "STS":
-                           result = "status";
+                           string temp = Convert.ToString(Math.Round(SensorCom.temp(), 0));
+                           string alarm = Convert.ToString(SensorCom.alarmLimit);
+                           string interval = Convert.ToString(SensorCom.mesInterval);
+                           status = "Status: \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;
+                           E_mail_handler.sendToOne("Status", status, fra);
                            break;
                        case "TLR":
                            Regulation.tolerance = intvalue;
@@ -96,22 +102,22 @@ namespace Polakken
                            E_mail_handler.sendToOne("Endring av toleranse", response, fra);
                            break;
                        case "ALG":
-                           SensorCom.alarmGrense = intvalue;
-                           response = "Alarmgrensen har blitt endret til " + Convert.ToString(SensorCom.alarmGrense);
-                           E_mail_handler.sendToOne("Endring av toleranse", response, fra);
+                           SensorCom.alarmLimit = intvalue;
+                           response = "Alarmgrensen har blitt endret til " + Convert.ToString(SensorCom.alarmLimit);
+                           E_mail_handler.sendToOne("Endring av alarmgrense", response, fra);
                            break;
                        case "HLP":
-                           result = "hjelp";
+                           //Hjelp
                            break;
                        default:
-                           result = "ugyldig commando";
+                           E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
                            break;
                    }
                }
            }
            else
            {
-               result = "ugyldig commando";
+               E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
            }
        }
     }
