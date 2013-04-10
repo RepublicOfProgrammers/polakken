@@ -162,6 +162,20 @@ namespace Polakken
             //
             //DateTimePickers
             //
+            dtpDelFrom.Format = DateTimePickerFormat.Short;
+            dtpDelTo.Format = DateTimePickerFormat.Short;
+            dtpDelFromTime.Format = DateTimePickerFormat.Time;
+            dtpDelToTime.Format = DateTimePickerFormat.Time;
+            dtpSelectFrom.Format = DateTimePickerFormat.Short;
+            dtpSelectTo.Format = DateTimePickerFormat.Short;
+            dtpSelectFromTime.Format = DateTimePickerFormat.Time;
+            dtpSelectToTime.Format = DateTimePickerFormat.Time;
+            dtpDelFromTime.ShowUpDown = true;
+            dtpDelToTime.ShowUpDown = true;
+            dtpSelectFromTime.ShowUpDown = true;
+            dtpSelectToTime.ShowUpDown = true;
+            
+
             
 
 
@@ -340,15 +354,16 @@ namespace Polakken
             DateTime delFrom = DateTime.MinValue;
             DateTime delTo = DateTime.MaxValue;
             delTo = dtpDelTo.Value;
-            delFrom = dtpDelFrom.Value;
+            delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
+            delTo = dtpDelTo.Value.Date + dtpDelToTime.Value.TimeOfDay;
             if (delFrom > delTo)
             {
                 MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil");
             }
             string delToString;
             string delFromString;
-            delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
-            delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
+            delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
+            delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
             db.DelReadings(delFromString, delToString);
             MessageBox.Show(delToString + delFromString);
 
@@ -781,6 +796,11 @@ namespace Polakken
             MottaMail.mottaMail();
             MottaMail.StripHTML(MottaMail.innhold);
             MottaMail.getCommand();
+        }
+
+        private void tbpTwo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
