@@ -81,13 +81,13 @@
             this.dtpSelectFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.tbpThree = new System.Windows.Forms.TabPage();
+            this.mottaMail = new System.Windows.Forms.Button();
             this.btnDelEmail = new System.Windows.Forms.Button();
             this.cboDelEmail = new System.Windows.Forms.ComboBox();
             this.dgvEmail = new System.Windows.Forms.DataGridView();
             this.btnAddEmail = new System.Windows.Forms.Button();
             this.txtAddEmail = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
-            this.mottaMail = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
@@ -603,7 +603,7 @@
             this.dtpDelTo.Name = "dtpDelTo";
             this.dtpDelTo.Size = new System.Drawing.Size(73, 20);
             this.dtpDelTo.TabIndex = 12;
-            this.dtpDelTo.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            this.dtpDelTo.Value = new System.DateTime(2013, 4, 9, 0, 0, 0, 0);
             // 
             // dtpDelFrom
             // 
@@ -614,7 +614,7 @@
             this.dtpDelFrom.Name = "dtpDelFrom";
             this.dtpDelFrom.Size = new System.Drawing.Size(73, 20);
             this.dtpDelFrom.TabIndex = 11;
-            this.dtpDelFrom.Value = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
+            this.dtpDelFrom.Value = new System.DateTime(2013, 4, 7, 0, 0, 0, 0);
             // 
             // chkFilterDate
             // 
@@ -797,6 +797,16 @@
             this.tbpThree.Text = "Mottaker";
             this.tbpThree.UseVisualStyleBackColor = true;
             // 
+            // mottaMail
+            // 
+            this.mottaMail.Location = new System.Drawing.Point(306, 63);
+            this.mottaMail.Name = "mottaMail";
+            this.mottaMail.Size = new System.Drawing.Size(75, 23);
+            this.mottaMail.TabIndex = 5;
+            this.mottaMail.Text = "button1";
+            this.mottaMail.UseVisualStyleBackColor = true;
+            this.mottaMail.Click += new System.EventHandler(this.mottaMail_Click);
+            // 
             // btnDelEmail
             // 
             this.btnDelEmail.Location = new System.Drawing.Point(34, 218);
@@ -866,16 +876,6 @@
             this.btnMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseDown);
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
-            // 
-            // mottaMail
-            // 
-            this.mottaMail.Location = new System.Drawing.Point(306, 63);
-            this.mottaMail.Name = "mottaMail";
-            this.mottaMail.Size = new System.Drawing.Size(75, 23);
-            this.mottaMail.TabIndex = 5;
-            this.mottaMail.Text = "button1";
-            this.mottaMail.UseVisualStyleBackColor = true;
-            this.mottaMail.Click += new System.EventHandler(this.mottaMail_Click);
             // 
             // GUI
             // 

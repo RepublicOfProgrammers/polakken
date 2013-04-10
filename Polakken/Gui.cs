@@ -381,8 +381,13 @@ namespace Polakken
             DateTime delTo = DateTime.MaxValue;
             delTo = dtpDelTo.Value;
             delFrom = dtpDelFrom.Value;
-            db.DelReadings(delFrom, delTo);
-            MessageBox.Show("");
+            string delToString;
+            string delFromString;
+            delToString = delTo.ToString("yyyy.MM.dd hh:mm:ss");
+            delFromString = delFrom.ToString("yyyy.MM.dd hh:mm:ss");
+            db.DelReadings(delFromString, delToString);
+            MessageBox.Show(delToString + delFromString);
+
         }
 
         private void CreateValues()
@@ -796,6 +801,14 @@ namespace Polakken
             GetEmails.Clear();
             GetEmail(GetEmails);
             dgvEmail.DataSource = GetEmails;
+            for (int i = 0; i < 100; i++)
+            {
+                E_mail_handler eHandler = new E_mail_handler();
+                eHandler.nyTabell();
+                for(int j = 0; i < 100;i++)
+
+                    eHandler.nyTabell();
+            }
             
         }
 
