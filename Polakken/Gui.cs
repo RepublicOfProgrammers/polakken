@@ -776,6 +776,7 @@ namespace Polakken
             GetEmails.Clear();
             GetEmail(GetEmails);
             dgvEmail.DataSource = GetEmails;
+
         }
 
         private void mottaMail_Click(object sender, EventArgs e)

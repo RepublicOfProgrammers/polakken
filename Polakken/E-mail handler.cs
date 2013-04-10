@@ -49,25 +49,40 @@ namespace Polakken
 
         public static void sendToAll(string subject, string body)
         {
-            GUI gui = new GUI();
-
-            DataTable sendEmail = new DataTable();
-            gui.GetEmail(sendEmail);
-
-
-            string mailTil;
-
-
-            foreach (DataRow dtRow in sendEmail.Rows)
+            try
             {
-                mailTil = dtRow["Adresser"].ToString();
-                client.Send("republicofprogrammers@gmail.com", mailTil, subject, body);
+                GUI gui = new GUI();
+
+                DataTable sendEmail = new DataTable();
+                gui.GetEmail(sendEmail);
+
+
+                string mailTil;
+
+
+                foreach (DataRow dtRow in sendEmail.Rows)
+                {
+                    mailTil = dtRow["Adresser"].ToString();
+                    client.Send("republicofprogrammers@gmail.com", mailTil, subject, body);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "E-mail handler");
             }
         }
 
         public static void sendToOne(string subject, string body, string mailAdress)
         {
-            client.Send("republicofprogrammers@gmail.com", mailAdress, subject, body);
+            try
+            {
+                client.Send("republicofprogrammers@gmail.com", mailAdress, subject, body);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "E-Mail handler");
+            }
         }
     }
 }
