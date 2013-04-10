@@ -56,7 +56,7 @@ namespace Polakken
            int intvalue = 0;
            bool success = true;
 
-           string ugyldig = "Du har oppgitt en ugyldig kommando, send \"HLP 1\" for liste over kommandoer";
+           string ugyldig = "Du har oppgitt en ugyldig kommando, send \"HLP 1\" for liste over kommandoer eller \"HLP 0\" for hele hjelp filen";
 
            innhold = innhold.TrimEnd('\r', '\n');
            if (innhold.Length > 3)
@@ -93,7 +93,18 @@ namespace Polakken
                            string temp = Convert.ToString(Math.Round(SensorCom.temp(), 0));
                            string alarm = Convert.ToString(SensorCom.alarmLimit);
                            string interval = Convert.ToString(SensorCom.mesInterval);
-                           status = "Status: \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;
+                           string time = "";
+                           if (GUI.test == false)
+                           {
+                               status = "Status: \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;
+                           }
+                           else
+                           {
+                               string setpoint = Convert.ToString(Regulation.setpoint);
+                               string tolerance = Convert.ToString(Regulation.tolerance);
+                               status = "Status: \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval + "\r\nSetpunkt: " + 
+                                   setpoint + "\r\nToleranse: " + tolerance;
+                           }
                            E_mail_handler.sendToOne("Status", status, fra);
                            break;
                        case "TLR":
