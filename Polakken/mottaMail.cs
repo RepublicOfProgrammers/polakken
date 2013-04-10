@@ -45,6 +45,24 @@ namespace Polakken
 
        }
 
+       public static string help()
+       {
+           string help = "";
+           // Read each line of the file into a string array. Each element 
+           // of the array is one line of the file. 
+           string[] lines = System.IO.File.ReadAllLines(@"DataSource=\Resources\hjelpPolakken.txt");
+
+           // Display the file contents by using a foreach loop.
+           
+           foreach (string line in lines)
+           {
+               // Use a tab to indent each line of the file.
+               help = "\t" + line;
+           }
+
+           return help;
+       }
+
        public static void getCommand()
        {
            string status = ""; //alle tilfeller av result byttes ut med tilhørende kommandoer. 
