@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NationalInstruments;
 using NationalInstruments.DAQmx;
+using Polakken.Properties;
 
 
 namespace Polakken
@@ -11,8 +12,18 @@ namespace Polakken
     static class SensorCom
     {
         private static string module = "SensorCom";
-        public static int alarmLimit { get; set; }
-        public static int mesInterval 
+        public static int alarmLimit {
+            get 
+            {
+                return alarmLimit;
+            }
+            set 
+            { 
+                //alarmLimit = value;
+                Settings.Default.alarmLimit = value; 
+            }
+        }
+        public static int mesInterval
         {
             get
             {
@@ -20,7 +31,9 @@ namespace Polakken
             }
             set 
             {
-                Regulation.mesInterval = mesInterval;
+                //mesInterval = value;
+                Regulation.mesInterval = value;
+                Settings.Default.mesInterval = value;
             } 
         }
 

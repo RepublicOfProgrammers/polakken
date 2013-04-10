@@ -17,8 +17,8 @@ namespace Polakken
             new Logger(); // kaller konstruktøren til logger classen kun for å opprette ny logg tekstfil. 
             mDbHandler = new DbHandler(); // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
 
-            //SensorCom.mesInterval = Settings.Default.mesInterval; // henter inn config settpunkt på måleintervall og sender til SensorCom
-            //SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunk på alarmgrense og sender til SensorCom
+            SensorCom.mesInterval = Settings.Default.mesInterval; // henter inn config settpunkt på måleintervall og sender til SensorCom
+            SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunk på alarmgrense og sender til SensorCom
 
             Thread tMålTemp = new Thread(new ThreadStart(tMålTemp_method));
             tMålTemp.Start(); // Starter måleprosessen. Main() venter ikke på denne tråden før den går videre.
