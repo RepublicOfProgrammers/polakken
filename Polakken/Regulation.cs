@@ -5,35 +5,27 @@ using System.Text;
 
 namespace Polakken
 {
-    class Regulation
+    static class Regulation
     {
         //variabler
-        private Boolean status;
-        private double reading;
-        private double prevReading;
-        public double tolerance { get; set; }
-        public double setpoint { get; set; }
-        private double difference;
-        public double mesInterval { get; set; }
-
-        //constructor
-        public Regulation(double setpoint, double tolerance, double mesInterval)
-        {
-            this.setpoint = setpoint;
-            this.tolerance = tolerance;
-            this.mesInterval = mesInterval;
-            prevReading = reading;
-        }
+        private static string module = "Regulation";
+        private static Boolean status;
+        private static double reading;
+        private static double prevReading;
+        public static int tolerance { get; set; }
+        public static int setpoint { get; set; }
+        private static double difference;
+        public static int mesInterval { get; set; }
 
         //ny måling
-        public void newRead(double newread)
+        public static void newRead(double newread)
         {
             prevReading = reading;
             reading = newread;  
         }
 
         //regulering
-        public Boolean regulator()
+        public static  Boolean regulator()
         {
             //temperatur under min toleranse, skrur på ovnen. 
             if ((reading + tolerance) < setpoint)
@@ -49,14 +41,14 @@ namespace Polakken
             else if ((prevReading - reading) < (setpoint - prevReading))
             {
                 difference = (prevReading - reading) / (setpoint - prevReading);
-                System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval)); //må omgjøres slik at intervallet blir i millisekunder. 
+                System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval * 60000)); //må omgjøres slik at intervallet blir i millisekunder. 
                 status = true;
             }
             //sørger for at ovnen stoppes før temperaturen blir over toleransen. 
             else if ((reading - prevReading) < (prevReading - setpoint))
             {
                 difference = (reading - prevReading) / (prevReading - setpoint);
-                System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval)); //må omgjøre slik at intervallet blir i millisekunder. 
+                System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval * 60000)); //må omgjøre slik at intervallet blir i millisekunder. 
                 status = false;
             }
 
