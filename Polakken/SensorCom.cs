@@ -8,16 +8,20 @@ using NationalInstruments.DAQmx;
 
 namespace Polakken
 {
-    class SensorCom
+    static class SensorCom
     {
-        public double mesInterval {get; set;}
-
-        public SensorCom(double mesInterval)
-        {
-            this.mesInterval = mesInterval;
+        private static string module = "SensorCom";
+        public static int alarmGrense { get; set; }
+        public static int mesInterval 
+        { 
+            get; 
+            set 
+            {
+                Regulation.mesInterval = mesInterval;
+            } 
         }
 
-        public double temp()
+        public static double temp()
         {
             try
             {
@@ -34,6 +38,7 @@ namespace Polakken
             }
             catch (Exception e)
             {
+                Logger.Error(e, module);
                 return 999;
                 //999 vil være en "feilkode", exceptionen bør også logges. 
             }
