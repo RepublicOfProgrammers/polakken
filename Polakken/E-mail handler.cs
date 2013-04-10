@@ -12,40 +12,62 @@ namespace Polakken
 {
     class E_mail_handler
     {
-        public SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+        public SmtpClient client = new SmtpClient("smtp.gmail.com", 587) //Lager en ny SmtpClient med host-navn og port
          {
-             Credentials = new NetworkCredential("republicofprogrammers@gmail.com", "polakken"),
-             EnableSsl = true
+             Credentials = new NetworkCredential("republicofprogrammers@gmail.com", "polakken"), //Login-informasjon for emailen vi sender fra
+             EnableSsl = true //Legger til sikkerhetslaget Ssl
          };
 
 
 
         
 
-        public void nyTabell()
+        //public void nyTabell()
+        //{
+        //    try
+        //    {
+
+        //        GUI gui = new GUI();
+
+        //        DataTable sendEmail = new DataTable();
+        //        gui.GetEmail(sendEmail);
+
+        //        string mailTil;
+
+
+        //        foreach (DataRow dtRow in sendEmail.Rows)
+        //        {
+        //            mailTil = dtRow["Adresser"].ToString();
+        //            client.Send("republicofprogrammers@gmail.com", mailTil, "Hei", "Hei");
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //    }
+        //}
+
+        public void sendFromString(string subject, string body)
         {
-            try
+            GUI gui = new GUI();
+
+            DataTable sendEmail = new DataTable();
+            gui.GetEmail(sendEmail);
+
+
+            string mailTil;
+
+
+            foreach (DataRow dtRow in sendEmail.Rows)
             {
-
-                GUI gui = new GUI();
-
-                DataTable sendEmail = new DataTable();
-                gui.GetEmail(sendEmail);
-
-                string mailTil;
-
-                // on all table's rows
-                foreach (DataRow dtRow in sendEmail.Rows)
-                {
-                    mailTil = dtRow["Adresser"].ToString();
-                    client.Send("republicofprogrammers@gmail.com", mailTil, "Hei", "Hei");
-                }
-            }
-            catch (Exception)
-            {
-
+                mailTil = dtRow["Adresser"].ToString();
+                client.Send("republicofprogrammers@gmail.com", mailTil, subject, body);
             }
         }
 
+        public void sendFromStringEmail(string subject, string body, string mailAdress)
+        {
+            client.Send("republicofprogrammers@gmail.com", mailAdress, subject, body);
+        }
     }
 }
