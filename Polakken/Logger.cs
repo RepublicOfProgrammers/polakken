@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
+
 namespace Polakken
 {
     public class Logger
@@ -27,11 +28,13 @@ namespace Polakken
         //Følgende metoder brukes i de forskjellige trace event'ene vi har definert.
         public static void Error(string message, string module)
         {
+            System.Windows.Forms.MessageBox.Show("FEIL: " + message);
             WriteEntry(message, "FEIL", module);
         }
 
         public static void Error(Exception ex, string module)
         {
+            System.Windows.Forms.MessageBox.Show("FEIL: " + ex);
             WriteEntry(ex.Message, "FEIL", module);
         }
 
