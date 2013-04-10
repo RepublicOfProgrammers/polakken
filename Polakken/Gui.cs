@@ -25,7 +25,9 @@ namespace Polakken
         double mesurInterval = 0.0;
         DataTable u = new DataTable();
         DataTable GetEmails = new DataTable();
-        
+        string delToString;
+        string delFromString;
+        bool test = false;
 
         public GUI()
         {
@@ -151,13 +153,13 @@ namespace Polakken
             //Instillger
             //
 
-            Regulation reg = new Regulation(SetPoint, tolerance, mesurInterval);
-            SetPoint = reg.setpoint;
-            txtSetPoint.Text = SetPoint.ToString();
-            tolerance = reg.tolerance;
-            txtTol.Text = tolerance.ToString();
-            mesurInterval = reg.mesInterval;
-            txtInt.Text = mesurInterval.ToString();
+            //Regulation reg = new Regulation(SetPoint, tolerance, mesurInterval);
+            //SetPoint = reg.setpoint;
+            //txtSetPoint.Text = SetPoint.ToString();
+            //tolerance = reg.tolerance;
+            //txtTol.Text = tolerance.ToString();
+            //mesurInterval = reg.mesInterval;
+            //txtInt.Text = mesurInterval.ToString();
 
             //
             //DateTimePickers
@@ -774,15 +776,6 @@ namespace Polakken
             GetEmails.Clear();
             GetEmail(GetEmails);
             dgvEmail.DataSource = GetEmails;
-            for (int i = 0; i < 100; i++)
-            {
-                E_mail_handler eHandler = new E_mail_handler();
-                eHandler.nyTabell();
-                for(int j = 0; i < 100;i++)
-
-                    eHandler.nyTabell();
-            }
-            
         }
 
         private void mottaMail_Click(object sender, EventArgs e)
@@ -799,7 +792,7 @@ namespace Polakken
 
         private void chkSetTol_CheckedChanged(object sender, EventArgs e)
         {
-            bool test = false;
+            
             if (chkSetTol.Checked)
             {
                 test = true;
@@ -838,8 +831,8 @@ namespace Polakken
         private void cboSelectDelete_SelectedIndexChanged(object sender, EventArgs e)
         {
             DateTime delFrom = DateTime.MinValue;
-            DateTime delTo = DateTime.MaxValue;
-            delTo = dtpDelTo.Value;
+            DateTime delTo = DateTime.MinValue;
+           
            
 
             if (cboSelectDelete.SelectedIndex == 0)
@@ -849,8 +842,6 @@ namespace Polakken
                 DateTime last = DateTime.Now;
                 delFrom = first;
                 delTo = last;
-                string delToString;
-                string delFromString;
                 delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
                 delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
             }
@@ -858,7 +849,12 @@ namespace Polakken
             {
                 DateTime now = DateTime.Now;
                 DateTime minus30 = now.AddDays(-30);
-                MessageBox.Show(minus30.ToString());
+                DateTime minus1 = now.AddDays(-1);
+                delFrom = minus30;
+                delTo = minus1;
+                delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
+                MessageBox.Show(delToString);
             }
             if (cboSelectDelete.SelectedIndex == 2)
             {
@@ -868,15 +864,19 @@ namespace Polakken
                 {
                     MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil");
                 }
-                string delToString;
-                string delFromString;
                 delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
                 delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
             }
             if (cboSelectDelete.SelectedIndex == 3)
             {
-                dtpDelTo.Enabled = false;
-                dtpDelToTime.Enabled = false;
+                delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
+                delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
+                delToString = delTo.ToString("yyyy.MM.ddThh:mm:ss");
+                delFromString = delFrom.ToString("yyyy.MM.ddThh:mm:ss");
+            }
+            if (cboSelectDelete.SelectedIndex == -1)
+            {
+                btnDelReading.Enabled = false;
             }
         }
 
