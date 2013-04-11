@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Polakken.Properties;
 
 namespace Polakken
 {
@@ -12,27 +13,43 @@ namespace Polakken
         public static Boolean status;
         private static double reading;
         private static double prevReading;
-        public static int tolerance { get; set; }
-        public static int setpoint { get; set; }
         private static double difference;
         public static int mesInterval { get; set; }
         private static string loggerInfo;
+        public static int tolerance 
+        {
+            get 
+            {
+                return tolerance;
+            }
+            set
+            {
+                tolerance = value;
+                Settings.Default.tolerance = value;
+            }
+        }
+        public static int setpoint
+        {
+            get 
+            {
+                return setpoint;
+            }
+            set
+            {
+                setpoint = value;
+                Settings.Default.setpoint = value;
+            }
+        }
 
-        //ny måling
-        //public static void newRead(double newread)
-        //{
-        //    prevReading = reading;
-        //    reading = newread;
-        //}
-
-        //regulering
         public static Boolean regulator(double newread)
         {
+            //Hvis det ikke eksisterer en verdi for reading vil den lagre den nye målingen i både reading og prevReading
             if (reading == null)
             {
                 prevReading = newread;
                 reading = newread;
             }
+            //Plasserer den forrige readingen inn i prev Reading og den nye i reading. 
             else
             {
                 prevReading = reading;
