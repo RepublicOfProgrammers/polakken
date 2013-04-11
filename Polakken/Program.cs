@@ -17,8 +17,8 @@ namespace Polakken
             new Logger(); // kaller konstruktøren til logger classen kun for å opprette ny logg tekstfil. 
             mDbHandler = new DbHandler(); // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
 
-            //SensorCom.mesInterval = Settings.Default.mesInterval; // henter inn config settpunkt på måleintervall og sender til SensorCom
-            //SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunk på alarmgrense og sender til SensorCom
+            SensorCom.mesInterval = Settings.Default.mesInterval; // henter inn config settpunkt på måleintervall og sender til SensorCom
+            SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunk på alarmgrense og sender til SensorCom
 
             Thread tMålTemp = new Thread(new ThreadStart(tMålTemp_method));
             tMålTemp.Start(); // Starter måleprosessen. Main() venter ikke på denne tråden før den går videre.
@@ -31,7 +31,7 @@ namespace Polakken
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI());
+            Application.Run(new GUI()); 
         }
 
         /// <summary>
@@ -49,7 +49,14 @@ namespace Polakken
                 }
                 else
                 {
-                    mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI.test);
+                    if (GUI.test == false)
+                    {
+                        mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI.test);
+                    }
+                    else
+                    {
+                        mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), Regulation.status);
+                    }
                     Logger.Info("Utført måling, og skrevet til database.", "Polakken");
                     Thread.Sleep(SensorCom.mesInterval);
                 }

@@ -960,9 +960,8 @@ namespace Polakken
 
         private void btnLog_Click(object sender, EventArgs e)
         {
-            Log logForm = new Log();
-            logForm.Show();
-
+            //Log logForm = new Log();
+            //logForm.Show();
         }
 
         public class CustomTabControl : TabControl
