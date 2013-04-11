@@ -13,7 +13,7 @@
     <Setting Name="mesInterval" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">60</Value>
     </Setting>
-    <Setting Name="tolerance" Type="System.Double" Scope="User">
+    <Setting Name="tolerance" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="alarmLimit" Type="System.Int32" Scope="User">

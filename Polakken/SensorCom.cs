@@ -12,14 +12,15 @@ namespace Polakken
     static class SensorCom
     {
         private static string module = "SensorCom";
-        public static int alarmLimit {
+        public static int alarmLimit 
+        {
             get 
             {
                 return alarmLimit;
             }
             set 
             { 
-                //alarmLimit = value;
+                alarmLimit = value;
                 Settings.Default.alarmLimit = value; 
             }
         }
@@ -31,7 +32,7 @@ namespace Polakken
             }
             set 
             {
-                //mesInterval = value;
+                mesInterval = value;
                 Regulation.mesInterval = value;
                 Settings.Default.mesInterval = value;
             } 
