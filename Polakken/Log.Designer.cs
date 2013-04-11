@@ -38,6 +38,8 @@
             this.txtRead.Location = new System.Drawing.Point(1, 35);
             this.txtRead.Multiline = true;
             this.txtRead.Name = "txtRead";
+            this.txtRead.ReadOnly = true;
+            this.txtRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtRead.Size = new System.Drawing.Size(359, 346);
             this.txtRead.TabIndex = 0;
             // 

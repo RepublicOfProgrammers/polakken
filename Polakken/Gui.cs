@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,12 +12,14 @@ using System.Net;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Media;
 
 namespace Polakken
 {
     public partial class GUI : Form
     {
-        
+
         int Mover;
         int MoveX;
         int MoveY;
@@ -36,8 +39,11 @@ namespace Polakken
 
         }
 
+
+
         private void GUI_Load(object sender, EventArgs e)
         {
+
             //
             // Opprett DataTabell og fyll DataGridView
             //
@@ -65,7 +71,7 @@ namespace Polakken
             catch (Exception)
             {
             }
-           
+
             try
             {
                 DataView viewTemp = new DataView(u);
@@ -73,7 +79,7 @@ namespace Polakken
                 cboFilterTemp.DataSource = distinctTempValues;
                 cboFilterTemp.DisplayMember = "Temprature";
                 cboFilterTemp.ValueMember = "Temprature";
-                
+
             }
             catch (Exception)
             {
@@ -86,7 +92,7 @@ namespace Polakken
                 cboEqualsFilter.DisplayMember = "textEquals";
                 cboEqualsFilter.ValueMember = "valueEquals";
             }
-            catch(Exception)
+            catch (Exception)
             {
             }
             try
@@ -99,6 +105,7 @@ namespace Polakken
             catch
             {
             }
+
 
 
 
@@ -141,8 +148,8 @@ namespace Polakken
             //
             dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDataBase.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-         
-            
+
+
             //
             //Email TabellVisning
             //
@@ -185,7 +192,7 @@ namespace Polakken
             dtpDelTo.Enabled = false;
             dtpDelFromTime.Enabled = false;
             dtpDelToTime.Enabled = false;
-            
+
             //
             //SetPointButton
             //
@@ -198,7 +205,15 @@ namespace Polakken
             //Delete btn
             //
 
-                btnDelReading.Enabled = false;
+            btnDelReading.Enabled = false;
+
+
+
+
+            //
+            //tbcPage
+            //
+
         }
 
         //
@@ -292,10 +307,10 @@ namespace Polakken
             db.CloseDb();
             return v;
         }
-       
+
         public DataTable GetEmail(DataTable GetEmails)
         {
-            
+
             DbHandler db = new DbHandler();
             if (GetEmails.Columns.Contains("Adresser"))
             {
@@ -311,11 +326,11 @@ namespace Polakken
                         string Reading = emReader[i].ToString();
                         if (i == 0)
                         {
-                            row["Index"] = Reading; 
+                            row["Index"] = Reading;
                         }
                         if (i == 1)
                         {
-                            
+
                             row["Adresser"] = Reading;
                         }
                     }
@@ -327,7 +342,7 @@ namespace Polakken
             }
             else
             {
-                
+
                 GetEmails.Columns.Add("Index", typeof(int));
                 GetEmails.Columns.Add("Adresser", typeof(string));
                 db.OpenDb();
@@ -347,9 +362,9 @@ namespace Polakken
                         if (i == 1)
                         {
                             row["Adresser"] = Reading;
-                           
+
                         }
-                       
+
                     }
                     GetEmails.Rows.Add(row);
 
@@ -357,7 +372,7 @@ namespace Polakken
 
                 emReader.Close();
             }
-            
+
             db.CloseDb();
             return GetEmails;
         }
@@ -368,7 +383,7 @@ namespace Polakken
             db.DelEmail(indexNumber);
 
         }
-        private void DelReadings()    
+        private void DelReadings()
         {
             DbHandler db = new DbHandler();
             db.DelReadings(delFromString, delToString);
@@ -380,7 +395,7 @@ namespace Polakken
             Random rnd2 = new Random();
             DbHandler db = new DbHandler();
             DateTime time = DateTime.Now;
-             
+
 
             Boolean t = true;
             Boolean f = false;
@@ -395,15 +410,15 @@ namespace Polakken
                 }
                 else
                 {
-                   int C = i + 22;
+                    int C = i + 22;
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, f);
                 }
-                
+
             }
             string emaildummy;
             string emaildummy2;
-                
+
             emaildummy = "alexandergjerseth@gmail.com";
             emaildummy2 = "sglittum@gmail.com";
 
@@ -621,13 +636,13 @@ namespace Polakken
                 view.RowFilter = dates;
                 dateSpan = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "AND ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
 
-                
+
 
 
             }
             if (chkFilterStatus.Checked)
             {
-                
+
                 int statusIndex;
                 statusIndex = cboFilterStatus.SelectedIndex;
                 string statusText = null;
@@ -643,41 +658,41 @@ namespace Polakken
                     filterString = "AND Status =" + statusText;
                     view.RowFilter = "Status =" + statusText;
                 }
-               
-                
-            } 
-             if (chkFilterTemp.Checked)
-                {
-                    string valueTempString = cboFilterTemp.Text;
-                    //int valueTempINT = Convert.ToInt32(valueTempString);
-                    
-                    int statusIndex;
-                    statusIndex = cboEqualsFilter.SelectedIndex;
 
-                    if (statusIndex == 0)
-                    {
-                        
-                        view.RowFilter = "Temprature =" + valueTempString + filterString +  dateSpan;
-                    
-                    }
-                    if (statusIndex == 1)
-                    {
-                        view.RowFilter = "Temprature >" + valueTempString + filterString + dateSpan;
-                        
-                    }
-                    if (statusIndex == 2)
-                    {
-                        view.RowFilter = "Temprature <" + valueTempString + filterString + dateSpan;
-                        
-                    }  
-                   
+
+            }
+            if (chkFilterTemp.Checked)
+            {
+                string valueTempString = cboFilterTemp.Text;
+                //int valueTempINT = Convert.ToInt32(valueTempString);
+
+                int statusIndex;
+                statusIndex = cboEqualsFilter.SelectedIndex;
+
+                if (statusIndex == 0)
+                {
+
+                    view.RowFilter = "Temprature =" + valueTempString + filterString + dateSpan;
+
+                }
+                if (statusIndex == 1)
+                {
+                    view.RowFilter = "Temprature >" + valueTempString + filterString + dateSpan;
+
+                }
+                if (statusIndex == 2)
+                {
+                    view.RowFilter = "Temprature <" + valueTempString + filterString + dateSpan;
+
                 }
 
-                dgvDataBase.DataSource = view;
-            
             }
-                
-        
+
+            dgvDataBase.DataSource = view;
+
+        }
+
+
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -687,7 +702,7 @@ namespace Polakken
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
             populateTxtbox();
-      
+
         }
 
         private void chkFilterStatus_CheckedChanged(object sender, EventArgs e)
@@ -764,7 +779,7 @@ namespace Polakken
                     dgvEmail.DataSource = GetEmails;
                     txtAddEmail.Clear();
                 }
-               
+
             }
 
 
@@ -805,7 +820,7 @@ namespace Polakken
                 delTo = minus1;
                 delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
                 delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
-               
+
             }
             if (cboSelectDelete.SelectedIndex == 2)
             {
@@ -817,7 +832,7 @@ namespace Polakken
                 delTo = dtpDelTo.Value.Date + dtpDelToTime.Value.TimeOfDay;
                 if (delFrom > delTo)
                 {
-                    MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil",MessageBoxButtons.YesNo);
+                    MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil", MessageBoxButtons.YesNo);
                 }
                 delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
                 delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
@@ -868,7 +883,7 @@ namespace Polakken
 
         private void chkSetTol_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             if (chkSetTol.Checked)
             {
                 test = true;
@@ -901,7 +916,7 @@ namespace Polakken
                 this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
                 this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
             }
-            
+
         }
 
         private void cboSelectDelete_SelectedIndexChanged(object sender, EventArgs e)
@@ -913,7 +928,7 @@ namespace Polakken
                 dtpDelFromTime.Enabled = false;
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
-               
+
             }
             if (cboSelectDelete.SelectedIndex == 1)
             {
@@ -922,7 +937,7 @@ namespace Polakken
                 dtpDelFromTime.Enabled = false;
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
-             
+
             }
             if (cboSelectDelete.SelectedIndex == 2)
             {
@@ -931,14 +946,14 @@ namespace Polakken
                 dtpDelFromTime.Enabled = true;
                 dtpDelTo.Enabled = true;
                 dtpDelToTime.Enabled = true;
-                
+
             }
             if (cboSelectDelete.SelectedIndex == 3)
             {
                 btnDelReading.Enabled = true;
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
-               
+
             }
 
         }
@@ -950,6 +965,122 @@ namespace Polakken
 
         }
 
+        public class CustomTabControl : TabControl
+        {
+            #region VARIABLES
+
+            private int hotTrackTab = -1;
+
+
+            #endregion
+
+            #region INSTANCE CONSTRUCTORS
+
+            public CustomTabControl()
+                : base()
+            {
+                this.InitializeComponent();
+            }
+
+            #endregion
+
+            #region INSTANCE METHODS
+
+            private void InitializeComponent()
+            {
+                this.SetStyle(ControlStyles.UserPaint, true);
+                this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+                this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+                this.SetStyle(ControlStyles.ResizeRedraw, true);
+                this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+                this.DrawMode = TabDrawMode.OwnerDrawFixed;
+            }
+
+            private int GetTabUnderCursor()
+            {
+                Point cursor = this.PointToClient(Cursor.Position);
+                for (int index = 0; index < this.TabPages.Count; index++)
+                {
+                    if (this.GetTabRect(index).Contains(cursor))
+                    {
+                        return index;
+                    }
+                }
+                return -1;
+            }
+
+            private void UpdateHotTrack()
+            {
+                int hot = GetTabUnderCursor();
+                if (hot != this.hotTrackTab)
+                {
+                    if (this.hotTrackTab != -1)
+                    {
+                        this.Invalidate(this.GetTabRect(this.hotTrackTab));
+                    }
+                    this.hotTrackTab = hot;
+                    if (this.hotTrackTab != -1)
+                    {
+                        this.Invalidate(this.GetTabRect(this.hotTrackTab));
+                    }
+                    this.Update();
+                }
+            }
+
+            #endregion
+
+            #region OVERRIDE METHODS
+
+            protected override void OnMouseEnter(EventArgs e)
+            {
+                base.OnMouseEnter(e);
+                this.UpdateHotTrack();
+            }
+
+            protected override void OnMouseLeave(EventArgs e)
+            {
+                base.OnMouseLeave(e);
+                this.UpdateHotTrack();
+            }
+
+            protected override void OnMouseMove(MouseEventArgs e)
+            {
+                base.OnMouseMove(e);
+                this.UpdateHotTrack();
+            }
+
+            protected override void OnPaint(PaintEventArgs e)
+            {
+
+
+                base.OnPaint(e);
+
+
+                switch (this.Alignment)
+                {
+                    case TabAlignment.Bottom:
+
+                    case TabAlignment.Left:
+                    case TabAlignment.Right:
+                    case TabAlignment.Top:
+                    default:
+                        throw new NotImplementedException();
+                }
+
+
+
+
+            }
+
+            protected override void OnPaintBackground(PaintEventArgs pevent)
+            {
+                base.OnPaintBackground(pevent);
+
+
+            }
+
+            #endregion
+        }
 
     }
 }

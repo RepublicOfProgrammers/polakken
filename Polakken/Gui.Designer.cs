@@ -2,6 +2,7 @@
 {
     partial class GUI
     {
+        
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -29,29 +30,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.grpInfo = new System.Windows.Forms.GroupBox();
-            this.txtCurrentTime = new System.Windows.Forms.TextBox();
-            this.txtMinTime = new System.Windows.Forms.TextBox();
-            this.lblMin = new System.Windows.Forms.Label();
-            this.txtMin = new System.Windows.Forms.TextBox();
-            this.txtMaxTime = new System.Windows.Forms.TextBox();
-            this.lblMax = new System.Windows.Forms.Label();
-            this.txtMax = new System.Windows.Forms.TextBox();
-            this.lblSiste = new System.Windows.Forms.Label();
-            this.txtCurrent = new System.Windows.Forms.TextBox();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
-            this.tbcPage = new System.Windows.Forms.TabControl();
+            this.tbcPage = new Polakken.GUI.CustomTabControl();
             this.tbpOne = new System.Windows.Forms.TabPage();
             this.chkSetTol = new System.Windows.Forms.CheckBox();
             this.txtAlarm = new System.Windows.Forms.TextBox();
             this.txtInt = new System.Windows.Forms.TextBox();
-            this.txtTol = new System.Windows.Forms.TextBox();
             this.txtSetPoint = new System.Windows.Forms.TextBox();
             this.btnSaveAll = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,6 +50,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnMesIDown = new System.Windows.Forms.Button();
             this.btnMesIUp = new System.Windows.Forms.Button();
+            this.txtTol = new System.Windows.Forms.TextBox();
             this.lblTol = new System.Windows.Forms.Label();
             this.btnToleranceDown = new System.Windows.Forms.Button();
             this.btnToleranceUp = new System.Windows.Forms.Button();
@@ -94,9 +85,17 @@
             this.btnAddEmail = new System.Windows.Forms.Button();
             this.txtAddEmail = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
+            this.txtCurrent = new System.Windows.Forms.TextBox();
+            this.lblSiste = new System.Windows.Forms.Label();
+            this.txtMax = new System.Windows.Forms.TextBox();
+            this.lblMax = new System.Windows.Forms.Label();
+            this.txtMaxTime = new System.Windows.Forms.TextBox();
+            this.txtMin = new System.Windows.Forms.TextBox();
+            this.lblMin = new System.Windows.Forms.Label();
+            this.txtMinTime = new System.Windows.Forms.TextBox();
+            this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.btnLog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
-            this.grpInfo.SuspendLayout();
             this.tbcPage.SuspendLayout();
             this.tbpOne.SuspendLayout();
             this.tbpTwo.SuspendLayout();
@@ -115,140 +114,6 @@
             this.crtView.Name = "crtView";
             this.crtView.Size = new System.Drawing.Size(884, 226);
             this.crtView.TabIndex = 1;
-            // 
-            // grpInfo
-            // 
-            this.grpInfo.BackColor = System.Drawing.Color.Transparent;
-            this.grpInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.grpInfo.Controls.Add(this.btnLog);
-            this.grpInfo.Controls.Add(this.txtCurrentTime);
-            this.grpInfo.Controls.Add(this.txtMinTime);
-            this.grpInfo.Controls.Add(this.lblMin);
-            this.grpInfo.Controls.Add(this.txtMin);
-            this.grpInfo.Controls.Add(this.txtMaxTime);
-            this.grpInfo.Controls.Add(this.lblMax);
-            this.grpInfo.Controls.Add(this.txtMax);
-            this.grpInfo.Controls.Add(this.lblSiste);
-            this.grpInfo.Controls.Add(this.txtCurrent);
-            this.grpInfo.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpInfo.ForeColor = System.Drawing.SystemColors.Control;
-            this.grpInfo.Location = new System.Drawing.Point(26, 69);
-            this.grpInfo.Name = "grpInfo";
-            this.grpInfo.Size = new System.Drawing.Size(207, 360);
-            this.grpInfo.TabIndex = 3;
-            this.grpInfo.TabStop = false;
-            this.grpInfo.Text = "INFO";
-            // 
-            // txtCurrentTime
-            // 
-            this.txtCurrentTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtCurrentTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCurrentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentTime.ForeColor = System.Drawing.Color.White;
-            this.txtCurrentTime.Location = new System.Drawing.Point(36, 119);
-            this.txtCurrentTime.Multiline = true;
-            this.txtCurrentTime.Name = "txtCurrentTime";
-            this.txtCurrentTime.ReadOnly = true;
-            this.txtCurrentTime.Size = new System.Drawing.Size(129, 20);
-            this.txtCurrentTime.TabIndex = 9;
-            this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtMinTime
-            // 
-            this.txtMinTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtMinTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMinTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMinTime.ForeColor = System.Drawing.Color.White;
-            this.txtMinTime.Location = new System.Drawing.Point(36, 309);
-            this.txtMinTime.Multiline = true;
-            this.txtMinTime.Name = "txtMinTime";
-            this.txtMinTime.ReadOnly = true;
-            this.txtMinTime.Size = new System.Drawing.Size(129, 20);
-            this.txtMinTime.TabIndex = 8;
-            this.txtMinTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblMin
-            // 
-            this.lblMin.AutoSize = true;
-            this.lblMin.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMin.Location = new System.Drawing.Point(46, 240);
-            this.lblMin.Name = "lblMin";
-            this.lblMin.Size = new System.Drawing.Size(103, 14);
-            this.lblMin.TabIndex = 7;
-            this.lblMin.Text = "Min Tempratur";
-            // 
-            // txtMin
-            // 
-            this.txtMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtMin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMin.ForeColor = System.Drawing.Color.White;
-            this.txtMin.Location = new System.Drawing.Point(46, 259);
-            this.txtMin.Name = "txtMin";
-            this.txtMin.ReadOnly = true;
-            this.txtMin.Size = new System.Drawing.Size(107, 42);
-            this.txtMin.TabIndex = 6;
-            this.txtMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtMaxTime
-            // 
-            this.txtMaxTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtMaxTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMaxTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaxTime.ForeColor = System.Drawing.Color.White;
-            this.txtMaxTime.Location = new System.Drawing.Point(36, 221);
-            this.txtMaxTime.Multiline = true;
-            this.txtMaxTime.Name = "txtMaxTime";
-            this.txtMaxTime.ReadOnly = true;
-            this.txtMaxTime.Size = new System.Drawing.Size(129, 20);
-            this.txtMaxTime.TabIndex = 5;
-            this.txtMaxTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblMax
-            // 
-            this.lblMax.AutoSize = true;
-            this.lblMax.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMax.Location = new System.Drawing.Point(46, 152);
-            this.lblMax.Name = "lblMax";
-            this.lblMax.Size = new System.Drawing.Size(107, 14);
-            this.lblMax.TabIndex = 4;
-            this.lblMax.Text = "Max Tempratur";
-            // 
-            // txtMax
-            // 
-            this.txtMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMax.ForeColor = System.Drawing.Color.White;
-            this.txtMax.Location = new System.Drawing.Point(46, 171);
-            this.txtMax.Name = "txtMax";
-            this.txtMax.ReadOnly = true;
-            this.txtMax.Size = new System.Drawing.Size(107, 42);
-            this.txtMax.TabIndex = 3;
-            this.txtMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblSiste
-            // 
-            this.lblSiste.AutoSize = true;
-            this.lblSiste.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSiste.Location = new System.Drawing.Point(41, 34);
-            this.lblSiste.Name = "lblSiste";
-            this.lblSiste.Size = new System.Drawing.Size(118, 16);
-            this.lblSiste.TabIndex = 1;
-            this.lblSiste.Text = "Siste avlesning";
-            // 
-            // txtCurrent
-            // 
-            this.txtCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtCurrent.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrent.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtCurrent.Location = new System.Drawing.Point(36, 53);
-            this.txtCurrent.Name = "txtCurrent";
-            this.txtCurrent.ReadOnly = true;
-            this.txtCurrent.Size = new System.Drawing.Size(129, 60);
-            this.txtCurrent.TabIndex = 0;
-            this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnLukk
             // 
@@ -284,22 +149,26 @@
             // 
             // tbcPage
             // 
+           
             this.tbcPage.Controls.Add(this.tbpOne);
             this.tbcPage.Controls.Add(this.tbpTwo);
             this.tbcPage.Controls.Add(this.tbpThree);
-            this.tbcPage.Location = new System.Drawing.Point(239, 69);
+            this.tbcPage.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tbcPage.Location = new System.Drawing.Point(239, 66);
             this.tbcPage.Name = "tbcPage";
+            this.tbcPage.Padding = new System.Drawing.Point(0, 0);
             this.tbcPage.SelectedIndex = 0;
             this.tbcPage.Size = new System.Drawing.Size(654, 360);
             this.tbcPage.TabIndex = 6;
+    
             // 
             // tbpOne
             // 
-            this.tbpOne.BackColor = System.Drawing.Color.DarkGreen;
+            this.tbpOne.BackColor = System.Drawing.Color.Black;
+            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.insideTab2;
             this.tbpOne.Controls.Add(this.chkSetTol);
             this.tbpOne.Controls.Add(this.txtAlarm);
             this.tbpOne.Controls.Add(this.txtInt);
-            this.tbpOne.Controls.Add(this.txtTol);
             this.tbpOne.Controls.Add(this.txtSetPoint);
             this.tbpOne.Controls.Add(this.btnSaveAll);
             this.tbpOne.Controls.Add(this.label4);
@@ -308,16 +177,17 @@
             this.tbpOne.Controls.Add(this.label3);
             this.tbpOne.Controls.Add(this.btnMesIDown);
             this.tbpOne.Controls.Add(this.btnMesIUp);
+            this.tbpOne.Controls.Add(this.txtTol);
             this.tbpOne.Controls.Add(this.lblTol);
             this.tbpOne.Controls.Add(this.btnToleranceDown);
             this.tbpOne.Controls.Add(this.btnToleranceUp);
             this.tbpOne.Controls.Add(this.lblSet);
             this.tbpOne.Controls.Add(this.btnSetPointDown);
             this.tbpOne.Controls.Add(this.btnSetPointUp);
-            this.tbpOne.Location = new System.Drawing.Point(4, 22);
+            this.tbpOne.Location = new System.Drawing.Point(4, 25);
             this.tbpOne.Name = "tbpOne";
             this.tbpOne.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpOne.Size = new System.Drawing.Size(646, 334);
+            this.tbpOne.Size = new System.Drawing.Size(646, 331);
             this.tbpOne.TabIndex = 0;
             this.tbpOne.Text = "Instillinger";
             // 
@@ -356,20 +226,6 @@
             this.txtInt.Size = new System.Drawing.Size(71, 22);
             this.txtInt.TabIndex = 27;
             this.txtInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtTol
-            // 
-            this.txtTol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtTol.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTol.Enabled = false;
-            this.txtTol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTol.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtTol.Location = new System.Drawing.Point(189, 94);
-            this.txtTol.Name = "txtTol";
-            this.txtTol.ReadOnly = true;
-            this.txtTol.Size = new System.Drawing.Size(71, 22);
-            this.txtTol.TabIndex = 26;
-            this.txtTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtSetPoint
             // 
@@ -490,6 +346,20 @@
             this.btnMesIUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMesIUp_MouseDown);
             this.btnMesIUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMesIUp_MouseUp);
             // 
+            // txtTol
+            // 
+            this.txtTol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtTol.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTol.Enabled = false;
+            this.txtTol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTol.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtTol.Location = new System.Drawing.Point(189, 94);
+            this.txtTol.Name = "txtTol";
+            this.txtTol.ReadOnly = true;
+            this.txtTol.Size = new System.Drawing.Size(71, 22);
+            this.txtTol.TabIndex = 26;
+            this.txtTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // lblTol
             // 
             this.lblTol.AutoSize = true;
@@ -607,10 +477,10 @@
             this.tbpTwo.Controls.Add(this.dtpSelectTo);
             this.tbpTwo.Controls.Add(this.dtpSelectFrom);
             this.tbpTwo.Controls.Add(this.dgvDataBase);
-            this.tbpTwo.Location = new System.Drawing.Point(4, 22);
+            this.tbpTwo.Location = new System.Drawing.Point(4, 25);
             this.tbpTwo.Name = "tbpTwo";
             this.tbpTwo.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpTwo.Size = new System.Drawing.Size(646, 334);
+            this.tbpTwo.Size = new System.Drawing.Size(646, 331);
             this.tbpTwo.TabIndex = 1;
             this.tbpTwo.Text = "Tabelloversikt";
             this.tbpTwo.UseVisualStyleBackColor = true;
@@ -836,37 +706,37 @@
             // 
             this.dgvDataBase.BackgroundColor = System.Drawing.Color.White;
             this.dgvDataBase.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LawnGreen;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LawnGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDataBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDataBase.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDataBase.GridColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvDataBase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvDataBase.Location = new System.Drawing.Point(358, -1);
             this.dgvDataBase.Name = "dgvDataBase";
             this.dgvDataBase.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDataBase.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDataBase.RowHeadersWidth = 20;
             this.dgvDataBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDataBase.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -883,9 +753,9 @@
             this.tbpThree.Controls.Add(this.dgvEmail);
             this.tbpThree.Controls.Add(this.btnAddEmail);
             this.tbpThree.Controls.Add(this.txtAddEmail);
-            this.tbpThree.Location = new System.Drawing.Point(4, 22);
+            this.tbpThree.Location = new System.Drawing.Point(4, 25);
             this.tbpThree.Name = "tbpThree";
-            this.tbpThree.Size = new System.Drawing.Size(646, 334);
+            this.tbpThree.Size = new System.Drawing.Size(646, 331);
             this.tbpThree.TabIndex = 2;
             this.tbpThree.Text = "Mottaker";
             this.tbpThree.UseVisualStyleBackColor = true;
@@ -922,14 +792,14 @@
             // 
             this.dgvEmail.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEmail.Location = new System.Drawing.Point(436, 0);
             this.dgvEmail.Name = "dgvEmail";
             this.dgvEmail.RowHeadersWidth = 20;
@@ -970,9 +840,126 @@
             this.btnMove.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseMove);
             this.btnMove.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove_MouseUp);
             // 
+            // txtCurrent
+            // 
+            this.txtCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtCurrent.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrent.ForeColor = System.Drawing.Color.LawnGreen;
+            this.txtCurrent.Location = new System.Drawing.Point(64, 113);
+            this.txtCurrent.Name = "txtCurrent";
+            this.txtCurrent.ReadOnly = true;
+            this.txtCurrent.Size = new System.Drawing.Size(129, 60);
+            this.txtCurrent.TabIndex = 0;
+            this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblSiste
+            // 
+            this.lblSiste.AutoSize = true;
+            this.lblSiste.BackColor = System.Drawing.Color.Transparent;
+            this.lblSiste.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSiste.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblSiste.Location = new System.Drawing.Point(69, 94);
+            this.lblSiste.Name = "lblSiste";
+            this.lblSiste.Size = new System.Drawing.Size(118, 16);
+            this.lblSiste.TabIndex = 1;
+            this.lblSiste.Text = "Siste avlesning";
+            // 
+            // txtMax
+            // 
+            this.txtMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMax.ForeColor = System.Drawing.Color.White;
+            this.txtMax.Location = new System.Drawing.Point(74, 231);
+            this.txtMax.Name = "txtMax";
+            this.txtMax.ReadOnly = true;
+            this.txtMax.Size = new System.Drawing.Size(107, 42);
+            this.txtMax.TabIndex = 3;
+            this.txtMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblMax
+            // 
+            this.lblMax.AutoSize = true;
+            this.lblMax.BackColor = System.Drawing.Color.Transparent;
+            this.lblMax.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMax.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblMax.Location = new System.Drawing.Point(74, 212);
+            this.lblMax.Name = "lblMax";
+            this.lblMax.Size = new System.Drawing.Size(107, 14);
+            this.lblMax.TabIndex = 4;
+            this.lblMax.Text = "Max Tempratur";
+            // 
+            // txtMaxTime
+            // 
+            this.txtMaxTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtMaxTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMaxTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaxTime.ForeColor = System.Drawing.Color.White;
+            this.txtMaxTime.Location = new System.Drawing.Point(64, 281);
+            this.txtMaxTime.Multiline = true;
+            this.txtMaxTime.Name = "txtMaxTime";
+            this.txtMaxTime.ReadOnly = true;
+            this.txtMaxTime.Size = new System.Drawing.Size(129, 20);
+            this.txtMaxTime.TabIndex = 5;
+            this.txtMaxTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtMin
+            // 
+            this.txtMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtMin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMin.ForeColor = System.Drawing.Color.White;
+            this.txtMin.Location = new System.Drawing.Point(74, 319);
+            this.txtMin.Name = "txtMin";
+            this.txtMin.ReadOnly = true;
+            this.txtMin.Size = new System.Drawing.Size(107, 42);
+            this.txtMin.TabIndex = 6;
+            this.txtMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblMin
+            // 
+            this.lblMin.AutoSize = true;
+            this.lblMin.BackColor = System.Drawing.Color.Transparent;
+            this.lblMin.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMin.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblMin.Location = new System.Drawing.Point(74, 300);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(103, 14);
+            this.lblMin.TabIndex = 7;
+            this.lblMin.Text = "Min Tempratur";
+            // 
+            // txtMinTime
+            // 
+            this.txtMinTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtMinTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMinTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMinTime.ForeColor = System.Drawing.Color.White;
+            this.txtMinTime.Location = new System.Drawing.Point(64, 369);
+            this.txtMinTime.Multiline = true;
+            this.txtMinTime.Name = "txtMinTime";
+            this.txtMinTime.ReadOnly = true;
+            this.txtMinTime.Size = new System.Drawing.Size(129, 20);
+            this.txtMinTime.TabIndex = 8;
+            this.txtMinTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtCurrentTime
+            // 
+            this.txtCurrentTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtCurrentTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCurrentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentTime.ForeColor = System.Drawing.Color.White;
+            this.txtCurrentTime.Location = new System.Drawing.Point(64, 185);
+            this.txtCurrentTime.Multiline = true;
+            this.txtCurrentTime.Name = "txtCurrentTime";
+            this.txtCurrentTime.ReadOnly = true;
+            this.txtCurrentTime.Size = new System.Drawing.Size(129, 20);
+            this.txtCurrentTime.TabIndex = 9;
+            this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btnLog
             // 
-            this.btnLog.Location = new System.Drawing.Point(59, 331);
+            this.btnLog.Location = new System.Drawing.Point(87, 391);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(75, 23);
             this.btnLog.TabIndex = 10;
@@ -983,25 +970,32 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
-            this.BackgroundImage = global::Polakken.Properties.Resources.Alfa;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.BackgroundImage = global::Polakken.Properties.Resources.BetaV2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(908, 702);
+            this.Controls.Add(this.btnLog);
+            this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.btnMove);
             this.Controls.Add(this.tbcPage);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnLukk);
-            this.Controls.Add(this.grpInfo);
+            this.Controls.Add(this.txtMinTime);
             this.Controls.Add(this.crtView);
+            this.Controls.Add(this.txtCurrent);
+            this.Controls.Add(this.lblMin);
+            this.Controls.Add(this.lblSiste);
+            this.Controls.Add(this.txtMax);
+            this.Controls.Add(this.txtMin);
+            this.Controls.Add(this.lblMax);
+            this.Controls.Add(this.txtMaxTime);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GUI";
             this.Text = "Polakken";
-            this.TransparencyKey = System.Drawing.Color.Silver;
+            this.TransparencyKey = System.Drawing.Color.PaleTurquoise;
             this.Load += new System.EventHandler(this.GUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).EndInit();
-            this.grpInfo.ResumeLayout(false);
-            this.grpInfo.PerformLayout();
             this.tbcPage.ResumeLayout(false);
             this.tbpOne.ResumeLayout(false);
             this.tbpOne.PerformLayout();
@@ -1012,29 +1006,20 @@
             this.tbpThree.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmail)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart crtView;
-        private System.Windows.Forms.GroupBox grpInfo;
-        private System.Windows.Forms.TextBox txtCurrent;
-        private System.Windows.Forms.Label lblSiste;
         private System.Windows.Forms.Button btnLukk;
         private System.Windows.Forms.Button btnMinimize;
-        private System.Windows.Forms.TextBox txtMaxTime;
-        private System.Windows.Forms.Label lblMax;
-        private System.Windows.Forms.TextBox txtMax;
-        private System.Windows.Forms.Label lblMin;
-        private System.Windows.Forms.TextBox txtMin;
-        private System.Windows.Forms.TabControl tbcPage;
         private System.Windows.Forms.TabPage tbpOne;
         private System.Windows.Forms.TabPage tbpTwo;
         private System.Windows.Forms.TabPage tbpThree;
         private System.Windows.Forms.Button btnMove;
         private System.Windows.Forms.DataGridView dgvDataBase;
-        private System.Windows.Forms.TextBox txtMinTime;
         private System.Windows.Forms.Button btnSetPointUp;
         private System.Windows.Forms.Button btnSetPointDown;
         private System.Windows.Forms.Label lblSet;
@@ -1071,7 +1056,6 @@
         private System.Windows.Forms.DateTimePicker dtpDelTo;
         private System.Windows.Forms.DateTimePicker dtpDelFrom;
         private System.Windows.Forms.Button btnDelReading;
-        private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.Button mottaMail;
         private System.Windows.Forms.DateTimePicker dtpDelToTime;
         private System.Windows.Forms.DateTimePicker dtpDelFromTime;
@@ -1079,7 +1063,17 @@
         private System.Windows.Forms.DateTimePicker dtpSelectFromTime;
         private System.Windows.Forms.CheckBox chkSetTol;
         private System.Windows.Forms.ComboBox cboSelectDelete;
+        private System.Windows.Forms.TextBox txtCurrent;
+        private System.Windows.Forms.Label lblSiste;
+        private System.Windows.Forms.TextBox txtMax;
+        private System.Windows.Forms.Label lblMax;
+        private System.Windows.Forms.TextBox txtMaxTime;
+        private System.Windows.Forms.TextBox txtMin;
+        private System.Windows.Forms.Label lblMin;
+        private System.Windows.Forms.TextBox txtMinTime;
+        private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.Button btnLog;
+        private GUI.CustomTabControl tbcPage;
 
     
 
