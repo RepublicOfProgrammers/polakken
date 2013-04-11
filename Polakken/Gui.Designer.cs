@@ -37,7 +37,8 @@
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
-            this.tbcPage = new Polakken.GUI.CustomTabControl();
+            //this.tbcPage = new Polakken.GUI.CustomTabControl();
+            this.tbcPage = new System.Windows.Forms.TabControl();
             this.tbpOne = new System.Windows.Forms.TabPage();
             this.chkSetTol = new System.Windows.Forms.CheckBox();
             this.txtAlarm = new System.Windows.Forms.TextBox();
@@ -1073,7 +1074,8 @@
         private System.Windows.Forms.TextBox txtMinTime;
         private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.Button btnLog;
-        private GUI.CustomTabControl tbcPage;
+        //private GUI.CustomTabControl tbcPage;
+        private System.Windows.Forms.TabControl tbcPage;
 
     
 
