@@ -135,7 +135,8 @@ namespace Polakken
                            break;
                        case "HLP":
                            //E-mail kommando for å få tilsendt hjelp teksten. 
-                           //Hjelp
+                           response = help();
+                           E_mail_handler.sendToOne("Help", response, fra);
                            break;
                        default:
                            E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
