@@ -11,7 +11,7 @@ namespace Polakken
         //variabler
         private static string module = "Regulation";
         public static Boolean status;
-        private static double reading;
+        private static double reading = 999;
         private static double prevReading;
         private static double difference;
         public static int mesInterval { get; set; }
@@ -45,13 +45,13 @@ namespace Polakken
 
         public static Boolean regulator(double newread)
         {
-            //Hvis det ikke eksisterer en verdi for reading vil den lagre den nye målingen i både reading og prevReading
-            if (reading == null)
+            //Hvis det ikke har blitt hentet inn en verdi for reading vil den lagre den nye målingen i både reading og prevReading
+            if (reading == 999)
             {
                 prevReading = newread;
                 reading = newread;
             }
-            //Plasserer den forrige readingen inn i prev Reading og den nye i reading. 
+            //Plasserer den forrige readingen inn i prevReading og den nye i reading. 
             else
             {
                 prevReading = reading;
