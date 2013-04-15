@@ -9,6 +9,7 @@ namespace Polakken
     {
         //Mappen hvor alle log filene skal ligge
         private string dirLogs = "Logs";
+        public static string msgbxms { get; private set;}
 
         //Konstruktør som kun brukes i oppstart av programmet for å opprette en ny logg fil med dagens dato
         public Logger() 
@@ -25,17 +26,22 @@ namespace Polakken
             Trace.WriteLine("Tidspunkt \tType \tKlasse \t\tMelding");
             Trace.WriteLine("-------------------------------------------------------------");
         }
+
+  
+
         //Følgende metoder brukes i de forskjellige trace event'ene vi har definert.
         public static void Error(string message, string module)
         {
             System.Windows.Forms.MessageBox.Show("FEIL: " + message);
             WriteEntry(message, "FEIL", module);
+            msgbxms += DateTime.Now.ToString("HH:mm:ss") + " \t FEIL: " + "\t" + message + "\r\n";
         }
 
         public static void Error(Exception ex, string module)
         {
             System.Windows.Forms.MessageBox.Show("FEIL: " + ex);
             WriteEntry(ex.Message, "FEIL", module);
+            msgbxms += DateTime.Now.ToString("HH:mm:ss") + " \t FEIL: " + "\t" + ex.Message + "\r\n";
         }
 
         public static void Warning(string message, string module)

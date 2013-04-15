@@ -12,6 +12,7 @@ namespace Polakken
 {
     public partial class Log : Form
     {
+        public string msgbxms;
         public static string ourPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
         string file = ourPath + @"\bin\Files\";
         public Log()
@@ -44,9 +45,10 @@ namespace Polakken
             return data;
         }
 
-        private void txtRead_TextChanged(object sender, EventArgs e)
+       
+        private void Log_Load(object sender, EventArgs e)
         {
-            txtRead.AppendText("Tidspunkt \tType \tKlasse \t\tMelding");
+            txtRead.AppendText(Logger.msgbxms);
         }
     }
 }
