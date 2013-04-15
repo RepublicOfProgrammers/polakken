@@ -982,7 +982,6 @@ namespace Polakken
             SensorCom.alarmLimit = savealarm;
             SensorCom.mesInterval = saveint;
         }
-
         //public class CustomTabControl : TabControl
         //{
         //    #region VARIABLES

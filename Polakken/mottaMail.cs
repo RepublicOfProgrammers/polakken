@@ -48,12 +48,8 @@ namespace Polakken
        public static string help()
        {
            string help = "";
-           // Read each line of the file into a string array. Each element 
-           // of the array is one line of the file. 
-           string lines = System.IO.File.ReadAllText("hjelpPolakken.txt");
 
-           // Display the file contents by using a foreach loop.
-           
+           help = System.IO.File.ReadAllText(Environment.CurrentDirectory + "\\..\\..\\Resources\\hjelpPolakken.txt");
 
            return help;
        }
