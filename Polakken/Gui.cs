@@ -24,9 +24,10 @@ namespace Polakken
         int Mover;
         int MoveX;
         int MoveY;
-        double SetPoint = 0.0;
-        double tolerance = 0.0;
-        double mesurInterval = 0.0;
+        int setPoint;
+        int tolerance;
+        int mesurInterval;
+        int alarmLimit;
         DataTable u = new DataTable();
         DataTable GetEmails = new DataTable();
         string delToString;
@@ -49,10 +50,14 @@ namespace Polakken
             SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunkt på alarmgrense og sender til SensorCom
             Regulation.setpoint = Settings.Default.setpoint; //Henter in config settpunkt på settpunkt og sender til Regulation
             Regulation.tolerance = Settings.Default.tolerance; // Henter inn config settpunkt på toleranse og sender til Regulation
-            txtInt.Text = Convert.ToString(SensorCom.mesInterval);
-            txtAlarm.Text = Convert.ToString(SensorCom.alarmLimit);
-            txtSetPoint.Text = Convert.ToString(Regulation.setpoint);
-            txtTol.Text = Convert.ToString(Regulation.tolerance);
+            mesurInterval = SensorCom.mesInterval;
+            alarmLimit = SensorCom.alarmLimit;
+            setPoint = Regulation.setpoint;
+            tolerance = Regulation.tolerance;
+            txtInt.Text = Convert.ToString(mesurInterval);
+            txtAlarm.Text = Convert.ToString(alarmLimit);
+            txtSetPoint.Text = Convert.ToString(setPoint);
+            txtTol.Text = Convert.ToString(tolerance);
             
             // Opprett DataTabell og fyll DataGridView
             //
@@ -514,9 +519,9 @@ namespace Polakken
             this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
             this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
             txtSetPoint.Enabled = true;
-            double ChangeSetPointAdd = SetPoint;
+            double ChangeSetPointAdd = setPoint;
             ChangeSetPointAdd = ChangeSetPointAdd + 1;
-            SetPoint = ChangeSetPointAdd;
+            setPoint = ChangeSetPointAdd;
             txtSetPoint.Text = ChangeSetPointAdd.ToString();
         }
 
@@ -534,20 +539,20 @@ namespace Polakken
         private void btnSetPointDown_MouseUp(object sender, MouseEventArgs e)
         {
             this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
-            double ChangeSetPointSub = SetPoint;
+            double ChangeSetPointSub = setPoint;
             ChangeSetPointSub = ChangeSetPointSub - 1;
             if (ChangeSetPointSub < 0)
             {
                 MessageBox.Show("Nedre Grense Nådd", "FEIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ChangeSetPointSub = SetPoint;
+                ChangeSetPointSub = setPoint;
                 txtSetPoint.Text = ChangeSetPointSub.ToString();
-                SetPoint = ChangeSetPointSub;
+                setPoint = ChangeSetPointSub;
                 txtSetPoint.Enabled = false;
                 this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
 
             }
             txtSetPoint.Text = ChangeSetPointSub.ToString();
-            SetPoint = ChangeSetPointSub;
+            setPoint = ChangeSetPointSub;
         }
 
         private void btnToleranceUp_MouseDown(object sender, MouseEventArgs e)
@@ -969,18 +974,15 @@ namespace Polakken
 
         private void btnSaveAll_Click(object sender, EventArgs e)
         {
-            int saveset = Convert.ToInt32(txtSetPoint.Text);
-            int saveint = Convert.ToInt32(txtInt.Text);
-            int savealarm = Convert.ToInt32(txtAlarm.Text);
-            int savetol = Convert.ToInt32(txtTol.Text);
-            Settings.Default.mesInterval = saveint;
-            Settings.Default.tolerance = savetol;
-            Settings.Default.alarmLimit = savealarm;
-            Settings.Default.setpoint = saveset;
-            Regulation.tolerance = savetol;
-            Regulation.setpoint = saveset;
-            SensorCom.alarmLimit = savealarm;
-            SensorCom.mesInterval = saveint;
+            Settings.Default.mesInterval = mesurInterval;
+            Settings.Default.tolerance = tolerance;
+            Settings.Default.alarmLimit = alarmLimit;
+            Settings.Default.setpoint = setPoint;
+            Settings.Default.Save();
+            Regulation.tolerance = mesurInterval;
+            Regulation.setpoint = setPoint;
+            SensorCom.alarmLimit = alarmLimit;
+            SensorCom.mesInterval = mesurInterval;
         }
         //public class CustomTabControl : TabControl
         //{
