@@ -134,26 +134,34 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 336;
             crtView.ChartAreas["tempOversikt"].AxisX.Interval = 48;
             crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
-            crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 50;
-            crtView.ChartAreas["tempOversikt"].AxisY.Interval = 10;
+            crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 40;
+            crtView.ChartAreas["tempOversikt"].AxisY.Interval = 5;
             crtView.ChartAreas["tempOversikt"].BackColor = Color.Transparent;
             crtView.ChartAreas["tempOversikt"].AxisX.MajorGrid.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.MajorGrid.LineColor = Color.DarkGray;
-            crtView.ChartAreas["tempOversikt"].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            crtView.ChartAreas["tempOversikt"].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
             crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.ForeColor = Color.GreenYellow;
             crtView.ChartAreas["tempOversikt"].AxisX.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LineColor = Color.DarkGray;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.ForeColor = Color.GreenYellow;
             crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Angle = 0;
-            crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 100;
+            crtView.ChartAreas["tempOversikt"].AxisX.Title = "Dato";
+            crtView.ChartAreas["tempOversikt"].AxisY.Title = "Tempratur";
+            crtView.ChartAreas["tempOversikt"].AxisX.TitleForeColor = Color.White;
+            crtView.ChartAreas["tempOversikt"].AxisY.TitleForeColor = Color.White;
+            crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.Format = "{0} °C";
+          
+
+            
 
             crtView.Series.Add("temp");
             crtView.Series["temp"].Color = Color.LawnGreen;
             crtView.Series["temp"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             crtView.Series["temp"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             crtView.Series["temp"].XValueMember = "ReadTime";
             crtView.Series["temp"].YValueMembers = "Temprature";
+        
             crtView.DataBind();
 
 
@@ -418,14 +426,14 @@ namespace Polakken
                 }
 
             }
-            string emaildummy;
-            string emaildummy2;
+            //string emaildummy;
+            //string emaildummy2;
 
-            emaildummy = "alexandergjerseth@gmail.com";
-            emaildummy2 = "sglittum@gmail.com";
+            //emaildummy = "alexandergjerseth@gmail.com";
+            //emaildummy2 = "sglittum@gmail.com";
 
-            db.AddEmail(emaildummy);
-            db.AddEmail(emaildummy2);
+            //db.AddEmail(emaildummy);
+            //db.AddEmail(emaildummy2);
         }
 
 
@@ -517,7 +525,6 @@ namespace Polakken
         private void btnSetPointUp_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
-            this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
             txtSetPoint.Enabled = true;
             int ChangeSetPointAdd = setPoint;
             ChangeSetPointAdd = ChangeSetPointAdd + 1;
@@ -565,11 +572,14 @@ namespace Polakken
         private void btnToleranceUp_MouseUp(object sender, MouseEventArgs e)
         {
             this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+
         }
 
         private void btnToleranceDown_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            tolerance = tolerance - 1;
+            txtTol.Text = tolerance.ToString();
         }
 
         private void btnToleranceDown_MouseUp(object sender, MouseEventArgs e)
@@ -580,6 +590,8 @@ namespace Polakken
         private void btnMesIUp_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnMesIUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+            mesurInterval = mesurInterval + 1;
+            txtInt.Text = mesurInterval.ToString();
         }
 
         private void btnMesIUp_MouseUp(object sender, MouseEventArgs e)
@@ -590,6 +602,8 @@ namespace Polakken
         private void btnMesIDown_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnMesIDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            mesurInterval = mesurInterval - 1;
+            txtInt.Text = mesurInterval.ToString();
         }
 
         private void btnMesIDown_MouseUp(object sender, MouseEventArgs e)
@@ -600,6 +614,8 @@ namespace Polakken
         private void btnAlarmUp_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnAlarmUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+            alarmLimit = alarmLimit + 1;
+            txtAlarm.Text = alarmLimit.ToString();
         }
 
         private void btnAlarmUp_MouseUp(object sender, MouseEventArgs e)
@@ -610,6 +626,8 @@ namespace Polakken
         private void btnAlarmDown_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnAlarmDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            alarmLimit = alarmLimit - 1;
+            txtAlarm.Text = alarmLimit.ToString();
         }
 
         private void btnAlarmDown_MouseUp(object sender, MouseEventArgs e)
@@ -695,17 +713,20 @@ namespace Polakken
 
         }
 
+        public void Update()
+        {
+            dgvDataBase.DataSource = null;
+            u.Clear();
+            DebugginTestTwo(u);
+            dgvDataBase.DataSource = u;
+            crtView.DataBind();
+            populateTxtbox();
+        }
 
 
         private void btnReset_Click(object sender, EventArgs e)
         {
             CreateValues();
-            dgvDataBase.DataSource = null;
-            u.Clear();
-            DebugginTestTwo(u);
-            dgvDataBase.DataSource = u;
-            populateTxtbox();
-
         }
 
         private void chkFilterStatus_CheckedChanged(object sender, EventArgs e)
@@ -845,7 +866,9 @@ namespace Polakken
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
                 delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
-                delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
+                delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay ;
+                delTo = delTo.AddMinutes(1.0);
+                delFrom = delFrom.AddMinutes(-1.0);
                 delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
                 delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
             }
@@ -956,6 +979,9 @@ namespace Polakken
                 btnDelReading.Enabled = true;
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
+                dtpDelFrom.Enabled = true;
+                dtpDelFromTime.Enabled = true;
+                
 
             }
 
@@ -984,122 +1010,7 @@ namespace Polakken
             SensorCom.alarmLimit = alarmLimit;
             SensorCom.mesInterval = mesurInterval;
         }
-        //public class CustomTabControl : TabControl
-        //{
-        //    #region VARIABLES
-
-        //    private int hotTrackTab = -1;
-
-
-        //    #endregion
-
-        //    #region INSTANCE CONSTRUCTORS
-
-        //    public CustomTabControl()
-        //        : base()
-        //    {
-        //        this.InitializeComponent();
-        //    }
-
-        //    #endregion
-
-        //    #region INSTANCE METHODS
-
-        //    private void InitializeComponent()
-        //    {
-        //        this.SetStyle(ControlStyles.UserPaint, true);
-        //        this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-        //        this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-        //        this.SetStyle(ControlStyles.ResizeRedraw, true);
-        //        this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-        //        this.DrawMode = TabDrawMode.OwnerDrawFixed;
-        //    }
-
-        //    private int GetTabUnderCursor()
-        //    {
-        //        Point cursor = this.PointToClient(Cursor.Position);
-        //        for (int index = 0; index < this.TabPages.Count; index++)
-        //        {
-        //            if (this.GetTabRect(index).Contains(cursor))
-        //            {
-        //                return index;
-        //            }
-        //        }
-        //        return -1;
-        //    }
-
-        //    private void UpdateHotTrack()
-        //    {
-        //        int hot = GetTabUnderCursor();
-        //        if (hot != this.hotTrackTab)
-        //        {
-        //            if (this.hotTrackTab != -1)
-        //            {
-        //                this.Invalidate(this.GetTabRect(this.hotTrackTab));
-        //            }
-        //            this.hotTrackTab = hot;
-        //            if (this.hotTrackTab != -1)
-        //            {
-        //                this.Invalidate(this.GetTabRect(this.hotTrackTab));
-        //            }
-        //            this.Update();
-        //        }
-        //    }
-
-        //    #endregion
-
-        //    #region OVERRIDE METHODS
-
-        //    protected override void OnMouseEnter(EventArgs e)
-        //    {
-        //        base.OnMouseEnter(e);
-        //        this.UpdateHotTrack();
-        //    }
-
-        //    protected override void OnMouseLeave(EventArgs e)
-        //    {
-        //        base.OnMouseLeave(e);
-        //        this.UpdateHotTrack();
-        //    }
-
-        //    protected override void OnMouseMove(MouseEventArgs e)
-        //    {
-        //        base.OnMouseMove(e);
-        //        this.UpdateHotTrack();
-        //    }
-
-        //    protected override void OnPaint(PaintEventArgs e)
-        //    {
-
-
-        //        base.OnPaint(e);
-
-
-        //        switch (this.Alignment)
-        //        {
-        //            case TabAlignment.Bottom:
-
-        //            case TabAlignment.Left:
-        //            case TabAlignment.Right:
-        //            case TabAlignment.Top:
-        //            default:
-        //                throw new NotImplementedException();
-        //        }
-
-
-
-
-        //    }
-
-        //    protected override void OnPaintBackground(PaintEventArgs pevent)
-        //    {
-        //        base.OnPaintBackground(pevent);
-
-
-        //    }
-
-        //    #endregion
-        //}
+    
 
     }
 }
