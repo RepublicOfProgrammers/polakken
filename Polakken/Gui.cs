@@ -519,7 +519,7 @@ namespace Polakken
             this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
             this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
             txtSetPoint.Enabled = true;
-            double ChangeSetPointAdd = setPoint;
+            int ChangeSetPointAdd = setPoint;
             ChangeSetPointAdd = ChangeSetPointAdd + 1;
             setPoint = ChangeSetPointAdd;
             txtSetPoint.Text = ChangeSetPointAdd.ToString();
@@ -539,7 +539,7 @@ namespace Polakken
         private void btnSetPointDown_MouseUp(object sender, MouseEventArgs e)
         {
             this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
-            double ChangeSetPointSub = setPoint;
+            int ChangeSetPointSub = setPoint;
             ChangeSetPointSub = ChangeSetPointSub - 1;
             if (ChangeSetPointSub < 0)
             {
