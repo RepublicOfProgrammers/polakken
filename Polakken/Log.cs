@@ -43,5 +43,10 @@ namespace Polakken
 
             return data;
         }
+
+        private void txtRead_TextChanged(object sender, EventArgs e)
+        {
+            txtRead.AppendText("Tidspunkt \tType \tKlasse \t\tMelding");
+        }
     }
 }
