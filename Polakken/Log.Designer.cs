@@ -29,43 +29,75 @@
         private void InitializeComponent()
         {
             this.txtRead = new System.Windows.Forms.TextBox();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.ofdRead = new System.Windows.Forms.OpenFileDialog();
+            this.btnLukk = new System.Windows.Forms.Button();
+            this.btnMove1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtRead
             // 
-            this.txtRead.Location = new System.Drawing.Point(1, 35);
+            this.txtRead.BackColor = System.Drawing.SystemColors.GrayText;
+            this.txtRead.Location = new System.Drawing.Point(62, 66);
             this.txtRead.Multiline = true;
             this.txtRead.Name = "txtRead";
             this.txtRead.ReadOnly = true;
             this.txtRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRead.Size = new System.Drawing.Size(359, 346);
+            this.txtRead.Size = new System.Drawing.Size(842, 302);
             this.txtRead.TabIndex = 0;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(29, 6);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.Text = "button1";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // ofdRead
             // 
             this.ofdRead.FileName = "ofdRead";
             // 
+            // btnLukk
+            // 
+            this.btnLukk.BackColor = System.Drawing.Color.Transparent;
+            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.Close;
+            this.btnLukk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLukk.FlatAppearance.BorderSize = 0;
+            this.btnLukk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnLukk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnLukk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLukk.Location = new System.Drawing.Point(888, 25);
+            this.btnLukk.Name = "btnLukk";
+            this.btnLukk.Size = new System.Drawing.Size(30, 30);
+            this.btnLukk.TabIndex = 5;
+            this.btnLukk.UseVisualStyleBackColor = false;
+            this.btnLukk.Click += new System.EventHandler(this.btnLukk_Click);
+            // 
+            // btnMove1
+            // 
+            this.btnMove1.BackColor = System.Drawing.Color.Transparent;
+            this.btnMove1.FlatAppearance.BorderSize = 0;
+            this.btnMove1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnMove1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnMove1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMove1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMove1.Location = new System.Drawing.Point(40, 12);
+            this.btnMove1.Name = "btnMove1";
+            this.btnMove1.Size = new System.Drawing.Size(842, 43);
+            this.btnMove1.TabIndex = 8;
+            this.btnMove1.UseVisualStyleBackColor = false;
+            this.btnMove1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove1_MouseDown);
+            this.btnMove1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove1_MouseMove);
+            this.btnMove1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove1_MouseUp);
+            // 
             // Log
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 377);
-            this.Controls.Add(this.btnRefresh);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.BackgroundImage = global::Polakken.Properties.Resources.Logg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(965, 423);
+            this.Controls.Add(this.btnMove1);
+            this.Controls.Add(this.btnLukk);
             this.Controls.Add(this.txtRead);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Log";
             this.Text = "Log";
+            this.TransparencyKey = System.Drawing.Color.Silver;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -74,7 +106,8 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtRead;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.OpenFileDialog ofdRead;
+        private System.Windows.Forms.Button btnLukk;
+        private System.Windows.Forms.Button btnMove1;
     }
 }
