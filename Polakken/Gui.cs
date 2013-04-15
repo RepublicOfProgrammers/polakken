@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Media;
 using Polakken.Properties;
+using System.Threading;
 
 namespace Polakken
 {
@@ -61,7 +62,7 @@ namespace Polakken
             
             // Opprett DataTabell og fyll DataGridView
             //
-            CreateValues();
+            //CreateValues();
             DebugginTestTwo(u);
             dgvDataBase.DataSource = u;
             GetEmail(GetEmails);
