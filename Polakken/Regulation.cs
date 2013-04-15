@@ -16,30 +16,32 @@ namespace Polakken
         private static double difference;
         public static int mesInterval { get; set; }
         private static string loggerInfo;
-        public static int tolerance 
-        {
-            get 
-            {
-                return tolerance;
-            }
-            set
-            {
-                tolerance = value;
-                Settings.Default.tolerance = value;
-            }
-        }
-        public static int setpoint
-        {
-            get 
-            {
-                return setpoint;
-            }
-            set
-            {
-                setpoint = value;
-                Settings.Default.setpoint = value;
-            }
-        }
+        public static int tolerance { get; set; }
+        //{
+        //    get
+        //    {
+        //        return tolerance;
+        //    }
+        //    set
+        //    {
+        //        tolerance = value;
+        //        Settings.Default.tolerance = value;
+        //        Settings.Default.Save();
+        //    }
+        //}
+        public static int setpoint { get; set; }
+        //{
+        //    get
+        //    {
+        //        return setpoint;
+        //    }
+        //    set
+        //    {
+        //        setpoint = value;
+        //        Settings.Default.setpoint = value;
+        //        Settings.Default.Save();
+        //    }
+        //}
 
         public static Boolean regulator(double newread)
         {

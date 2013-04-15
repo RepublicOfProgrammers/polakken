@@ -48,12 +48,8 @@ namespace Polakken
        public static string help()
        {
            string help = "";
-           // Read each line of the file into a string array. Each element 
-           // of the array is one line of the file. 
-           string lines = System.IO.File.ReadAllText("hjelpPolakken.txt");
 
-           // Display the file contents by using a foreach loop.
-           
+           help = System.IO.File.ReadAllText(Environment.CurrentDirectory + "\\..\\..\\Resources\\hjelpPolakken.txt");
 
            return help;
        }
@@ -139,7 +135,8 @@ namespace Polakken
                            break;
                        case "HLP":
                            //E-mail kommando for å få tilsendt hjelp teksten. 
-                           //Hjelp
+                           response = help();
+                           E_mail_handler.sendToOne("Help", response, fra);
                            break;
                        default:
                            E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
