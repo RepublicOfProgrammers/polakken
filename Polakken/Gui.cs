@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Media;
+using Polakken.Properties;
 
 namespace Polakken
 {
@@ -44,7 +45,15 @@ namespace Polakken
         private void GUI_Load(object sender, EventArgs e)
         {
 
-            //
+            SensorCom.mesInterval = Settings.Default.mesInterval; // Henter inn config settpunkt på måleintervall og sender til SensorCom
+            SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunkt på alarmgrense og sender til SensorCom
+            Regulation.setpoint = Settings.Default.setpoint; //Henter in config settpunkt på settpunkt og sender til Regulation
+            Regulation.tolerance = Settings.Default.tolerance; // Henter inn config settpunkt på toleranse og sender til Regulation
+            txtInt.Text = Convert.ToString(SensorCom.mesInterval);
+            txtAlarm.Text = Convert.ToString(SensorCom.alarmLimit);
+            txtSetPoint.Text = Convert.ToString(Regulation.setpoint);
+            txtTol.Text = Convert.ToString(Regulation.tolerance);
+            
             // Opprett DataTabell og fyll DataGridView
             //
             CreateValues();
@@ -951,6 +960,27 @@ namespace Polakken
         {
             Log logForm = new Log();
             logForm.Show();
+        }
+
+        private void txtSetPoint_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSaveAll_Click(object sender, EventArgs e)
+        {
+            int saveset = Convert.ToInt32(txtSetPoint.Text);
+            int saveint = Convert.ToInt32(txtInt.Text);
+            int savealarm = Convert.ToInt32(txtAlarm.Text);
+            int savetol = Convert.ToInt32(txtTol.Text);
+            Settings.Default.mesInterval = saveint;
+            Settings.Default.tolerance = savetol;
+            Settings.Default.alarmLimit = savealarm;
+            Settings.Default.setpoint = saveset;
+            Regulation.tolerance = savetol;
+            Regulation.setpoint = saveset;
+            SensorCom.alarmLimit = savealarm;
+            SensorCom.mesInterval = saveint;
         }
 
         //public class CustomTabControl : TabControl

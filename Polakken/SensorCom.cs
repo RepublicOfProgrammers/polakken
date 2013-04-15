@@ -12,31 +12,36 @@ namespace Polakken
     static class SensorCom
     {
         private static string module = "SensorCom";
-        public static int alarmLimit 
-        {
-            get 
-            {
-                return alarmLimit;
-            }
-            set 
-            { 
-                alarmLimit = value;
-                Settings.Default.alarmLimit = value; 
-            }
-        }
-        public static int mesInterval
-        {
-            get
-            {
-                return mesInterval;
-            }
-            set 
-            {
-                mesInterval = value;
-                Regulation.mesInterval = value;
-                Settings.Default.mesInterval = value;
-            } 
-        }
+        public static int alarmLimit { get; set; }
+        //{
+        //    get
+        //    {
+        //        return alarmLimit;
+        //    }
+        //    set
+        //    {
+        //        alarmLimit = value;
+        //        Settings.Default.alarmLimit = value;
+        //        Settings.Default.Save();
+        //    }
+        //}
+        public static int mesInterval { get; set; }
+        //{
+        //    get
+        //    {
+        //        return mesInterval;
+        //    }
+        //    set
+        //    {
+        //        mesInterval = value;
+        //        Regulation.mesInterval = value;
+        //        if (Settings.Default.mesInterval != value)
+        //        {
+        //            Settings.Default.mesInterval = value;
+        //        }
+        //        Settings.Default.Save();
+        //    }
+        //}
 
         public static double temp()
         {
