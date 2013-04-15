@@ -426,14 +426,14 @@ namespace Polakken
                 }
 
             }
-            string emaildummy;
-            string emaildummy2;
+            //string emaildummy;
+            //string emaildummy2;
 
-            emaildummy = "alexandergjerseth@gmail.com";
-            emaildummy2 = "sglittum@gmail.com";
+            //emaildummy = "alexandergjerseth@gmail.com";
+            //emaildummy2 = "sglittum@gmail.com";
 
-            db.AddEmail(emaildummy);
-            db.AddEmail(emaildummy2);
+            //db.AddEmail(emaildummy);
+            //db.AddEmail(emaildummy2);
         }
 
 
@@ -713,17 +713,20 @@ namespace Polakken
 
         }
 
+        public void Update()
+        {
+            dgvDataBase.DataSource = null;
+            u.Clear();
+            DebugginTestTwo(u);
+            dgvDataBase.DataSource = u;
+            crtView.DataBind();
+            populateTxtbox();
+        }
 
 
         private void btnReset_Click(object sender, EventArgs e)
         {
             CreateValues();
-            dgvDataBase.DataSource = null;
-            u.Clear();
-            DebugginTestTwo(u);
-            dgvDataBase.DataSource = u;
-            populateTxtbox();
-
         }
 
         private void chkFilterStatus_CheckedChanged(object sender, EventArgs e)
@@ -863,7 +866,9 @@ namespace Polakken
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
                 delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
-                delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
+                delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay ;
+                delTo = delTo.AddMinutes(1.0);
+                delFrom = delFrom.AddMinutes(-1.0);
                 delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
                 delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
             }
@@ -974,6 +979,9 @@ namespace Polakken
                 btnDelReading.Enabled = true;
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
+                dtpDelFrom.Enabled = true;
+                dtpDelFromTime.Enabled = true;
+                
 
             }
 

@@ -30,10 +30,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
@@ -95,6 +95,8 @@
             this.txtMinTime = new System.Windows.Forms.TextBox();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.btnLog = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.tbcPage.SuspendLayout();
             this.tbpOne.SuspendLayout();
@@ -457,6 +459,8 @@
             // tbpTwo
             // 
             this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.insideTab2;
+            this.tbpTwo.Controls.Add(this.label2);
+            this.tbpTwo.Controls.Add(this.label1);
             this.tbpTwo.Controls.Add(this.cboSelectDelete);
             this.tbpTwo.Controls.Add(this.dtpSelectToTime);
             this.tbpTwo.Controls.Add(this.dtpSelectFromTime);
@@ -488,13 +492,15 @@
             // cboSelectDelete
             // 
             this.cboSelectDelete.AccessibleName = "";
+            this.cboSelectDelete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSelectDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboSelectDelete.FormattingEnabled = true;
             this.cboSelectDelete.Items.AddRange(new object[] {
             "Slett alt",
             "Slett siste 30 dager",
             "Slett i egendefinert tidsrom",
             "Slett en egendefinert Oppføring."});
-            this.cboSelectDelete.Location = new System.Drawing.Point(24, 16);
+            this.cboSelectDelete.Location = new System.Drawing.Point(24, 31);
             this.cboSelectDelete.Name = "cboSelectDelete";
             this.cboSelectDelete.Size = new System.Drawing.Size(168, 21);
             this.cboSelectDelete.TabIndex = 18;
@@ -504,7 +510,7 @@
             // 
             this.dtpSelectToTime.Enabled = false;
             this.dtpSelectToTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectToTime.Location = new System.Drawing.Point(119, 193);
+            this.dtpSelectToTime.Location = new System.Drawing.Point(134, 211);
             this.dtpSelectToTime.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectToTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectToTime.Name = "dtpSelectToTime";
@@ -516,7 +522,7 @@
             // 
             this.dtpSelectFromTime.Enabled = false;
             this.dtpSelectFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectFromTime.Location = new System.Drawing.Point(24, 193);
+            this.dtpSelectFromTime.Location = new System.Drawing.Point(39, 211);
             this.dtpSelectFromTime.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectFromTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectFromTime.Name = "dtpSelectFromTime";
@@ -527,7 +533,7 @@
             // dtpDelToTime
             // 
             this.dtpDelToTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelToTime.Location = new System.Drawing.Point(119, 71);
+            this.dtpDelToTime.Location = new System.Drawing.Point(119, 86);
             this.dtpDelToTime.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
             this.dtpDelToTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelToTime.Name = "dtpDelToTime";
@@ -538,7 +544,7 @@
             // dtpDelFromTime
             // 
             this.dtpDelFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelFromTime.Location = new System.Drawing.Point(24, 69);
+            this.dtpDelFromTime.Location = new System.Drawing.Point(24, 84);
             this.dtpDelFromTime.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
             this.dtpDelFromTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelFromTime.Name = "dtpDelFromTime";
@@ -548,7 +554,7 @@
             // 
             // btnDelReading
             // 
-            this.btnDelReading.Location = new System.Drawing.Point(22, 92);
+            this.btnDelReading.Location = new System.Drawing.Point(22, 107);
             this.btnDelReading.Name = "btnDelReading";
             this.btnDelReading.Size = new System.Drawing.Size(75, 23);
             this.btnDelReading.TabIndex = 13;
@@ -559,7 +565,7 @@
             // dtpDelTo
             // 
             this.dtpDelTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelTo.Location = new System.Drawing.Point(119, 43);
+            this.dtpDelTo.Location = new System.Drawing.Point(119, 58);
             this.dtpDelTo.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpDelTo.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelTo.Name = "dtpDelTo";
@@ -570,7 +576,7 @@
             // dtpDelFrom
             // 
             this.dtpDelFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelFrom.Location = new System.Drawing.Point(24, 43);
+            this.dtpDelFrom.Location = new System.Drawing.Point(24, 58);
             this.dtpDelFrom.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
             this.dtpDelFrom.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelFrom.Name = "dtpDelFrom";
@@ -581,7 +587,7 @@
             // chkFilterDate
             // 
             this.chkFilterDate.AutoSize = true;
-            this.chkFilterDate.Location = new System.Drawing.Point(5, 148);
+            this.chkFilterDate.Location = new System.Drawing.Point(20, 166);
             this.chkFilterDate.Name = "chkFilterDate";
             this.chkFilterDate.Size = new System.Drawing.Size(15, 14);
             this.chkFilterDate.TabIndex = 10;
@@ -591,7 +597,7 @@
             // chkFilterTemp
             // 
             this.chkFilterTemp.AutoSize = true;
-            this.chkFilterTemp.Location = new System.Drawing.Point(100, 238);
+            this.chkFilterTemp.Location = new System.Drawing.Point(115, 256);
             this.chkFilterTemp.Name = "chkFilterTemp";
             this.chkFilterTemp.Size = new System.Drawing.Size(15, 14);
             this.chkFilterTemp.TabIndex = 9;
@@ -601,7 +607,7 @@
             // chkFilterStatus
             // 
             this.chkFilterStatus.AutoSize = true;
-            this.chkFilterStatus.Location = new System.Drawing.Point(5, 239);
+            this.chkFilterStatus.Location = new System.Drawing.Point(20, 257);
             this.chkFilterStatus.Name = "chkFilterStatus";
             this.chkFilterStatus.Size = new System.Drawing.Size(15, 14);
             this.chkFilterStatus.TabIndex = 8;
@@ -610,7 +616,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(86, 300);
+            this.btnReset.Location = new System.Drawing.Point(101, 303);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 7;
@@ -622,7 +628,7 @@
             // 
             this.cboEqualsFilter.Enabled = false;
             this.cboEqualsFilter.FormattingEnabled = true;
-            this.cboEqualsFilter.Location = new System.Drawing.Point(119, 258);
+            this.cboEqualsFilter.Location = new System.Drawing.Point(134, 276);
             this.cboEqualsFilter.Name = "cboEqualsFilter";
             this.cboEqualsFilter.Size = new System.Drawing.Size(88, 21);
             this.cboEqualsFilter.TabIndex = 6;
@@ -653,7 +659,7 @@
             "23",
             "24",
             "25"});
-            this.cboFilterTemp.Location = new System.Drawing.Point(228, 258);
+            this.cboFilterTemp.Location = new System.Drawing.Point(243, 276);
             this.cboFilterTemp.Name = "cboFilterTemp";
             this.cboFilterTemp.Size = new System.Drawing.Size(56, 21);
             this.cboFilterTemp.TabIndex = 5;
@@ -662,14 +668,14 @@
             // 
             this.cboFilterStatus.Enabled = false;
             this.cboFilterStatus.FormattingEnabled = true;
-            this.cboFilterStatus.Location = new System.Drawing.Point(24, 258);
+            this.cboFilterStatus.Location = new System.Drawing.Point(39, 276);
             this.cboFilterStatus.Name = "cboFilterStatus";
             this.cboFilterStatus.Size = new System.Drawing.Size(56, 21);
             this.cboFilterStatus.TabIndex = 4;
             // 
             // btnShowSelected
             // 
-            this.btnShowSelected.Location = new System.Drawing.Point(5, 300);
+            this.btnShowSelected.Location = new System.Drawing.Point(20, 303);
             this.btnShowSelected.Name = "btnShowSelected";
             this.btnShowSelected.Size = new System.Drawing.Size(75, 23);
             this.btnShowSelected.TabIndex = 3;
@@ -681,7 +687,7 @@
             // 
             this.dtpSelectTo.Enabled = false;
             this.dtpSelectTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectTo.Location = new System.Drawing.Point(119, 167);
+            this.dtpSelectTo.Location = new System.Drawing.Point(134, 185);
             this.dtpSelectTo.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectTo.MinDate = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
             this.dtpSelectTo.Name = "dtpSelectTo";
@@ -693,7 +699,7 @@
             // 
             this.dtpSelectFrom.Enabled = false;
             this.dtpSelectFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectFrom.Location = new System.Drawing.Point(24, 167);
+            this.dtpSelectFrom.Location = new System.Drawing.Point(39, 185);
             this.dtpSelectFrom.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectFrom.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectFrom.Name = "dtpSelectFrom";
@@ -705,37 +711,37 @@
             // 
             this.dgvDataBase.BackgroundColor = System.Drawing.Color.White;
             this.dgvDataBase.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LawnGreen;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.LawnGreen;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvDataBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle22;
             this.dgvDataBase.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDataBase.GridColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvDataBase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvDataBase.Location = new System.Drawing.Point(358, -1);
             this.dgvDataBase.Name = "dgvDataBase";
             this.dgvDataBase.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDataBase.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dgvDataBase.RowHeadersWidth = 20;
             this.dgvDataBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDataBase.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -791,14 +797,14 @@
             // 
             this.dgvEmail.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle24;
             this.dgvEmail.Location = new System.Drawing.Point(436, 0);
             this.dgvEmail.Name = "dgvEmail";
             this.dgvEmail.RowHeadersWidth = 20;
@@ -965,6 +971,25 @@
             this.btnLog.UseVisualStyleBackColor = true;
             this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(22, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Velg Slettemetode";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(36, 166);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 20;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1074,6 +1099,8 @@
         private System.Windows.Forms.Button btnLog;
         //private GUI.CustomTabControl tbcPage;
         private System.Windows.Forms.TabControl tbcPage;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
 
     
 
