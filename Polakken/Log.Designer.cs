@@ -36,13 +36,13 @@
             // 
             // txtRead
             // 
-            this.txtRead.BackColor = System.Drawing.SystemColors.GrayText;
-            this.txtRead.Location = new System.Drawing.Point(62, 66);
+            this.txtRead.BackColor = System.Drawing.Color.White;
+            this.txtRead.Location = new System.Drawing.Point(55, 71);
             this.txtRead.Multiline = true;
             this.txtRead.Name = "txtRead";
             this.txtRead.ReadOnly = true;
             this.txtRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRead.Size = new System.Drawing.Size(842, 302);
+            this.txtRead.Size = new System.Drawing.Size(849, 306);
             this.txtRead.TabIndex = 0;
             // 
             // ofdRead
@@ -86,8 +86,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
-            this.BackgroundImage = global::Polakken.Properties.Resources.Logg;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.BackgroundImage = global::Polakken.Properties.Resources.LogForn;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(965, 423);
             this.Controls.Add(this.btnMove1);
@@ -97,7 +97,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Log";
             this.Text = "Log";
-            this.TransparencyKey = System.Drawing.Color.Silver;
+            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.Load += new System.EventHandler(this.Log_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

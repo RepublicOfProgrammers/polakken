@@ -124,6 +124,9 @@
   <data name="NationalInstruments_DAQmx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NationalInstruments.DAQmx.msl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Logg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="arrowUpDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrowUpDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,9 +160,6 @@
   <data name="SmallUpT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SmallUpT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NationalInstruments_Common" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NationalInstruments.Common.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Chart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Chart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -187,13 +187,16 @@
   <data name="Tab" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tab1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="NationalInstruments_Common" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.Common.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="insideTab2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\insideTab2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LogForn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LogForn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

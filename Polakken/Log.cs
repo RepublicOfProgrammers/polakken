@@ -50,12 +50,7 @@ namespace Polakken
         }
 
        
-        private void Log_Load(object sender, EventArgs e)
-        {
-            txtRead.AppendText(Logger.msgbxms);
-        }
-
-    
+         
              private void btnLukk_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -82,7 +77,12 @@ namespace Polakken
                  }
              }
 
+             private void Log_Load(object sender, EventArgs e)
+             {
 
+                     txtRead.AppendText(Logger.msgbxms);
+
+             }
 
 
 

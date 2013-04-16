@@ -426,14 +426,14 @@ namespace Polakken
                 }
 
             }
-            //string emaildummy;
-            //string emaildummy2;
+            string emaildummy;
+            string emaildummy2;
+            
+            emaildummy = "alexandergjerseth@gmail.com";
+            emaildummy2 = "sglittum@gmail.com";
 
-            //emaildummy = "alexandergjerseth@gmail.com";
-            //emaildummy2 = "sglittum@gmail.com";
-
-            //db.AddEmail(emaildummy);
-            //db.AddEmail(emaildummy2);
+            db.AddEmail(emaildummy);
+            db.AddEmail(emaildummy2);
         }
 
 
