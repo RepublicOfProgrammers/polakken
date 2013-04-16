@@ -66,7 +66,7 @@ namespace Polakken
                         mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), Regulation.status);
                     }
                     Logger.Info("Utført måling, og skrevet til database.", "Polakken");
-                    Thread.Sleep(SensorCom.mesInterval);
+                    Thread.Sleep(SensorCom.mesInterval * 1000);
                 }
             }
         }
