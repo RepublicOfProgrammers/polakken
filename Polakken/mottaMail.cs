@@ -56,7 +56,7 @@ namespace Polakken
 
        public static void getCommand()
        {
-           string status = ""; //alle tilfeller av result byttes ut med tilhørende kommandoer. 
+           string status = ""; 
            //innhold = "INT 55\r\n"; //hentes inn fra mail, bør byttes ut overalt med den stringen. 
            int length;
            string command;
