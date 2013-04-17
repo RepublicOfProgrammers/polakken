@@ -10,6 +10,7 @@ namespace Polakken
         //Mappen hvor alle log filene skal ligge
         private string dirLogs = "Logs";
         public static string msgbxms { get; private set;}
+        public static bool msgchg = false;
         
         //Konstruktør som kun brukes i oppstart av programmet for å opprette en ny logg fil med dagens dato
         public Logger() 
@@ -36,8 +37,7 @@ namespace Polakken
             System.Windows.Forms.MessageBox.Show("FEIL: " + message);
             WriteEntry(message, "FEIL", module);
             msgbxms += DateTime.Now.ToString("HH:mm:ss") + " \t FEIL: " + "\t" + message + "\r\n";
-
-            
+            msgchg = true; 
         }
 
         public static void Error(Exception ex, string module)
@@ -45,7 +45,7 @@ namespace Polakken
             System.Windows.Forms.MessageBox.Show("FEIL: " + ex);
             WriteEntry(ex.Message, "FEIL", module);
             msgbxms += DateTime.Now.ToString("HH:mm:ss") + " \t FEIL: " + "\t" + ex.Message + "\r\n";
-
+            msgchg = true;
         }
 
         public static void Warning(string message, string module)
