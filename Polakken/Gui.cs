@@ -60,6 +60,7 @@ namespace Polakken
             txtSetPoint.Text = Convert.ToString(setPoint);
             txtTol.Text = Convert.ToString(tolerance);
             
+            
             // Opprett DataTabell og fyll DataGridView
             //
             //CreateValues();
@@ -131,6 +132,7 @@ namespace Polakken
             
 
             crtView.DataSource = u;
+            
             crtView.ChartAreas.Add("tempOversikt");
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
             crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 336;
@@ -153,8 +155,6 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisY.TitleForeColor = Color.White;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.Format = "{0} °C";
           
-
-            
 
             crtView.Series.Add("temp");
             crtView.Series["temp"].Color = Color.LawnGreen;
@@ -219,11 +219,6 @@ namespace Polakken
             btnDelReading.Enabled = false;
 
 
-
-
-            //
-            //tbcPage
-            //
 
         }
 
