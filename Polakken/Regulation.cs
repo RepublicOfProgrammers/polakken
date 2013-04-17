@@ -72,14 +72,14 @@ namespace Polakken
             else if ((prevReading - reading) < (setpoint - prevReading))
             {
                 difference = (prevReading - reading) / (setpoint - prevReading);
-                System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval * 60000)); //må omgjøres slik at intervallet blir i millisekunder. 
+                System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval * 60000)); 
                 status = true;
             }
             //sørger for at ovnen stoppes før temperaturen blir over toleransen. 
             else if ((reading - prevReading) < (prevReading - setpoint))
             {
                 difference = (reading - prevReading) / (prevReading - setpoint);
-                System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval * 60000)); //må omgjøre slik at intervallet blir i millisekunder. 
+                System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval * 60000)); 
                 status = false;
             }
             //sender info til loggen om regulering. 
