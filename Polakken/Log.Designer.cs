@@ -34,18 +34,17 @@
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMove1 = new System.Windows.Forms.Button();
             this.tmrUpdateText = new System.Windows.Forms.Timer(this.components);
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtRead
             // 
             this.txtRead.BackColor = System.Drawing.Color.White;
-            this.txtRead.Location = new System.Drawing.Point(55, 97);
+            this.txtRead.Location = new System.Drawing.Point(55, 76);
             this.txtRead.Multiline = true;
             this.txtRead.Name = "txtRead";
             this.txtRead.ReadOnly = true;
             this.txtRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRead.Size = new System.Drawing.Size(849, 280);
+            this.txtRead.Size = new System.Drawing.Size(849, 301);
             this.txtRead.TabIndex = 5;
             // 
             // ofdRead
@@ -90,16 +89,6 @@
             this.tmrUpdateText.Interval = 10;
             this.tmrUpdateText.Tick += new System.EventHandler(this.tmrUpdateText_Tick);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(83, 68);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 9;
-            this.btnRefresh.Text = "button1";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // Log
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,7 +97,6 @@
             this.BackgroundImage = global::Polakken.Properties.Resources.LogForn;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(965, 423);
-            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnMove1);
             this.Controls.Add(this.btnLukk);
             this.Controls.Add(this.txtRead);
@@ -130,6 +118,5 @@
         private System.Windows.Forms.Button btnMove1;
         public System.Windows.Forms.TextBox txtRead;
         private System.Windows.Forms.Timer tmrUpdateText;
-        private System.Windows.Forms.Button btnRefresh;
     }
 }
