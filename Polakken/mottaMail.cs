@@ -23,11 +23,17 @@ namespace Polakken
                ImapClient ic = new ImapClient("imap.gmail.com", "republicofprogrammers@gmail.com", "polakken",
                     ImapClient.AuthMethods.Login, 993, true);
                ic.SelectMailbox("INBOX");
-               MailMessage[] mail = ic.GetMessages(0, 100000000, false);
-               fra = Convert.ToString(mail[mail.Length-1].From);
-               emne = Convert.ToString(mail[mail.Length-1].Subject);
-               innhold = Convert.ToString(mail[mail.Length-1].Body);
-               ic.DeleteMessage(mail[mail.Length-1]);
+               Lazy<MailMessage>[] mail = ic.SearchMessages(SearchCondition.Unseen(), false);
+               //fra = Convert.ToString(mail[mail.Length - 1].From);
+               //emne = Convert.ToString(mail[mail.Length - 1].Subject);
+               //innhold = Convert.ToString(mail[mail.Length - 1].Body);
+               foreach (Lazy<MailMessage> message in mail)
+               {
+                   MailMessage m = message.Value;
+                   fra = m.From.Address;
+                   emne = m.Subject;
+                   innhold = m.Body;
+               }
                ic.Dispose();
            }
 
@@ -132,6 +138,8 @@ namespace Polakken
                            //E-mail kommando for å få tilsendt hjelp teksten. 
                            response = help();
                            E_mail_handler.sendToOne("Help", response, fra);
+                           break;
+                       case "":
                            break;
                        default:
                            E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
