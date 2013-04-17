@@ -20,7 +20,7 @@ namespace Polakken
        public static string emne { get; set; }
        public static string innhold { get; set; }
        private static string module = "mottaMail";
-
+       public static bool change { get; set; }
        public static void mottaMail()
        {
            try
@@ -142,6 +142,7 @@ namespace Polakken
                            E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
                            break;
                    }
+                   change = true;
                }
            }
            else
