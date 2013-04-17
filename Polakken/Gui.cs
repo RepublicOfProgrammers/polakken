@@ -38,6 +38,7 @@ namespace Polakken
         Image imgArrowUpDown = global::Polakken.Properties.Resources.arrowUpDown;
         Image imgArrowDownUp = global::Polakken.Properties.Resources.arrowDown;
         Image imgArrowDownDown = global::Polakken.Properties.Resources.arrowDownDown;
+        DbHandler db = new DbHandler();
 
         public GUI()
         {
@@ -67,7 +68,7 @@ namespace Polakken
             // Opprett DataTabell og fyll DataGridView
             //
             //CreateValues();
-            DebugginTestTwo(u);
+            fillDataTable(u);
             dgvDataBase.DataSource = u;
             GetEmail(GetEmails);
             dgvEmail.DataSource = GetEmails;
@@ -242,18 +243,16 @@ namespace Polakken
         //Koble Til Databasen og hente ut verdier
         //
 
-        public DataTable DebugginTestTwo(DataTable v)
+        public DataTable fillDataTable(DataTable dataTable_toFill)
         {
-
-            DbHandler db = new DbHandler();
-            if (v.Columns.Contains("ReadTime") & v.Columns.Contains("Temprature") & v.Columns.Contains("Status"))
+            if (dataTable_toFill.Columns.Contains("ReadTime") & dataTable_toFill.Columns.Contains("Temprature") & dataTable_toFill.Columns.Contains("Status"))
             {
                 db.OpenDb();
                 SqlCeDataReader mReader = db.GetReadings();
 
                 while (mReader.Read())
                 {
-                    var row = v.NewRow();
+                    var row = dataTable_toFill.NewRow();
                     for (int i = 0; i < 3; i++)
                     {
 
@@ -271,7 +270,7 @@ namespace Polakken
                             row["Status"] = Reading;
                         }
                     }
-                    v.Rows.Add(row);
+                    dataTable_toFill.Rows.Add(row);
 
                 }
 
@@ -279,16 +278,16 @@ namespace Polakken
             }
             else
             {
-                v.Columns.Add("ReadTime", typeof(string));
-                v.Columns.Add("Temprature", typeof(string));
-                v.Columns.Add("Status", typeof(string));
+                dataTable_toFill.Columns.Add("ReadTime", typeof(string));
+                dataTable_toFill.Columns.Add("Temprature", typeof(string));
+                dataTable_toFill.Columns.Add("Status", typeof(string));
 
                 db.OpenDb();
                 SqlCeDataReader mReader = db.GetReadings();
 
                 while (mReader.Read())
                 {
-                    var row = v.NewRow();
+                    var row = dataTable_toFill.NewRow();
                     for (int i = 0; i < 3; i++)
                     {
 
@@ -306,7 +305,7 @@ namespace Polakken
                             row["Status"] = Reading;
                         }
                     }
-                    v.Rows.Add(row);
+                    dataTable_toFill.Rows.Add(row);
 
                 }
 
@@ -314,14 +313,12 @@ namespace Polakken
             }
 
             db.CloseDb();
-            return v;
+            return dataTable_toFill;
         }
 
 
         public DataTable GetEmail(DataTable GetEmails)
         {
-
-            DbHandler db = new DbHandler();
             if (GetEmails.Columns.Contains("Adresser"))
             {
                 db.OpenDb();
@@ -389,13 +386,11 @@ namespace Polakken
 
         private void DelEmails(int indexNumber)
         {
-            DbHandler db = new DbHandler();
             db.DelEmail(indexNumber);
 
         }
         private void DelReadings()
         {
-            DbHandler db = new DbHandler();
             db.DelReadings(delFromString, delToString);
         }
 
@@ -403,7 +398,6 @@ namespace Polakken
         {
             Random rnd = new Random();
             Random rnd2 = new Random();
-            DbHandler db = new DbHandler();
             DateTime time = DateTime.Now;
 
 
@@ -730,7 +724,7 @@ namespace Polakken
         {
             dgvDataBase.DataSource = null;
             u.Clear();
-            DebugginTestTwo(u);
+            fillDataTable(u);
             dgvDataBase.DataSource = u;
             crtView.DataBind();
             populateTxtbox();
@@ -808,7 +802,6 @@ namespace Polakken
                 }
                 else
                 {
-                    DbHandler db = new DbHandler();
                     db.AddEmail(inputText);
                     dgvEmail.DataSource = null;
                     GetEmails.Clear();
@@ -892,13 +885,12 @@ namespace Polakken
             DelReadings();
             dgvDataBase.DataSource = null;
             u.Clear();
-            DebugginTestTwo(u);
+            fillDataTable(u);
             dgvDataBase.DataSource = u;
         }
 
         private void btnDelEmail_Click(object sender, EventArgs e)
         {
-            DbHandler db = new DbHandler();
             int DelIndex = Convert.ToInt32(cboDelEmail.SelectedValue);
             db.DelEmail(DelIndex);
             dgvEmail.DataSource = null;
@@ -1021,7 +1013,10 @@ namespace Polakken
 
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
-            
+            if (Program.needRefresh) {
+                Update();
+                Program.needRefresh = false;
+            }
         }
     }
 }
