@@ -9,6 +9,7 @@ namespace Polakken
 {
     class MottaMail
     {
+        GUI gui = new GUI();
        public static string fra { get; set; }
        public static string emne { get; set; }
        public static string innhold { get; set; }
@@ -41,7 +42,7 @@ namespace Polakken
                Logger.Error(ex, "mottaMail");
            }
 
-           
+         
 
        }
 
@@ -94,6 +95,7 @@ namespace Polakken
                            //E-mail kommando for endring av setpunkt. 
                            if (intvalue < 0)
                            {
+                               
                                response = "Setpunktet kan ikke være mindere enn null, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
                                E_mail_handler.sendToOne("Feil i endring av setpunkt", response, fra);
                            }
@@ -112,12 +114,12 @@ namespace Polakken
                            break;
                        case "STS":
                            //E-mail kommando for å få status sendt på mail. 
-                           string temp = Convert.ToString(Math.Round(SensorCom.temp(), 0));
+                           //string temp = Convert.ToString(Math.Round(SensorCom.temp(), 0));
                            string alarm = Convert.ToString(SensorCom.alarmLimit);
                            string interval = Convert.ToString(SensorCom.mesInterval);
                            DateTime now = DateTime.Now;
                            string time = now.ToString();
-                            
+                           string temp = GUI.lastR;
                            if (GUI.test == false)
                            {
                                status = "Status " + time + " :\r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;

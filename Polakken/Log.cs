@@ -54,7 +54,11 @@ namespace Polakken
             var fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             using (var sr = new StreamReader(fs))
             {
+
                 txtRead.Text = sr.ReadToEnd();
+                txtRead.SelectionStart = txtRead.Text.Length;
+                txtRead.ScrollToCaret();
+              
             }
         }
 
@@ -63,7 +67,9 @@ namespace Polakken
             var fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             using (var sr = new StreamReader(fs))
             {
+              
                 txtRead.Text = sr.ReadToEnd();
+
             }
         }
     }

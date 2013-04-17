@@ -30,11 +30,11 @@ namespace Polakken
         int alarmLimit;
         DataTable dataTable = new DataTable();
         DataTable GetEmails = new DataTable();
-        string Celcius = "°C";
         string delToString;
         string delFromString;
         public static bool test = false;
         public static bool settingsupdate = false;
+        public static string lastR;
         DateTime now = DateTime.Now;
         Image imgArrowUp = global::Polakken.Properties.Resources.arrowUp;
         Image imgArrowUpDown = global::Polakken.Properties.Resources.arrowUpDown;
@@ -50,6 +50,7 @@ namespace Polakken
             InitializeComponent();
 
         }
+
 
 
 
@@ -69,7 +70,7 @@ namespace Polakken
             txtAlarm.Text = Convert.ToString(alarmLimit);
             txtSetPoint.Text = Convert.ToString(setPoint);
             txtTol.Text = Convert.ToString(tolerance);
-
+            lastR = txtCurrent.Text;
             
             //
             // Opprett DataTabell og fyll DataGridView
@@ -416,14 +417,14 @@ namespace Polakken
             {
                 if (i % 2 == 0)
                 {
-                    int C = i + 15;
+                    int C = i * rnd.Next(0, 20) ;
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, t);
 
                 }
                 else
                 {
-                    int C = i + 22;
+                    int C = i * rnd.Next(0, 20);
                     DateTime newday = time.AddDays(i);
                     db.SetReading(newday, C, f);
                 }
@@ -435,8 +436,11 @@ namespace Polakken
             emaildummy = "alexandergjerseth@gmail.com";
             emaildummy2 = "sglittum@gmail.com";
 
-            db.AddEmail(emaildummy);
-            db.AddEmail(emaildummy2);
+            for (int i = 0; i < 100; i++)
+            {
+                db.AddEmail(emaildummy);
+                db.AddEmail(emaildummy2);
+            }
         }
 
         private void UpdateSettings()
@@ -489,23 +493,7 @@ namespace Polakken
 
 
         }
-        public String stringLast(String last)
-        {
-            string time = "";
-            string temp = "";
-            string text = "Tempratur";
-            foreach (DataRow row in dataTable.Rows)
-            {
-                temp = row["Temprature"].ToString() + Celcius;
-                DateTime dt = DateTime.Parse(row["ReadTime"].ToString());
-                time = dt.ToString("dd/MM/yyyy HH:mm:ss");
-            }
-            last += text + time + " " + temp;
-
-            return last;
-        }
-
-
+        
 
         private void populateTxtbox()
         {
@@ -513,12 +501,14 @@ namespace Polakken
             int maxTempTest = int.MinValue;
             int minTemp = int.MaxValue;
             int minTempTest = int.MaxValue;
+            string tempString = "";
             string Celcius = "°C";
             foreach (DataRow row in dataTable.Rows)
             {
-                txtCurrent.Text = row["Temprature"].ToString() + Celcius;
+                tempString = row["Temprature"].ToString() + Celcius;
                 DateTime dt = DateTime.Parse(row["ReadTime"].ToString());
                 txtCurrentTime.Text = dt.ToString();
+               
 
                 maxTempTest = int.Parse(row["Temprature"].ToString());
                 if (maxTemp < maxTempTest)
@@ -538,6 +528,8 @@ namespace Polakken
                 }
 
             }
+            txtCurrent.Text = tempString;
+            lastR = tempString;
         }
         //
         //Hendelser
@@ -759,7 +751,8 @@ namespace Polakken
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            
+            CreateValues();
+           
             
         }
 
@@ -841,6 +834,7 @@ namespace Polakken
 
 
         }
+
 
         private void btnDelReading_Click(object sender, EventArgs e)
         {
@@ -1022,6 +1016,8 @@ namespace Polakken
         private void btnLog_Click(object sender, EventArgs e)
         {
             Log logForm = new Log();
+            logForm.StartPosition = FormStartPosition.Manual;
+            logForm.Location = new Point(700, 40);
             logForm.Show();
         }
 
@@ -1040,9 +1036,11 @@ namespace Polakken
 
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
+            Update_Form();
             MottaMail.mottaMail();
             if (MottaMail.innhold != null)
             {
+                
                 MottaMail.getCommand();
             }
             if (Program.needRefresh) 
