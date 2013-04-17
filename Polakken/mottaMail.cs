@@ -19,7 +19,6 @@ namespace Polakken
            //Metode for å hente inn mail.
            try
            {
-               
                ImapClient ic = new ImapClient("imap.gmail.com", "republicofprogrammers@gmail.com", "polakken",
                     ImapClient.AuthMethods.Login, 993, true);
                ic.SelectMailbox("INBOX");
