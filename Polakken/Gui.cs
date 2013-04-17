@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
@@ -15,7 +14,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Media;
 using Polakken.Properties;
-using System.Threading;
+
 
 namespace Polakken
 {
@@ -35,6 +34,10 @@ namespace Polakken
         string delFromString;
         public static bool test = false;
         DateTime NOW = DateTime.Now;
+        Image imgArrowUp = global::Polakken.Properties.Resources.arrowUp;
+        Image imgArrowUpDown = global::Polakken.Properties.Resources.arrowUpDown;
+        Image imgArrowDownUp = global::Polakken.Properties.Resources.arrowDown;
+        Image imgArrowDownDown = global::Polakken.Properties.Resources.arrowDownDown;
 
         public GUI()
         {
@@ -533,7 +536,8 @@ namespace Polakken
 
         private void btnSetPointUp_MouseDown(object sender, MouseEventArgs e)
         {
-            this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+            this.btnSetPointUp.BackgroundImage = imgArrowUpDown;
+            this.btnSetPointDown.BackgroundImage = imgArrowDownUp;
             txtSetPoint.Enabled = true;
             int ChangeSetPointAdd = setPoint;
             ChangeSetPointAdd = ChangeSetPointAdd + 1;
@@ -543,18 +547,18 @@ namespace Polakken
 
         private void btnSetPointUp_MouseUp(object sender, MouseEventArgs e)
         {
-            this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+            this.btnSetPointUp.BackgroundImage = imgArrowUp;
         }
 
         private void btnSetPointDown_MouseDown(object sender, MouseEventArgs e)
         {
-            this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            this.btnSetPointDown.BackgroundImage = imgArrowDownDown;
 
         }
 
         private void btnSetPointDown_MouseUp(object sender, MouseEventArgs e)
         {
-            this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+            this.btnSetPointDown.BackgroundImage = imgArrowDownUp;
             int ChangeSetPointSub = setPoint;
             ChangeSetPointSub = ChangeSetPointSub - 1;
             if (ChangeSetPointSub < 0)
@@ -564,7 +568,7 @@ namespace Polakken
                 txtSetPoint.Text = ChangeSetPointSub.ToString();
                 setPoint = ChangeSetPointSub;
                 txtSetPoint.Enabled = false;
-                this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+                this.btnSetPointDown.BackgroundImage = imgArrowDownDown;
 
             }
             txtSetPoint.Text = ChangeSetPointSub.ToString();
@@ -573,56 +577,56 @@ namespace Polakken
 
         private void btnToleranceUp_MouseDown(object sender, MouseEventArgs e)
         {
-            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+            this.btnToleranceUp.BackgroundImage = imgArrowUpDown;
             tolerance = tolerance + 1;
             txtTol.Text = tolerance.ToString();
         }
 
         private void btnToleranceUp_MouseUp(object sender, MouseEventArgs e)
         {
-            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+            this.btnToleranceUp.BackgroundImage = imgArrowUp;
 
         }
 
         private void btnToleranceDown_MouseDown(object sender, MouseEventArgs e)
         {
-            this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            this.btnToleranceDown.BackgroundImage = imgArrowDownDown;
             tolerance = tolerance - 1;
             txtTol.Text = tolerance.ToString();
         }
 
         private void btnToleranceDown_MouseUp(object sender, MouseEventArgs e)
         {
-            this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+            this.btnToleranceDown.BackgroundImage = imgArrowDownUp;
         }
 
         private void btnMesIUp_MouseDown(object sender, MouseEventArgs e)
         {
-            this.btnMesIUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+            this.btnMesIUp.BackgroundImage = imgArrowUpDown;
             mesurInterval = mesurInterval + 1;
             txtInt.Text = mesurInterval.ToString();
         }
 
         private void btnMesIUp_MouseUp(object sender, MouseEventArgs e)
         {
-            this.btnMesIUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+            this.btnMesIUp.BackgroundImage = imgArrowUp;
         }
 
         private void btnMesIDown_MouseDown(object sender, MouseEventArgs e)
         {
-            this.btnMesIDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            this.btnMesIDown.BackgroundImage = imgArrowDownDown;
             mesurInterval = mesurInterval - 1;
             txtInt.Text = mesurInterval.ToString();
         }
 
         private void btnMesIDown_MouseUp(object sender, MouseEventArgs e)
         {
-            this.btnMesIDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+            this.btnMesIDown.BackgroundImage = imgArrowDownUp;
         }
 
         private void btnAlarmUp_MouseDown(object sender, MouseEventArgs e)
         {
-            this.btnAlarmUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
+            this.btnAlarmUp.BackgroundImage = imgArrowUpDown;
             alarmLimit = alarmLimit + 1;
             txtAlarm.Text = alarmLimit.ToString();
         }
@@ -634,14 +638,14 @@ namespace Polakken
 
         private void btnAlarmDown_MouseDown(object sender, MouseEventArgs e)
         {
-            this.btnAlarmDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            this.btnAlarmDown.BackgroundImage = imgArrowDownDown;
             alarmLimit = alarmLimit - 1;
             txtAlarm.Text = alarmLimit.ToString();
         }
 
         private void btnAlarmDown_MouseUp(object sender, MouseEventArgs e)
         {
-            this.btnAlarmDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+            this.btnAlarmDown.BackgroundImage = imgArrowDownUp;
         }
 
         private void btnShowSelected_Click(object sender, EventArgs e)
@@ -685,8 +689,8 @@ namespace Polakken
                 if (statusIndex == 1)
                 {
                     statusText = "'False'";
-                    filterString = "AND Status =" + statusText;
-                    view.RowFilter = "Status =" + statusText;
+                    filterString = "AND Status =" + statusText + dateSpan;
+                    view.RowFilter = "Status =" + statusText + dateSpan;
                 }
 
 
@@ -865,10 +869,10 @@ namespace Polakken
                 delTo = dtpDelTo.Value.Date + dtpDelToTime.Value.TimeOfDay;
                 if (delFrom > delTo)
                 {
-                    MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil", MessageBoxButtons.YesNo);
+                    MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil", MessageBoxButtons.OK);
                 }
-                delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
-                delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
+                //delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
+                //delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
             }
             if (cboSelectDelete.SelectedIndex == 3)
             {
