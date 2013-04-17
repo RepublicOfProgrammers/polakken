@@ -28,13 +28,13 @@ namespace Polakken
         int tolerance;
         int mesurInterval;
         int alarmLimit;
-        DataTable u = new DataTable();
+        DataTable dataTable = new DataTable();
         DataTable GetEmails = new DataTable();
         string delToString;
         string delFromString;
         public static bool test = false;
         public static bool settingsupdate = false;
-        DateTime NOW = DateTime.Now;
+        DateTime now = DateTime.Now;
         Image imgArrowUp = global::Polakken.Properties.Resources.arrowUp;
         Image imgArrowUpDown = global::Polakken.Properties.Resources.arrowUpDown;
         Image imgArrowDownUp = global::Polakken.Properties.Resources.arrowDown;
@@ -69,24 +69,23 @@ namespace Polakken
             txtTol.Text = Convert.ToString(tolerance);
 
             
-            
+            //
             // Opprett DataTabell og fyll DataGridView
             //
-            //CreateValues();
-            fillDataTable(u);
-            dgvDataBase.DataSource = u;
-            GetEmail(GetEmails);
-            dgvEmail.DataSource = GetEmails;
-            DataTable Equals = new DataTable();
-            equals(Equals);
-            populateTxtbox();
+            fillDataTable(dataTable);//Kjører metoden fillDatatable som fyller datatabellen som sendes med som en parameter
+            dgvDataBase.DataSource = dataTable;//Setter datagridviewens datasource til den utfylte datatabellen
+            GetEmail(GetEmails);// gjør akuratt det samme som fillDatatable, men bare for emails
+            dgvEmail.DataSource = GetEmails;//Samme som for datagridviewt til databasen
+            DataTable Equals = new DataTable();//Oppretter en datatabell som skal brukes til å fylle en combobox
+            equals(Equals);//fyller datatabelen med metoden equals
+            populateTxtbox();//Kjører en metode som kjører tester og fyller textboxene med data fra datatabellen dataTable
 
 
-
+            //Fyller en combobox med status verdier som skal brukes til å kunne filtrere via et dataView
             try
             {
 
-                DataView viewStatus = new DataView(u);
+                DataView viewStatus = new DataView(dataTable);
                 DataTable distinctStatusValues = viewStatus.ToTable(true, "Status");
                 cboFilterStatus.DataSource = distinctStatusValues;
                 cboFilterStatus.DisplayMember = "Status";
@@ -96,10 +95,10 @@ namespace Polakken
             catch (Exception)
             {
             }
-
+            //Fyller en combobox med temp verdier som skal brukes til å kunne filtrere via et dataView
             try
             {
-                DataView viewTemp = new DataView(u);
+                DataView viewTemp = new DataView(dataTable);
                 DataTable distinctTempValues = viewTemp.ToTable(true, "Temprature");
                 cboFilterTemp.DataSource = distinctTempValues;
                 cboFilterTemp.DisplayMember = "Temprature";
@@ -109,6 +108,7 @@ namespace Polakken
             catch (Exception)
             {
             }
+            //Fyller en combobox med operatør verdier som skal brukes til å kunne filtrere via et dataView
             try
             {
                 DataView viewEquals = new DataView(Equals);
@@ -120,6 +120,7 @@ namespace Polakken
             catch (Exception)
             {
             }
+            
             try
             {
                 DataView viewDeleteEmail = new DataView(GetEmails);
@@ -140,7 +141,7 @@ namespace Polakken
             //
             
 
-            crtView.DataSource = u;
+            crtView.DataSource = dataTable;
             
             crtView.ChartAreas.Add("tempOversikt");
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
@@ -205,10 +206,10 @@ namespace Polakken
             dtpDelToTime.ShowUpDown = true;
             dtpDelFromTime.ShowUpDown = true;
             dtpDelToTime.ShowUpDown = true;
-            dtpSelectFrom.Value = NOW.AddDays(-10);
-            dtpSelectTo.Value = NOW;
-            dtpDelFrom.Value = NOW.AddDays(-10);
-            dtpDelTo.Value = NOW;
+            dtpSelectFrom.Value = now.AddDays(-10);
+            dtpSelectTo.Value = now;
+            dtpDelFrom.Value = now.AddDays(-10);
+            dtpDelTo.Value = now;
             dtpDelFrom.Enabled = false;
             dtpDelTo.Enabled = false;
             dtpDelFromTime.Enabled = false;
@@ -494,7 +495,7 @@ namespace Polakken
             int minTemp = int.MaxValue;
             int minTempTest = int.MaxValue;
             string Celcius = "°C";
-            foreach (DataRow row in u.Rows)
+            foreach (DataRow row in dataTable.Rows)
             {
                 txtCurrent.Text = row["Temprature"].ToString() + Celcius;
                 DateTime dt = DateTime.Parse(row["ReadTime"].ToString());
@@ -654,7 +655,7 @@ namespace Polakken
             {
                 MessageBox.Show("Startdato kan ikke være større en sluttdato", "Datofeil", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            DataView view = new DataView(u);
+            DataView view = new DataView(dataTable);
             string filterString = null;
             string dateSpan = null;
 
@@ -729,9 +730,9 @@ namespace Polakken
         public void Update_Form()
         {
             dgvDataBase.DataSource = null;
-            u.Clear();
-            fillDataTable(u);
-            dgvDataBase.DataSource = u;
+            dataTable.Clear();
+            fillDataTable(dataTable);
+            dgvDataBase.DataSource = dataTable;
             crtView.DataBind();
             populateTxtbox();
         }
@@ -869,9 +870,14 @@ namespace Polakken
                 if (delFrom > delTo)
                 {
                     MessageBox.Show("Fradato kan ikke være større enn tildato", "Feil", MessageBoxButtons.OK);
+                    delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
+                    delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
                 }
-                //delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
-                //delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
+                else
+                {
+                    delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
+                    delFromString = delFrom.ToString("yyyy.MM.dd HH:mm:ss");
+                }
             }
             if (cboSelectDelete.SelectedIndex == 3)
             {
@@ -889,10 +895,7 @@ namespace Polakken
                 btnDelReading.Enabled = false;
             }
             DelReadings();
-            dgvDataBase.DataSource = null;
-            u.Clear();
-            fillDataTable(u);
-            dgvDataBase.DataSource = u;
+            Update_Form();
         }
 
         private void btnDelEmail_Click(object sender, EventArgs e)
@@ -930,10 +933,10 @@ namespace Polakken
                 btnToleranceUp.Enabled = true;
                 txtSetPoint.Enabled = true;
                 txtTol.Enabled = true;
-                this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
-                this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
-                this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
-                this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDown;
+                this.btnSetPointDown.BackgroundImage = imgArrowDownUp;
+                this.btnSetPointUp.BackgroundImage = imgArrowUp;
+                this.btnToleranceUp.BackgroundImage = imgArrowUp;
+                this.btnToleranceDown.BackgroundImage = imgArrowDownUp;
             }
             else
             {
@@ -946,10 +949,10 @@ namespace Polakken
                 btnToleranceUp.Enabled = false;
                 txtSetPoint.Enabled = false;
                 txtTol.Enabled = false;
-                this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
-                this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
-                this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
-                this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+                this.btnSetPointDown.BackgroundImage = imgArrowDownDown;
+                this.btnSetPointUp.BackgroundImage = imgArrowUpDown;
+                this.btnToleranceUp.BackgroundImage = imgArrowUpDown;
+                this.btnToleranceDown.BackgroundImage = imgArrowDownDown;
             }
 
         }
@@ -1039,7 +1042,7 @@ namespace Polakken
                 crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
                 crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
             }
-
+            
         }
     }
 }
