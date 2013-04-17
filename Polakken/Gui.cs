@@ -33,6 +33,7 @@ namespace Polakken
         string delToString;
         string delFromString;
         public static bool test = false;
+        public static bool settingsupdate = false;
         DateTime NOW = DateTime.Now;
         Image imgArrowUp = global::Polakken.Properties.Resources.arrowUp;
         Image imgArrowUpDown = global::Polakken.Properties.Resources.arrowUpDown;
@@ -1016,8 +1017,12 @@ namespace Polakken
             if (Program.needRefresh) 
             {
                 Update();
-                UpdateSettings();
                 Program.needRefresh = false;
+            }
+            if (settingsupdate)
+            {
+                UpdateSettings();
+                settingsupdate = false;
             }
         }
     }
