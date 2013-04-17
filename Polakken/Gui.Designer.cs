@@ -241,7 +241,6 @@
             this.txtSetPoint.Size = new System.Drawing.Size(71, 22);
             this.txtSetPoint.TabIndex = 9;
             this.txtSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSetPoint.TextChanged += new System.EventHandler(this.txtSetPoint_TextChanged);
             // 
             // btnSaveAll
             // 

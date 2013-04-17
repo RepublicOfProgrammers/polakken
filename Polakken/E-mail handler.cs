@@ -12,21 +12,12 @@ namespace Polakken
 {
     static class E_mail_handler
     {
-<<<<<<< Updated upstream
         public static  SmtpClient client = new SmtpClient("smtp.gmail.com", 587) //Lager en ny SmtpClient med host-navn og port
-=======
-        public static SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
->>>>>>> Stashed changes
+
          {
              Credentials = new NetworkCredential("republicofprogrammers@gmail.com", "polakken"), //Login-informasjon for emailen vi sender fra
              EnableSsl = true //Legger til sikkerhetslaget Ssl
          };
-
-
-
-        
-
-<<<<<<< Updated upstream
         //public void nyTabell()
         //{
         //    try
@@ -53,9 +44,6 @@ namespace Polakken
         //}
 
         public static void sendToAll(string subject, string body)
-=======
-        public static void nyTabell()
->>>>>>> Stashed changes
         {
             try
             {
