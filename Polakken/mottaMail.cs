@@ -9,12 +9,6 @@ namespace Polakken
 {
     class MottaMail
     {
-       public static string StripHTML(string inputString)
-        {
-            const string HTML_TAG_PATTERN = "<.*?>";
-            return Regex.Replace
-              (inputString, HTML_TAG_PATTERN, string.Empty);
-        }
 
        public static string fra { get; set; }
        public static string emne { get; set; }
@@ -32,7 +26,7 @@ namespace Polakken
                MailMessage[] mail = ic.GetMessages(0, 100000000, false);
                fra = Convert.ToString(mail[mail.Length-1].From);
                emne = Convert.ToString(mail[mail.Length-1].Subject);
-               innhold = Convert.ToString(StripHTML(mail[mail.Length-1].BodyHtml));
+               innhold = Convert.ToString(mail[mail.Length-1].Body);
                ic.DeleteMessage(mail[mail.Length-1]);
                ic.Dispose();
            }
