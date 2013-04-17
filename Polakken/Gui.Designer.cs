@@ -195,7 +195,7 @@
             // chkSetTol
             // 
             this.chkSetTol.AutoSize = true;
-            this.chkSetTol.Location = new System.Drawing.Point(19, 31);
+            this.chkSetTol.Location = new System.Drawing.Point(12, 63);
             this.chkSetTol.Name = "chkSetTol";
             this.chkSetTol.Size = new System.Drawing.Size(15, 14);
             this.chkSetTol.TabIndex = 29;
@@ -208,7 +208,7 @@
             this.txtAlarm.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAlarm.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtAlarm.Location = new System.Drawing.Point(514, 94);
+            this.txtAlarm.Location = new System.Drawing.Point(523, 143);
             this.txtAlarm.Name = "txtAlarm";
             this.txtAlarm.ReadOnly = true;
             this.txtAlarm.Size = new System.Drawing.Size(71, 22);
@@ -221,7 +221,7 @@
             this.txtInt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtInt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInt.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtInt.Location = new System.Drawing.Point(361, 94);
+            this.txtInt.Location = new System.Drawing.Point(370, 143);
             this.txtInt.Name = "txtInt";
             this.txtInt.ReadOnly = true;
             this.txtInt.Size = new System.Drawing.Size(71, 22);
@@ -235,7 +235,7 @@
             this.txtSetPoint.Enabled = false;
             this.txtSetPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSetPoint.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtSetPoint.Location = new System.Drawing.Point(19, 94);
+            this.txtSetPoint.Location = new System.Drawing.Point(12, 143);
             this.txtSetPoint.Name = "txtSetPoint";
             this.txtSetPoint.ReadOnly = true;
             this.txtSetPoint.Size = new System.Drawing.Size(71, 22);
@@ -251,7 +251,7 @@
             this.btnSaveAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSaveAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSaveAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveAll.Location = new System.Drawing.Point(19, 169);
+            this.btnSaveAll.Location = new System.Drawing.Point(276, 245);
             this.btnSaveAll.Name = "btnSaveAll";
             this.btnSaveAll.Size = new System.Drawing.Size(80, 32);
             this.btnSaveAll.TabIndex = 25;
@@ -266,7 +266,7 @@
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(511, 58);
+            this.label4.Location = new System.Drawing.Point(520, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 16);
             this.label4.TabIndex = 24;
@@ -280,7 +280,7 @@
             this.btnAlarmDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlarmDown.Location = new System.Drawing.Point(596, 120);
+            this.btnAlarmDown.Location = new System.Drawing.Point(605, 169);
             this.btnAlarmDown.Name = "btnAlarmDown";
             this.btnAlarmDown.Size = new System.Drawing.Size(30, 30);
             this.btnAlarmDown.TabIndex = 23;
@@ -296,7 +296,7 @@
             this.btnAlarmUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlarmUp.Location = new System.Drawing.Point(596, 74);
+            this.btnAlarmUp.Location = new System.Drawing.Point(605, 123);
             this.btnAlarmUp.Name = "btnAlarmUp";
             this.btnAlarmUp.Size = new System.Drawing.Size(30, 30);
             this.btnAlarmUp.TabIndex = 22;
@@ -310,7 +310,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(358, 56);
+            this.label3.Location = new System.Drawing.Point(367, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 16);
             this.label3.TabIndex = 20;
@@ -324,7 +324,7 @@
             this.btnMesIDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMesIDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMesIDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMesIDown.Location = new System.Drawing.Point(443, 118);
+            this.btnMesIDown.Location = new System.Drawing.Point(452, 167);
             this.btnMesIDown.Name = "btnMesIDown";
             this.btnMesIDown.Size = new System.Drawing.Size(30, 30);
             this.btnMesIDown.TabIndex = 19;
@@ -340,7 +340,7 @@
             this.btnMesIUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMesIUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMesIUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMesIUp.Location = new System.Drawing.Point(443, 72);
+            this.btnMesIUp.Location = new System.Drawing.Point(452, 121);
             this.btnMesIUp.Name = "btnMesIUp";
             this.btnMesIUp.Size = new System.Drawing.Size(30, 30);
             this.btnMesIUp.TabIndex = 18;
@@ -355,7 +355,7 @@
             this.txtTol.Enabled = false;
             this.txtTol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTol.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtTol.Location = new System.Drawing.Point(189, 94);
+            this.txtTol.Location = new System.Drawing.Point(182, 143);
             this.txtTol.Name = "txtTol";
             this.txtTol.ReadOnly = true;
             this.txtTol.Size = new System.Drawing.Size(71, 22);
@@ -369,7 +369,7 @@
             this.lblTol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTol.ForeColor = System.Drawing.Color.White;
-            this.lblTol.Location = new System.Drawing.Point(186, 56);
+            this.lblTol.Location = new System.Drawing.Point(179, 105);
             this.lblTol.Name = "lblTol";
             this.lblTol.Size = new System.Drawing.Size(70, 16);
             this.lblTol.TabIndex = 16;
@@ -384,7 +384,7 @@
             this.btnToleranceDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToleranceDown.Location = new System.Drawing.Point(271, 118);
+            this.btnToleranceDown.Location = new System.Drawing.Point(264, 167);
             this.btnToleranceDown.Name = "btnToleranceDown";
             this.btnToleranceDown.Size = new System.Drawing.Size(30, 30);
             this.btnToleranceDown.TabIndex = 15;
@@ -401,7 +401,7 @@
             this.btnToleranceUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToleranceUp.Location = new System.Drawing.Point(271, 72);
+            this.btnToleranceUp.Location = new System.Drawing.Point(264, 121);
             this.btnToleranceUp.Name = "btnToleranceUp";
             this.btnToleranceUp.Size = new System.Drawing.Size(30, 30);
             this.btnToleranceUp.TabIndex = 14;
@@ -416,7 +416,7 @@
             this.lblSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSet.ForeColor = System.Drawing.Color.White;
-            this.lblSet.Location = new System.Drawing.Point(16, 55);
+            this.lblSet.Location = new System.Drawing.Point(9, 104);
             this.lblSet.Name = "lblSet";
             this.lblSet.Size = new System.Drawing.Size(60, 16);
             this.lblSet.TabIndex = 12;
@@ -431,7 +431,7 @@
             this.btnSetPointDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetPointDown.Location = new System.Drawing.Point(101, 117);
+            this.btnSetPointDown.Location = new System.Drawing.Point(94, 166);
             this.btnSetPointDown.Name = "btnSetPointDown";
             this.btnSetPointDown.Size = new System.Drawing.Size(30, 30);
             this.btnSetPointDown.TabIndex = 5;
@@ -449,7 +449,7 @@
             this.btnSetPointUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetPointUp.Location = new System.Drawing.Point(101, 71);
+            this.btnSetPointUp.Location = new System.Drawing.Point(94, 120);
             this.btnSetPointUp.Name = "btnSetPointUp";
             this.btnSetPointUp.Size = new System.Drawing.Size(30, 30);
             this.btnSetPointUp.TabIndex = 4;
