@@ -60,14 +60,9 @@ namespace Polakken
                  }
              }
 
-         
-
-
-            
-
-            
-
-
-        
+             private void Log_Load(object sender, EventArgs e)
+             {
+                 txtRead.Text = Logger.msgbxms;
+             } 
     }
 }
