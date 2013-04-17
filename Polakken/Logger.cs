@@ -29,12 +29,10 @@ namespace Polakken
             
         }
 
-  
-
         //Følgende metoder brukes i de forskjellige trace event'ene vi har definert.
         public static void Error(string message, string module)
         {
-            System.Windows.Forms.MessageBox.Show("FEIL: " + message);
+            System.Windows.Forms.MessageBox.Show("FEIL: " + message, "Polakken Error");
             WriteEntry(message, "FEIL", module);
             msgbxms += DateTime.Now.ToString("HH:mm:ss") + " \t FEIL: " + "\t" + message + "\r\n";
             msgchg = true; 
@@ -42,7 +40,7 @@ namespace Polakken
 
         public static void Error(Exception ex, string module)
         {
-            System.Windows.Forms.MessageBox.Show("FEIL: " + ex);
+            System.Windows.Forms.MessageBox.Show("FEIL: " + ex, "Polakken Error");
             WriteEntry(ex.Message, "FEIL", module);
             msgbxms += DateTime.Now.ToString("HH:mm:ss") + " \t FEIL: " + "\t" + ex.Message + "\r\n";
             msgchg = true;

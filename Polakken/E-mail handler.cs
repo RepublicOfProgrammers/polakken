@@ -12,36 +12,15 @@ namespace Polakken
 {
     static class E_mail_handler
     {
-        public static  SmtpClient client = new SmtpClient("smtp.gmail.com", 587) //Lager en ny SmtpClient med host-navn og port
+        private static string email = "republicofprogrammers@gmail.com";
+        private static string password = "polakken";
+        private static string module = "E-mail handler";
 
+        public static  SmtpClient client = new SmtpClient("smtp.gmail.com", 587) //Lager en ny SmtpClient med host-navn og port
          {
-             Credentials = new NetworkCredential("republicofprogrammers@gmail.com", "polakken"), //Login-informasjon for emailen vi sender fra
+             Credentials = new NetworkCredential(email, password), //Login-informasjon for emailen vi sender fra
              EnableSsl = true //Legger til sikkerhetslaget Ssl
          };
-        //public void nyTabell()
-        //{
-        //    try
-        //    {
-
-        //        GUI gui = new GUI();
-
-        //        DataTable sendEmail = new DataTable();
-        //        gui.GetEmail(sendEmail);
-
-        //        string mailTil;
-
-
-        //        foreach (DataRow dtRow in sendEmail.Rows)
-        //        {
-        //            mailTil = dtRow["Adresser"].ToString();
-        //            client.Send("republicofprogrammers@gmail.com", mailTil, "Hei", "Hei");
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //    }
-        //}
 
         public static void sendToAll(string subject, string body)
         {
@@ -52,20 +31,19 @@ namespace Polakken
                 DataTable sendEmail = new DataTable();
                 gui.GetEmail(sendEmail);
 
-
                 string mailTil;
-
 
                 foreach (DataRow dtRow in sendEmail.Rows)
                 {
                     mailTil = dtRow["Adresser"].ToString();
-                    client.Send("republicofprogrammers@gmail.com", mailTil, subject, body);
+                    client.Send(email, mailTil, subject, body);
+                    Logger.Info("Sendt email til alle mottakere." ,module);
                 }
             }
 
             catch (Exception ex)
             {
-                Logger.Error(ex, "E-mail handler");
+                Logger.Error(ex, module);
             }
         }
 
@@ -73,11 +51,12 @@ namespace Polakken
         {
             try
             {
-                client.Send("republicofprogrammers@gmail.com", mailAdress, subject, body);
+                client.Send(email, mailAdress, subject, body);
+                Logger.Info("Sendt email til " + mailAdress + ".", module);
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "E-Mail handler");
+                Logger.Error(ex, module);
             }
         }
     }
