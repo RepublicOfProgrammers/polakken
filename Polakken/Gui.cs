@@ -1013,8 +1013,10 @@ namespace Polakken
 
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
-            if (Program.needRefresh) {
+            if (Program.needRefresh) 
+            {
                 Update();
+                UpdateSettings();
                 Program.needRefresh = false;
             }
         }
