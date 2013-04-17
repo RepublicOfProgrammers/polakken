@@ -40,7 +40,7 @@ namespace Polakken
         Image imgArrowDownUp = global::Polakken.Properties.Resources.arrowDown;
         Image imgArrowDownDown = global::Polakken.Properties.Resources.arrowDownDown;
         DbHandler db = new DbHandler();
-
+        //public int currentTemp { get; set; }
         int xMin = 0;
         int xMax = 336;
 

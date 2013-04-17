@@ -40,11 +40,11 @@ namespace Polakken
         /// </summary>
         private static void tMålTemp_method()
         {
-            int lastTemp = 0;
+            //int lastTemp = 0;
             while (true)
             {
-                if (lastTemp != (int)SensorCom.temp())
-                {
+                //if (lastTemp != (int)SensorCom.temp())
+                //{
                     if ((int)SensorCom.temp() == 999)
                     {
                         Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, Polakken blunder en times tid.", "Polakken");
@@ -56,13 +56,13 @@ namespace Polakken
                         if (GUI.test == false)
                         {
                             mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI.test);
-                            lastTemp = (int)SensorCom.temp();
+                            //lastTemp = (int)SensorCom.temp();
                         }
                         else
                         {
                             Regulation.regulator(SensorCom.temp());
                             mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), Regulation.status);
-                            lastTemp = (int)SensorCom.temp();
+                            //lastTemp = (int)SensorCom.temp();
                         }
                         Logger.Info("Utført måling, og skrevet til database.", "Polakken");
 
@@ -75,13 +75,13 @@ namespace Polakken
                         }
                         Thread.Sleep(SensorCom.mesInterval * 6000);
                     }
-                }
-                else
-                {
-                    Logger.Info("Uendret temperatur, har ikke lagret måling.", "Polakken");
-                    needRefresh = true;
-                    Thread.Sleep(SensorCom.mesInterval * 6000);
-                }
+                //}
+                //else
+                //{
+                    //Logger.Info("Uendret temperatur, har ikke lagret måling.", "Polakken");
+                    //needRefresh = true;
+                    //Thread.Sleep(SensorCom.mesInterval * 6000);
+                //}
             }
         }
 
