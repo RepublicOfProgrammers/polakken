@@ -105,6 +105,7 @@
             this.Name = "Log";
             this.Text = "Log";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.Load += new System.EventHandler(this.Log_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
