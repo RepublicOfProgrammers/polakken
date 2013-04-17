@@ -16,23 +16,21 @@ namespace Polakken
        private static string module = "mottaMail";
        public static void mottaMail()
        {
-           
+           //Metode for å hente inn mail.
            try
            {
                
                ImapClient ic = new ImapClient("imap.gmail.com", "republicofprogrammers@gmail.com", "polakken",
                     ImapClient.AuthMethods.Login, 993, true);
                ic.SelectMailbox("INBOX");
-               Lazy<MailMessage>[] mail = ic.SearchMessages(SearchCondition.Unseen(), false);
-               //fra = Convert.ToString(mail[mail.Length - 1].From);
-               //emne = Convert.ToString(mail[mail.Length - 1].Subject);
-               //innhold = Convert.ToString(mail[mail.Length - 1].Body);
-               foreach (Lazy<MailMessage> message in mail)
+               MailMessage[] mail = ic.GetMessages(0, 10000, false, true);
+               //Lazy<MailMessage>[] mail = ic.SearchMessages(SearchCondition.Unseen(), false);
+               fra = mail[mail.Length - 1].From.Address;
+               emne = mail[mail.Length - 1].Subject;
+               innhold = mail[mail.Length - 1].Body;
+               foreach (MailMessage m in mail)
                {
-                   MailMessage m = message.Value;
-                   fra = m.From.Address;
-                   emne = m.Subject;
-                   innhold = m.Body;
+                   ic.DeleteMessage(m);
                }
                ic.Dispose();
            }
@@ -47,6 +45,7 @@ namespace Polakken
        }
 
        public static string help()
+           //Leser teksfila fra den angitte banen og returnerer den som string
        {
            string help = "";
 
@@ -57,8 +56,9 @@ namespace Polakken
 
        public static void getCommand()
        {
+
+
            string status = ""; 
-           //innhold = "INT 55\r\n"; //hentes inn fra mail, bør byttes ut overalt med den stringen. 
            int length;
            string command;
            string value;
@@ -139,8 +139,6 @@ namespace Polakken
                            response = help();
                            E_mail_handler.sendToOne("Help", response, fra);
                            break;
-                       case "":
-                           break;
                        default:
                            E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
                            break;
@@ -152,6 +150,9 @@ namespace Polakken
            {
                E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
            }
+           MottaMail.fra = null;
+           MottaMail.emne = null;
+           MottaMail.innhold = null;
        }
     }
 }

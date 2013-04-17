@@ -67,6 +67,7 @@ namespace Polakken
             txtAlarm.Text = Convert.ToString(alarmLimit);
             txtSetPoint.Text = Convert.ToString(setPoint);
             txtTol.Text = Convert.ToString(tolerance);
+
             
             
             // Opprett DataTabell og fyll DataGridView
@@ -907,8 +908,7 @@ namespace Polakken
 
         private void mottaMail_Click(object sender, EventArgs e)
         {
-            MottaMail.mottaMail();
-            MottaMail.getCommand();
+
         }
 
         private void tbpTwo_Click(object sender, EventArgs e)
@@ -1017,6 +1017,11 @@ namespace Polakken
 
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
+            MottaMail.mottaMail();
+            if (MottaMail.innhold != null)
+            {
+                MottaMail.getCommand();
+            }
             if (Program.needRefresh) 
             {
                 Update_Form();
