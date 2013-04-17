@@ -49,7 +49,7 @@ namespace Polakken
 
         private void GUI_Load(object sender, EventArgs e)
         {
-
+            tmrUpdateSettings.Start();
             SensorCom.mesInterval = Settings.Default.mesInterval; // Henter inn config settpunkt på måleintervall og sender til SensorCom
             SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunkt på alarmgrense og sender til SensorCom
             Regulation.setpoint = Settings.Default.setpoint; //Henter in config settpunkt på settpunkt og sender til Regulation

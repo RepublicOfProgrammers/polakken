@@ -63,6 +63,39 @@ namespace Polakken
              private void Log_Load(object sender, EventArgs e)
              {
                  txtRead.Text = Logger.msgbxms;
-             } 
+
+             }
+
+      
+           
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtRead.Text = "";
+            DialogResult result = ofdRead.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string data = Read(ofdRead.FileName);
+                txtRead.Text = data;
+            }
+            else
+            {
+            }
+
+                //do nothing
+        }
+        
+        private string Read(string file)
+        {
+
+            StreamReader reader = new StreamReader(file);
+            string data = reader.ReadToEnd();
+            reader.Close();
+
+            return data;
+        }
+
+        
+      } 
     }
-}
+
