@@ -1,60 +1,18 @@
-c:\users\pravuz\documents\visual studio 2010\Projects\Republic of Programmers\Polakken\bin\Debug\Polakken.exe.config
-C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\bin\Debug\Polakken.exe.config
-C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\bin\Debug\Polakken.exe
-C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\bin\Debug\Polakken.pdb
-C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.csprojResolveAssemblyReference.cache
-C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
-C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.csproj.GenerateResource.Cache
-C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.exe
-C:\Users\Pravuz\Documents\Visual Studio 2010\Projects\Republic of Programmers\polakken\Polakken\obj\x86\Debug\Polakken.pdb
-C:\IA2112\Polakken\polakken\Polakken\bin\Debug\Polakken.exe.config
-C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.exe
-C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.pdb
-C:\IA2112\Polakken\polakken\Polakken\bin\Debug\Polakken.exe
-C:\IA2112\Polakken\polakken\Polakken\bin\Debug\Polakken.pdb
-C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.GUI.resources
-C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
-C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\IA2112\Polakken\polakken\Polakken\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\Stian\Desktop\HIT\IA2112\Prosjekt\polakken\polakken\Polakken\bin\Debug\Polakken.exe.config
-C:\Users\Stian\Desktop\HIT\IA2112\Prosjekt\polakken\polakken\Polakken\obj\x86\Debug\Polakken.exe
-C:\Users\Stian\Desktop\HIT\IA2112\Prosjekt\polakken\polakken\Polakken\obj\x86\Debug\Polakken.pdb
-E:\Skole\IA2112\git\polakken\Polakken\bin\Debug\Polakken.exe.config
-E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\Polakken.exe
-E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\Polakken.pdb
-C:\IA2112\Polakken\ny git\polakken\Polakken\bin\Debug\Polakken.exe.config
-C:\IA2112\Polakken\ny git\polakken\Polakken\obj\x86\Debug\Polakken.exe
-C:\IA2112\Polakken\ny git\polakken\Polakken\obj\x86\Debug\Polakken.pdb
-C:\IA2112\Polakken\ny git\polakken\Polakken\obj\x86\Debug\Polakken.csprojResolveAssemblyReference.cache
-C:\IA2112\Polakken\ny git\polakken\Polakken\obj\x86\Debug\Polakken.GUI.resources
-C:\IA2112\Polakken\ny git\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
-C:\IA2112\Polakken\ny git\polakken\Polakken\obj\x86\Debug\Polakken.csproj.GenerateResource.Cache
-C:\IA2112\Polakken\ny git\polakken\Polakken\bin\Debug\Polakken.exe
-C:\IA2112\Polakken\ny git\polakken\Polakken\bin\Debug\Polakken.pdb
-E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\ResolveAssemblyReference.cache
-E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\Polakken.GUI.resources
-E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
-E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\GenerateResource.read.1.tlog
-E:\Skole\IA2112\git\polakken\Polakken\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\bin\Debug\Polakken.exe.config
-C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\obj\x86\Debug\Polakken.exe
-C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\obj\x86\Debug\Polakken.pdb
-C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\obj\x86\Debug\Polakken.GUI.resources
-C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
-C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\bin\Debug\Polakken.exe
-C:\Users\pravuz\Documents\Visual Studio 2010\Projects\polakken\Polakken\bin\Debug\Polakken.pdb
-C:\IA2112\Polakken\Polakken\polakken\Polakken\bin\Debug\Polakken.exe.config
-C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.exe
-C:\IA2112\Polakken\Polakken\polakken\Polakken\bin\Debug\Polakken.exe
-C:\IA2112\Polakken\Polakken\polakken\Polakken\bin\Debug\Polakken.pdb
-C:\IA2112\Polakken\Polakken\polakken\Polakken\bin\Debug\NationalInstruments.DAQmx.dll
-C:\IA2112\Polakken\Polakken\polakken\Polakken\bin\Debug\NationalInstruments.DAQmx.xml
-C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.GUI.resources
-C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
-C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.csproj.GenerateResource.Cache
-C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.pdb
-C:\IA2112\Polakken\Polakken\polakken\Polakken\obj\x86\Debug\Polakken.csprojResolveAssemblyReference.cache
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\Polakken.exe.config
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\Polakken.exe
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\Polakken.pdb
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\AE.Net.Mail.dll
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\NationalInstruments.Common.dll
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\NationalInstruments.DAQmx.dll
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\NationalInstruments.MStudioCLM.dll
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\NationalInstruments.NiLmClientDLL.dll
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\NationalInstruments.Common.Native.dll
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\NationalInstruments.Common.xml
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\bin\Debug\NationalInstruments.DAQmx.xml
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj\x86\Debug\Polakken.GUI.resources
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj\x86\Debug\Polakken.Properties.Resources.resources
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj\x86\Debug\Polakken.exe
+C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj\x86\Debug\Polakken.pdb

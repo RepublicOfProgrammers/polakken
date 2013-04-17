@@ -1002,11 +1002,6 @@ namespace Polakken
             logForm.Show();
         }
 
-        private void txtSetPoint_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSaveAll_Click(object sender, EventArgs e)
         {
             Settings.Default.mesInterval = mesurInterval;
@@ -1024,8 +1019,6 @@ namespace Polakken
         {
             
         }
-    
-
     }
 }
 
