@@ -39,13 +39,13 @@
             // txtRead
             // 
             this.txtRead.BackColor = System.Drawing.Color.White;
-            this.txtRead.Location = new System.Drawing.Point(55, 71);
+            this.txtRead.Location = new System.Drawing.Point(55, 76);
             this.txtRead.Multiline = true;
             this.txtRead.Name = "txtRead";
             this.txtRead.ReadOnly = true;
             this.txtRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRead.Size = new System.Drawing.Size(849, 306);
-            this.txtRead.TabIndex = 0;
+            this.txtRead.Size = new System.Drawing.Size(849, 301);
+            this.txtRead.TabIndex = 5;
             // 
             // ofdRead
             // 

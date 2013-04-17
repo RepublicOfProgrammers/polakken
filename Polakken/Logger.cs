@@ -9,8 +9,7 @@ namespace Polakken
     {
         //Mappen hvor alle log filene skal ligge
         private string dirLogs = "Logs";
-        public static string msgbxms { get; private set;}
-        public static bool msgchg = false;
+        public static string currentLog { get; set; }
         
         //Konstruktør som kun brukes i oppstart av programmet for å opprette en ny logg fil med dagens dato
         public Logger() 
@@ -22,6 +21,7 @@ namespace Polakken
             }
             // Oppretter filen med unikt navn
             string filename = string.Format("{0}/Programstart {1}.log", dirLogs, DateTime.Now.ToString("dd-MM-yyy HH.mm.ss"));
+            currentLog = filename;
             //Legger filen til i Listeners-listen til programkjøringen. Denne lytter etter trace-events, som behandles i WriteEntry()
             Trace.Listeners.Add(new TextWriterTraceListener(filename, "PolakkenLytter"));
             Trace.WriteLine("Tidspunkt \tType \tKlasse \t\tMelding");
@@ -34,16 +34,12 @@ namespace Polakken
         {
             System.Windows.Forms.MessageBox.Show("FEIL: " + message, "Polakken Error");
             WriteEntry(message, "FEIL", module);
-            msgbxms += DateTime.Now.ToString("HH:mm:ss") + " \t FEIL: " + "\t" + message + "\r\n";
-            msgchg = true; 
         }
 
         public static void Error(Exception ex, string module)
         {
             System.Windows.Forms.MessageBox.Show("FEIL: " + ex, "Polakken Error");
             WriteEntry(ex.Message, "FEIL", module);
-            msgbxms += DateTime.Now.ToString("HH:mm:ss") + " \t FEIL: " + "\t" + ex.Message + "\r\n";
-            msgchg = true;
         }
 
         public static void Warning(string message, string module)
