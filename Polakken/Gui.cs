@@ -60,6 +60,7 @@ namespace Polakken
             txtSetPoint.Text = Convert.ToString(setPoint);
             txtTol.Text = Convert.ToString(tolerance);
             
+            
             // Opprett DataTabell og fyll DataGridView
             //
             //CreateValues();
@@ -436,6 +437,18 @@ namespace Polakken
 
             db.AddEmail(emaildummy);
             db.AddEmail(emaildummy2);
+        }
+
+        private void UpdateSettings()
+        {
+            mesurInterval = SensorCom.mesInterval;
+            alarmLimit = SensorCom.alarmLimit;
+            setPoint = Regulation.setpoint;
+            tolerance = Regulation.tolerance;
+            txtInt.Text = Convert.ToString(mesurInterval);
+            txtAlarm.Text = Convert.ToString(alarmLimit);
+            txtSetPoint.Text = Convert.ToString(setPoint);
+            txtTol.Text = Convert.ToString(tolerance);
         }
 
 
@@ -1011,6 +1024,11 @@ namespace Polakken
             Regulation.setpoint = setPoint;
             SensorCom.alarmLimit = alarmLimit;
             SensorCom.mesInterval = mesurInterval;
+        }
+
+        private void tmrUpdateSettings_Tick(object sender, EventArgs e)
+        {
+            
         }
     
 
