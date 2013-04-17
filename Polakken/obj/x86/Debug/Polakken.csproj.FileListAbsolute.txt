@@ -16,3 +16,5 @@ C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj
 C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj\x86\Debug\Polakken.exe
 C:\Users\pravuz\Documents\Visual Studio 2010\Projects\stian-er-teit\Polakken\obj\x86\Debug\Polakken.pdb
+E:\Skole\IA2112\git\nygit170413\polakken\Polakken\bin\Debug\Polakken.exe.config
+E:\Skole\IA2112\git\nygit170413\polakken\Polakken\obj\x86\Debug\Polakken.exe

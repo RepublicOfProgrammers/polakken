@@ -33,6 +33,7 @@ namespace Polakken
         string delToString;
         string delFromString;
         public static bool test = false;
+        public static bool settingsupdate = false;
         DateTime NOW = DateTime.Now;
         Image imgArrowUp = global::Polakken.Properties.Resources.arrowUp;
         Image imgArrowUpDown = global::Polakken.Properties.Resources.arrowUpDown;
@@ -1013,9 +1014,15 @@ namespace Polakken
 
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
-            if (Program.needRefresh) {
+            if (Program.needRefresh) 
+            {
                 Update();
                 Program.needRefresh = false;
+            }
+            if (settingsupdate)
+            {
+                UpdateSettings();
+                settingsupdate = false;
             }
         }
     }
