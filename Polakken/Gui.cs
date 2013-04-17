@@ -41,6 +41,9 @@ namespace Polakken
         Image imgArrowDownDown = global::Polakken.Properties.Resources.arrowDownDown;
         DbHandler db = new DbHandler();
 
+        int xMin = 0;
+        int xMax = 336;
+
         public GUI()
         {
             InitializeComponent();
@@ -139,8 +142,13 @@ namespace Polakken
             crtView.DataSource = u;
             
             crtView.ChartAreas.Add("tempOversikt");
-            crtView.ChartAreas["tempOversikt"].AxisX.Minimum = 0;
-            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = 336;
+            crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
+            crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
+            if (Program.readingCounter == xMax) 
+            {
+                xMin += 100;
+                xMax += 100;
+            }
             crtView.ChartAreas["tempOversikt"].AxisX.Interval = 48;
             crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
             crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 40;
@@ -904,7 +912,6 @@ namespace Polakken
         private void mottaMail_Click(object sender, EventArgs e)
         {
             MottaMail.mottaMail();
-            MottaMail.StripHTML(MottaMail.innhold);
             MottaMail.getCommand();
         }
 

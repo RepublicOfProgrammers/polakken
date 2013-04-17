@@ -11,11 +11,13 @@ namespace Polakken
     {
         private static DbHandler mDbHandler;
         public static bool needRefresh { get; set; }
+        public static int readingCounter { get; set; }
 
         [STAThread]
         static void Main()
         {
             needRefresh = false;
+            readingCounter = 0;
             new Logger(); // kaller konstruktøren til logger classen kun for å opprette ny logg tekstfil. 
             mDbHandler = new DbHandler(); // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
 
@@ -59,6 +61,7 @@ namespace Polakken
                     }
                     Logger.Info("Utført måling, og skrevet til database.", "Polakken");
                     needRefresh = true;
+                    readingCounter++;
                     if (SensorCom.temp() < SensorCom.alarmLimit)
                     {
                         E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
