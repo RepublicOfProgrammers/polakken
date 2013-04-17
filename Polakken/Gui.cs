@@ -721,7 +721,7 @@ namespace Polakken
 
         }
 
-        public void Update()
+        public void Update_Form()
         {
             dgvDataBase.DataSource = null;
             u.Clear();
@@ -1016,7 +1016,7 @@ namespace Polakken
         {
             if (Program.needRefresh) 
             {
-                Update();
+                Update_Form();
                 Program.needRefresh = false;
             }
             if (settingsupdate)
