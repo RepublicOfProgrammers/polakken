@@ -53,8 +53,11 @@ namespace Polakken
 
              private void tmrUpdateText_Tick(object sender, EventArgs e)
              {
-                 txtRead.Text = Logger.msgbxms;
-
+                 if (Logger.msgchg == true)
+                 {
+                     txtRead.Text = Logger.msgbxms;
+                     Logger.msgchg = false;
+                 }
              }
 
          
