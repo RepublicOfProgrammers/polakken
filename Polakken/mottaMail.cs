@@ -25,9 +25,12 @@ namespace Polakken
                ic.SelectMailbox("INBOX");
                MailMessage[] mail = ic.GetMessages(0, 10000, false, true);
                //Lazy<MailMessage>[] mail = ic.SearchMessages(SearchCondition.Unseen(), false);
-               fra = mail[mail.Length - 1].From.Address;
-               emne = mail[mail.Length - 1].Subject;
-               innhold = mail[mail.Length - 1].Body;
+               if (mail.Length != 0)
+               {
+                   fra = mail[mail.Length - 1].From.Address;
+                   emne = mail[mail.Length - 1].Subject;
+                   innhold = mail[mail.Length - 1].Body;
+               }
                foreach (MailMessage m in mail)
                {
                    ic.DeleteMessage(m);
