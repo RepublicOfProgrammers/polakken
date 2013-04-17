@@ -97,6 +97,11 @@ namespace Polakken
                                response = "Setpunktet kan ikke være mindere enn null, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
                                E_mail_handler.sendToOne("Feil i endring av setpunkt", response, fra);
                            }
+                           else if (intvalue > 100)
+                           {
+                               response = "Setpunktet kan ikke være høyere enn 100, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
+                               E_mail_handler.sendToOne("Feil i endring av setpunkt", response, fra);
+                           }
                            else if (intvalue > 0)
                            {
                                Regulation.setpoint = intvalue;
@@ -106,13 +111,22 @@ namespace Polakken
                            break;
                        case "INT":
                            //E-mail kommando for endring av måleinterval. 
-                           SensorCom.mesInterval = intvalue;
-                           response = "Måleintervallet har blitt endret til " + Convert.ToString(SensorCom.mesInterval);
-                           E_mail_handler.sendToOne("Endring av måleinterval", response, fra);
+                           if (intvalue < 0)
+                           {
+                               response = "Måleintervallet kan ikke være mindere enn null, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
+                               E_mail_handler.sendToOne("Feil i endring av måleinterval", response, fra);
+                           }
+                           else
+                           {
+                               SensorCom.mesInterval = intvalue;
+                               response = "Måleintervallet har blitt endret til " + Convert.ToString(SensorCom.mesInterval);
+                               E_mail_handler.sendToOne("Endring av måleinterval", response, fra);
+                           }
                            break;
                        case "STS":
                            //E-mail kommando for å få status sendt på mail. 
-                           string temp = Convert.ToString(Math.Round(SensorCom.temp(), 0));
+                           //string temp = Convert.ToString(Math.Round(SensorCom.temp(), 0));
+                           string temp = "1337";
                            string alarm = Convert.ToString(SensorCom.alarmLimit);
                            string interval = Convert.ToString(SensorCom.mesInterval);
                            DateTime now = DateTime.Now;
@@ -133,9 +147,17 @@ namespace Polakken
                            break;
                        case "TLR":
                            //E-mail kommando for endring av toleranse. 
-                           Regulation.tolerance = intvalue;
-                           response = "Toleransen har blitt endret til " + Convert.ToString(Regulation.tolerance);
-                           E_mail_handler.sendToOne("Endring av toleranse", response, fra);
+                           if (intvalue < 0)
+                           {
+                               response = "Toleransen kan ikke være mindere enn null, toleransen forblir på siste verdi som er " + Convert.ToString(Regulation.tolerance);
+                               E_mail_handler.sendToOne("Feil i endring av toleranse", response, fra);
+                           }
+                           else
+                           {
+                               Regulation.tolerance = intvalue;
+                               response = "Toleransen har blitt endret til " + Convert.ToString(Regulation.tolerance);
+                               E_mail_handler.sendToOne("Endring av toleranse", response, fra);
+                           }
                            break;
                        case "ALG":
                            //E-mail kommando for endring av alarmgrense.
