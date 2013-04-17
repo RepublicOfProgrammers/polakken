@@ -128,6 +128,7 @@ namespace Polakken
             //
             // Graf:
             //
+            
 
             crtView.DataSource = u;
             crtView.ChartAreas.Add("tempOversikt");
