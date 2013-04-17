@@ -23,9 +23,10 @@ namespace Polakken
        public static bool change { get; set; }
        public static void mottaMail()
        {
+           
            try
            {
-
+               
                ImapClient ic = new ImapClient("imap.gmail.com", "republicofprogrammers@gmail.com", "polakken",
                     ImapClient.AuthMethods.Login, 993, true);
                ic.SelectMailbox("INBOX");
@@ -33,6 +34,7 @@ namespace Polakken
                fra = Convert.ToString(mail[mail.Length-1].From);
                emne = Convert.ToString(mail[mail.Length-1].Subject);
                innhold = Convert.ToString(StripHTML(mail[mail.Length-1].BodyHtml));
+               ic.DeleteMessage(mail[mail.Length-1]);
                ic.Dispose();
            }
 
