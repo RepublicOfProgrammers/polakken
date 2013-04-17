@@ -40,35 +40,48 @@ namespace Polakken
         /// </summary>
         private static void tMålTemp_method()
         {
+            //int lastTemp = 0;
             while (true)
             {
-                if ((int)SensorCom.temp() == 999)
-                {
-                    Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, Polakken blunder en times tid.", "Polakken");
-                    //E_mail_handler.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");                    
-                    Thread.Sleep(3600000);
-                }
-                else
-                {
-                    if (GUI.test == false)
+                //if (lastTemp != (int)SensorCom.temp())
+                //{
+                    if ((int)SensorCom.temp() == 999)
                     {
-                        mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI.test);
+                        Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, Polakken blunder en times tid.", "Polakken");
+                        //E_mail_handler.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");                    
+                        Thread.Sleep(3600000);
                     }
                     else
                     {
-                        Regulation.regulator(SensorCom.temp());
-                        mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), Regulation.status);
+                        if (GUI.test == false)
+                        {
+                            mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI.test);
+                            //lastTemp = (int)SensorCom.temp();
+                        }
+                        else
+                        {
+                            Regulation.regulator(SensorCom.temp());
+                            mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), Regulation.status);
+                            //lastTemp = (int)SensorCom.temp();
+                        }
+                        Logger.Info("Utført måling, og skrevet til database.", "Polakken");
+
+                        needRefresh = true;
+                        readingCounter++;
+                        if (SensorCom.temp() < SensorCom.alarmLimit)
+                        {
+                            E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
+                            Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
+                        }
+                        Thread.Sleep(SensorCom.mesInterval * 6000);
                     }
-                    Logger.Info("Utført måling, og skrevet til database.", "Polakken");
-                    needRefresh = true;
-                    readingCounter++;
-                    if (SensorCom.temp() < SensorCom.alarmLimit)
-                    {
-                        E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
-                        Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
-                    }
-                    Thread.Sleep(SensorCom.mesInterval * 6000); 
-                }
+                //}
+                //else
+                //{
+                    //Logger.Info("Uendret temperatur, har ikke lagret måling.", "Polakken");
+                    //needRefresh = true;
+                    //Thread.Sleep(SensorCom.mesInterval * 6000);
+                //}
             }
         }
 

@@ -1092,7 +1092,6 @@
         private System.Windows.Forms.DateTimePicker dtpSelectFromTime;
         private System.Windows.Forms.CheckBox chkSetTol;
         private System.Windows.Forms.ComboBox cboSelectDelete;
-        private System.Windows.Forms.TextBox txtCurrent;
         private System.Windows.Forms.Label lblSiste;
         private System.Windows.Forms.TextBox txtMax;
         private System.Windows.Forms.Label lblMax;
@@ -1107,6 +1106,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer tmrUpdateSettings;
+        public System.Windows.Forms.TextBox txtCurrent;
 
     
 

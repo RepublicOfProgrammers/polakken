@@ -40,7 +40,7 @@ namespace Polakken
         Image imgArrowDownUp = global::Polakken.Properties.Resources.arrowDown;
         Image imgArrowDownDown = global::Polakken.Properties.Resources.arrowDownDown;
         DbHandler db = new DbHandler();
-
+        //public int currentTemp { get; set; }
         int xMin = 0;
         int xMax = 336;
 
@@ -144,11 +144,7 @@ namespace Polakken
             crtView.ChartAreas.Add("tempOversikt");
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
             crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
-            if (Program.readingCounter == xMax) 
-            {
-                xMin += 100;
-                xMax += 100;
-            }
+           
             crtView.ChartAreas["tempOversikt"].AxisX.Interval = 48;
             crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
             crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 40;
@@ -1031,6 +1027,14 @@ namespace Polakken
                 UpdateSettings();
                 settingsupdate = false;
             }
+            if (Program.readingCounter == xMax)
+            {
+                xMin += 100;
+                xMax += 100;
+                crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
+                crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
+            }
+
         }
     }
 }
