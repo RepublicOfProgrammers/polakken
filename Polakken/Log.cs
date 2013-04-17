@@ -12,7 +12,6 @@ namespace Polakken
 {
     public partial class Log : Form
     {
-
         int Mover;
         int MoveX;
         int MoveY;
@@ -28,7 +27,6 @@ namespace Polakken
         private void btnLukk_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
 
         private void btnMove1_MouseDown(object sender, MouseEventArgs e)

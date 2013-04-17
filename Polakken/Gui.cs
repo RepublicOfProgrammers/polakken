@@ -30,6 +30,7 @@ namespace Polakken
         int alarmLimit;
         DataTable dataTable = new DataTable();
         DataTable GetEmails = new DataTable();
+        string Celcius = "°C";
         string delToString;
         string delFromString;
         public static bool test = false;
@@ -54,6 +55,7 @@ namespace Polakken
 
         private void GUI_Load(object sender, EventArgs e)
         {
+           
             tmrUpdateSettings.Start();
             SensorCom.mesInterval = Settings.Default.mesInterval; // Henter inn config settpunkt på måleintervall og sender til SensorCom
             SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunkt på alarmgrense og sender til SensorCom
@@ -487,6 +489,23 @@ namespace Polakken
 
 
         }
+        public String stringLast(String last)
+        {
+            string time = "";
+            string temp = "";
+            string text = "Tempratur";
+            foreach (DataRow row in dataTable.Rows)
+            {
+                temp = row["Temprature"].ToString() + Celcius;
+                DateTime dt = DateTime.Parse(row["ReadTime"].ToString());
+                time = dt.ToString("dd/MM/yyyy HH:mm:ss");
+            }
+            last += text + time + " " + temp;
+
+            return last;
+        }
+
+
 
         private void populateTxtbox()
         {
@@ -740,7 +759,8 @@ namespace Polakken
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            CreateValues();
+            
+            
         }
 
         private void chkFilterStatus_CheckedChanged(object sender, EventArgs e)
@@ -1041,8 +1061,9 @@ namespace Polakken
                 xMax += 100;
                 crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
                 crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
+
             }
-            
+           
         }
     }
 }

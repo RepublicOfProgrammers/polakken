@@ -9,7 +9,6 @@ namespace Polakken
 {
     class MottaMail
     {
-
        public static string fra { get; set; }
        public static string emne { get; set; }
        public static string innhold { get; set; }
