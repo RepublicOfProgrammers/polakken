@@ -93,9 +93,17 @@ namespace Polakken
                    {
                        case "STP":
                            //E-mail kommando for endring av setpunkt. 
-                           Regulation.setpoint = intvalue;
-                           response = "Setpunktet har blitt endret til " + Convert.ToString(Regulation.setpoint);
-                           E_mail_handler.sendToOne("Endring av setpunkt", response, fra);
+                           if (intvalue < 0)
+                           {
+                               response = "Setpunktet kan ikke være mindere enn null, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
+                               E_mail_handler.sendToOne("Feil i endring av setpunkt", response, fra);
+                           }
+                           else if (intvalue > 0)
+                           {
+                               Regulation.setpoint = intvalue;
+                               response = "Setpunktet har blitt endret til " + Convert.ToString(Regulation.setpoint);
+                               E_mail_handler.sendToOne("Endring av setpunkt", response, fra);
+                           }
                            break;
                        case "INT":
                            //E-mail kommando for endring av måleinterval. 
