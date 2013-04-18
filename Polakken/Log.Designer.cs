@@ -46,6 +46,7 @@
             this.txtRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtRead.Size = new System.Drawing.Size(849, 301);
             this.txtRead.TabIndex = 5;
+            this.txtRead.TextChanged += new System.EventHandler(this.txtRead_TextChanged);
             // 
             // ofdRead
             // 

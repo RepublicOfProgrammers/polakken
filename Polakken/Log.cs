@@ -72,6 +72,11 @@ namespace Polakken
 
             }
         }
+
+        private void txtRead_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
