@@ -123,6 +123,26 @@ namespace Polakken.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnLogg {
+            get {
+                object obj = ResourceManager.GetObject("btnLogg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonLogg {
+            get {
+                object obj = ResourceManager.GetObject("buttonLogg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Chart {
             get {
                 object obj = ResourceManager.GetObject("Chart", resourceCulture);
@@ -196,6 +216,26 @@ namespace Polakken.Properties {
         internal static System.Drawing.Bitmap Minimize {
             get {
                 object obj = ResourceManager.GetObject("Minimize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Minus {
+            get {
+                object obj = ResourceManager.GetObject("Minus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MinusDisabled {
+            get {
+                object obj = ResourceManager.GetObject("MinusDisabled", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -305,6 +345,26 @@ namespace Polakken.Properties {
             get {
                 object obj = ResourceManager.GetObject("NationalInstruments_NiLmClientDLL", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Plus {
+            get {
+                object obj = ResourceManager.GetObject("Plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PlusDisabeld {
+            get {
+                object obj = ResourceManager.GetObject("PlusDisabeld", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

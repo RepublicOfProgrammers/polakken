@@ -73,7 +73,7 @@ namespace Polakken
                             E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
                             Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
                         }
-                        Thread.Sleep(SensorCom.mesInterval * 6000);
+                        Thread.Sleep(SensorCom.mesInterval * 150000);
                     }
                 //}
                 //else

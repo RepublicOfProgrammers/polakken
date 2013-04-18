@@ -20,7 +20,7 @@ namespace Polakken
 {
     public partial class GUI : Form
     {
-
+        int CountRows = 0;
         int Mover;
         int MoveX;
         int MoveY;
@@ -28,6 +28,11 @@ namespace Polakken
         int tolerance;
         int mesurInterval;
         int alarmLimit;
+        int xMin = 0;
+        int xMax = 336;
+        int xMinZoom = 0;
+        int clickCount = 0;
+        int clickCount2 = 0;
         DataTable dataTable = new DataTable();
         DataTable GetEmails = new DataTable();
         string delToString;
@@ -40,10 +45,11 @@ namespace Polakken
         Image imgArrowUpDown = global::Polakken.Properties.Resources.arrowUpDown;
         Image imgArrowDownUp = global::Polakken.Properties.Resources.arrowDown;
         Image imgArrowDownDown = global::Polakken.Properties.Resources.arrowDownDown;
+        Image imgMinusDisable = global::Polakken.Properties.Resources.MinusDisabled;
+        Image imgPlusDisable = global::Polakken.Properties.Resources.PlusDisabeld;
         DbHandler db = new DbHandler();
         //public int currentTemp { get; set; }
-        int xMin = 0;
-        int xMax = 336;
+
 
         public GUI()
         {
@@ -71,7 +77,8 @@ namespace Polakken
             txtSetPoint.Text = Convert.ToString(setPoint);
             txtTol.Text = Convert.ToString(tolerance);
             lastR = txtCurrent.Text;
-            
+
+
             //
             // Opprett DataTabell og fyll DataGridView
             //
@@ -82,8 +89,10 @@ namespace Polakken
             DataTable Equals = new DataTable();//Oppretter en datatabell som skal brukes til å fylle en combobox
             equals(Equals);//fyller datatabelen med metoden equals
             populateTxtbox();//Kjører en metode som kjører tester og fyller textboxene med data fra datatabellen dataTable
-
-
+            xMin = CountRows;
+            xMax = CountRows + 336;
+            int xMinZoom = xMax;
+     
             //Fyller en combobox med status verdier som skal brukes til å kunne filtrere via et dataView
             try
             {
@@ -149,14 +158,13 @@ namespace Polakken
             crtView.ChartAreas.Add("tempOversikt");
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
             crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
-           
             crtView.ChartAreas["tempOversikt"].AxisX.Interval = 48;
             crtView.ChartAreas["tempOversikt"].AxisY.Minimum = -5;
             crtView.ChartAreas["tempOversikt"].AxisY.Maximum = 40;
             crtView.ChartAreas["tempOversikt"].AxisY.Interval = 5;
             crtView.ChartAreas["tempOversikt"].BackColor = Color.Transparent;
-            crtView.ChartAreas["tempOversikt"].AxisX.MajorGrid.LineColor = Color.DarkGray;
-            crtView.ChartAreas["tempOversikt"].AxisY.MajorGrid.LineColor = Color.DarkGray;
+            crtView.ChartAreas["tempOversikt"].AxisX.MajorGrid.LineColor = Color.LightGray;
+            crtView.ChartAreas["tempOversikt"].AxisY.MajorGrid.LineColor = Color.LightGray;
             crtView.ChartAreas["tempOversikt"].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
             crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.ForeColor = Color.GreenYellow;
             crtView.ChartAreas["tempOversikt"].AxisX.LineColor = Color.DarkGray;
@@ -165,10 +173,15 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Angle = 0;
             crtView.ChartAreas["tempOversikt"].AxisX.Title = "Dato";
             crtView.ChartAreas["tempOversikt"].AxisY.Title = "Tempratur";
+            crtView.ChartAreas["tempOversikt"].AxisX.TitleFont = new System.Drawing.Font("Verdana", 9, FontStyle.Bold);
+            crtView.ChartAreas["tempOversikt"].AxisY.TitleFont = new System.Drawing.Font("Verdana", 9, FontStyle.Bold);
+            crtView.ChartAreas["tempOversikt"].AxisY.TitleAlignment = StringAlignment.Near;
+            crtView.ChartAreas["tempOversikt"].AxisX.TitleAlignment = StringAlignment.Near;
+            
             crtView.ChartAreas["tempOversikt"].AxisX.TitleForeColor = Color.White;
             crtView.ChartAreas["tempOversikt"].AxisY.TitleForeColor = Color.White;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.Format = "{0} °C";
-          
+            crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 48;
 
             crtView.Series.Add("temp");
             crtView.Series["temp"].Color = Color.LawnGreen;
@@ -177,9 +190,11 @@ namespace Polakken
             crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             crtView.Series["temp"].XValueMember = "ReadTime";
             crtView.Series["temp"].YValueMembers = "Temprature";
-        
-            crtView.DataBind();
+            
 
+
+
+            crtView.DataBind();
 
             //
             //TabellVisning
@@ -404,44 +419,44 @@ namespace Polakken
             db.DelReadings(delFromString, delToString);
         }
 
-        private void CreateValues()
-        {
-            Random rnd = new Random();
-            Random rnd2 = new Random();
-            DateTime time = DateTime.Now;
+        //private void CreateValues()
+        //{
+        //    Random rnd = new Random();
+        //    Random rnd2 = new Random();
+        //    DateTime time = DateTime.Now;
 
 
-            Boolean t = true;
-            Boolean f = false;
-            for (int i = 0; i < 20; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    int C = i * rnd.Next(0, 20) ;
-                    DateTime newday = time.AddDays(i);
-                    db.SetReading(newday, C, t);
+        //    Boolean t = true;
+        //    Boolean f = false;
+        //    for (int i = 0; i < 20; i++)
+        //    {
+        //        if (i % 2 == 0)
+        //        {
+        //            int C = i * rnd.Next(0, 20) ;
+        //            DateTime newday = time.AddDays(i);
+        //            db.SetReading(newday, C, t);
 
-                }
-                else
-                {
-                    int C = i * rnd.Next(0, 20);
-                    DateTime newday = time.AddDays(i);
-                    db.SetReading(newday, C, f);
-                }
+        //        }
+        //        else
+        //        {
+        //            int C = i * rnd.Next(0, 20);
+        //            DateTime newday = time.AddDays(i);
+        //            db.SetReading(newday, C, f);
+        //        }
 
-            }
-            string emaildummy;
-            string emaildummy2;
+        //    }
+        //    string emaildummy;
+        //    string emaildummy2;
             
-            emaildummy = "alexandergjerseth@gmail.com";
-            emaildummy2 = "sglittum@gmail.com";
+        //    emaildummy = "alexandergjerseth@gmail.com";
+        //    emaildummy2 = "sglittum@gmail.com";
 
-            for (int i = 0; i < 100; i++)
-            {
-                db.AddEmail(emaildummy);
-                db.AddEmail(emaildummy2);
-            }
-        }
+        //    for (int i = 0; i < 100; i++)
+        //    {
+        //        db.AddEmail(emaildummy);
+        //        db.AddEmail(emaildummy2);
+        //    }
+        //}
 
         private void UpdateSettings()
         {
@@ -508,8 +523,7 @@ namespace Polakken
                 tempString = row["Temprature"].ToString() + Celcius;
                 DateTime dt = DateTime.Parse(row["ReadTime"].ToString());
                 txtCurrentTime.Text = dt.ToString();
-               
-
+                CountRows++;
                 maxTempTest = int.Parse(row["Temprature"].ToString());
                 if (maxTemp < maxTempTest)
                 {
@@ -599,7 +613,24 @@ namespace Polakken
             this.btnToleranceUp.BackgroundImage = imgArrowUp;
 
         }
+        public void Zoom()
+        {
+            
+            crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMinZoom;
 
+            if (clickCount == 0)
+            {
+                crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 48;
+            }
+            if (clickCount == 1)
+            {
+                crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 96;
+                
+                btnZoomOut.Enabled = false;
+                btnZoomOut.BackgroundImage = imgMinusDisable;
+            }
+           
+        }
         private void btnToleranceDown_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnToleranceDown.BackgroundImage = imgArrowDownDown;
@@ -751,7 +782,7 @@ namespace Polakken
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            CreateValues();
+        
            
             
         }
@@ -1036,7 +1067,7 @@ namespace Polakken
 
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
-            Update_Form();
+         
             MottaMail.mottaMail();
             if (MottaMail.innhold != null)
             {
@@ -1053,7 +1084,7 @@ namespace Polakken
                 UpdateSettings();
                 settingsupdate = false;
             }
-            if (Program.readingCounter == xMax)
+            if (Program.readingCounter == xMax) 
             {
                 xMin += 100;
                 xMax += 100;
@@ -1063,6 +1094,21 @@ namespace Polakken
             }
            
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            clickCount++;
+            xMinZoom = xMinZoom - 600;
+            Zoom();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            clickCount--;
+            xMinZoom = xMinZoom + 600;
+            Zoom();
+        }   
     }
 }
 
