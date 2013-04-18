@@ -32,7 +32,6 @@ namespace Polakken
         int xMax = 336;
         int xMinZoom = 0;
         int clickCount = 0;
-        int clickCount2 = 0;
         DataTable dataTable = new DataTable();
         DataTable GetEmails = new DataTable();
         string delToString;
@@ -40,7 +39,9 @@ namespace Polakken
         public static bool test = false;
         public static bool settingsupdate = false;
         public static string lastR;
-        DateTime now = DateTime.Now;
+        public static string LastRT;
+        public static DateTime now;
+        public static string stsStatus;
         Image imgArrowUp = global::Polakken.Properties.Resources.arrowUp;
         Image imgArrowUpDown = global::Polakken.Properties.Resources.arrowUpDown;
         Image imgArrowDownUp = global::Polakken.Properties.Resources.arrowDown;
@@ -518,10 +519,11 @@ namespace Polakken
             int minTempTest = int.MaxValue;
             string tempString = "";
             string Celcius = "°C";
+            DateTime dt = DateTime.MinValue;
             foreach (DataRow row in dataTable.Rows)
             {
                 tempString = row["Temprature"].ToString() + Celcius;
-                DateTime dt = DateTime.Parse(row["ReadTime"].ToString());
+                dt = DateTime.Parse(row["ReadTime"].ToString());
                 txtCurrentTime.Text = dt.ToString();
                 CountRows++;
                 maxTempTest = int.Parse(row["Temprature"].ToString());
@@ -542,8 +544,11 @@ namespace Polakken
                 }
 
             }
+            now = DateTime.Now;
             txtCurrent.Text = tempString;
             lastR = tempString;
+            LastRT = dt.ToString("dd/MM/yyyy HH:mm:ss");
+            stsStatus = "Statusoppdatering den " + now.ToString("dd/MM/yyyy") + " klokken " + now.ToString("HH:mm:ss") + " :";
         }
         //
         //Hendelser
@@ -782,8 +787,8 @@ namespace Polakken
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-        
-           
+            stsStatus = "Statusoppdatering den " + now.ToString("dd/MM/yyyy") + " klokken " + now.ToString("HH:mm:ss") + " :";
+            MessageBox.Show(stsStatus);
             
         }
 

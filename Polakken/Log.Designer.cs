@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.txtRead = new System.Windows.Forms.TextBox();
             this.ofdRead = new System.Windows.Forms.OpenFileDialog();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMove1 = new System.Windows.Forms.Button();
-            this.tmrUpdateText = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // txtRead
@@ -46,7 +44,6 @@
             this.txtRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtRead.Size = new System.Drawing.Size(849, 301);
             this.txtRead.TabIndex = 5;
-            this.txtRead.TextChanged += new System.EventHandler(this.txtRead_TextChanged);
             // 
             // ofdRead
             // 
@@ -84,11 +81,6 @@
             this.btnMove1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMove1_MouseDown);
             this.btnMove1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove1_MouseMove);
             this.btnMove1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove1_MouseUp);
-            // 
-            // tmrUpdateText
-            // 
-            this.tmrUpdateText.Interval = 10;
-            this.tmrUpdateText.Tick += new System.EventHandler(this.tmrUpdateText_Tick);
             // 
             // Log
             // 

@@ -250,6 +250,24 @@
   <ItemGroup>
     <None Include="Resources\LogForn.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnLogg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonLogg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MinusDisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlusDisabeld.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

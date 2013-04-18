@@ -58,10 +58,11 @@ namespace Polakken
                 txtRead.Text = sr.ReadToEnd();
                 txtRead.SelectionStart = txtRead.Text.Length;
                 txtRead.ScrollToCaret();
+                
               
             }
         }
-
+      
         private void Log_Load(object sender, EventArgs e)
         {
             var fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
@@ -73,10 +74,7 @@ namespace Polakken
             }
         }
 
-        private void txtRead_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
 

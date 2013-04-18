@@ -137,18 +137,18 @@ namespace Polakken
 
                             string alarm = Convert.ToString(SensorCom.alarmLimit);
                             string interval = Convert.ToString(SensorCom.mesInterval);
-                            DateTime now = DateTime.Now;
-                            string time = now.ToString();
+                            string time = GUI.LastRT;
                             string temp = GUI.lastR;
+                            string statusDT = GUI.stsStatus;
                             if (GUI.test == false)
                             {
-                                status = "Status " + time + " :\r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;
+                                status = statusDT + "\r\n\r\n Siste Avlesning:" + time + " \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;
                             }
                             else
                             {
                                 string setpoint = Convert.ToString(Regulation.setpoint);
                                 string tolerance = Convert.ToString(Regulation.tolerance);
-                                status = "Status " + time + " :\r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval + "\r\nSetpunkt: " +
+                                status = statusDT + "\r\n\r\n Siste Avlesning: " + time + " \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval + "\r\nSetpunkt: " +
                                     setpoint + "\r\nToleranse: " + tolerance;
                             }
                             E_mail_handler.sendToOne("Status", status, fra);
