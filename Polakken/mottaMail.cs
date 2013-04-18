@@ -5,6 +5,7 @@ using System.Text;
 using AE.Net.Mail;
 using System.Text.RegularExpressions;
 using System.IO;
+using Polakken.Properties;
 
 namespace Polakken
 {
@@ -108,6 +109,7 @@ namespace Polakken
                             else if (intvalue > 0)
                             {
                                 Regulation.setpoint = intvalue;
+                                Settings.Default.setpoint = intvalue;
                                 response = "Setpunktet har blitt endret til " + Convert.ToString(Regulation.setpoint);
                                 E_mail_handler.sendToOne("Endring av setpunkt", response, fra);
                             }
@@ -122,6 +124,7 @@ namespace Polakken
                             else
                             {
                                 SensorCom.mesInterval = intvalue;
+                                Settings.Default.mesInterval = intvalue;
                                 response = "Måleintervallet har blitt endret til " + Convert.ToString(SensorCom.mesInterval);
                                 E_mail_handler.sendToOne("Endring av måleinterval", response, fra);
                             }
@@ -160,6 +163,7 @@ namespace Polakken
                             else
                             {
                                 Regulation.tolerance = intvalue;
+                                Settings.Default.tolerance = intvalue;
                                 response = "Toleransen har blitt endret til " + Convert.ToString(Regulation.tolerance);
                                 E_mail_handler.sendToOne("Endring av toleranse", response, fra);
                             }
@@ -167,6 +171,7 @@ namespace Polakken
                         case "ALG":
                             //E-mail kommando for endring av alarmgrense.
                             SensorCom.alarmLimit = intvalue;
+                            Settings.Default.alarmLimit = intvalue;
                             response = "Alarmgrensen har blitt endret til " + Convert.ToString(SensorCom.alarmLimit);
                             E_mail_handler.sendToOne("Endring av alarmgrense", response, fra);
                             break;
