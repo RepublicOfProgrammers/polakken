@@ -12,12 +12,14 @@ namespace Polakken
         private static DbHandler mDbHandler;
         public static bool needRefresh { get; set; }
         public static int readingCounter { get; set; }
+        private static int alarmCounter;
 
         [STAThread]
         static void Main()
         {
             needRefresh = false;
             readingCounter = 0;
+            alarmCounter = 0;
             new Logger(); // kaller konstruktøren til logger classen kun for å opprette ny logg tekstfil. 
             mDbHandler = new DbHandler(); // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
 
@@ -70,8 +72,20 @@ namespace Polakken
                         readingCounter++;
                         if (SensorCom.temp() < SensorCom.alarmLimit)
                         {
-                            E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
-                            Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
+                            if (alarmCounter > 2)
+                            {
+                                E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
+                                Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
+                            }
+                            else
+                            {
+                                Logger.Warning("Måling er fremdeles under alarmgrensen, sender ikke mail", "Polakken");
+                            }
+                            alarmCounter++;
+                        }
+                        else if (SensorCom.temp() > SensorCom.alarmLimit)
+                        {
+                            alarmCounter = 0;
                         }
                         Thread.Sleep(SensorCom.mesInterval * 150000);
                     }
