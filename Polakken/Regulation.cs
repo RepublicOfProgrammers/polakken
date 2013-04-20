@@ -44,16 +44,16 @@ namespace Polakken
                 status = false;
             }
             //sørger for at ovnen startes opp før temperaturen blir under toleransen. 
-            else if ((prevReading - reading) < (setpoint - prevReading))
+            else if ((prevReading - reading) > (reading - (setpoint - tolerance)))
             {
-                difference = (prevReading - reading) / (setpoint - prevReading);
+                difference = (reading - (setpoint - tolerance)) / (prevReading - reading);
                 System.Threading.Thread.Sleep(Convert.ToInt32(difference * SensorCom.mesInterval * 60000)); 
                 status = true;
             }
             //sørger for at ovnen stoppes før temperaturen blir over toleransen. 
-            else if ((reading - prevReading) < (prevReading - setpoint))
+            else if ((reading - prevReading) > ((setpoint + tolerance) - reading))
             {
-                difference = (reading - prevReading) / (prevReading - setpoint);
+                difference = ((setpoint + tolerance) - reading) / (reading - prevReading);
                 System.Threading.Thread.Sleep(Convert.ToInt32(difference * SensorCom.mesInterval * 60000)); 
                 status = false;
             }
