@@ -10,38 +10,13 @@ namespace Polakken
     {
         //variabler
         private static string module = "Regulation";
-        public static Boolean status;
+        public static Boolean status { get; private set; }
         private static double reading = 999;
         private static double prevReading;
         private static double difference;
-        public static int mesInterval { get; set; }
         private static string loggerInfo;
         public static int tolerance { get; set; }
-        //{
-        //    get
-        //    {
-        //        return tolerance;
-        //    }
-        //    set
-        //    {
-        //        tolerance = value;
-        //        Settings.Default.tolerance = value;
-        //        Settings.Default.Save();
-        //    }
-        //}
         public static int setpoint { get; set; }
-        //{
-        //    get
-        //    {
-        //        return setpoint;
-        //    }
-        //    set
-        //    {
-        //        setpoint = value;
-        //        Settings.Default.setpoint = value;
-        //        Settings.Default.Save();
-        //    }
-        //}
 
         public static Boolean regulator(double newread)
         {
@@ -72,14 +47,14 @@ namespace Polakken
             else if ((prevReading - reading) < (setpoint - prevReading))
             {
                 difference = (prevReading - reading) / (setpoint - prevReading);
-                System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval * 60000)); 
+                System.Threading.Thread.Sleep(Convert.ToInt32(difference * SensorCom.mesInterval * 60000)); 
                 status = true;
             }
             //sørger for at ovnen stoppes før temperaturen blir over toleransen. 
             else if ((reading - prevReading) < (prevReading - setpoint))
             {
                 difference = (reading - prevReading) / (prevReading - setpoint);
-                System.Threading.Thread.Sleep(Convert.ToInt32(difference * mesInterval * 60000)); 
+                System.Threading.Thread.Sleep(Convert.ToInt32(difference * SensorCom.mesInterval * 60000)); 
                 status = false;
             }
             //sender info til loggen om regulering. 
