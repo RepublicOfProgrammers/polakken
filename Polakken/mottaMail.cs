@@ -66,9 +66,6 @@ namespace Polakken
 
         public static void getCommand()
         {
-
-
-            string status = "";
             int length;
             string command;
             string value;
@@ -148,16 +145,16 @@ namespace Polakken
                             string statusDT = GUI.stsStatus;
                             if (GUI.test == false)
                             {
-                                status = statusDT + "\r\n\r\n Siste Avlesning:" + time + " \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;
+                                response = statusDT + "\r\n\r\n Siste Avlesning:" + time + " \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;
                             }
                             else
                             {
                                 string setpoint = Convert.ToString(Regulation.setpoint);
                                 string tolerance = Convert.ToString(Regulation.tolerance);
-                                status = statusDT + "\r\n\r\n Siste Avlesning: " + time + " \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval + "\r\nSetpunkt: " +
+                                response = statusDT + "\r\n\r\n Siste Avlesning: " + time + " \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval + "\r\nSetpunkt: " +
                                     setpoint + "\r\nToleranse: " + tolerance;
                             }
-                            E_mail_handler.sendToOne("Status", status, from);
+                            E_mail_handler.sendToOne("Status", response, from);
                             break;
                         case "TLR":
                             //E-mail kommando for endring av toleranse. 

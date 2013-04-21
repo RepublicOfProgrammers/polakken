@@ -21,6 +21,7 @@ namespace Polakken
 
                 AnalogSingleChannelReader reader = new AnalogSingleChannelReader(temperatureTask.Stream);
                 double analogData = reader.ReadSingleSample();
+                temperatureTask.Dispose();
                 return analogData;
             }
             catch (Exception e)
