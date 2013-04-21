@@ -81,7 +81,6 @@
             this.dtpSelectFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.tbpThree = new System.Windows.Forms.TabPage();
-            this.mottaMail = new System.Windows.Forms.Button();
             this.btnDelEmail = new System.Windows.Forms.Button();
             this.cboDelEmail = new System.Windows.Forms.ComboBox();
             this.dgvEmail = new System.Windows.Forms.DataGridView();
@@ -779,7 +778,6 @@
             // tbpThree
             // 
             this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.insideTab2;
-            this.tbpThree.Controls.Add(this.mottaMail);
             this.tbpThree.Controls.Add(this.btnDelEmail);
             this.tbpThree.Controls.Add(this.cboDelEmail);
             this.tbpThree.Controls.Add(this.dgvEmail);
@@ -791,16 +789,6 @@
             this.tbpThree.TabIndex = 2;
             this.tbpThree.Text = "Mottaker";
             this.tbpThree.UseVisualStyleBackColor = true;
-            // 
-            // mottaMail
-            // 
-            this.mottaMail.Location = new System.Drawing.Point(306, 63);
-            this.mottaMail.Name = "mottaMail";
-            this.mottaMail.Size = new System.Drawing.Size(75, 23);
-            this.mottaMail.TabIndex = 5;
-            this.mottaMail.Text = "button1";
-            this.mottaMail.UseVisualStyleBackColor = true;
-            this.mottaMail.Click += new System.EventHandler(this.mottaMail_Click);
             // 
             // btnDelEmail
             // 
@@ -1146,7 +1134,6 @@
         private System.Windows.Forms.DateTimePicker dtpDelTo;
         private System.Windows.Forms.DateTimePicker dtpDelFrom;
         private System.Windows.Forms.Button btnDelReading;
-        private System.Windows.Forms.Button mottaMail;
         private System.Windows.Forms.DateTimePicker dtpDelToTime;
         private System.Windows.Forms.DateTimePicker dtpDelFromTime;
         private System.Windows.Forms.DateTimePicker dtpSelectToTime;

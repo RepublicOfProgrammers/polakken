@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using System.Threading;
-using Polakken.Properties;
 
 namespace Polakken
 {
@@ -25,9 +22,6 @@ namespace Polakken
 
             Thread tMålTemp = new Thread(new ThreadStart(tMålTemp_method));
             tMålTemp.Start(); // Starter måleprosessen. Main() venter ikke på denne tråden før den går videre.
-            
-            //Thread polakkenLytter = new Thread(new ThreadStart(polakkenLytter_Method));
-            //polakkenLytter.Start();
 
             //TODO: Sjekke sist innlogging via databasen. Rapportere til bruker at konfigurasjoner er i orden, polakken starter arbeid.
             //Eventuelt TODO: sletting av eldgammel data som ikke trengs og som tar opp plass/resusser.
@@ -72,7 +66,7 @@ namespace Polakken
                         readingCounter++;
                         if (SensorCom.temp() < SensorCom.alarmLimit)
                         {
-                            if (alarmCounter > 2)
+                            if (alarmCounter > 1)
                             {
                                 E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
                                 Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
@@ -98,15 +92,5 @@ namespace Polakken
                 //}
             }
         }
-
-        //private static void polakkenLytter_Method()
-        //{
-        //    while (true)
-        //    {
-        //        string message = "noe piss";
-        //        MessageBox.Show(message);
-        //        Thread.Sleep(1500);
-        //    }   
-        //}
     }
 }

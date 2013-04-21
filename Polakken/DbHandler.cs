@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlServerCe;
 using System.IO;
-using System.Diagnostics;
 
 namespace Polakken
 {
-    class DbHandler
+    class DbHandler : IDisposable
     {
         private string thismodule = "DbHandler";
 
@@ -34,9 +30,46 @@ namespace Polakken
         public static readonly string TB_EMAIL_NUMBER = "ID";
         public static readonly string TB_EMAIL_ADRESS = "Adress";
 
-        /**
-         * Konstruktør for database håndtering, sjekker/oppretter eller kobler til databasen.  
-         */
+
+        /// <summary>
+        /// Kaster DbHandleren i søppla, for å frigjøre ressurser
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Automatisk dekonstruktør som blir kaldt når DbHandler ikke brukes lengre. 
+        /// </summary>
+        ~DbHandler()
+        {
+            Dispose(false);
+        }
+
+        /// <summary>
+        /// NB! Denne metoden blir kun kjørt fra Dispose() og ~DbHandler().
+        /// Egenmodifisert dispose metoden som sletter alle ressurser som det ikke er behov for lengre dersom:
+        /// </summary>
+        /// <param name="freeManagedObjectsAlso">== true: sletter både ubrukte og brukte ressurser det ikke lengre er behov for.
+        /// ==false: sletter kun ubrukte ressurser.</param>
+        protected void Dispose(Boolean freeManagedObjectsAlso)
+        {
+            //Frigjør uhåndterte ressurser 
+            if (freeManagedObjectsAlso)
+            {
+                if (this._connection != null)
+                {
+                    this._connection.Dispose();
+                    this._connection = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Konstruktør for database håndtering, sjekker/oppretter eller kobler til databasen. 
+        /// </summary>
         public DbHandler()
         {
             Logger.Info("Starter konstruksjon", thismodule);
@@ -52,7 +85,7 @@ namespace Polakken
                 //her kan det sendes en melding til bruker om at siste innlogging var sånn og sånn f.eks.
             }
         }
-        
+
         /// <summary>
         /// Åpner databasen og initialiserer koblingen. Databasen er nå klar for jobb, og er opptatt for alle andre instanser/sammenhenger
         /// </summary>
@@ -78,14 +111,14 @@ namespace Polakken
         /**
          * PUBLIC METHODS: Her kan det lages flere metoder som polakken skal utnytte.
          */
-        
+
         /// <summary>
         /// Sletter oppføringer i temp-databasen fra-til dato.
         /// </summary>
         /// <returns>
         /// Returnerer antall rader påvirket (altså 0 = noe skjedde feil, 1 = en rad har blitt slettet, 2+ = flere rader har blitt slettet
         /// </returns>
-        public int DelReadings(string fraDato,string tilDato)
+        public int DelReadings(string fraDato, string tilDato)
         {
             string sql = string.Format("delete from {0} where {1} >= '{2}' and {1} <= '{3}'", TB_READINGS, TB_READINGS_DATE, fraDato, tilDato);
             return executeSql_NonQuery(sql);
@@ -109,7 +142,7 @@ namespace Polakken
         /// <returns>
         /// Returnerer antall rader påvirket (altså 0 = noe skjedde feil, 1 = en rad har blitt slettet, 2+ = flere rader har blitt slettet
         /// </returns>
-        public int DelEmail(int idnr) 
+        public int DelEmail(int idnr)
         {
             string sql = string.Format("delete from {0} where {1} = {2}", TB_EMAIL, TB_EMAIL_NUMBER, idnr);
             return executeSql_NonQuery(sql);
@@ -121,7 +154,7 @@ namespace Polakken
         /// <returns>
         /// Returnerer et SqlCeDataReader-objekt som kan loopes igjennom.
         /// </returns>
-        public SqlCeDataReader GetLastReading() 
+        public SqlCeDataReader GetLastReading()
         {
             string sql = string.Format("select {0}, {1}, {2} from {3} " +
             "where {0} = (select max({0}) form {3} as b)",
@@ -138,7 +171,7 @@ namespace Polakken
         /// <returns>
         /// Returnerer et SqlCeDataReader-objekt som kan loopes igjennom.
         /// </returns>
-        public SqlCeDataReader GetReadingToDate(DateTime dateTime) 
+        public SqlCeDataReader GetReadingToDate(DateTime dateTime)
         {
             string sql = string.Format("select * from {0} where {1} = '{2}'", TB_READINGS, TB_READINGS_DATE, dateTime);
             return executeSql_Reader(sql);
@@ -152,7 +185,7 @@ namespace Polakken
         /// </returns>
         public SqlCeDataReader GetEmails()
         {
-            string sql = string.Format("select * from {0}", TB_EMAIL); 
+            string sql = string.Format("select * from {0}", TB_EMAIL);
             return executeSql_Reader(sql);
         }
 
@@ -164,7 +197,7 @@ namespace Polakken
         /// </returns>
         public SqlCeDataReader GetReadings()
         {
-            string sql = string.Format("select * from {0}", TB_READINGS); 
+            string sql = string.Format("select * from {0}", TB_READINGS);
             return executeSql_Reader(sql);
         }
 
@@ -188,7 +221,7 @@ namespace Polakken
         /// </summary>
         /// <param name="email">Email som en string</param>
         /// <returns>Returnerer 0 eller 1. Dersom linjen er opprettet vil metoden returnere 1. </returns>
-        public int AddEmail(string email) 
+        public int AddEmail(string email)
         {
             return executeSql_NonQuery_Email(email);
         }
@@ -204,7 +237,10 @@ namespace Polakken
         {
             SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
             SqlCeDataReader data_reader = null;
-            try { data_reader = cmd.ExecuteReader(); }
+            try
+            {
+                data_reader = cmd.ExecuteReader();
+            }
             catch (SqlCeException ssceE)
             {
                 Logger.Error(ssceE, thismodule);
@@ -212,6 +248,10 @@ namespace Polakken
             catch (Exception e)
             {
                 Logger.Error(e, thismodule);
+            }
+            finally 
+            {
+                cmd.Dispose();
             }
             return data_reader;
         }
@@ -228,7 +268,10 @@ namespace Polakken
             int affectedRows = 0;
 
             //prøver å kjøre kommandoen. fanger opp errorer, men gjør ingenting med dem foreløpig. 
-            try { affectedRows = cmd.ExecuteNonQuery(); }
+            try
+            {
+                affectedRows = cmd.ExecuteNonQuery();
+            }
             catch (SqlCeException ssceE)
             {
                 //Sender error til log tekst filen.
@@ -242,6 +285,7 @@ namespace Polakken
             finally
             {
                 //Lukker databasen.
+                cmd.Dispose();
                 this.CloseDb();
             }
             return affectedRows;
@@ -251,12 +295,12 @@ namespace Polakken
         {
             // sql-spørringen
             string sql = "insert into " + TB_READINGS + "(" + TB_READINGS_DATE + ", " + TB_READINGS_DEGREE + ", " + TB_READINGS_STATUS + ") values(@date, @value, @status)";
-            
+
             //kobler til databasen og åpner den
             this.OpenDb();
 
             //Henter inn sql koden fra metode argumentet sql, og lager en sqlcommand sammen med koblingen til databasen.
-            SqlCeCommand cmd;
+            SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
 
             //variabel som inneholder antall rader som blir påvirket av kommandoen
             int affectedRows = 0;
@@ -264,7 +308,6 @@ namespace Polakken
             //prøver å kjøre kommandoen. fanger opp errorer. 
             try
             {
-                cmd = new SqlCeCommand(sql, _connection);
                 cmd.Parameters.AddWithValue("@date", time);
                 cmd.Parameters.AddWithValue("@value", C);
                 cmd.Parameters.AddWithValue("@status", status);
@@ -280,6 +323,7 @@ namespace Polakken
             }
             finally
             {
+                cmd.Dispose();
                 this.CloseDb();
             }
             return affectedRows;
@@ -294,7 +338,7 @@ namespace Polakken
             this.OpenDb();
 
             //Henter inn sql koden fra metode argumentet sql, og lager en sqlcommand sammen med koblingen til databasen.
-            SqlCeCommand cmd;
+            SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
 
             //variabel som inneholder antall rader som blir påvirket av kommandoen
             int affectedRows = 0;
@@ -302,7 +346,6 @@ namespace Polakken
             //prøver å kjøre kommandoen. fanger opp errorer. 
             try
             {
-                cmd = new SqlCeCommand(sql, _connection);
                 cmd.Parameters.AddWithValue("@email", email);
                 affectedRows = cmd.ExecuteNonQuery();
             }
@@ -316,6 +359,7 @@ namespace Polakken
             }
             finally
             {
+                cmd.Dispose();
                 this.CloseDb();
             }
             return affectedRows;
@@ -327,10 +371,6 @@ namespace Polakken
             if (File.Exists(fileName))
             {
                 Logger.Info("Fant eksisterende database", thismodule);
- 
-                ///TODO: Mens vi tester/utvikler skal følgende 2 linjer være stående:
-                //File.Delete(fileName);
-                //return initDb();
 
                 return (int)dbStatus.EXISTING;
             }
@@ -339,7 +379,15 @@ namespace Polakken
                 Logger.Info("Oppretter ny database...", thismodule);
                 //Dersom den ikke eksisterer opprettes databasen. 
                 SqlCeEngine en = new SqlCeEngine(ConnectionString);
-                en.CreateDatabase();
+                try
+                {
+                    en.CreateDatabase();
+                }
+                catch (Exception) { }
+                finally 
+                {
+                    en.Dispose();
+                }
 
                 //lager tabeller i databasen vi nettop opprettet.
                 int cT = createTables();
@@ -362,11 +410,13 @@ namespace Polakken
             int i = executeSql_NonQuery(sql);
             int j = executeSql_NonQuery(sql1);
 
-            if (i != 0 && j != 0){
+            if (i != 0 && j != 0)
+            {
                 Logger.Info("Laget tabeller suksessfult", thismodule);
                 return (int)dbStatus.SUCCESS;
             }
-            else{                
+            else
+            {
                 Logger.Info("Klarte ikke lage tabeller, finnes det en error over meg?", thismodule);
                 return (int)dbStatus.ERROR;
             }

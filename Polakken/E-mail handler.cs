@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Net;
 using System.Net.Mail;
-using System.Data.SqlServerCe;
-using System.Diagnostics;
 using System.Data;
 
 namespace Polakken
@@ -22,11 +17,13 @@ namespace Polakken
              EnableSsl = true //Legger til sikkerhetslaget Ssl
          };
 
+        //Metode som sender mail til alle som er oppført i databasen
         public static void sendToAll(string subject, string body)
         {
             try
             {
                 GUI gui = new GUI();
+
 
                 DataTable sendEmail = new DataTable();
                 gui.GetEmail(sendEmail);
@@ -47,6 +44,7 @@ namespace Polakken
             }
         }
 
+        //Metode som bare sender mail til en person
         public static void sendToOne(string subject, string body, string mailAdress)
         {
             try
