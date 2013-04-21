@@ -9,20 +9,26 @@ namespace Polakken
     {
         GUI gui = new GUI();
         private static string host = "imap.gmail.com";
+        private static string username = "republicofprogrammers@gmail.com";
+        private static string password = "polakken";
+        private static int port = 993;
+        private static bool secure = true;
         public static string from { get; set; }
         public static string subject { get; set; }
         public static string body { get; set; }
         private static string module = "mottaMail";
+
+        //Metode for å hente inn mail
         public static void mottaMail()
         {
-            //Metode for å hente inn mail.
             try
             {
                 //Lager nytt objekt av klassen ImapClient
-                ImapClient ic = new ImapClient("imap.gmail.com", "republicofprogrammers@gmail.com", "polakken",
-                     ImapClient.AuthMethods.Login, 993, true);
+                ImapClient ic = new ImapClient(host, username, password,
+                     ImapClient.AuthMethods.Login, port, secure);
                 ic.SelectMailbox("INBOX");
-                MailMessage[] mail = ic.GetMessages(0, 10000, false, true);
+                //Array som henter inn alle mail i innboksen
+                MailMessage[] mail = ic.GetMessages(0, 1, false, true);
                 //If-setning som sjekker om det er mail i innboksen
                 if (mail.Length != 0)
                 {
