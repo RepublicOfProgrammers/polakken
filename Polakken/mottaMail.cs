@@ -21,17 +21,20 @@ namespace Polakken
             //Metode for å hente inn mail.
             try
             {
+                //Lager nytt objekt av klassen ImapClient
                 ImapClient ic = new ImapClient("imap.gmail.com", "republicofprogrammers@gmail.com", "polakken",
                      ImapClient.AuthMethods.Login, 993, true);
                 ic.SelectMailbox("INBOX");
                 MailMessage[] mail = ic.GetMessages(0, 10000, false, true);
-                //Lazy<MailMessage>[] mail = ic.SearchMessages(SearchCondition.Unseen(), false);
+                //If-setning som sjekker om det er mail i innboksen
                 if (mail.Length != 0)
                 {
+                    //Tre variabler som henter ut informasjon fra den siste motatte mailen
                     fra = mail[mail.Length - 1].From.Address;
                     emne = mail[mail.Length - 1].Subject;
                     innhold = mail[mail.Length - 1].Body;
                 }
+                //Løkke som sletter alle mail etter den har hentet inn den siste
                 foreach (MailMessage m in mail)
                 {
                     ic.DeleteMessage(m);
