@@ -119,9 +119,9 @@ namespace Polakken
                             break;
                         case "INT":
                             //E-mail kommando for endring av måleinterval. 
-                            if (intvalue < 0)
+                            if (intvalue < 1)
                             {
-                                response = "Måleintervallet kan ikke være mindere enn null, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
+                                response = "Måleintervallet kan ikke være mindere enn 1, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
                                 E_mail_handler.sendToOne("Feil i endring av måleinterval", response, from);
                             }
                             else
