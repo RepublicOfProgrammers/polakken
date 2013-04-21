@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlServerCe;
 using System.IO;
-using System.Diagnostics;
 
 namespace Polakken
 {
@@ -328,10 +324,6 @@ namespace Polakken
             {
                 Logger.Info("Fant eksisterende database", thismodule);
  
-                ///TODO: Mens vi tester/utvikler skal følgende 2 linjer være stående:
-                //File.Delete(fileName);
-                //return initDb();
-
                 return (int)dbStatus.EXISTING;
             }
             else

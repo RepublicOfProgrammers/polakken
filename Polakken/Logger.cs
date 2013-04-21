@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 
-
 namespace Polakken
 {
     public class Logger
