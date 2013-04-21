@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtRead = new System.Windows.Forms.TextBox();
             this.ofdRead = new System.Windows.Forms.OpenFileDialog();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMove1 = new System.Windows.Forms.Button();
+            this.tmrUpdateText = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // txtRead
@@ -82,6 +84,11 @@
             this.btnMove1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMove1_MouseMove);
             this.btnMove1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMove1_MouseUp);
             // 
+            // tmrUpdateText
+            // 
+            this.tmrUpdateText.Interval = 1000;
+            this.tmrUpdateText.Tick += new System.EventHandler(this.tmrUpdateText_Tick);
+            // 
             // Log
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -111,5 +118,6 @@
         private System.Windows.Forms.Button btnMove1;
         public System.Windows.Forms.TextBox txtRead;
         private System.Windows.Forms.Timer tmrUpdateText;
+        
     }
 }

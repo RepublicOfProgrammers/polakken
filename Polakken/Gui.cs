@@ -626,13 +626,16 @@ namespace Polakken
             if (clickCount == 0)
             {
                 crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 48;
+                btnZoomIn.Enabled = true;
+                clickCount = 0;
             }
             if (clickCount == 1)
             {
                 crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 96;
                 
-                btnZoomOut.Enabled = false;
-                btnZoomOut.BackgroundImage = imgMinusDisable;
+                btnZoomIn.Enabled = false;
+                btnZoomIn.BackgroundImage = imgMinusDisable;
+                clickCount = 0;
             }
            
         }
@@ -1102,7 +1105,7 @@ namespace Polakken
 
         private void button1_Click(object sender, EventArgs e)
         {
-            clickCount++;
+            clickCount = 1;
             xMinZoom = xMinZoom - 600;
             Zoom();
         }
@@ -1110,7 +1113,7 @@ namespace Polakken
         private void button2_Click(object sender, EventArgs e)
         {
 
-            clickCount--;
+            clickCount = 0;
             xMinZoom = xMinZoom + 600;
             Zoom();
         }   

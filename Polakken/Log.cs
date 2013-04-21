@@ -21,7 +21,7 @@ namespace Polakken
         public Log()
         {
             InitializeComponent();
-            tmrUpdateText.Start();
+            
         }
 
         private void btnLukk_Click(object sender, EventArgs e)
@@ -65,6 +65,7 @@ namespace Polakken
       
         private void Log_Load(object sender, EventArgs e)
         {
+            tmrUpdateText.Start();
             var fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             using (var sr = new StreamReader(fs))
             {
