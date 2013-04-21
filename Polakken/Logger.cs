@@ -22,6 +22,7 @@ namespace Polakken
             // Oppretter filen med unikt navn
             string filename = string.Format("{0}/Programstart {1}.log", dirLogs, DateTime.Now.ToString("dd-MM-yyy HH.mm.ss"));
             currentLog = filename;
+
             //Legger filen til i Listeners-listen til programkjøringen. Denne lytter etter trace-events, som behandles i WriteEntry()
             Trace.Listeners.Add(new TextWriterTraceListener(filename, "PolakkenLytter"));
             Trace.WriteLine("Tidspunkt \tType \tKlasse \t\tMelding");
