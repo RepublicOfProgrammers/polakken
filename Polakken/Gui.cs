@@ -1068,7 +1068,7 @@ namespace Polakken
         {
          
             MottaMail.mottaMail();
-            if (MottaMail.innhold != null)
+            if (MottaMail.body != null)
             {
                 
                 MottaMail.getCommand();

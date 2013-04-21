@@ -8,9 +8,10 @@ namespace Polakken
     class MottaMail
     {
         GUI gui = new GUI();
-        public static string fra { get; set; }
-        public static string emne { get; set; }
-        public static string innhold { get; set; }
+        private static string host = "imap.gmail.com";
+        public static string from { get; set; }
+        public static string subject { get; set; }
+        public static string body { get; set; }
         private static string module = "mottaMail";
         public static void mottaMail()
         {
@@ -26,9 +27,9 @@ namespace Polakken
                 if (mail.Length != 0)
                 {
                     //Tre variabler som henter ut informasjon fra den siste motatte mailen
-                    fra = mail[mail.Length - 1].From.Address;
-                    emne = mail[mail.Length - 1].Subject;
-                    innhold = mail[mail.Length - 1].Body;
+                    from = mail[mail.Length - 1].From.Address;
+                    subject = mail[mail.Length - 1].Subject;
+                    body = mail[mail.Length - 1].Body;
                 }
                 //Løkke som sletter alle mail etter den har hentet inn den siste
                 foreach (MailMessage m in mail)
@@ -71,12 +72,12 @@ namespace Polakken
 
             string ugyldig = "Du har oppgitt en ugyldig kommando, send \"HLP 1\" for liste over kommandoer eller \"HLP 0\" for hele hjelp filen";
 
-            innhold = innhold.TrimEnd('\r', '\n');
-            if (innhold.Length > 3)
+            body = body.TrimEnd('\r', '\n');
+            if (body.Length > 3)
             {
-                command = innhold.Substring(0, 3);
-                length = innhold.Length;
-                value = innhold.Substring(3, Convert.ToInt32(length - 3));
+                command = body.Substring(0, 3);
+                length = body.Length;
+                value = body.Substring(3, Convert.ToInt32(length - 3));
                 value = value.Trim();
                 try
                 {
@@ -85,7 +86,7 @@ namespace Polakken
                 catch (Exception ex)
                 {
                     Logger.Error(ex, module);
-                    E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
+                    E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, from);
                     success = false;
                 }
                 if (success == true)
@@ -98,19 +99,19 @@ namespace Polakken
                             {
 
                                 response = "Setpunktet kan ikke være mindere enn null, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
-                                E_mail_handler.sendToOne("Feil i endring av setpunkt", response, fra);
+                                E_mail_handler.sendToOne("Feil i endring av setpunkt", response, from);
                             }
                             else if (intvalue > 100)
                             {
                                 response = "Setpunktet kan ikke være høyere enn 100, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
-                                E_mail_handler.sendToOne("Feil i endring av setpunkt", response, fra);
+                                E_mail_handler.sendToOne("Feil i endring av setpunkt", response, from);
                             }
                             else if (intvalue > 0)
                             {
                                 Regulation.setpoint = intvalue;
                                 Settings.Default.setpoint = intvalue;
                                 response = "Setpunktet har blitt endret til " + Convert.ToString(Regulation.setpoint);
-                                E_mail_handler.sendToOne("Endring av setpunkt", response, fra);
+                                E_mail_handler.sendToOne("Endring av setpunkt", response, from);
                             }
                             break;
                         case "INT":
@@ -118,14 +119,14 @@ namespace Polakken
                             if (intvalue < 0)
                             {
                                 response = "Måleintervallet kan ikke være mindere enn null, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
-                                E_mail_handler.sendToOne("Feil i endring av måleinterval", response, fra);
+                                E_mail_handler.sendToOne("Feil i endring av måleinterval", response, from);
                             }
                             else
                             {
                                 SensorCom.mesInterval = intvalue;
                                 Settings.Default.mesInterval = intvalue;
                                 response = "Måleintervallet har blitt endret til " + Convert.ToString(SensorCom.mesInterval);
-                                E_mail_handler.sendToOne("Endring av måleinterval", response, fra);
+                                E_mail_handler.sendToOne("Endring av måleinterval", response, from);
                             }
                             break;
                         case "STS":
@@ -150,21 +151,21 @@ namespace Polakken
                                 status = statusDT + "\r\n\r\n Siste Avlesning: " + time + " \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval + "\r\nSetpunkt: " +
                                     setpoint + "\r\nToleranse: " + tolerance;
                             }
-                            E_mail_handler.sendToOne("Status", status, fra);
+                            E_mail_handler.sendToOne("Status", status, from);
                             break;
                         case "TLR":
                             //E-mail kommando for endring av toleranse. 
                             if (intvalue < 0)
                             {
                                 response = "Toleransen kan ikke være mindere enn null, toleransen forblir på siste verdi som er " + Convert.ToString(Regulation.tolerance);
-                                E_mail_handler.sendToOne("Feil i endring av toleranse", response, fra);
+                                E_mail_handler.sendToOne("Feil i endring av toleranse", response, from);
                             }
                             else
                             {
                                 Regulation.tolerance = intvalue;
                                 Settings.Default.tolerance = intvalue;
                                 response = "Toleransen har blitt endret til " + Convert.ToString(Regulation.tolerance);
-                                E_mail_handler.sendToOne("Endring av toleranse", response, fra);
+                                E_mail_handler.sendToOne("Endring av toleranse", response, from);
                             }
                             break;
                         case "ALG":
@@ -172,12 +173,12 @@ namespace Polakken
                             SensorCom.alarmLimit = intvalue;
                             Settings.Default.alarmLimit = intvalue;
                             response = "Alarmgrensen har blitt endret til " + Convert.ToString(SensorCom.alarmLimit);
-                            E_mail_handler.sendToOne("Endring av alarmgrense", response, fra);
+                            E_mail_handler.sendToOne("Endring av alarmgrense", response, from);
                             break;
                         case "HLP":
                             //E-mail kommando for å få tilsendt hjelp teksten. 
                             response = help();
-                            E_mail_handler.sendToOne("Help", response, fra);
+                            E_mail_handler.sendToOne("Help", response, from);
                             break;
                         case "LOG":
                             //E-mail kommando for uthenting av siste logg.
@@ -185,11 +186,11 @@ namespace Polakken
                             using (var sr = new StreamReader(fs))
                             {
                                 response = sr.ReadToEnd();
-                                E_mail_handler.sendToOne("Logg", response, fra);
+                                E_mail_handler.sendToOne("Logg", response, from);
                             }
                             break;
                         default:
-                            E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
+                            E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, from);
                             break;
                     }
                     GUI.settingsupdate = true;
@@ -197,11 +198,11 @@ namespace Polakken
             }
             else
             {
-                E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, fra);
+                E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, from);
             }
-            MottaMail.fra = null;
-            MottaMail.emne = null;
-            MottaMail.innhold = null;
+            MottaMail.from = null;
+            MottaMail.subject = null;
+            MottaMail.body = null;
         }
     }
 }
