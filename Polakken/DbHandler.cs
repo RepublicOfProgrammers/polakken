@@ -19,7 +19,7 @@ namespace Polakken
         private string ConnectionString = string.Format("DataSource=\"{0}\"; Password='{1}'", fileName, password);
         private SqlCeConnection _connection;
 
-        //database tables & collums
+        //database tabeller og kolonner
         public static readonly string TB_READINGS = "Readings";
         public static readonly string TB_READINGS_DATE = "Date";
         public static readonly string TB_READINGS_DEGREE = "Degree";
@@ -105,7 +105,10 @@ namespace Polakken
         {
             //dersom databasen ikke er åpen vil ikke denne metoden gjøre noe. 
             if (_connection.State == ConnectionState.Open)
+            {
                 _connection.Close();
+                _connection.Dispose();
+            }
         }
 
         /**
