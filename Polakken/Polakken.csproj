@@ -268,7 +268,7 @@
     <None Include="Resources\PlusDisabeld.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\hjelpPolakken.txt" />
+    <EmbeddedResource Include="Resources\hjelpPolakken.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

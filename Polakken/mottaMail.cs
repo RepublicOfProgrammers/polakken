@@ -3,7 +3,6 @@ using AE.Net.Mail;
 using System.IO;
 using Polakken.Properties;
 using System.Reflection;
-using System.Data;
 
 namespace Polakken
 {
@@ -37,7 +36,6 @@ namespace Polakken
                     from = mail[mail.Length - 1].From.Address;
                     subject = mail[mail.Length - 1].Subject;
                     body = mail[mail.Length - 1].Body;
-
                 }
                 //Løkke som sletter alle mail etter den har hentet inn den siste
                 foreach (MailMessage m in mail)
@@ -198,11 +196,17 @@ namespace Polakken
                             //E-mail kommando for å få tilsendt hjelp teksten. 
                             //response = help();
                             Stream stream = Assembly.GetExecutingAssembly()
-                                                           .GetManifestResourceStream("Polakken.Resources" + "hjelpPolakken.txt");
+                                                          .GetManifestResourceStream("Polakken.hjelpPolakken.txt");
                             using (StreamReader reader = new StreamReader(stream))
                             {
                                 string result = reader.ReadToEnd();
                             }
+                            //Assembly _assembly;
+                            //StreamReader _textStreamReader;
+
+                            //_assembly = Assembly.GetExecutingAssembly();
+                            //_textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Polakken.hjelpPolakken.txt"));
+
                             break;
                         case "LOG":
                             //E-mail kommando for uthenting av siste logg.
