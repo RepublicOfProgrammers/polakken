@@ -12,16 +12,15 @@ namespace Polakken
 
         public static double temp()
         {
+            Task temperatureTask = new Task();
             try
             {
-                Task temperatureTask = new Task();
                 AIChannel myAIChannel;
                 myAIChannel = temperatureTask.AIChannels.CreateThermocoupleChannel("Dev1/ai0", "Temperature", 0, 100,
                     AIThermocoupleType.J, AITemperatureUnits.DegreesC);
 
                 AnalogSingleChannelReader reader = new AnalogSingleChannelReader(temperatureTask.Stream);
                 double analogData = reader.ReadSingleSample();
-                temperatureTask.Dispose();
                 return analogData;
             }
             catch (Exception e)
@@ -29,6 +28,10 @@ namespace Polakken
                 Logger.Error(e, module);
                 return 999;
                 //999 vil være en "feilkode"
+            }
+            finally
+            {
+                temperatureTask.Dispose();
             }
         }
     }

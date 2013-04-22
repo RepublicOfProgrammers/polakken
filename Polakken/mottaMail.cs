@@ -2,20 +2,20 @@
 using AE.Net.Mail;
 using System.IO;
 using Polakken.Properties;
+using System.Reflection;
 
 namespace Polakken
 {
     class MottaMail
     {
-        
         private static string host = "imap.gmail.com";
         private static string username = "republicofprogrammers@gmail.com";
         private static string password = "polakken";
         private static int port = 993;
         private static bool secure = true;
-        public static string from { get; set; }
-        public static string subject { get; set; }
-        public static string body { get; set; }
+        public static string from { get; private set; }
+        public static string subject { get; private set; }
+        public static string body { get; private set; }
         private static string module = "mottaMail";
 
         //Metode for å hente inn mail
@@ -100,7 +100,6 @@ namespace Polakken
                             //E-mail kommando for endring av setpunkt. 
                             if (intvalue < 0)
                             {
-
                                 response = "Setpunktet kan ikke være mindere enn null, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
                                 E_mail_handler.sendToOne("Feil i endring av setpunkt", response, from);
                             }
@@ -109,7 +108,7 @@ namespace Polakken
                                 response = "Setpunktet kan ikke være høyere enn 100, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
                                 E_mail_handler.sendToOne("Feil i endring av setpunkt", response, from);
                             }
-                            else if (intvalue > 0)
+                            else
                             {
                                 Regulation.setpoint = intvalue;
                                 Settings.Default.setpoint = intvalue;
@@ -134,9 +133,6 @@ namespace Polakken
                             break;
                         case "STS":
                             //E-mail kommando for å få status sendt på mail. 
-                            //string temp = Convert.ToString(Math.Round(SensorCom.temp(), 0));
-
-
 
                             string alarm = Convert.ToString(SensorCom.alarmLimit);
                             string interval = Convert.ToString(SensorCom.mesInterval);
@@ -163,6 +159,11 @@ namespace Polakken
                                 response = "Toleransen kan ikke være mindere enn null, toleransen forblir på siste verdi som er " + Convert.ToString(Regulation.tolerance);
                                 E_mail_handler.sendToOne("Feil i endring av toleranse", response, from);
                             }
+                            if (intvalue > 20)
+                            {
+                                response = "Toleransen kan ikke være høyere enn 20, toleransen forblir på siste verdi som er " + Convert.ToString(Regulation.tolerance);
+                                E_mail_handler.sendToOne("Feil i endring av toleranse", response, from);
+                            }
                             else
                             {
                                 Regulation.tolerance = intvalue;
@@ -173,15 +174,33 @@ namespace Polakken
                             break;
                         case "ALG":
                             //E-mail kommando for endring av alarmgrense.
-                            SensorCom.alarmLimit = intvalue;
-                            Settings.Default.alarmLimit = intvalue;
-                            response = "Alarmgrensen har blitt endret til " + Convert.ToString(SensorCom.alarmLimit);
-                            E_mail_handler.sendToOne("Endring av alarmgrense", response, from);
+                            if (intvalue < 0)
+                            {
+                                response = "Alarmgrensen kan ikke være mindere enn null, Alarmgrensen forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
+                                E_mail_handler.sendToOne("Feil i endring av alarmgrensen", response, from);
+                            }
+                            else if (intvalue > 100)
+                            {
+                                response = "Alarmgrensen kan ikke være høyere enn 100, alarmgrensen forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
+                                E_mail_handler.sendToOne("Feil i endring av alarmgrensen", response, from);
+                            }
+                            else
+                            {
+                                SensorCom.alarmLimit = intvalue;
+                                Settings.Default.alarmLimit = intvalue;
+                                response = "Alarmgrensen har blitt endret til " + Convert.ToString(SensorCom.alarmLimit);
+                                E_mail_handler.sendToOne("Endring av alarmgrense", response, from);
+                            }
                             break;
                         case "HLP":
                             //E-mail kommando for å få tilsendt hjelp teksten. 
-                            response = help();
-                            E_mail_handler.sendToOne("Help", response, from);
+                            //response = help();
+                            Stream stream = Assembly.GetExecutingAssembly()
+                                                           .GetManifestResourceStream("Polakken.Resources" + "hjelpPolakken.txt");
+                            using (StreamReader reader = new StreamReader(stream))
+                            {
+                                string result = reader.ReadToEnd();
+                            }
                             break;
                         case "LOG":
                             //E-mail kommando for uthenting av siste logg.

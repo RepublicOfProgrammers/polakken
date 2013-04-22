@@ -66,7 +66,7 @@ namespace Polakken
                         readingCounter++;
                         if (SensorCom.temp() < SensorCom.alarmLimit)
                         {
-                            if (alarmCounter > 1)
+                            if (alarmCounter < 1)
                             {
                                 E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
                                 Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
