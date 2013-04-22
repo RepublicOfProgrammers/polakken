@@ -22,15 +22,9 @@ namespace Polakken
         {
             try
             {
-                GUI gui = new GUI();
-
-
-                DataTable sendEmail = new DataTable();
-                gui.GetEmail(sendEmail);
-
                 string mailTil;
 
-                foreach (DataRow dtRow in sendEmail.Rows)
+                foreach (DataRow dtRow in GUI.dtEmails.Rows)
                 {
                     mailTil = dtRow["Adresser"].ToString();
                     client.Send(email, mailTil, subject, body);
