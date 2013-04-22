@@ -32,13 +32,11 @@ namespace Polakken
             try
             {
 
-                DataTable sendMail = new DataTable();
-                sendMail = GUI.dtEmails;
 
                 string mailTil;
 
                 //Løkke som går gjennom databasen for å hente ut alle e-mails
-                foreach (DataRow dtRow in sendMail.Rows)
+                foreach (DataRow dtRow in GUI.dtEmails.Rows)
                 {
                     mailTil = dtRow["Adresser"].ToString();
                     client.Send(username, mailTil, subject, body);
