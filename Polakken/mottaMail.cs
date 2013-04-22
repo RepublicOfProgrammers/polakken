@@ -5,7 +5,7 @@ using Polakken.Properties;
 
 namespace Polakken
 {
-    class MottaMail
+    static class MottaMail
     {
         GUI gui = new GUI();
         private static string host = "imap.gmail.com";
