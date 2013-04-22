@@ -18,27 +18,27 @@ namespace Polakken
         private static string password = "polakken";
         private static string module = "E-mail handler";
 
+
         public static  SmtpClient client = new SmtpClient(host, port) //Lager en ny SmtpClient med host-navn og port
          {
              Credentials = new NetworkCredential(username, password), //Login-informasjon for emailen vi sender fra
              EnableSsl = true //Legger til sikkerhetslaget Ssl
          };
+        
 
         //Metode som sender mail til alle som er oppført i databasen
         public static void sendToAll(string subject, string body)
         {
             try
             {
-                //Oppretter nytt objekt av gui for å hente ut en metode
-                GUI gui = new GUI();
 
-                DataTable sendEmail = new DataTable();
-                gui.GetEmail(sendEmail);
+                DataTable sendMail = new DataTable();
+                sendMail = GUI.dtEmails;
 
                 string mailTil;
 
                 //Løkke som går gjennom databasen for å hente ut alle e-mails
-                foreach (DataRow dtRow in sendEmail.Rows)
+                foreach (DataRow dtRow in sendMail.Rows)
                 {
                     mailTil = dtRow["Adresser"].ToString();
                     client.Send(username, mailTil, subject, body);
