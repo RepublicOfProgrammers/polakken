@@ -54,7 +54,7 @@ namespace Polakken
 
         private void GUI_Load(object sender, EventArgs e)
         {
-           
+
             tmrUpdateSettings.Start();
             SensorCom.mesInterval = Settings.Default.mesInterval; // Henter inn config settpunkt på måleintervall og sender til SensorCom
             SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunkt på alarmgrense og sender til SensorCom
@@ -84,7 +84,7 @@ namespace Polakken
             xMin = CountRows;
             xMax = CountRows + 336;
             int xMinZoom = xMax;
-     
+
             //Fyller en combobox med status verdier som skal brukes til å kunne filtrere via et dataView
             try
             {
@@ -124,7 +124,7 @@ namespace Polakken
             catch (Exception)
             {
             }
-            
+
             try
             {
                 DataView viewDeleteEmail = new DataView(GetEmails);
@@ -143,10 +143,10 @@ namespace Polakken
             //
             // Graf:
             //
-            
+
 
             crtView.DataSource = dataTable;
-            
+
             crtView.ChartAreas.Add("tempOversikt");
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
             crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
@@ -169,7 +169,7 @@ namespace Polakken
             crtView.ChartAreas["tempOversikt"].AxisY.TitleFont = new System.Drawing.Font("Verdana", 9, FontStyle.Bold);
             crtView.ChartAreas["tempOversikt"].AxisY.TitleAlignment = StringAlignment.Near;
             crtView.ChartAreas["tempOversikt"].AxisX.TitleAlignment = StringAlignment.Near;
-            
+
             crtView.ChartAreas["tempOversikt"].AxisX.TitleForeColor = Color.White;
             crtView.ChartAreas["tempOversikt"].AxisY.TitleForeColor = Color.White;
             crtView.ChartAreas["tempOversikt"].AxisY.LabelStyle.Format = "{0} °C";
@@ -182,7 +182,7 @@ namespace Polakken
             crtView.Series["temp"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             crtView.Series["temp"].XValueMember = "ReadTime";
             crtView.Series["temp"].YValueMembers = "Temprature";
-            
+
 
 
 
@@ -439,7 +439,7 @@ namespace Polakken
         //    }
         //    string emaildummy;
         //    string emaildummy2;
-            
+
         //    emaildummy = "alexandergjerseth@gmail.com";
         //    emaildummy2 = "sglittum@gmail.com";
 
@@ -500,7 +500,7 @@ namespace Polakken
 
 
         }
-        
+
 
         private void populateTxtbox()
         {
@@ -611,7 +611,7 @@ namespace Polakken
         }
         public void Zoom()
         {
-            
+
             crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMinZoom;
 
             if (clickCount == 0)
@@ -623,12 +623,12 @@ namespace Polakken
             if (clickCount == 1)
             {
                 crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 96;
-                
+
                 btnZoomIn.Enabled = false;
                 btnZoomIn.BackgroundImage = imgMinusDisable;
                 clickCount = 0;
             }
-           
+
         }
         private void btnToleranceDown_MouseDown(object sender, MouseEventArgs e)
         {
@@ -783,7 +783,7 @@ namespace Polakken
         {
             stsStatus = "Statusoppdatering den " + now.ToString("dd/MM/yyyy") + " klokken " + now.ToString("HH:mm:ss") + " :";
             MessageBox.Show(stsStatus);
-            
+
         }
 
         private void chkFilterStatus_CheckedChanged(object sender, EventArgs e)
@@ -928,7 +928,7 @@ namespace Polakken
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
                 delFrom = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
-                delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay ;
+                delTo = dtpDelFrom.Value.Date + dtpDelFromTime.Value.TimeOfDay;
                 delTo = delTo.AddMinutes(1.0);
                 delFrom = delFrom.AddMinutes(-1.0);
                 delToString = delTo.ToString("yyyy.MM.dd HH:mm:ss");
@@ -1037,7 +1037,7 @@ namespace Polakken
                 dtpDelToTime.Enabled = false;
                 dtpDelFrom.Enabled = true;
                 dtpDelFromTime.Enabled = true;
-                
+
 
             }
 
@@ -1066,14 +1066,14 @@ namespace Polakken
 
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
-         
+
             MottaMail.mottaMail();
             if (MottaMail.body != null)
             {
-                
+
                 MottaMail.getCommand();
             }
-            if (Program.needRefresh) 
+            if (Program.needRefresh)
             {
                 Update_Form();
                 Program.needRefresh = false;
@@ -1083,7 +1083,7 @@ namespace Polakken
                 UpdateSettings();
                 settingsupdate = false;
             }
-            if (Program.readingCounter == xMax) 
+            if (Program.readingCounter == xMax)
             {
                 xMin += 100;
                 xMax += 100;
@@ -1091,28 +1091,21 @@ namespace Polakken
                 crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
 
             }
-           
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             clickCount = 1;
-            xMinZoom = xMinZoom - 600;
+            xMinZoom -= 600;
             Zoom();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
             clickCount = 0;
-            xMinZoom = xMinZoom + 600;
+            xMinZoom = xMin;
             Zoom();
-        }   
+        }
     }
 }
-
-
-
-
-
-   
