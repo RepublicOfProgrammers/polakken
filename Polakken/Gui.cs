@@ -70,7 +70,7 @@ namespace Polakken
             txtSetPoint.Text = Convert.ToString(setPoint);
             txtTol.Text = Convert.ToString(tolerance);
             lastR = txtCurrent.Text;
-
+            dtEmails = GetEmails;
 
             //
             // Opprett DataTabell og fyll DataGridView
@@ -776,7 +776,6 @@ namespace Polakken
             fillDataTable(dataTable);
             dgvDataBase.DataSource = dataTable;
             crtView.DataBind();
-            dtEmails = dataTable;
             populateTxtbox();
         }
 
@@ -1070,7 +1069,7 @@ namespace Polakken
 
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
-
+            dtEmails = GetEmails;
             MottaMail.mottaMail();
             if (MottaMail.body != null)
             {
