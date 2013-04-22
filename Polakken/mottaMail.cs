@@ -7,7 +7,7 @@ namespace Polakken
 {
     class MottaMail
     {
-        GUI gui = new GUI();
+        
         private static string host = "imap.gmail.com";
         private static string username = "republicofprogrammers@gmail.com";
         private static string password = "polakken";

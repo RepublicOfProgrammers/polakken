@@ -25,6 +25,7 @@ namespace Polakken
         int clickCount = 0;
         DataTable dataTable = new DataTable();
         DataTable GetEmails = new DataTable();
+        public static DataTable dtEmails = new DataTable();
         string delToString;
         string delFromString;
         public static bool test = false;
@@ -775,14 +776,17 @@ namespace Polakken
             fillDataTable(dataTable);
             dgvDataBase.DataSource = dataTable;
             crtView.DataBind();
+            dtEmails = dataTable;
             populateTxtbox();
         }
 
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            stsStatus = "Statusoppdatering den " + now.ToString("dd/MM/yyyy") + " klokken " + now.ToString("HH:mm:ss") + " :";
-            MessageBox.Show(stsStatus);
+            dgvDataBase.DataSource = null;
+            dataTable.Clear();
+            fillDataTable(dataTable);
+            dgvDataBase.DataSource = dataTable;
 
         }
 
