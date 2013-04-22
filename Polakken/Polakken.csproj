@@ -81,7 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbHandler.cs" />
-    <Compile Include="E-mail handler.cs" />
+    <Compile Include="sendMail.cs" />
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
     </Compile>
