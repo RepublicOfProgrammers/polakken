@@ -35,20 +35,8 @@ namespace Polakken
                 {
                     //Tre variabler som henter ut informasjon fra den siste motatte mailen
                     from = mail[mail.Length - 1].From.Address;
-
-                    foreach (DataTable dtRow in GUI.dtEmails.Rows)
-                    {
-                        if (from == dtRow.ToString())
-                        {
-                            subject = mail[mail.Length - 1].Subject;
-                            body = mail[mail.Length - 1].Body;
-                        }
-                        else
-                        {
-                            from = null;
-                        }
-
-                    }
+                    subject = mail[mail.Length - 1].Subject;
+                    body = mail[mail.Length - 1].Body;
 
                 }
                 //Løkke som sletter alle mail etter den har hentet inn den siste
