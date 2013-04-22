@@ -233,6 +233,7 @@ namespace Polakken
         ///<summary>
         /// MERK: Denne metoden trenger at dbhandler objektet åpnes før kjøring, og lukkes etterpå, ved .OpenDb() og .CloseDb()
         ///</summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")] //sql stringen kommer aldri fra bruker-input
         private SqlCeDataReader executeSql_Reader(string sql)
         {
             SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
@@ -256,6 +257,7 @@ namespace Polakken
             return data_reader;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")] //sql stringen kommer aldri fra bruker-input
         private int executeSql_NonQuery(string sql)
         {
             //kobler til databasen og åpner den
