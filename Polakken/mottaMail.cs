@@ -123,6 +123,11 @@ namespace Polakken
                                 response = "Måleintervallet kan ikke være mindere enn 1, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
                                 E_mail_handler.sendToOne("Feil i endring av måleinterval", response, from);
                             }
+                            if (intvalue > 999)
+                            {
+                                response = "Måleintervallet kan ikke være høyere enn 999, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
+                                E_mail_handler.sendToOne("Feil i endring av måleinterval", response, from);
+                            }
                             else
                             {
                                 SensorCom.mesInterval = intvalue;
