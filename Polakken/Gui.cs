@@ -41,7 +41,7 @@ namespace Polakken
         Image imgMinusDisable = global::Polakken.Properties.Resources.MinusDisabled;
         Image imgPlusDisable = global::Polakken.Properties.Resources.PlusDisabeld;
         DbHandler db = new DbHandler();
-        //public int currentTemp { get; set; }
+       
 
 
         public GUI()
@@ -87,19 +87,7 @@ namespace Polakken
             int xMinZoom = xMax;
 
             //Fyller en combobox med status verdier som skal brukes til å kunne filtrere via et dataView
-            try
-            {
-
-                DataView viewStatus = new DataView(dataTable);
-                DataTable distinctStatusValues = viewStatus.ToTable(true, "Status");
-                cboFilterStatus.DataSource = distinctStatusValues;
-                cboFilterStatus.DisplayMember = "Status";
-                cboFilterTemp.ValueMember = "Status";
-
-            }
-            catch (Exception)
-            {
-            }
+            
             //Fyller en combobox med temp verdier som skal brukes til å kunne filtrere via et dataView
             try
             {
@@ -1088,11 +1076,12 @@ namespace Polakken
             }
             if (Program.readingCounter == xMax)
             {
+                Program.readingCounter = xMax;
                 xMin += 100;
                 xMax += 100;
                 crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
                 crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
-
+                
             }
 
         }

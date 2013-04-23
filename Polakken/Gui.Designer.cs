@@ -706,6 +706,9 @@
             // 
             this.cboFilterStatus.Enabled = false;
             this.cboFilterStatus.FormattingEnabled = true;
+            this.cboFilterStatus.Items.AddRange(new object[] {
+            "True",
+            "False"});
             this.cboFilterStatus.Location = new System.Drawing.Point(39, 276);
             this.cboFilterStatus.Name = "cboFilterStatus";
             this.cboFilterStatus.Size = new System.Drawing.Size(56, 21);
@@ -804,7 +807,7 @@
             // 
             // btnDelEmail
             // 
-            this.btnDelEmail.Location = new System.Drawing.Point(34, 218);
+            this.btnDelEmail.Location = new System.Drawing.Point(271, 162);
             this.btnDelEmail.Name = "btnDelEmail";
             this.btnDelEmail.Size = new System.Drawing.Size(75, 23);
             this.btnDelEmail.TabIndex = 4;
@@ -815,9 +818,9 @@
             // cboDelEmail
             // 
             this.cboDelEmail.FormattingEnabled = true;
-            this.cboDelEmail.Location = new System.Drawing.Point(34, 165);
+            this.cboDelEmail.Location = new System.Drawing.Point(238, 135);
             this.cboDelEmail.Name = "cboDelEmail";
-            this.cboDelEmail.Size = new System.Drawing.Size(121, 21);
+            this.cboDelEmail.Size = new System.Drawing.Size(143, 21);
             this.cboDelEmail.TabIndex = 3;
             // 
             // dgvEmail
@@ -840,7 +843,7 @@
             // 
             // btnAddEmail
             // 
-            this.btnAddEmail.Location = new System.Drawing.Point(34, 89);
+            this.btnAddEmail.Location = new System.Drawing.Point(89, 162);
             this.btnAddEmail.Name = "btnAddEmail";
             this.btnAddEmail.Size = new System.Drawing.Size(75, 23);
             this.btnAddEmail.TabIndex = 1;
@@ -850,9 +853,9 @@
             // 
             // txtAddEmail
             // 
-            this.txtAddEmail.Location = new System.Drawing.Point(34, 63);
+            this.txtAddEmail.Location = new System.Drawing.Point(56, 136);
             this.txtAddEmail.Name = "txtAddEmail";
-            this.txtAddEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtAddEmail.Size = new System.Drawing.Size(143, 20);
             this.txtAddEmail.TabIndex = 0;
             // 
             // btnMove
