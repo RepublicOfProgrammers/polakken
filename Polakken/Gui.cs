@@ -82,8 +82,8 @@ namespace Polakken
             DataTable Equals = new DataTable();//Oppretter en datatabell som skal brukes til å fylle en combobox
             equals(Equals);//fyller datatabelen med metoden equals
             populateTxtbox();//Kjører en metode som kjører tester og fyller textboxene med data fra datatabellen dataTable
-            xMin = CountRows;
-            xMax = CountRows + 336;
+            xMin = CountRows - 300;
+            xMax = CountRows + 36;
             int xMinZoom = xMax;
 
             //Fyller en combobox med status verdier som skal brukes til å kunne filtrere via et dataView
@@ -1068,21 +1068,26 @@ namespace Polakken
             {
                 Update_Form();
                 Program.needRefresh = false;
+                xMin++;
+                xMax++;
+                crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
+                crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
             }
             if (settingsupdate)
             {
                 UpdateSettings();
                 settingsupdate = false;
             }
-            if (Program.readingCounter == xMax)
-            {
-                Program.readingCounter = xMax;
-                xMin += 100;
-                xMax += 100;
-                crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
-                crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
+
+            //if (Program.readingCounter == xMax)
+            //{
+            //    Program.readingCounter = xMax;
+            //    xMin += 100;
+            //    xMax += 100;
+            //    crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
+            //    crtView.ChartAreas["tempOversikt"].AxisX.Maximum = xMax;
                 
-            }
+            //}
 
         }
 
