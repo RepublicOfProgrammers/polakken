@@ -221,6 +221,7 @@ namespace Polakken
                             E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, from);
                             break;
                     }
+                    Settings.Default.Save();
                     GUI.settingsupdate = true;
                 }
             }
