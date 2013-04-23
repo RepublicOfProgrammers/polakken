@@ -193,19 +193,6 @@ namespace Polakken
                             }
                             break;
                         case "HLP":
-                            //E-mail kommando for å få tilsendt hjelp teksten. 
-                            //response = help();
-                            //Stream stream = Assembly.GetExecutingAssembly()
-                            //                              .GetManifestResourceStream("Polakken.hjelpPolakken.txt");
-                            //using (StreamReader reader = new StreamReader(stream))
-                            //{
-                            //    string result = reader.ReadToEnd();
-                            //}
-                            //Assembly _assembly;
-                            //StreamReader _textStreamReader;
-
-                            //_assembly = Assembly.GetExecutingAssembly();
-                            //_textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("Polakken.hjelpPolakken.txt"));
                             if (GUI.test == false)
                             {
                                 response = "Kommandoer: \r\n\rINT [1-999]\tEndrer måleintervallet i minutter\r\n" +
@@ -217,8 +204,7 @@ namespace Polakken
                             {
                                 response = "Kommandoer: \r\n\r\nSTP [0-100]\tEndrer setpunktet for temperaturen\r\nINT [1-999]\tEndrer måleintervallet i minutter\r\n" +
                                     "STS 0\tFår opp statusen til programmet. \r\nTLR [0-20]\tEndrer toleransen over hvor mye temperaturen kan avvike" +
-                                    "\r\nALG [0-100]\tEndrer alarmgrensen\r\n\r\nEksempel: \"STP 25\" vil endre setpunktet til 25\r\n\r\nSetpunkt og Toleranse er bare i bruk " +
-                                    "dersom regulering av temperatur er implementert.";
+                                    "\r\nALG [0-100]\tEndrer alarmgrensen\r\n\r\nEksempel: \"STP 25\" vil endre setpunktet til 25";
                                 E_mail_handler.sendToOne("Hjelp", response, from);
                             }
                             break;
