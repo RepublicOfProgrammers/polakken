@@ -211,6 +211,7 @@ namespace Polakken
                                 response = "Kommandoer: \r\n\rINT [1-999]\tEndrer måleintervallet i minutter\r\n" +
                                     "STS 0\tFår opp statusen til programmet." +
                                     "\r\nALG [0-100]\tEndrer alarmgrensen\r\n\r\nEksempel: \"ALG 10\" vil endre alarmgrensen til 10";
+                                E_mail_handler.sendToOne("Hjelp", response, from);
                             }
                             else
                             {
@@ -218,6 +219,7 @@ namespace Polakken
                                     "STS 0\tFår opp statusen til programmet. \r\nTLR [0-20]\tEndrer toleransen over hvor mye temperaturen kan avvike" +
                                     "\r\nALG [0-100]\tEndrer alarmgrensen\r\n\r\nEksempel: \"STP 25\" vil endre setpunktet til 25\r\n\r\nSetpunkt og Toleranse er bare i bruk " +
                                     "dersom regulering av temperatur er implementert.";
+                                E_mail_handler.sendToOne("Hjelp", response, from);
                             }
                             break;
                         case "LOG":
