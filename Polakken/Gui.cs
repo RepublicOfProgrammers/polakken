@@ -648,83 +648,81 @@ namespace Polakken
             this.btnAlarmDown.BackgroundImage = imgArrowDownUp;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")]//DataView trenger ikke disposing, dette er en bivirking som er arvet. (i følge stackoverflow)
         private void btnShowSelected_Click(object sender, EventArgs e)
         {
             if (dtpSelectFrom.Value > dtpSelectTo.Value)
             {
                 MessageBox.Show("Startdato kan ikke være større en sluttdato", "Datofeil", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            using (DataView view = new DataView(dataTable))
+            DataView view = new DataView(dataTable);
+            string filterString = null;
+            string dateSpan = null;
+
+
+            if (chkFilterDate.Checked)
             {
-                string filterString = null;
-                string dateSpan = null;
-
-
-                if (chkFilterDate.Checked)
-                {
-                    string dates = null;
-                    DateTime startDate;
-                    DateTime endDate;
-                    startDate = dtpSelectFrom.Value.Date + dtpSelectFromTime.Value.TimeOfDay;
-                    endDate = dtpSelectTo.Value.Date + dtpSelectToTime.Value.TimeOfDay;
-                    dates = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
-                    view.RowFilter = dates;
-                    dateSpan = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "AND ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
+                string dates = null;
+                DateTime startDate;
+                DateTime endDate;
+                startDate = dtpSelectFrom.Value.Date + dtpSelectFromTime.Value.TimeOfDay;
+                endDate = dtpSelectTo.Value.Date + dtpSelectToTime.Value.TimeOfDay;
+                dates = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
+                view.RowFilter = dates;
+                dateSpan = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "AND ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
 
 
 
 
-                }
-                if (chkFilterStatus.Checked)
-                {
-
-                    int statusIndex;
-                    statusIndex = cboFilterStatus.SelectedIndex;
-                    string statusText = null;
-                    if (statusIndex == 0)
-                    {
-                        statusText = "'True'";
-                        filterString = "AND Status =" + statusText + dateSpan;
-                        view.RowFilter = "Status =" + statusText + dateSpan;
-                    }
-                    if (statusIndex == 1)
-                    {
-                        statusText = "'False'";
-                        filterString = "AND Status =" + statusText + dateSpan;
-                        view.RowFilter = "Status =" + statusText + dateSpan;
-                    }
-
-
-                }
-                if (chkFilterTemp.Checked)
-                {
-                    string valueTempString = cboFilterTemp.Text;
-                    //int valueTempINT = Convert.ToInt32(valueTempString);
-
-                    int statusIndex;
-                    statusIndex = cboEqualsFilter.SelectedIndex;
-
-                    if (statusIndex == 0)
-                    {
-
-                        view.RowFilter = "Temprature =" + valueTempString + filterString + dateSpan;
-
-                    }
-                    if (statusIndex == 1)
-                    {
-                        view.RowFilter = "Temprature >" + valueTempString + filterString + dateSpan;
-
-                    }
-                    if (statusIndex == 2)
-                    {
-                        view.RowFilter = "Temprature <" + valueTempString + filterString + dateSpan;
-
-                    }
-
-                }
-
-                dgvDataBase.DataSource = view;
             }
+            if (chkFilterStatus.Checked)
+            {
+
+                int statusIndex;
+                statusIndex = cboFilterStatus.SelectedIndex;
+                string statusText = null;
+                if (statusIndex == 0)
+                {
+                    statusText = "'True'";
+                    filterString = "AND Status =" + statusText + dateSpan;
+                    view.RowFilter = "Status =" + statusText + dateSpan;
+                }
+                if (statusIndex == 1)
+                {
+                    statusText = "'False'";
+                    filterString = "AND Status =" + statusText + dateSpan;
+                    view.RowFilter = "Status =" + statusText + dateSpan;
+                }
+
+
+            }
+            if (chkFilterTemp.Checked)
+            {
+                string valueTempString = cboFilterTemp.Text;
+                //int valueTempINT = Convert.ToInt32(valueTempString);
+
+                int statusIndex;
+                statusIndex = cboEqualsFilter.SelectedIndex;
+
+                if (statusIndex == 0)
+                {
+
+                    view.RowFilter = "Temprature =" + valueTempString + filterString + dateSpan;
+
+                }
+                if (statusIndex == 1)
+                {
+                    view.RowFilter = "Temprature >" + valueTempString + filterString + dateSpan;
+
+                }
+                if (statusIndex == 2)
+                {
+                    view.RowFilter = "Temprature <" + valueTempString + filterString + dateSpan;
+
+                }
+
+            }
+            dgvDataBase.DataSource = view;
 
         }
 
