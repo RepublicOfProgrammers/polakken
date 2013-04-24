@@ -63,7 +63,10 @@ namespace Polakken
 
             finally
             {
-                ic.Dispose();
+                if (ic != null)
+                {
+                    ic.Dispose();
+                }
             }
         }
 
