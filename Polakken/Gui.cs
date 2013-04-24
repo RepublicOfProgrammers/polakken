@@ -39,6 +39,7 @@ namespace Polakken
         Image imgArrowDownDown = global::Polakken.Properties.Resources.arrowDownDown;
         Image imgDel = global::Polakken.Properties.Resources.btnSlett;
         DbHandler db = new DbHandler();
+        public static Log logForm = null;
 
 
 
@@ -1010,12 +1011,10 @@ namespace Polakken
 
         private void btnLog_Click(object sender, EventArgs e)
         {
-            using (Log logForm = new Log())
-            {
-                logForm.StartPosition = FormStartPosition.Manual;
-                logForm.Location = new Point(700, 40);
-                logForm.Show();
-            }
+            logForm = new Log();
+            logForm.StartPosition = FormStartPosition.Manual;
+            logForm.Location = new Point(700, 40);
+            logForm.Show();
         }
 
         private void btnSaveAll_Click(object sender, EventArgs e)

@@ -20,6 +20,7 @@ namespace Polakken
 
         private void btnLukk_Click(object sender, EventArgs e)
         {
+            if(GUI.logForm != null) GUI.logForm.Dispose();
             this.Close();
         }
 
