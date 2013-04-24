@@ -3,6 +3,7 @@ using AE.Net.Mail;
 using System.IO;
 using Polakken.Properties;
 using System.Reflection;
+using System.Data;
 
 namespace Polakken
 {
@@ -34,8 +35,17 @@ namespace Polakken
                 {
                     //Tre variabler som henter ut informasjon fra den siste motatte mailen
                     from = mail[mail.Length - 1].From.Address;
-                    subject = mail[mail.Length - 1].Subject;
-                    body = mail[mail.Length - 1].Body;
+                    //Løkke som sjekker om mailen er lagt til i databasen
+                    foreach (DataRow dtRow in GUI.dtEmails.Rows)
+                    {
+                        if (from == dtRow["Adresser"].ToString())
+                        {
+                            subject = mail[mail.Length - 1].Subject;
+                            body = mail[mail.Length - 1].Body;
+                        }
+
+                    }
+
                 }
                 //Løkke som sletter alle mail etter den har hentet inn den siste
                 foreach (MailMessage m in mail)
