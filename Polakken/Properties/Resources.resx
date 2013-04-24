@@ -199,4 +199,34 @@
   <data name="arrowDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrowDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnFiltrer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnFiltrer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnFiltrerDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnFiltrerDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnLagre" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnLagre.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnLagreDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnLagreDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnLeggTil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnLeggTil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnLeggTilDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnLeggTilDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnNullstillFilter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnNullstillFilter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnNullstillFilterDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnNullstillFilterDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSlett" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSlett.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSlettDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSlettDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

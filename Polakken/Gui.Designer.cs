@@ -31,10 +31,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
@@ -248,15 +248,16 @@
             // btnSaveAll
             // 
             this.btnSaveAll.BackColor = System.Drawing.Color.Transparent;
-            this.btnSaveAll.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSaveAll.BackgroundImage")));
+            this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.btnLagre;
             this.btnSaveAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnSaveAll.FlatAppearance.BorderSize = 0;
             this.btnSaveAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSaveAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSaveAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveAll.ForeColor = System.Drawing.Color.DimGray;
             this.btnSaveAll.Location = new System.Drawing.Point(276, 245);
             this.btnSaveAll.Name = "btnSaveAll";
-            this.btnSaveAll.Size = new System.Drawing.Size(80, 32);
+            this.btnSaveAll.Size = new System.Drawing.Size(104, 39);
             this.btnSaveAll.TabIndex = 25;
             this.btnSaveAll.UseVisualStyleBackColor = false;
             this.btnSaveAll.Click += new System.EventHandler(this.btnSaveAll_Click);
@@ -592,13 +593,21 @@
             // 
             // btnDelReading
             // 
+            this.btnDelReading.BackgroundImage = global::Polakken.Properties.Resources.btnSlettDown;
+            this.btnDelReading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDelReading.FlatAppearance.BorderSize = 0;
+            this.btnDelReading.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnDelReading.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnDelReading.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDelReading.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelReading.Location = new System.Drawing.Point(163, 112);
             this.btnDelReading.Name = "btnDelReading";
-            this.btnDelReading.Size = new System.Drawing.Size(75, 23);
+            this.btnDelReading.Size = new System.Drawing.Size(98, 44);
             this.btnDelReading.TabIndex = 13;
-            this.btnDelReading.Text = "button1";
             this.btnDelReading.UseVisualStyleBackColor = true;
             this.btnDelReading.Click += new System.EventHandler(this.btnDelReading_Click);
+            this.btnDelReading.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDelReading_MouseDown);
+            this.btnDelReading.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnDelReading_MouseUp);
             // 
             // dtpDelTo
             // 
@@ -635,7 +644,7 @@
             // chkFilterTemp
             // 
             this.chkFilterTemp.AutoSize = true;
-            this.chkFilterTemp.Location = new System.Drawing.Point(115, 256);
+            this.chkFilterTemp.Location = new System.Drawing.Point(115, 239);
             this.chkFilterTemp.Name = "chkFilterTemp";
             this.chkFilterTemp.Size = new System.Drawing.Size(15, 14);
             this.chkFilterTemp.TabIndex = 9;
@@ -645,7 +654,7 @@
             // chkFilterStatus
             // 
             this.chkFilterStatus.AutoSize = true;
-            this.chkFilterStatus.Location = new System.Drawing.Point(20, 257);
+            this.chkFilterStatus.Location = new System.Drawing.Point(20, 240);
             this.chkFilterStatus.Name = "chkFilterStatus";
             this.chkFilterStatus.Size = new System.Drawing.Size(15, 14);
             this.chkFilterStatus.TabIndex = 8;
@@ -654,19 +663,27 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(101, 303);
+            this.btnReset.BackgroundImage = global::Polakken.Properties.Resources.btnNullstillFilter;
+            this.btnReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Location = new System.Drawing.Point(134, 290);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.Size = new System.Drawing.Size(137, 38);
             this.btnReset.TabIndex = 7;
-            this.btnReset.Text = "Nullstill Filter";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnReset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnReset_MouseDown);
+            this.btnReset.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnReset_MouseUp);
             // 
             // cboEqualsFilter
             // 
             this.cboEqualsFilter.Enabled = false;
             this.cboEqualsFilter.FormattingEnabled = true;
-            this.cboEqualsFilter.Location = new System.Drawing.Point(134, 276);
+            this.cboEqualsFilter.Location = new System.Drawing.Point(134, 258);
             this.cboEqualsFilter.Name = "cboEqualsFilter";
             this.cboEqualsFilter.Size = new System.Drawing.Size(88, 21);
             this.cboEqualsFilter.TabIndex = 6;
@@ -697,7 +714,7 @@
             "23",
             "24",
             "25"});
-            this.cboFilterTemp.Location = new System.Drawing.Point(243, 276);
+            this.cboFilterTemp.Location = new System.Drawing.Point(243, 258);
             this.cboFilterTemp.Name = "cboFilterTemp";
             this.cboFilterTemp.Size = new System.Drawing.Size(56, 21);
             this.cboFilterTemp.TabIndex = 5;
@@ -709,20 +726,28 @@
             this.cboFilterStatus.Items.AddRange(new object[] {
             "True",
             "False"});
-            this.cboFilterStatus.Location = new System.Drawing.Point(39, 276);
+            this.cboFilterStatus.Location = new System.Drawing.Point(39, 258);
             this.cboFilterStatus.Name = "cboFilterStatus";
             this.cboFilterStatus.Size = new System.Drawing.Size(56, 21);
             this.cboFilterStatus.TabIndex = 4;
             // 
             // btnShowSelected
             // 
-            this.btnShowSelected.Location = new System.Drawing.Point(20, 303);
+            this.btnShowSelected.BackgroundImage = global::Polakken.Properties.Resources.btnFiltrer;
+            this.btnShowSelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnShowSelected.FlatAppearance.BorderSize = 0;
+            this.btnShowSelected.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnShowSelected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnShowSelected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnShowSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowSelected.Location = new System.Drawing.Point(20, 289);
             this.btnShowSelected.Name = "btnShowSelected";
-            this.btnShowSelected.Size = new System.Drawing.Size(75, 23);
+            this.btnShowSelected.Size = new System.Drawing.Size(110, 38);
             this.btnShowSelected.TabIndex = 3;
-            this.btnShowSelected.Text = "Vis Filtrert";
             this.btnShowSelected.UseVisualStyleBackColor = true;
             this.btnShowSelected.Click += new System.EventHandler(this.btnShowSelected_Click);
+            this.btnShowSelected.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnShowSelected_MouseDown);
+            this.btnShowSelected.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnShowSelected_MouseUp);
             // 
             // dtpSelectTo
             // 
@@ -752,37 +777,37 @@
             // 
             this.dgvDataBase.BackgroundColor = System.Drawing.Color.White;
             this.dgvDataBase.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LawnGreen;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.LawnGreen;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle42;
             this.dgvDataBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle43;
             this.dgvDataBase.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDataBase.GridColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvDataBase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvDataBase.Location = new System.Drawing.Point(358, -1);
             this.dgvDataBase.Name = "dgvDataBase";
             this.dgvDataBase.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDataBase.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.RowHeadersDefaultCellStyle = dataGridViewCellStyle44;
             this.dgvDataBase.RowHeadersWidth = 20;
             this.dgvDataBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDataBase.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -807,18 +832,26 @@
             // 
             // btnDelEmail
             // 
-            this.btnDelEmail.Location = new System.Drawing.Point(271, 162);
+            this.btnDelEmail.BackgroundImage = global::Polakken.Properties.Resources.btnSlett;
+            this.btnDelEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDelEmail.FlatAppearance.BorderSize = 0;
+            this.btnDelEmail.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnDelEmail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnDelEmail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDelEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelEmail.Location = new System.Drawing.Point(260, 164);
             this.btnDelEmail.Name = "btnDelEmail";
-            this.btnDelEmail.Size = new System.Drawing.Size(75, 23);
+            this.btnDelEmail.Size = new System.Drawing.Size(96, 35);
             this.btnDelEmail.TabIndex = 4;
-            this.btnDelEmail.Text = "button1";
             this.btnDelEmail.UseVisualStyleBackColor = true;
             this.btnDelEmail.Click += new System.EventHandler(this.btnDelEmail_Click);
+            this.btnDelEmail.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDelEmail_MouseDown);
+            this.btnDelEmail.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnDelEmail_MouseUp);
             // 
             // cboDelEmail
             // 
             this.cboDelEmail.FormattingEnabled = true;
-            this.cboDelEmail.Location = new System.Drawing.Point(238, 135);
+            this.cboDelEmail.Location = new System.Drawing.Point(238, 137);
             this.cboDelEmail.Name = "cboDelEmail";
             this.cboDelEmail.Size = new System.Drawing.Size(143, 21);
             this.cboDelEmail.TabIndex = 3;
@@ -827,14 +860,14 @@
             // 
             this.dgvEmail.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle41.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle41;
             this.dgvEmail.Location = new System.Drawing.Point(436, 0);
             this.dgvEmail.Name = "dgvEmail";
             this.dgvEmail.RowHeadersWidth = 20;
@@ -843,17 +876,25 @@
             // 
             // btnAddEmail
             // 
-            this.btnAddEmail.Location = new System.Drawing.Point(89, 162);
+            this.btnAddEmail.BackgroundImage = global::Polakken.Properties.Resources.btnLeggTil;
+            this.btnAddEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAddEmail.FlatAppearance.BorderSize = 0;
+            this.btnAddEmail.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnAddEmail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAddEmail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAddEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEmail.Location = new System.Drawing.Point(80, 164);
             this.btnAddEmail.Name = "btnAddEmail";
-            this.btnAddEmail.Size = new System.Drawing.Size(75, 23);
+            this.btnAddEmail.Size = new System.Drawing.Size(91, 35);
             this.btnAddEmail.TabIndex = 1;
-            this.btnAddEmail.Text = "button1";
             this.btnAddEmail.UseVisualStyleBackColor = true;
             this.btnAddEmail.Click += new System.EventHandler(this.btnAddEmail_Click);
+            this.btnAddEmail.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAddEmail_MouseDown);
+            this.btnAddEmail.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnAddEmail_MouseUp);
             // 
             // txtAddEmail
             // 
-            this.txtAddEmail.Location = new System.Drawing.Point(56, 136);
+            this.txtAddEmail.Location = new System.Drawing.Point(56, 138);
             this.txtAddEmail.Name = "txtAddEmail";
             this.txtAddEmail.Size = new System.Drawing.Size(143, 20);
             this.txtAddEmail.TabIndex = 0;
@@ -1031,7 +1072,7 @@
             // btnZoomOut
             // 
             this.btnZoomOut.BackColor = System.Drawing.Color.Transparent;
-            this.btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.Plus;
+            this.btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.PlusDisabeld;
             this.btnZoomOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnZoomOut.FlatAppearance.BorderSize = 0;
             this.btnZoomOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
