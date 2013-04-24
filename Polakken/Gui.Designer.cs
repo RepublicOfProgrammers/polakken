@@ -40,6 +40,9 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.tbcPage = new System.Windows.Forms.TabControl();
             this.tbpOne = new System.Windows.Forms.TabPage();
+            this.lblSensor = new System.Windows.Forms.Label();
+            this.lblSensorInfo = new System.Windows.Forms.Label();
+            this.picSensor = new System.Windows.Forms.PictureBox();
             this.lblChkReg = new System.Windows.Forms.Label();
             this.lblChkDis = new System.Windows.Forms.Label();
             this.lblReg = new System.Windows.Forms.Label();
@@ -120,6 +123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.tbcPage.SuspendLayout();
             this.tbpOne.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSensor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPower)).BeginInit();
             this.tbpTwo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).BeginInit();
@@ -186,6 +190,9 @@
             // 
             this.tbpOne.BackColor = System.Drawing.Color.Black;
             this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.imgTab;
+            this.tbpOne.Controls.Add(this.lblSensor);
+            this.tbpOne.Controls.Add(this.lblSensorInfo);
+            this.tbpOne.Controls.Add(this.picSensor);
             this.tbpOne.Controls.Add(this.lblChkReg);
             this.tbpOne.Controls.Add(this.lblChkDis);
             this.tbpOne.Controls.Add(this.lblReg);
@@ -219,6 +226,41 @@
             this.tbpOne.TabIndex = 0;
             this.tbpOne.Text = "Instillinger";
             // 
+            // lblSensor
+            // 
+            this.lblSensor.AutoSize = true;
+            this.lblSensor.BackColor = System.Drawing.Color.Transparent;
+            this.lblSensor.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSensor.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblSensor.Location = new System.Drawing.Point(335, 143);
+            this.lblSensor.Name = "lblSensor";
+            this.lblSensor.Size = new System.Drawing.Size(87, 16);
+            this.lblSensor.TabIndex = 80;
+            this.lblSensor.Text = "SensorInfo";
+            // 
+            // lblSensorInfo
+            // 
+            this.lblSensorInfo.AutoSize = true;
+            this.lblSensorInfo.BackColor = System.Drawing.Color.Transparent;
+            this.lblSensorInfo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSensorInfo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblSensorInfo.Location = new System.Drawing.Point(389, 183);
+            this.lblSensorInfo.Name = "lblSensorInfo";
+            this.lblSensorInfo.Size = new System.Drawing.Size(81, 16);
+            this.lblSensorInfo.TabIndex = 79;
+            this.lblSensorInfo.Text = "StrømInfo";
+            this.lblSensorInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // picSensor
+            // 
+            this.picSensor.BackColor = System.Drawing.Color.Transparent;
+            this.picSensor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picSensor.Location = new System.Drawing.Point(332, 164);
+            this.picSensor.Name = "picSensor";
+            this.picSensor.Size = new System.Drawing.Size(53, 56);
+            this.picSensor.TabIndex = 78;
+            this.picSensor.TabStop = false;
+            // 
             // lblChkReg
             // 
             this.lblChkReg.AutoSize = true;
@@ -239,7 +281,7 @@
             this.lblChkDis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblChkDis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChkDis.ForeColor = System.Drawing.Color.White;
-            this.lblChkDis.Location = new System.Drawing.Point(356, 165);
+            this.lblChkDis.Location = new System.Drawing.Point(363, 308);
             this.lblChkDis.Name = "lblChkDis";
             this.lblChkDis.Size = new System.Drawing.Size(257, 16);
             this.lblChkDis.TabIndex = 76;
@@ -263,7 +305,7 @@
             this.lblMsgDis.BackColor = System.Drawing.Color.Transparent;
             this.lblMsgDis.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMsgDis.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblMsgDis.Location = new System.Drawing.Point(356, 144);
+            this.lblMsgDis.Location = new System.Drawing.Point(363, 287);
             this.lblMsgDis.Name = "lblMsgDis";
             this.lblMsgDis.Size = new System.Drawing.Size(99, 16);
             this.lblMsgDis.TabIndex = 74;
@@ -275,7 +317,7 @@
             this.lblPower.BackColor = System.Drawing.Color.Transparent;
             this.lblPower.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPower.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblPower.Location = new System.Drawing.Point(332, 43);
+            this.lblPower.Location = new System.Drawing.Point(335, 43);
             this.lblPower.Name = "lblPower";
             this.lblPower.Size = new System.Drawing.Size(84, 16);
             this.lblPower.TabIndex = 73;
@@ -307,7 +349,7 @@
             // chkMsgDis
             // 
             this.chkMsgDis.AutoSize = true;
-            this.chkMsgDis.Location = new System.Drawing.Point(335, 146);
+            this.chkMsgDis.Location = new System.Drawing.Point(342, 289);
             this.chkMsgDis.Name = "chkMsgDis";
             this.chkMsgDis.Size = new System.Drawing.Size(15, 14);
             this.chkMsgDis.TabIndex = 30;
@@ -1361,6 +1403,7 @@
             this.tbcPage.ResumeLayout(false);
             this.tbpOne.ResumeLayout(false);
             this.tbpOne.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSensor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPower)).EndInit();
             this.tbpTwo.ResumeLayout(false);
             this.tbpTwo.PerformLayout();
@@ -1458,6 +1501,9 @@
         private System.Windows.Forms.Label lblDelEmail;
         private System.Windows.Forms.Label lblChkDis;
         private System.Windows.Forms.Label lblChkReg;
+        private System.Windows.Forms.Label lblSensor;
+        private System.Windows.Forms.Label lblSensorInfo;
+        private System.Windows.Forms.PictureBox picSensor;
 
     
 

@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnNullstillFilter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnNullstillFilter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="btnLeggTilDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnLeggTilDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -217,10 +214,19 @@
   <data name="NationalInstruments_MStudioCLM" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NationalInstruments.MStudioCLM.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="btnNullstillFilter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnNullstillFilter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="imgPowerOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgPowerOff.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="imgPowerOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgPowerOn.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgSensorIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgSensorIn.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgSensorOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgSensorOut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

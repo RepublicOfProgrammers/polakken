@@ -80,6 +80,7 @@ namespace Polakken
             dtEmails = GetEmails;
             btnDelReading.Enabled = false;
             PowerCheck();
+            SensorCheck();
             //
             // Opprett DataTabell og fyll DataGridView
             //
@@ -449,11 +450,10 @@ namespace Polakken
                 }
 
             }
-            now = DateTime.Now;
             txtCurrent.Text = tempString;
             lastR = tempString;
             LastRT = dt.ToString("dd/MM/yyyy HH:mm:ss");
-            stsStatus = "Statusoppdatering den " + now.ToString("dd/MM/yyyy") + " klokken " + now.ToString("HH:mm:ss") + " :";
+            
         }
         //
         //Hendelser
@@ -563,6 +563,21 @@ namespace Polakken
                 picPower.Image = global::Polakken.Properties.Resources.imgPowerOff;
                 lblPowerInfo.ForeColor = Color.Red;
                 lblPowerInfo.Text = "Datamaskinen går på batteri";
+            }
+        }
+        private void SensorCheck()
+        {
+            if ((int)SensorCom.temp() == 999)
+            {
+                picSensor.Image = global::Polakken.Properties.Resources.imgSensorOut;
+                lblSensorInfo.ForeColor = Color.Red;
+                lblSensorInfo.Text = "Sensoren er ikke tilkoblet";
+            }
+            else
+            {
+                picSensor.Image = global::Polakken.Properties.Resources.imgSensorIn;
+                lblSensorInfo.ForeColor = Color.White;
+                lblSensorInfo.Text = "Sensoren er tilkoblet";
             }
         }
         public void Zoom()
@@ -1110,6 +1125,9 @@ namespace Polakken
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
             PowerCheck();
+            SensorCheck();
+            now = DateTime.Now;
+            stsStatus = "Statusoppdatering den " + now.ToString("dd/MM/yyyy") + " klokken " + now.ToString("HH:mm:ss") + " :";
             dtEmails = GetEmails;
             MottaMail.mottaMail();
            
