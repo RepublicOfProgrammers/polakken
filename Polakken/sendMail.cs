@@ -47,7 +47,6 @@ namespace Polakken
             {
                 Logger.Error(ex, module);
             }
-
             //finally
             //{
             //    if (client != null)
