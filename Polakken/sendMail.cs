@@ -11,7 +11,7 @@ namespace Polakken
         private static int port = 587;
         private static string email = "republicofprogrammers@gmail.com";
         private static string password = "polakken";
-        private static string module = "E-mail handler";
+        private static string module = "sendMail";
         private static NetworkCredential mCredentials = new NetworkCredential(email, password);
 
         //Metode som sender mail til alle som er oppført i databasen
