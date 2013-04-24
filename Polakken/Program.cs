@@ -10,10 +10,14 @@ namespace Polakken
         public static bool needRefresh { get; set; }
         public static int readingCounter { get; set; }
         private static int alarmCounter;
+        public static bool isRunningOnBattery { get; set; }
 
         [STAThread]
         static void Main()
         {
+            //Sjekker om datamaskinen har strøm
+            isRunningOnBattery = (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
+
             needRefresh = false;
             readingCounter = 0;
             alarmCounter = 0;
@@ -44,6 +48,10 @@ namespace Polakken
                     if ((int)SensorCom.temp() == 999)
                     {
                         Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, Polakken blunder en times tid.", "Polakken");
+
+                        //Sjekker om datamaskinen har strøm
+                        isRunningOnBattery = (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
+
                         //E_mail_handler.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");                    
                         Thread.Sleep(36000);
                     }
@@ -81,7 +89,11 @@ namespace Polakken
                         {
                             alarmCounter = 0;
                         }
-                        Thread.Sleep(SensorCom.mesInterval * 150000);
+
+                        //Sjekker om datamaskinen har strøm
+                        isRunningOnBattery = (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
+                        //Venter gitt måleintervall, ganget opp med 60 000, for å få i minutter.
+                        Thread.Sleep(SensorCom.mesInterval * 60000);
                     }
                 //}
                 //else
