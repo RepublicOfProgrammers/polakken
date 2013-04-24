@@ -9,6 +9,7 @@ namespace Polakken
         //Mappen hvor alle log filene skal ligge
         private string dirLogs = "Logs";
         public static string currentLog { get; set; }
+        public static bool showMsgBoxes { get; set;}
         
         //Konstruktør som kun brukes i oppstart av programmet for å opprette en ny logg fil med dagens dato
         public Logger() 
@@ -32,13 +33,13 @@ namespace Polakken
         //Følgende metoder brukes i de forskjellige trace event'ene vi har definert.
         public static void Error(string message, string module)
         {
-            System.Windows.Forms.MessageBox.Show("FEIL: " + message, "Polakken Error");
+            if(showMsgBoxes) System.Windows.Forms.MessageBox.Show("FEIL: " + message, "Polakken Error");
             WriteEntry(message, "FEIL", module);
         }
 
         public static void Error(Exception ex, string module)
         {
-            System.Windows.Forms.MessageBox.Show("FEIL: " + ex, "Polakken Error");
+            if (showMsgBoxes) System.Windows.Forms.MessageBox.Show("FEIL: " + ex, "Polakken Error");
             WriteEntry(ex.Message, "FEIL", module);
         }
 
