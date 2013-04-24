@@ -25,12 +25,12 @@ namespace Polakken
         {
             try
             {
-                string mailTil;
+                string mailTo;
 
                 foreach (DataRow dtRow in GUI.dtEmails.Rows)
                 {
-                    mailTil = dtRow["Adresser"].ToString();
-                    client.Send(email, mailTil, subject, body);
+                    mailTo = dtRow["Adresser"].ToString();
+                    client.Send(email, mailTo, subject, body);
                     Logger.Info("Sendt email til alle mottakere." ,module);
                 }
             }
@@ -42,12 +42,12 @@ namespace Polakken
         }
 
         //Metode som bare sender mail til en person
-        public static void sendToOne(string subject, string body, string mailAdress)
+        public static void sendToOne(string subject, string body, string mailTo)
         {
             try
             {
-                client.Send(email, mailAdress, subject, body);
-                Logger.Info("Sendt email til " + mailAdress + ".", module);
+                client.Send(email, mailTo, subject, body);
+                Logger.Info("Sendt email til " + mailTo + ".", module);
             }
             catch (Exception ex)
             {
