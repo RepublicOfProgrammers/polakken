@@ -100,6 +100,7 @@ namespace Polakken
                         }
                         else if (isRunningOnBattery == false & batterySent == false)
                         {
+                            E_mail_handler.sendToAll("Strøm varsel", "Datamaskinen kjører ikke lenger på batteristrøm");
                             batterySent = true;
                         }
 
