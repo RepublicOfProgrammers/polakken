@@ -37,7 +37,7 @@ namespace Polakken
                     //Tre variabler som henter ut informasjon fra den siste motatte mailen
                     from = mail[mail.Length - 1].From.Address;
                     //Løkke som sjekker om mailen er lagt til i databasen
-                    foreach (DataRow dtRow in GUI.dtEmails.Rows)
+                    foreach (DataRow dtRow in lblDelEmail.dtEmails.Rows)
                     {
                         if (from == dtRow["Adresser"].ToString())
                         {
@@ -167,10 +167,10 @@ namespace Polakken
 
                             string alarm = Convert.ToString(SensorCom.alarmLimit);
                             string interval = Convert.ToString(SensorCom.mesInterval);
-                            string time = GUI.LastRT;
-                            string temp = GUI.lastR;
-                            string statusDT = GUI.stsStatus;
-                            if (GUI.test == false) //Regulering er ikke aktivert. Inneholder ikke variablene som har med regulering å gjøre. 
+                            string time = lblDelEmail.LastRT;
+                            string temp = lblDelEmail.lastR;
+                            string statusDT = lblDelEmail.stsStatus;
+                            if (lblDelEmail.test == false) //Regulering er ikke aktivert. Inneholder ikke variablene som har med regulering å gjøre. 
                             {
                                 response = statusDT + "\r\n\r\n Siste Avlesning:" + time + " \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval;
                             }
@@ -237,7 +237,7 @@ namespace Polakken
                             break;
                         case "HLP":
                             //E-mail kommando for å få returnert hjelp teksten. 
-                            if (GUI.test == false) //Regulering er ikke aktivert. Inneholder ikke kommandoene som har med regulering å gjøre. 
+                            if (lblDelEmail.test == false) //Regulering er ikke aktivert. Inneholder ikke kommandoene som har med regulering å gjøre. 
                             {
                                 response = "Kommandoer: \r\n\rINT [1-999]\tEndrer måleintervallet (tid i minutter)\r\n" +
                                     "STS 0\t\tReturnerer statusen til programmet." +
@@ -281,7 +281,7 @@ namespace Polakken
                             break;
                     }
                     Settings.Default.Save();
-                    GUI.settingsupdate = true;
+                    lblDelEmail.settingsupdate = true;
                 }
             }
             else

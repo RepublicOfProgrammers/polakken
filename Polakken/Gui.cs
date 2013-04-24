@@ -9,7 +9,7 @@ using Polakken.Properties;
 
 namespace Polakken
 {
-    public partial class GUI : Form
+    public partial class lblDelEmail : Form
     {
         int CountRows = 0;
         int Mover;
@@ -43,7 +43,7 @@ namespace Polakken
 
 
 
-        public GUI()
+        public lblDelEmail()
         {
             InitializeComponent();
 
@@ -78,7 +78,7 @@ namespace Polakken
             fillDataTable(dataTable);//Kjører metoden fillDatatable som fyller datatabellen som sendes med som en parameter
             dgvDataBase.DataSource = dataTable;//Setter datagridviewens datasource til den utfylte datatabellen
             GetEmail(GetEmails);// gjør akuratt det samme som fillDatatable, men bare for emails
-            dgvEmail.DataSource = GetEmails;//Samme som for datagridviewt til databasen
+            lblAdd.DataSource = GetEmails;//Samme som for datagridviewt til databasen
             using (DataTable Equals = new DataTable())
             {//Oppretter en datatabell som skal brukes til å fylle en combobox
                 populateTxtbox();//Kjører en metode som kjører tester og fyller textboxene med data fra datatabellen dataTable
@@ -157,7 +157,7 @@ namespace Polakken
             //Email TabellVisning
             //
             dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvEmail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            lblAdd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
             //
             //DateTimePickers
@@ -796,10 +796,10 @@ namespace Polakken
                 else
                 {
                     db.AddEmail(inputText);
-                    dgvEmail.DataSource = null;
+                    lblAdd.DataSource = null;
                     GetEmails.Clear();
                     GetEmail(GetEmails);
-                    dgvEmail.DataSource = GetEmails;
+                    lblAdd.DataSource = GetEmails;
                     txtAddEmail.Clear();
                 }
 
@@ -889,10 +889,10 @@ namespace Polakken
         {
             int DelIndex = Convert.ToInt32(cboDelEmail.SelectedValue);
             db.DelEmail(DelIndex);
-            dgvEmail.DataSource = null;
+            lblAdd.DataSource = null;
             GetEmails.Clear();
             GetEmail(GetEmails);
-            dgvEmail.DataSource = GetEmails;
+            lblAdd.DataSource = GetEmails;
 
         }
 

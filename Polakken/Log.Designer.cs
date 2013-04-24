@@ -86,7 +86,7 @@
             // 
             // tmrUpdateText
             // 
-            this.tmrUpdateText.Interval = 6000;
+            this.tmrUpdateText.Interval = 10000;
             this.tmrUpdateText.Tick += new System.EventHandler(this.tmrUpdateText_Tick);
             // 
             // Log

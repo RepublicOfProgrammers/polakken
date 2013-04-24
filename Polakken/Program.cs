@@ -33,7 +33,7 @@ namespace Polakken
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI());
+            Application.Run(new lblDelEmail());
         }
 
         /// <summary>
@@ -58,9 +58,9 @@ namespace Polakken
                     }
                     else
                     {
-                        if (GUI.test == false)
+                        if (lblDelEmail.test == false)
                         {
-                            mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI.test);
+                            mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), lblDelEmail.test);
                             //lastTemp = (int)SensorCom.temp();
                         }
                         else
@@ -77,7 +77,7 @@ namespace Polakken
                         {
                             if (alarmSent == true)
                             {
-                                E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
+                                sendMail.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
                                 Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
                             }
                             else
@@ -95,7 +95,7 @@ namespace Polakken
                         isRunningOnBattery = (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
                         if (isRunningOnBattery == true & batterySent == true)
                         {
-                            E_mail_handler.sendToAll("Strøm advarsel", "Datamaskinen kjører nå på batteristrøm");
+                            sendMail.sendToAll("Strøm advarsel", "Datamaskinen kjører nå på batteristrøm");
                             batterySent = false;
                         }
                         else if (isRunningOnBattery == false & batterySent == false)

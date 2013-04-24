@@ -20,7 +20,7 @@ namespace Polakken
 
         private void btnLukk_Click(object sender, EventArgs e)
         {
-            if(GUI.logForm != null) GUI.logForm.Dispose();
+            if(lblDelEmail.logForm != null) lblDelEmail.logForm.Dispose();
             this.Close();
         }
 
@@ -46,7 +46,7 @@ namespace Polakken
 
         private void tmrUpdateText_Tick(object sender, EventArgs e)
         {
-            tmrUpdateText.Start();
+            
             FileStream fs = null;
             try
             {
@@ -78,6 +78,7 @@ namespace Polakken
                 {
                     fs = null;
                     txtRead.Text = sr.ReadToEnd();
+                    
                 }
             }
             catch (Exception) { }
