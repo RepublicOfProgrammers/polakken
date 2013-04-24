@@ -45,7 +45,7 @@ namespace Polakken
                     {
                         Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, Polakken blunder en times tid.", "Polakken");
                         //E_mail_handler.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");                    
-                        Thread.Sleep(3600000);
+                        Thread.Sleep(36000);
                     }
                     else
                     {
