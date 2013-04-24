@@ -77,7 +77,7 @@ namespace Polakken
                         {
                             if (alarmSent == true)
                             {
-                                E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
+                                sendMail.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
                                 Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
                             }
                             else
@@ -95,7 +95,7 @@ namespace Polakken
                         isRunningOnBattery = (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
                         if (isRunningOnBattery == true & batterySent == true)
                         {
-                            E_mail_handler.sendToAll("Strøm advarsel", "Datamaskinen kjører nå på batteristrøm");
+                            sendMail.sendToAll("Strøm advarsel", "Datamaskinen kjører nå på batteristrøm");
                             batterySent = false;
                         }
                         else if (isRunningOnBattery == false & batterySent == false)
