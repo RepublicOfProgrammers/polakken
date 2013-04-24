@@ -124,11 +124,17 @@
   <data name="Logg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NationalInstruments_Common1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NationalInstruments.Common.msl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnNullstillFilter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnNullstillFilter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NationalInstruments_DAQmx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NationalInstruments.DAQmx.msl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnLeggTilDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnLeggTilDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSlett" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSlett.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnLogg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnLogg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LogForn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogForn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,14 +145,29 @@
   <data name="Plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnLagre" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnLagre.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="NationalInstruments_Common_Native" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NationalInstruments.Common.Native.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnFiltrer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnFiltrer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NationalInstruments_DAQmx" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NationalInstruments.DAQmx.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnLogg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnLogg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnFiltrerDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnFiltrerDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrowUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrowUp2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MinusDisabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MinusDisabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonLogg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buttonLogg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,76 +178,58 @@
   <data name="BetaV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BetaV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arrowDownDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowDownDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NationalInstruments_Common" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NationalInstruments.Common.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="arrowDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrowDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="NationalInstruments_NiLmClientDLL" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NationalInstruments.NiLmClientDLL.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSlettDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSlettDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arrowUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowUp2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrowUpDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowUpDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LagreDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LagreDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NationalInstruments_DAQmx2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NationalInstruments.DAQmx.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="NationalInstruments_MStudioCLM" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NationalInstruments.MStudioCLM.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonLogg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\buttonLogg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MinusDisabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MinusDisabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="PlusDisabeld" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlusDisabeld.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arrowDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnFiltrer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnFiltrer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnFiltrerDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnFiltrerDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnLagre" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnLagre.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnLagreDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnLagreDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="NationalInstruments_Common1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.Common.msl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="btnLeggTil" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnLeggTil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnLeggTilDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnLeggTilDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arrowUpDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrowUpDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnNullstillFilter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnNullstillFilter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="NationalInstruments_DAQmx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.DAQmx.msl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LagreDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LagreDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnNullstillFilterDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnNullstillFilterDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnSlett" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnSlett.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnLagreDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnLagreDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnSlettDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnSlettDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="NationalInstruments_DAQmx2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.DAQmx.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="arrowDownDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrowDownDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NationalInstruments_MStudioCLM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NationalInstruments.MStudioCLM.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OnPower" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OnPower.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
