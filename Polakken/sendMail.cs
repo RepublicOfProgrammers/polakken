@@ -13,6 +13,7 @@ namespace Polakken
         private static string password = "polakken";
         private static string module = "E-mail handler";
 
+
          public static  SmtpClient client = new SmtpClient(host, port) //Lager en ny SmtpClient med host-navn og port
          {
              Credentials = new NetworkCredential(email, password), //Login-informasjon for emailen vi sender fra
