@@ -46,13 +46,14 @@ namespace Polakken
                         }
 
                     }
+                    //Løkke som sletter alle mail etter den har hentet inn den siste
+                    foreach (MailMessage m in mail)
+                    {
+                        ic.DeleteMessage(m);
+                    }
 
                 }
-                //Løkke som sletter alle mail etter den har hentet inn den siste
-                foreach (MailMessage m in mail)
-                {
-                    ic.DeleteMessage(m);
-                }
+                
             }
 
 

@@ -25,7 +25,7 @@ namespace Polakken
                 {
                     client.Credentials = mCredentials;
                     client.EnableSsl = true;
-
+                    //Løkke som henter ut alle e-mails fra databasen
                     foreach (DataRow dtRow in GUI.dtEmails.Rows)
                     {
                         mailTo = dtRow["Adresser"].ToString();
