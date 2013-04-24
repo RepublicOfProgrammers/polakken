@@ -80,5 +80,17 @@ namespace Polakken.Properties {
                 this["setpoint"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool hideMsgBox {
+            get {
+                return ((bool)(this["hideMsgBox"]));
+            }
+            set {
+                this["hideMsgBox"] = value;
+            }
+        }
     }
 }

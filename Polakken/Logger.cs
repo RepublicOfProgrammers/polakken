@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using Polakken.Properties;
 
 namespace Polakken
 {
@@ -14,6 +15,8 @@ namespace Polakken
         //Konstruktør som kun brukes i oppstart av programmet for å opprette en ny logg fil med dagens dato
         public Logger() 
         {
+            showMsgBoxes = Settings.Default.hideMsgBox;// Henter inn config settpunkt på valg om skjuling av error message boxes.
+            
             if (!Directory.Exists(dirLogs)) 
             {
                 //Dersom mappen ikke eksisterer så opprettes den
@@ -33,13 +36,13 @@ namespace Polakken
         //Følgende metoder brukes i de forskjellige trace event'ene vi har definert.
         public static void Error(string message, string module)
         {
-            if(showMsgBoxes) System.Windows.Forms.MessageBox.Show("FEIL: " + message, "Polakken Error");
+            if(!showMsgBoxes) System.Windows.Forms.MessageBox.Show("FEIL: " + message, "Polakken Error");
             WriteEntry(message, "FEIL", module);
         }
 
         public static void Error(Exception ex, string module)
         {
-            if (showMsgBoxes) System.Windows.Forms.MessageBox.Show("FEIL: " + ex, "Polakken Error");
+            if (!showMsgBoxes) System.Windows.Forms.MessageBox.Show("FEIL: " + ex, "Polakken Error");
             WriteEntry(ex.Message, "FEIL", module);
         }
 

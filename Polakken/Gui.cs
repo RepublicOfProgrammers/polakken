@@ -52,6 +52,7 @@ namespace Polakken
         {
 
             tmrUpdateSettings.Start();
+            chkMsgDis.Checked = Settings.Default.hideMsgBox; // Henter inn config settpunkt på valg om skjuling av error message boxes. 
             SensorCom.mesInterval = Settings.Default.mesInterval; // Henter inn config settpunkt på måleintervall og sender til SensorCom
             SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunkt på alarmgrense og sender til SensorCom
             Regulation.setpoint = Settings.Default.setpoint; //Henter in config settpunkt på settpunkt og sender til Regulation
@@ -1121,6 +1122,13 @@ namespace Polakken
         private void btnDelEmail_MouseUp(object sender, MouseEventArgs e)
         {
             btnDelEmail.BackgroundImage = imgDel;
+        }
+
+        private void chkMsgDis_CheckedChanged(object sender, EventArgs e)
+        {
+            Logger.showMsgBoxes = chkMsgDis.Checked;
+            Settings.Default.hideMsgBox = chkMsgDis.Checked;
+            Settings.Default.Save();
         }
     }
 }
