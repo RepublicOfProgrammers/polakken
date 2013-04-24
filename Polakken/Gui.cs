@@ -76,15 +76,9 @@ namespace Polakken
             dgvEmail.DataSource = GetEmails;//Samme som for datagridviewt til databasen
             using (DataTable Equals = new DataTable())
             {//Oppretter en datatabell som skal brukes til å fylle en combobox
-                equals(Equals);//fyller datatabelen med metoden equals
                 populateTxtbox();//Kjører en metode som kjører tester og fyller textboxene med data fra datatabellen dataTable
                 xMin = CountRows - 300;
                 xMax = CountRows + 36;
-
-
-                //Fyller en combobox med status verdier som skal brukes til å kunne filtrere via et dataView
-
-                //Fyller en combobox med temp verdier som skal brukes til å kunne filtrere via et dataView
 
                 using (DataView viewTemp = new DataView(dataTable))
                 {
@@ -94,16 +88,6 @@ namespace Polakken
                     cboFilterTemp.ValueMember = "Temprature";
 
                 }
-                //Fyller en combobox med operatør verdier som skal brukes til å kunne filtrere via et dataView
-
-                using (DataView viewEquals = new DataView(Equals))
-                {
-                    DataTable distinctTempValues = viewEquals.ToTable(true, "textEquals");
-                    cboEqualsFilter.DataSource = distinctTempValues;
-                    cboEqualsFilter.DisplayMember = "textEquals";
-                    cboEqualsFilter.ValueMember = "valueEquals";
-                }
-
             }
 
             DataView viewDeleteEmail = new DataView(GetEmails);
@@ -111,15 +95,9 @@ namespace Polakken
             cboDelEmail.DisplayMember = "Adresser";
             cboDelEmail.ValueMember = "Index";
 
-
-
-
-
             //
             // Graf:
             //
-
-
             crtView.DataSource = dataTable;
 
             crtView.ChartAreas.Add("tempOversikt");
@@ -217,20 +195,6 @@ namespace Polakken
 
 
         }
-
-        //
-        //Fyller Datatabellen for fortegn for filter
-        //
-
-        public DataTable equals(DataTable dtbEquals)
-        {
-            dtbEquals.Columns.Add("textEquals", typeof(string));
-            dtbEquals.Rows.Add("Er nøyaktig");
-            dtbEquals.Rows.Add("Over");
-            dtbEquals.Rows.Add("Under");
-            return dtbEquals;
-        }
-
         //
         //Koble Til Databasen og hente ut verdier
         //
