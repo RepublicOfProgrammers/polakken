@@ -60,13 +60,23 @@ namespace Polakken
         private void Log_Load(object sender, EventArgs e)
         {
             tmrUpdateText.Start();
-            var fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            using (var sr = new StreamReader(fs))
+            var fs = (FileStream)null;
+            try
             {
-              
-                txtRead.Text = sr.ReadToEnd();
-
+                fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using (var sr = new StreamReader(fs))
+                {
+                    txtRead.Text = sr.ReadToEnd();
+                }
+                fs = null;
             }
+            catch (Exception) { }
+            finally
+            {
+                if(fs != null)
+                    fs.Dispose();
+            }
+            
         }
 
         
