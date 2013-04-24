@@ -7,8 +7,8 @@ namespace Polakken
     static class SensorCom
     {
         private static string module = "SensorCom";
-        public static int alarmLimit { get; set; } //Brukes ikke internt i klassen, men hører til. 
-        public static int mesInterval { get; set; } //Brukes ikke internt i klassen, men hører til. 
+        public static int alarmLimit { get; set; } //Brukes ikke internt i klassen, men bestemmer hvor lav temperatur som skal til før en alarm sendes. 
+        public static int mesInterval { get; set; } //Brukes ikke internt i klassen, men bestemmer hvor ofte det gjøres en måling. 
 
         public static double temp()
         {

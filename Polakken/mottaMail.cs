@@ -118,7 +118,7 @@ namespace Polakken
                             //E-mail kommando for endring av setpunkt. 
                             if (intvalue < 0)
                             {
-                                response = "Setpunktet kan ikke være mindere enn null, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
+                                response = "Setpunktet kan ikke være mindre enn null, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
                                 E_mail_handler.sendToOne("Feil i endring av setpunkt", response, from);
                                 loggerInfo = "Setpunktet har blitt forsøkt endret til en verdi utenfor grensene (0-100) ved e-mail kommando fra " + from + " setpunktet forblir uendret.";
                             }
@@ -142,7 +142,7 @@ namespace Polakken
                             //E-mail kommando for endring av måleinterval. 
                             if (intvalue < 1)
                             {
-                                response = "Måleintervallet kan ikke være mindere enn 1, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
+                                response = "Måleintervallet kan ikke være mindre enn 1, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
                                 E_mail_handler.sendToOne("Feil i endring av måleinterval", response, from);
                                 loggerInfo = "Måleintervallet har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " + from + " måleintervallet forblir uendret.";
                             }
@@ -189,7 +189,7 @@ namespace Polakken
                             //E-mail kommando for endring av toleranse. 
                             if (intvalue < 0)
                             {
-                                response = "Toleransen kan ikke være mindere enn null, toleransen forblir på siste verdi som er " + Convert.ToString(Regulation.tolerance);
+                                response = "Toleransen kan ikke være mindre enn null, toleransen forblir på siste verdi som er " + Convert.ToString(Regulation.tolerance);
                                 loggerInfo = "Toleransen har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " + from + " toleransen forblir uendret.";
                                 Logger.Info(loggerInfo, module);
                                 E_mail_handler.sendToOne("Feil i endring av toleranse", response, from);
@@ -215,7 +215,7 @@ namespace Polakken
                             //E-mail kommando for endring av alarmgrense.
                             if (intvalue < 0)
                             {
-                                response = "Alarmgrensen kan ikke være mindere enn null, Alarmgrensen forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
+                                response = "Alarmgrensen kan ikke være mindre enn null, Alarmgrensen forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
                                 loggerInfo = "Alarmgrensen har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " + from + " alarmgrensen forblir uendret.";
                                 E_mail_handler.sendToOne("Feil i endring av alarmgrensen", response, from);
                             }

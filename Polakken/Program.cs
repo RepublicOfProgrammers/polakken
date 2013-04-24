@@ -9,7 +9,8 @@ namespace Polakken
         private static DbHandler mDbHandler;
         public static bool needRefresh { get; set; }
         public static int readingCounter { get; set; }
-        private static int alarmCounter;
+        private static bool alarmSent;
+        private static bool batterySent { get; set; }
         public static bool isRunningOnBattery { get; set; }
 
         [STAThread]
@@ -20,7 +21,7 @@ namespace Polakken
 
             needRefresh = false;
             readingCounter = 0;
-            alarmCounter = 0;
+            alarmSent = true;
             new Logger(); // kaller konstruktøren til logger classen kun for å opprette ny logg tekstfil. 
             mDbHandler = new DbHandler(); // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
 
@@ -74,7 +75,7 @@ namespace Polakken
                         readingCounter++;
                         if (SensorCom.temp() < SensorCom.alarmLimit)
                         {
-                            if (alarmCounter < 1)
+                            if (alarmSent == true)
                             {
                                 E_mail_handler.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
                                 Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
@@ -83,15 +84,26 @@ namespace Polakken
                             {
                                 Logger.Warning("Måling er fremdeles under alarmgrensen, sender ikke mail", "Polakken");
                             }
-                            alarmCounter++;
+                            alarmSent = false;
                         }
                         else if (SensorCom.temp() > SensorCom.alarmLimit)
                         {
-                            alarmCounter = 0;
+                            alarmSent = true;
                         }
 
                         //Sjekker om datamaskinen har strøm
                         isRunningOnBattery = (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
+                        if (isRunningOnBattery == true & batterySent == true)
+                        {
+                            E_mail_handler.sendToAll("Strøm advarsel", "Datamaskinen kjører nå på batteristrøm");
+                            batterySent = false;
+                        }
+                        else if (isRunningOnBattery == false & batterySent == false)
+                        {
+                            batterySent = true;
+                        }
+
+
                         //Venter gitt måleintervall, ganget opp med 60 000, for å få i minutter.
                         Thread.Sleep(SensorCom.mesInterval * 60000);
                     }
