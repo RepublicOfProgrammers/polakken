@@ -13,30 +13,11 @@ namespace Polakken
         private static string password = "polakken";
         private static string module = "E-mail handler";
 
-        public static SmtpClient client = new SmtpClient(host, port); //Lager en ny SmtpClient med host-navn og port
-
-        public static void connectToMail()
-        {
-            SmtpClient client = null;
-            try
-            {
-                client = new SmtpClient(host, port)
-             {
-                 Credentials = new NetworkCredential(email, password), //Login-informasjon for emailen vi sender fra
-                 EnableSsl = true //Legger til sikkerhetslaget Ssl
-             };
-            }
-
-            finally
-            {
-                client.Dispose();
-            }
-
-        }
-
-
-
-
+         public static  SmtpClient client = new SmtpClient(host, port) //Lager en ny SmtpClient med host-navn og port
+         {
+             Credentials = new NetworkCredential(email, password), //Login-informasjon for emailen vi sender fra
+             EnableSsl = true //Legger til sikkerhetslaget Ssl
+         };
 
         //Metode som sender mail til alle som er oppført i databasen
         public static void sendToAll(string subject, string body)
