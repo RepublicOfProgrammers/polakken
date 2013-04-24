@@ -7,15 +7,36 @@ namespace Polakken
 {
     static class E_mail_handler
     {
+        private static string host = "smtp.gmail.com";
+        private static int port = 587;
         private static string email = "republicofprogrammers@gmail.com";
         private static string password = "polakken";
         private static string module = "E-mail handler";
 
-        public static  SmtpClient client = new SmtpClient("smtp.gmail.com", 587) //Lager en ny SmtpClient med host-navn og port
-         {
-             Credentials = new NetworkCredential(email, password), //Login-informasjon for emailen vi sender fra
-             EnableSsl = true //Legger til sikkerhetslaget Ssl
-         };
+        public static SmtpClient client = new SmtpClient(host, port); //Lager en ny SmtpClient med host-navn og port
+
+        public static void connectToMail()
+        {
+            SmtpClient client = null;
+            try
+            {
+                client = new SmtpClient(host, port)
+             {
+                 Credentials = new NetworkCredential(email, password), //Login-informasjon for emailen vi sender fra
+                 EnableSsl = true //Legger til sikkerhetslaget Ssl
+             };
+            }
+
+            finally
+            {
+                client.Dispose();
+            }
+
+        }
+
+
+
+
 
         //Metode som sender mail til alle som er oppført i databasen
         public static void sendToAll(string subject, string body)
