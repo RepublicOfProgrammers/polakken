@@ -5,7 +5,8 @@ using System.IO;
 
 namespace Polakken
 {
-    class DbHandler : IDisposable
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable")]//Unødvendig, disposer sqlceConnection i dekonstruktør.
+    class DbHandler
     {
         private string thismodule = "DbHandler";
 
@@ -30,40 +31,15 @@ namespace Polakken
         public static readonly string TB_EMAIL_NUMBER = "ID";
         public static readonly string TB_EMAIL_ADRESS = "Adress";
 
-
-        /// <summary>
-        /// Kaster DbHandleren i søppla, for å frigjøre ressurser
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
         /// <summary>
         /// Automatisk dekonstruktør som blir kaldt når DbHandler ikke brukes lengre. 
         /// </summary>
         ~DbHandler()
         {
-            Dispose(false);
-        }
-
-        /// <summary>
-        /// NB! Denne metoden blir kun kjørt fra Dispose() og ~DbHandler().
-        /// Egenmodifisert dispose metoden som sletter alle ressurser som det ikke er behov for lengre dersom:
-        /// </summary>
-        /// <param name="freeManagedObjectsAlso">== true: sletter både ubrukte og brukte ressurser det ikke lengre er behov for.
-        /// ==false: sletter kun ubrukte ressurser.</param>
-        protected void Dispose(Boolean freeManagedObjectsAlso)
-        {
-            //Frigjør uhåndterte ressurser 
-            if (freeManagedObjectsAlso)
+            if (this._connection != null)
             {
-                if (this._connection != null)
-                {
-                    this._connection.Dispose();
-                    this._connection = null;
-                }
+                this._connection.Dispose();
+                this._connection = null;
             }
         }
 

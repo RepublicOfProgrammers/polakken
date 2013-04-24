@@ -39,7 +39,7 @@ namespace Polakken
         Image imgArrowDownDown = global::Polakken.Properties.Resources.arrowDownDown;
         Image imgDel = global::Polakken.Properties.Resources.btnSlett;
         DbHandler db = new DbHandler();
-       
+
 
 
         public GUI()
@@ -47,9 +47,6 @@ namespace Polakken
             InitializeComponent();
 
         }
-
-
-
 
         private void GUI_Load(object sender, EventArgs e)
         {
@@ -77,51 +74,42 @@ namespace Polakken
             dgvDataBase.DataSource = dataTable;//Setter datagridviewens datasource til den utfylte datatabellen
             GetEmail(GetEmails);// gjør akuratt det samme som fillDatatable, men bare for emails
             dgvEmail.DataSource = GetEmails;//Samme som for datagridviewt til databasen
-            DataTable Equals = new DataTable();//Oppretter en datatabell som skal brukes til å fylle en combobox
-            equals(Equals);//fyller datatabelen med metoden equals
-            populateTxtbox();//Kjører en metode som kjører tester og fyller textboxene med data fra datatabellen dataTable
-            xMin = CountRows - 300;
-            xMax = CountRows + 36;
-            
+            using (DataTable Equals = new DataTable())
+            {//Oppretter en datatabell som skal brukes til å fylle en combobox
+                equals(Equals);//fyller datatabelen med metoden equals
+                populateTxtbox();//Kjører en metode som kjører tester og fyller textboxene med data fra datatabellen dataTable
+                xMin = CountRows - 300;
+                xMax = CountRows + 36;
 
-            //Fyller en combobox med status verdier som skal brukes til å kunne filtrere via et dataView
-            
-            //Fyller en combobox med temp verdier som skal brukes til å kunne filtrere via et dataView
-            try
-            {
-                DataView viewTemp = new DataView(dataTable);
-                DataTable distinctTempValues = viewTemp.ToTable(true, "Temprature");
-                cboFilterTemp.DataSource = distinctTempValues;
-                cboFilterTemp.DisplayMember = "Temprature";
-                cboFilterTemp.ValueMember = "Temprature";
 
-            }
-            catch (Exception)
-            {
-            }
-            //Fyller en combobox med operatør verdier som skal brukes til å kunne filtrere via et dataView
-            try
-            {
-                DataView viewEquals = new DataView(Equals);
-                DataTable distinctTempValues = viewEquals.ToTable(true, "textEquals");
-                cboEqualsFilter.DataSource = distinctTempValues;
-                cboEqualsFilter.DisplayMember = "textEquals";
-                cboEqualsFilter.ValueMember = "valueEquals";
-            }
-            catch (Exception)
-            {
+                //Fyller en combobox med status verdier som skal brukes til å kunne filtrere via et dataView
+
+                //Fyller en combobox med temp verdier som skal brukes til å kunne filtrere via et dataView
+
+                using (DataView viewTemp = new DataView(dataTable))
+                {
+                    DataTable distinctTempValues = viewTemp.ToTable(true, "Temprature");
+                    cboFilterTemp.DataSource = distinctTempValues;
+                    cboFilterTemp.DisplayMember = "Temprature";
+                    cboFilterTemp.ValueMember = "Temprature";
+
+                }
+                //Fyller en combobox med operatør verdier som skal brukes til å kunne filtrere via et dataView
+
+                using (DataView viewEquals = new DataView(Equals))
+                {
+                    DataTable distinctTempValues = viewEquals.ToTable(true, "textEquals");
+                    cboEqualsFilter.DataSource = distinctTempValues;
+                    cboEqualsFilter.DisplayMember = "textEquals";
+                    cboEqualsFilter.ValueMember = "valueEquals";
+                }
+
             }
 
-            try
-            {
-                DataView viewDeleteEmail = new DataView(GetEmails);
-                cboDelEmail.DataSource = viewDeleteEmail;
-                cboDelEmail.DisplayMember = "Adresser";
-                cboDelEmail.ValueMember = "Index";
-            }
-            catch
-            {
-            }
+            DataView viewDeleteEmail = new DataView(GetEmails);
+            cboDelEmail.DataSource = viewDeleteEmail;
+            cboDelEmail.DisplayMember = "Adresser";
+            cboDelEmail.ValueMember = "Index";
 
 
 
@@ -681,7 +669,7 @@ namespace Polakken
 
         private void btnAlarmUp_MouseUp(object sender, MouseEventArgs e)
         {
-            this.btnAlarmUp.BackgroundImage =imgArrowUp;
+            this.btnAlarmUp.BackgroundImage = imgArrowUp;
         }
 
         private void btnAlarmDown_MouseDown(object sender, MouseEventArgs e)
@@ -702,75 +690,77 @@ namespace Polakken
             {
                 MessageBox.Show("Startdato kan ikke være større en sluttdato", "Datofeil", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            DataView view = new DataView(dataTable);
-            string filterString = null;
-            string dateSpan = null;
-
-
-            if (chkFilterDate.Checked)
+            using (DataView view = new DataView(dataTable))
             {
-                string dates = null;
-                DateTime startDate;
-                DateTime endDate;
-                startDate = dtpSelectFrom.Value.Date + dtpSelectFromTime.Value.TimeOfDay;
-                endDate = dtpSelectTo.Value.Date + dtpSelectToTime.Value.TimeOfDay;
-                dates = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
-                view.RowFilter = dates;
-                dateSpan = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "AND ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
+                string filterString = null;
+                string dateSpan = null;
+
+
+                if (chkFilterDate.Checked)
+                {
+                    string dates = null;
+                    DateTime startDate;
+                    DateTime endDate;
+                    startDate = dtpSelectFrom.Value.Date + dtpSelectFromTime.Value.TimeOfDay;
+                    endDate = dtpSelectTo.Value.Date + dtpSelectToTime.Value.TimeOfDay;
+                    dates = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
+                    view.RowFilter = dates;
+                    dateSpan = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "AND ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
 
 
 
 
+                }
+                if (chkFilterStatus.Checked)
+                {
+
+                    int statusIndex;
+                    statusIndex = cboFilterStatus.SelectedIndex;
+                    string statusText = null;
+                    if (statusIndex == 0)
+                    {
+                        statusText = "'True'";
+                        filterString = "AND Status =" + statusText + dateSpan;
+                        view.RowFilter = "Status =" + statusText + dateSpan;
+                    }
+                    if (statusIndex == 1)
+                    {
+                        statusText = "'False'";
+                        filterString = "AND Status =" + statusText + dateSpan;
+                        view.RowFilter = "Status =" + statusText + dateSpan;
+                    }
+
+
+                }
+                if (chkFilterTemp.Checked)
+                {
+                    string valueTempString = cboFilterTemp.Text;
+                    //int valueTempINT = Convert.ToInt32(valueTempString);
+
+                    int statusIndex;
+                    statusIndex = cboEqualsFilter.SelectedIndex;
+
+                    if (statusIndex == 0)
+                    {
+
+                        view.RowFilter = "Temprature =" + valueTempString + filterString + dateSpan;
+
+                    }
+                    if (statusIndex == 1)
+                    {
+                        view.RowFilter = "Temprature >" + valueTempString + filterString + dateSpan;
+
+                    }
+                    if (statusIndex == 2)
+                    {
+                        view.RowFilter = "Temprature <" + valueTempString + filterString + dateSpan;
+
+                    }
+
+                }
+
+                dgvDataBase.DataSource = view;
             }
-            if (chkFilterStatus.Checked)
-            {
-
-                int statusIndex;
-                statusIndex = cboFilterStatus.SelectedIndex;
-                string statusText = null;
-                if (statusIndex == 0)
-                {
-                    statusText = "'True'";
-                    filterString = "AND Status =" + statusText + dateSpan;
-                    view.RowFilter = "Status =" + statusText + dateSpan;
-                }
-                if (statusIndex == 1)
-                {
-                    statusText = "'False'";
-                    filterString = "AND Status =" + statusText + dateSpan;
-                    view.RowFilter = "Status =" + statusText + dateSpan;
-                }
-
-
-            }
-            if (chkFilterTemp.Checked)
-            {
-                string valueTempString = cboFilterTemp.Text;
-                //int valueTempINT = Convert.ToInt32(valueTempString);
-
-                int statusIndex;
-                statusIndex = cboEqualsFilter.SelectedIndex;
-
-                if (statusIndex == 0)
-                {
-
-                    view.RowFilter = "Temprature =" + valueTempString + filterString + dateSpan;
-
-                }
-                if (statusIndex == 1)
-                {
-                    view.RowFilter = "Temprature >" + valueTempString + filterString + dateSpan;
-
-                }
-                if (statusIndex == 2)
-                {
-                    view.RowFilter = "Temprature <" + valueTempString + filterString + dateSpan;
-
-                }
-
-            }
-
-            dgvDataBase.DataSource = view;
 
         }
 
@@ -1057,10 +1047,12 @@ namespace Polakken
 
         private void btnLog_Click(object sender, EventArgs e)
         {
-            Log logForm = new Log();
-            logForm.StartPosition = FormStartPosition.Manual;
-            logForm.Location = new Point(700, 40);
-            logForm.Show();
+            using (Log logForm = new Log())
+            {
+                logForm.StartPosition = FormStartPosition.Manual;
+                logForm.Location = new Point(700, 40);
+                logForm.Show();
+            }
         }
 
         private void btnSaveAll_Click(object sender, EventArgs e)
@@ -1118,8 +1110,8 @@ namespace Polakken
 
         private void btnDelReading_MouseDown(object sender, MouseEventArgs e)
         {
-           btnDelReading.BackgroundImage = global::Polakken.Properties.Resources.btnSlettDown;
-        } 
+            btnDelReading.BackgroundImage = global::Polakken.Properties.Resources.btnSlettDown;
+        }
 
         private void btnDelReading_MouseUp(object sender, MouseEventArgs e)
         {
@@ -1128,7 +1120,7 @@ namespace Polakken
 
         private void btnShowSelected_MouseDown(object sender, MouseEventArgs e)
         {
-            btnShowSelected.BackgroundImage =global::Polakken.Properties.Resources.btnFiltrerDown;
+            btnShowSelected.BackgroundImage = global::Polakken.Properties.Resources.btnFiltrerDown;
         }
 
         private void btnShowSelected_MouseUp(object sender, MouseEventArgs e)

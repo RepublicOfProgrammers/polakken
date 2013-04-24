@@ -45,28 +45,47 @@ namespace Polakken
 
         private void tmrUpdateText_Tick(object sender, EventArgs e)
         {
-            var fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            using (var sr = new StreamReader(fs))
+            tmrUpdateText.Start();
+            FileStream fs = null;
+            try
             {
-
-                txtRead.Text = sr.ReadToEnd();
-                txtRead.SelectionStart = txtRead.Text.Length;
-                txtRead.ScrollToCaret();
-                
-              
+                fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    fs = null;
+                    txtRead.Text = sr.ReadToEnd();
+                    txtRead.SelectionStart = txtRead.Text.Length;
+                    txtRead.ScrollToCaret();
+                }
+            }
+            catch (Exception) { }
+            finally
+            {
+                if (fs != null)
+                    fs.Dispose();
             }
         }
       
         private void Log_Load(object sender, EventArgs e)
         {
             tmrUpdateText.Start();
-            var fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            using (var sr = new StreamReader(fs))
+            FileStream fs = null;
+            try
             {
-              
-                txtRead.Text = sr.ReadToEnd();
-
+                fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    fs = null;
+                    txtRead.Text = sr.ReadToEnd();
+                }
             }
+            catch (Exception) { }
+            finally
+            {
+                if(fs != null)
+                    fs.Dispose();
+            }
+            
         }
 
         
