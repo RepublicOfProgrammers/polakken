@@ -22,10 +22,11 @@ namespace Polakken
         //Metode for å hente inn mail
         public static void mottaMail()
         {
+            ImapClient ic = null;
             try
             {
                 //Lager nytt objekt av klassen ImapClient
-                ImapClient ic = new ImapClient(host, username, password,
+                ic = new ImapClient(host, username, password,
                      ImapClient.AuthMethods.Login, port, secure);
                 ic.SelectMailbox("INBOX");
                 //Array som henter inn alle mail i innboksen
@@ -52,16 +53,18 @@ namespace Polakken
                 {
                     ic.DeleteMessage(m);
                 }
-                ic.Dispose();
             }
+
 
             catch (Exception ex)
             {
                 Logger.Error(ex, "mottaMail");
             }
 
-
-
+            finally
+            {
+                ic.Dispose();
+            }
         }
 
         public static string help()
@@ -248,13 +251,23 @@ namespace Polakken
                             break;
                         case "LOG":
                             //E-mail kommando for uthenting av siste logg.
-                            var fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                            using (var sr = new StreamReader(fs))
+                            FileStream fs = null;
+                            try
                             {
-                                response = sr.ReadToEnd();
-                                loggerInfo = from + "har sendt kommando for å få tilsendt log.";
-                                Logger.Info(loggerInfo, module);
-                                E_mail_handler.sendToOne("Logg", response, from);
+                                fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                                using (var sr = new StreamReader(fs))
+                                {
+                                    fs = null;
+                                    response = sr.ReadToEnd();
+                                    loggerInfo = from + "har sendt kommando for å få tilsendt log.";
+                                    Logger.Info(loggerInfo, module);
+                                    E_mail_handler.sendToOne("Logg", response, from);
+                                }
+                            }
+                            finally
+                            {
+                                if (fs != null)
+                                    fs.Dispose();
                             }
                             break;
                         default:
