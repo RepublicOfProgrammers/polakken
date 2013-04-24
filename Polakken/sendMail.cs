@@ -5,7 +5,7 @@ using System.Data;
 
 namespace Polakken
 {
-    static class E_mail_handler
+    static class sendMail
     {
         private static string host = "smtp.gmail.com";
         private static int port = 587;

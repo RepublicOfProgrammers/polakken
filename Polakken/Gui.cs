@@ -33,10 +33,10 @@ namespace Polakken
         public static string LastRT;
         public static DateTime now;
         public static string stsStatus;
-        Image imgArrowUp = global::Polakken.Properties.Resources.arrowUp;
-        Image imgArrowUpDown = global::Polakken.Properties.Resources.arrowUpDown;
-        Image imgArrowDownUp = global::Polakken.Properties.Resources.arrowDown;
-        Image imgArrowDownDown = global::Polakken.Properties.Resources.arrowDownDown;
+        Image imgArrowUp = global::Polakken.Properties.Resources.btnArrowUp;
+        Image imgArrowUpDown = global::Polakken.Properties.Resources.btnArrowUpDown;
+        Image imgArrowDownUp = global::Polakken.Properties.Resources.btnArrowDown;
+        Image imgArrowDownDown = global::Polakken.Properties.Resources.btnArrowDownDown;
         Image imgDel = global::Polakken.Properties.Resources.btnSlett;
         DbHandler db = new DbHandler();
         public static Log logForm = null;
@@ -65,10 +65,13 @@ namespace Polakken
             txtInt.Text = Convert.ToString(mesurInterval);
             txtAlarm.Text = Convert.ToString(alarmLimit);
             txtSetPoint.Text = Convert.ToString(setPoint);
-            txtTol.Text = Convert.ToString(tolerance);
+            txtTol.Text = Convert.ToString(tolerance); 
+            lblDate1.Visible = false;
+            lblDate2.Visible = false;
             lastR = txtCurrent.Text;
             dtEmails = GetEmails;
             btnDelReading.Enabled = false;
+            PowerCheck();
             //
             // Opprett DataTabell og fyll DataGridView
             //
@@ -183,10 +186,10 @@ namespace Polakken
             //
             //SetPointButton
             //
-            this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
-            this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
-            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUpDown;
-            this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.arrowDownDown;
+            this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.btnArrowDownDown;
+            this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.btnArrowUpDown;
+            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.btnArrowUpDown;
+            this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.btnArrowDownDown;
 
             //
             //Delete btn
@@ -352,44 +355,7 @@ namespace Polakken
             db.DelReadings(delFromString, delToString);
         }
 
-        //private void CreateValues()
-        //{
-        //    Random rnd = new Random();
-        //    Random rnd2 = new Random();
-        //    DateTime time = DateTime.Now;
-
-
-        //    Boolean t = true;
-        //    Boolean f = false;
-        //    for (int i = 0; i < 20; i++)
-        //    {
-        //        if (i % 2 == 0)
-        //        {
-        //            int C = i * rnd.Next(0, 20) ;
-        //            DateTime newday = time.AddDays(i);
-        //            db.SetReading(newday, C, t);
-
-        //        }
-        //        else
-        //        {
-        //            int C = i * rnd.Next(0, 20);
-        //            DateTime newday = time.AddDays(i);
-        //            db.SetReading(newday, C, f);
-        //        }
-
-        //    }
-        //    string emaildummy;
-        //    string emaildummy2;
-
-        //    emaildummy = "alexandergjerseth@gmail.com";
-        //    emaildummy2 = "sglittum@gmail.com";
-
-        //    for (int i = 0; i < 100; i++)
-        //    {
-        //        db.AddEmail(emaildummy);
-        //        db.AddEmail(emaildummy2);
-        //    }
-        //}
+       
 
         private void UpdateSettings()
         {
@@ -565,6 +531,21 @@ namespace Polakken
             this.btnToleranceUp.BackgroundImage = imgArrowUp;
 
         }
+        private void PowerCheck()
+        {
+            if (Program.isRunningOnBattery == false)
+            {
+                picPower.Image = global::Polakken.Properties.Resources.imgPowerOn;
+                lblPowerInfo.ForeColor = Color.White;
+                lblPowerInfo.Text = "Datamaskinen har strøm";
+            }
+            else if (Program.isRunningOnBattery == true)
+            {
+                picPower.Image = global::Polakken.Properties.Resources.imgPowerOff;
+                lblPowerInfo.ForeColor = Color.Red;
+                lblPowerInfo.Text = "Datamaskinen går på batteri";
+            }
+        }
         public void Zoom()
         {
 
@@ -575,8 +556,8 @@ namespace Polakken
                 crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 48;
                 btnZoomIn.Enabled = true;
                 btnZoomOut.Enabled = false;
-                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.PlusDisabeld;
-                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.Minus;
+                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnPlusDisabeld;
+                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnMinus;
                 clickCount = 0;
             }
             if (clickCount == 1)
@@ -584,8 +565,8 @@ namespace Polakken
                 crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 96;
                 btnZoomIn.Enabled = false;
                 btnZoomOut.Enabled = true;
-                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.MinusDisabled;
-                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.Plus;
+                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnMinusDisabled;
+                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnPlus;
                 clickCount = 0;
             }
 
@@ -973,6 +954,8 @@ namespace Polakken
                 dtpDelFromTime.Enabled = false;
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
+                lblDate1.Visible = false;
+                lblDate2.Visible = false;
 
             }
             if (cboSelectDelete.SelectedIndex == 1)
@@ -983,6 +966,8 @@ namespace Polakken
                 dtpDelFromTime.Enabled = false;
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
+                lblDate1.Visible = false;
+                lblDate2.Visible = false;
 
             }
             if (cboSelectDelete.SelectedIndex == 2)
@@ -993,6 +978,10 @@ namespace Polakken
                 dtpDelFromTime.Enabled = true;
                 dtpDelTo.Enabled = true;
                 dtpDelToTime.Enabled = true;
+                lblDate1.Visible = true;
+                lblDate1.Text = "Fra";
+                lblDate2.Visible = true;
+                lblDate2.Text = "Til";
 
             }
             if (cboSelectDelete.SelectedIndex == 3)
@@ -1001,8 +990,9 @@ namespace Polakken
                 btnDelReading.Enabled = true;
                 dtpDelTo.Enabled = false;
                 dtpDelToTime.Enabled = false;
-                dtpDelFrom.Enabled = true;
-                dtpDelFromTime.Enabled = true;
+                lblDate1.Visible = true;
+                lblDate1.Text = "Måling";
+                lblDate2.Visible = false;
 
 
             }
@@ -1032,8 +1022,10 @@ namespace Polakken
 
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
+            PowerCheck();
             dtEmails = GetEmails;
             MottaMail.mottaMail();
+           
             if (MottaMail.body != null)
             {
 
@@ -1129,5 +1121,7 @@ namespace Polakken
             Settings.Default.hideMsgBox = chkMsgDis.Checked;
             Settings.Default.Save();
         }
+
+   
     }
 }

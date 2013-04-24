@@ -40,7 +40,11 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.tbcPage = new System.Windows.Forms.TabControl();
             this.tbpOne = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblReg = new System.Windows.Forms.Label();
+            this.lblMsgDis = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblPowerInfo = new System.Windows.Forms.Label();
+            this.picPower = new System.Windows.Forms.PictureBox();
             this.chkMsgDis = new System.Windows.Forms.CheckBox();
             this.chkSetTol = new System.Windows.Forms.CheckBox();
             this.txtAlarm = new System.Windows.Forms.TextBox();
@@ -61,9 +65,12 @@
             this.btnSetPointDown = new System.Windows.Forms.Button();
             this.btnSetPointUp = new System.Windows.Forms.Button();
             this.tbpTwo = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblFilter = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblDelType = new System.Windows.Forms.Label();
             this.cboSelectDelete = new System.Windows.Forms.ComboBox();
             this.dtpSelectToTime = new System.Windows.Forms.DateTimePicker();
             this.dtpSelectFromTime = new System.Windows.Forms.DateTimePicker();
@@ -104,10 +111,12 @@
             this.btnZoomIn = new System.Windows.Forms.Button();
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblDate1 = new System.Windows.Forms.Label();
+            this.lblDate2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.tbcPage.SuspendLayout();
             this.tbpOne.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPower)).BeginInit();
             this.tbpTwo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).BeginInit();
             this.tbpThree.SuspendLayout();
@@ -128,7 +137,7 @@
             // btnLukk
             // 
             this.btnLukk.BackColor = System.Drawing.Color.Transparent;
-            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.Close;
+            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.btnClose;
             this.btnLukk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnLukk.FlatAppearance.BorderSize = 0;
             this.btnLukk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -144,7 +153,7 @@
             // btnMinimize
             // 
             this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.btnMinimize.BackgroundImage = global::Polakken.Properties.Resources.Minimize;
+            this.btnMinimize.BackgroundImage = global::Polakken.Properties.Resources.btnMinimize;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -172,8 +181,12 @@
             // tbpOne
             // 
             this.tbpOne.BackColor = System.Drawing.Color.Black;
-            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.insideTab2;
-            this.tbpOne.Controls.Add(this.pictureBox1);
+            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.imgTab;
+            this.tbpOne.Controls.Add(this.lblReg);
+            this.tbpOne.Controls.Add(this.lblMsgDis);
+            this.tbpOne.Controls.Add(this.label1);
+            this.tbpOne.Controls.Add(this.lblPowerInfo);
+            this.tbpOne.Controls.Add(this.picPower);
             this.tbpOne.Controls.Add(this.chkMsgDis);
             this.tbpOne.Controls.Add(this.chkSetTol);
             this.tbpOne.Controls.Add(this.txtAlarm);
@@ -200,21 +213,69 @@
             this.tbpOne.TabIndex = 0;
             this.tbpOne.Text = "Instillinger";
             // 
-            // pictureBox1
+            // lblReg
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = global::Polakken.Properties.Resources.OnPower;
-            this.pictureBox1.Location = new System.Drawing.Point(418, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(228, 73);
-            this.pictureBox1.TabIndex = 31;
-            this.pictureBox1.TabStop = false;
+            this.lblReg.AutoSize = true;
+            this.lblReg.BackColor = System.Drawing.Color.Transparent;
+            this.lblReg.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReg.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblReg.Location = new System.Drawing.Point(48, 144);
+            this.lblReg.Name = "lblReg";
+            this.lblReg.Size = new System.Drawing.Size(214, 16);
+            this.lblReg.TabIndex = 75;
+            this.lblReg.Text = "Skru på tempraturregulering";
+            // 
+            // lblMsgDis
+            // 
+            this.lblMsgDis.AutoSize = true;
+            this.lblMsgDis.BackColor = System.Drawing.Color.Transparent;
+            this.lblMsgDis.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMsgDis.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblMsgDis.Location = new System.Drawing.Point(356, 144);
+            this.lblMsgDis.Name = "lblMsgDis";
+            this.lblMsgDis.Size = new System.Drawing.Size(171, 16);
+            this.lblMsgDis.TabIndex = 74;
+            this.lblMsgDis.Text = "Slå av messagebokser";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(332, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 16);
+            this.label1.TabIndex = 73;
+            this.label1.Text = "Strøminfo:";
+            // 
+            // lblPowerInfo
+            // 
+            this.lblPowerInfo.AutoSize = true;
+            this.lblPowerInfo.BackColor = System.Drawing.Color.Transparent;
+            this.lblPowerInfo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPowerInfo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblPowerInfo.Location = new System.Drawing.Point(389, 83);
+            this.lblPowerInfo.Name = "lblPowerInfo";
+            this.lblPowerInfo.Size = new System.Drawing.Size(81, 16);
+            this.lblPowerInfo.TabIndex = 72;
+            this.lblPowerInfo.Text = "StrømInfo";
+            this.lblPowerInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // picPower
+            // 
+            this.picPower.BackColor = System.Drawing.Color.Transparent;
+            this.picPower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picPower.Location = new System.Drawing.Point(332, 64);
+            this.picPower.Name = "picPower";
+            this.picPower.Size = new System.Drawing.Size(53, 56);
+            this.picPower.TabIndex = 31;
+            this.picPower.TabStop = false;
             // 
             // chkMsgDis
             // 
             this.chkMsgDis.AutoSize = true;
-            this.chkMsgDis.Location = new System.Drawing.Point(68, 87);
+            this.chkMsgDis.Location = new System.Drawing.Point(335, 146);
             this.chkMsgDis.Name = "chkMsgDis";
             this.chkMsgDis.Size = new System.Drawing.Size(15, 14);
             this.chkMsgDis.TabIndex = 30;
@@ -224,7 +285,7 @@
             // chkSetTol
             // 
             this.chkSetTol.AutoSize = true;
-            this.chkSetTol.Location = new System.Drawing.Point(12, 87);
+            this.chkSetTol.Location = new System.Drawing.Point(27, 146);
             this.chkSetTol.Name = "chkSetTol";
             this.chkSetTol.Size = new System.Drawing.Size(15, 14);
             this.chkSetTol.TabIndex = 29;
@@ -237,7 +298,7 @@
             this.txtAlarm.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAlarm.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtAlarm.Location = new System.Drawing.Point(523, 143);
+            this.txtAlarm.Location = new System.Drawing.Point(180, 79);
             this.txtAlarm.Name = "txtAlarm";
             this.txtAlarm.ReadOnly = true;
             this.txtAlarm.Size = new System.Drawing.Size(71, 22);
@@ -250,7 +311,7 @@
             this.txtInt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtInt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInt.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtInt.Location = new System.Drawing.Point(370, 143);
+            this.txtInt.Location = new System.Drawing.Point(27, 79);
             this.txtInt.Name = "txtInt";
             this.txtInt.ReadOnly = true;
             this.txtInt.Size = new System.Drawing.Size(71, 22);
@@ -264,7 +325,7 @@
             this.txtSetPoint.Enabled = false;
             this.txtSetPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSetPoint.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtSetPoint.Location = new System.Drawing.Point(12, 143);
+            this.txtSetPoint.Location = new System.Drawing.Point(27, 219);
             this.txtSetPoint.Name = "txtSetPoint";
             this.txtSetPoint.ReadOnly = true;
             this.txtSetPoint.Size = new System.Drawing.Size(71, 22);
@@ -281,7 +342,7 @@
             this.btnSaveAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSaveAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveAll.ForeColor = System.Drawing.Color.DimGray;
-            this.btnSaveAll.Location = new System.Drawing.Point(276, 245);
+            this.btnSaveAll.Location = new System.Drawing.Point(111, 281);
             this.btnSaveAll.Name = "btnSaveAll";
             this.btnSaveAll.Size = new System.Drawing.Size(104, 39);
             this.btnSaveAll.TabIndex = 25;
@@ -297,7 +358,7 @@
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(520, 107);
+            this.label4.Location = new System.Drawing.Point(177, 43);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 16);
             this.label4.TabIndex = 24;
@@ -311,7 +372,7 @@
             this.btnAlarmDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlarmDown.Location = new System.Drawing.Point(605, 169);
+            this.btnAlarmDown.Location = new System.Drawing.Point(262, 95);
             this.btnAlarmDown.Name = "btnAlarmDown";
             this.btnAlarmDown.Size = new System.Drawing.Size(30, 30);
             this.btnAlarmDown.TabIndex = 23;
@@ -327,7 +388,7 @@
             this.btnAlarmUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlarmUp.Location = new System.Drawing.Point(605, 123);
+            this.btnAlarmUp.Location = new System.Drawing.Point(262, 55);
             this.btnAlarmUp.Name = "btnAlarmUp";
             this.btnAlarmUp.Size = new System.Drawing.Size(30, 30);
             this.btnAlarmUp.TabIndex = 22;
@@ -342,7 +403,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(367, 105);
+            this.label3.Location = new System.Drawing.Point(24, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 16);
             this.label3.TabIndex = 20;
@@ -356,7 +417,7 @@
             this.btnMesIDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMesIDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMesIDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMesIDown.Location = new System.Drawing.Point(452, 167);
+            this.btnMesIDown.Location = new System.Drawing.Point(109, 93);
             this.btnMesIDown.Name = "btnMesIDown";
             this.btnMesIDown.Size = new System.Drawing.Size(30, 30);
             this.btnMesIDown.TabIndex = 19;
@@ -372,7 +433,7 @@
             this.btnMesIUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMesIUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMesIUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMesIUp.Location = new System.Drawing.Point(452, 121);
+            this.btnMesIUp.Location = new System.Drawing.Point(109, 55);
             this.btnMesIUp.Name = "btnMesIUp";
             this.btnMesIUp.Size = new System.Drawing.Size(30, 30);
             this.btnMesIUp.TabIndex = 18;
@@ -387,7 +448,7 @@
             this.txtTol.Enabled = false;
             this.txtTol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTol.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtTol.Location = new System.Drawing.Point(182, 143);
+            this.txtTol.Location = new System.Drawing.Point(180, 219);
             this.txtTol.Name = "txtTol";
             this.txtTol.ReadOnly = true;
             this.txtTol.Size = new System.Drawing.Size(71, 22);
@@ -402,7 +463,7 @@
             this.lblTol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTol.ForeColor = System.Drawing.Color.White;
-            this.lblTol.Location = new System.Drawing.Point(179, 105);
+            this.lblTol.Location = new System.Drawing.Point(177, 184);
             this.lblTol.Name = "lblTol";
             this.lblTol.Size = new System.Drawing.Size(70, 16);
             this.lblTol.TabIndex = 16;
@@ -417,7 +478,7 @@
             this.btnToleranceDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToleranceDown.Location = new System.Drawing.Point(264, 167);
+            this.btnToleranceDown.Location = new System.Drawing.Point(262, 234);
             this.btnToleranceDown.Name = "btnToleranceDown";
             this.btnToleranceDown.Size = new System.Drawing.Size(30, 30);
             this.btnToleranceDown.TabIndex = 15;
@@ -428,13 +489,13 @@
             // btnToleranceUp
             // 
             this.btnToleranceUp.BackColor = System.Drawing.Color.Transparent;
-            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.btnArrowUp;
             this.btnToleranceUp.Enabled = false;
             this.btnToleranceUp.FlatAppearance.BorderSize = 0;
             this.btnToleranceUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToleranceUp.Location = new System.Drawing.Point(264, 121);
+            this.btnToleranceUp.Location = new System.Drawing.Point(262, 196);
             this.btnToleranceUp.Name = "btnToleranceUp";
             this.btnToleranceUp.Size = new System.Drawing.Size(30, 30);
             this.btnToleranceUp.TabIndex = 14;
@@ -450,7 +511,7 @@
             this.lblSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSet.ForeColor = System.Drawing.Color.White;
-            this.lblSet.Location = new System.Drawing.Point(9, 104);
+            this.lblSet.Location = new System.Drawing.Point(24, 184);
             this.lblSet.Name = "lblSet";
             this.lblSet.Size = new System.Drawing.Size(60, 16);
             this.lblSet.TabIndex = 12;
@@ -465,7 +526,7 @@
             this.btnSetPointDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetPointDown.Location = new System.Drawing.Point(94, 166);
+            this.btnSetPointDown.Location = new System.Drawing.Point(109, 233);
             this.btnSetPointDown.Name = "btnSetPointDown";
             this.btnSetPointDown.Size = new System.Drawing.Size(30, 30);
             this.btnSetPointDown.TabIndex = 5;
@@ -483,7 +544,7 @@
             this.btnSetPointUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetPointUp.Location = new System.Drawing.Point(94, 120);
+            this.btnSetPointUp.Location = new System.Drawing.Point(109, 195);
             this.btnSetPointUp.Name = "btnSetPointUp";
             this.btnSetPointUp.Size = new System.Drawing.Size(30, 30);
             this.btnSetPointUp.TabIndex = 4;
@@ -493,10 +554,15 @@
             // 
             // tbpTwo
             // 
-            this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.insideTab2;
+            this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.imgTab;
+            this.tbpTwo.Controls.Add(this.lblDate2);
+            this.tbpTwo.Controls.Add(this.lblDate1);
+            this.tbpTwo.Controls.Add(this.label8);
             this.tbpTwo.Controls.Add(this.label5);
+            this.tbpTwo.Controls.Add(this.lblDate);
+            this.tbpTwo.Controls.Add(this.lblFilter);
+            this.tbpTwo.Controls.Add(this.label7);
             this.tbpTwo.Controls.Add(this.label2);
-            this.tbpTwo.Controls.Add(this.lblDelType);
             this.tbpTwo.Controls.Add(this.cboSelectDelete);
             this.tbpTwo.Controls.Add(this.dtpSelectToTime);
             this.tbpTwo.Controls.Add(this.dtpSelectFromTime);
@@ -525,47 +591,89 @@
             this.tbpTwo.UseVisualStyleBackColor = true;
             this.tbpTwo.Click += new System.EventHandler(this.tbpTwo_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(181, 282);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(120, 16);
+            this.label8.TabIndex = 79;
+            this.label8.Text = "Filtrer på ovnstatus";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(21, 143);
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(181, 233);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Filrering";
+            this.label5.Size = new System.Drawing.Size(119, 16);
+            this.label5.TabIndex = 78;
+            this.label5.Text = "Filtrer på tempratur";
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.Color.White;
+            this.lblDate.Location = new System.Drawing.Point(181, 158);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(94, 16);
+            this.lblDate.TabIndex = 76;
+            this.lblDate.Text = "Filtrer i tidsrom";
+            // 
+            // lblFilter
+            // 
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.BackColor = System.Drawing.Color.Transparent;
+            this.lblFilter.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFilter.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblFilter.Location = new System.Drawing.Point(12, 158);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(82, 16);
+            this.lblFilter.TabIndex = 77;
+            this.lblFilter.Text = "Velg Filter";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.Control;
+            this.label7.Location = new System.Drawing.Point(12, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(143, 16);
+            this.label7.TabIndex = 76;
+            this.label7.Text = "Velg Slettemetode";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(36, 166);
+            this.label2.Location = new System.Drawing.Point(157, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 20;
-            // 
-            // lblDelType
-            // 
-            this.lblDelType.AutoSize = true;
-            this.lblDelType.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblDelType.Location = new System.Drawing.Point(66, 33);
-            this.lblDelType.Name = "lblDelType";
-            this.lblDelType.Size = new System.Drawing.Size(93, 13);
-            this.lblDelType.TabIndex = 19;
-            this.lblDelType.Text = "Velg Slettemetode";
             // 
             // cboSelectDelete
             // 
             this.cboSelectDelete.AccessibleName = "";
             this.cboSelectDelete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSelectDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboSelectDelete.FormattingEnabled = true;
             this.cboSelectDelete.Items.AddRange(new object[] {
             "Slett alt",
             "Slett siste 30 dager",
             "Slett i egendefinert tidsrom",
-            "Slett en egendefinert Oppføring."});
-            this.cboSelectDelete.Location = new System.Drawing.Point(165, 30);
+            "Slett en en måling"});
+            this.cboSelectDelete.Location = new System.Drawing.Point(158, 21);
             this.cboSelectDelete.Name = "cboSelectDelete";
             this.cboSelectDelete.Size = new System.Drawing.Size(168, 21);
             this.cboSelectDelete.TabIndex = 18;
@@ -575,7 +683,7 @@
             // 
             this.dtpSelectToTime.Enabled = false;
             this.dtpSelectToTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectToTime.Location = new System.Drawing.Point(134, 211);
+            this.dtpSelectToTime.Location = new System.Drawing.Point(255, 206);
             this.dtpSelectToTime.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectToTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectToTime.Name = "dtpSelectToTime";
@@ -587,7 +695,7 @@
             // 
             this.dtpSelectFromTime.Enabled = false;
             this.dtpSelectFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectFromTime.Location = new System.Drawing.Point(39, 211);
+            this.dtpSelectFromTime.Location = new System.Drawing.Point(160, 206);
             this.dtpSelectFromTime.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectFromTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectFromTime.Name = "dtpSelectFromTime";
@@ -598,7 +706,7 @@
             // dtpDelToTime
             // 
             this.dtpDelToTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelToTime.Location = new System.Drawing.Point(260, 90);
+            this.dtpDelToTime.Location = new System.Drawing.Point(255, 106);
             this.dtpDelToTime.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
             this.dtpDelToTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelToTime.Name = "dtpDelToTime";
@@ -609,7 +717,7 @@
             // dtpDelFromTime
             // 
             this.dtpDelFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelFromTime.Location = new System.Drawing.Point(165, 88);
+            this.dtpDelFromTime.Location = new System.Drawing.Point(160, 104);
             this.dtpDelFromTime.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
             this.dtpDelFromTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelFromTime.Name = "dtpDelFromTime";
@@ -626,9 +734,9 @@
             this.btnDelReading.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnDelReading.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDelReading.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelReading.Location = new System.Drawing.Point(163, 112);
+            this.btnDelReading.Location = new System.Drawing.Point(15, 68);
             this.btnDelReading.Name = "btnDelReading";
-            this.btnDelReading.Size = new System.Drawing.Size(98, 44);
+            this.btnDelReading.Size = new System.Drawing.Size(90, 44);
             this.btnDelReading.TabIndex = 13;
             this.btnDelReading.UseVisualStyleBackColor = true;
             this.btnDelReading.Click += new System.EventHandler(this.btnDelReading_Click);
@@ -638,7 +746,7 @@
             // dtpDelTo
             // 
             this.dtpDelTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelTo.Location = new System.Drawing.Point(260, 62);
+            this.dtpDelTo.Location = new System.Drawing.Point(255, 78);
             this.dtpDelTo.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpDelTo.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelTo.Name = "dtpDelTo";
@@ -649,7 +757,7 @@
             // dtpDelFrom
             // 
             this.dtpDelFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelFrom.Location = new System.Drawing.Point(165, 62);
+            this.dtpDelFrom.Location = new System.Drawing.Point(160, 78);
             this.dtpDelFrom.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
             this.dtpDelFrom.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelFrom.Name = "dtpDelFrom";
@@ -660,7 +768,7 @@
             // chkFilterDate
             // 
             this.chkFilterDate.AutoSize = true;
-            this.chkFilterDate.Location = new System.Drawing.Point(20, 166);
+            this.chkFilterDate.Location = new System.Drawing.Point(160, 160);
             this.chkFilterDate.Name = "chkFilterDate";
             this.chkFilterDate.Size = new System.Drawing.Size(15, 14);
             this.chkFilterDate.TabIndex = 10;
@@ -670,7 +778,7 @@
             // chkFilterTemp
             // 
             this.chkFilterTemp.AutoSize = true;
-            this.chkFilterTemp.Location = new System.Drawing.Point(115, 239);
+            this.chkFilterTemp.Location = new System.Drawing.Point(160, 235);
             this.chkFilterTemp.Name = "chkFilterTemp";
             this.chkFilterTemp.Size = new System.Drawing.Size(15, 14);
             this.chkFilterTemp.TabIndex = 9;
@@ -680,7 +788,7 @@
             // chkFilterStatus
             // 
             this.chkFilterStatus.AutoSize = true;
-            this.chkFilterStatus.Location = new System.Drawing.Point(20, 240);
+            this.chkFilterStatus.Location = new System.Drawing.Point(160, 284);
             this.chkFilterStatus.Name = "chkFilterStatus";
             this.chkFilterStatus.Size = new System.Drawing.Size(15, 14);
             this.chkFilterStatus.TabIndex = 8;
@@ -696,9 +804,9 @@
             this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Location = new System.Drawing.Point(134, 290);
+            this.btnReset.Location = new System.Drawing.Point(12, 245);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(137, 38);
+            this.btnReset.Size = new System.Drawing.Size(130, 38);
             this.btnReset.TabIndex = 7;
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -707,19 +815,21 @@
             // 
             // cboEqualsFilter
             // 
+            this.cboEqualsFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEqualsFilter.Enabled = false;
             this.cboEqualsFilter.FormattingEnabled = true;
             this.cboEqualsFilter.Items.AddRange(new object[] {
             "Er Lik",
             "Over",
             "Under"});
-            this.cboEqualsFilter.Location = new System.Drawing.Point(134, 258);
+            this.cboEqualsFilter.Location = new System.Drawing.Point(160, 255);
             this.cboEqualsFilter.Name = "cboEqualsFilter";
             this.cboEqualsFilter.Size = new System.Drawing.Size(88, 21);
             this.cboEqualsFilter.TabIndex = 6;
             // 
             // cboFilterTemp
             // 
+            this.cboFilterTemp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterTemp.Enabled = false;
             this.cboFilterTemp.FormattingEnabled = true;
             this.cboFilterTemp.Items.AddRange(new object[] {
@@ -744,19 +854,20 @@
             "23",
             "24",
             "25"});
-            this.cboFilterTemp.Location = new System.Drawing.Point(243, 258);
+            this.cboFilterTemp.Location = new System.Drawing.Point(272, 255);
             this.cboFilterTemp.Name = "cboFilterTemp";
             this.cboFilterTemp.Size = new System.Drawing.Size(56, 21);
             this.cboFilterTemp.TabIndex = 5;
             // 
             // cboFilterStatus
             // 
+            this.cboFilterStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterStatus.Enabled = false;
             this.cboFilterStatus.FormattingEnabled = true;
             this.cboFilterStatus.Items.AddRange(new object[] {
             "True",
             "False"});
-            this.cboFilterStatus.Location = new System.Drawing.Point(39, 258);
+            this.cboFilterStatus.Location = new System.Drawing.Point(160, 304);
             this.cboFilterStatus.Name = "cboFilterStatus";
             this.cboFilterStatus.Size = new System.Drawing.Size(56, 21);
             this.cboFilterStatus.TabIndex = 4;
@@ -770,9 +881,9 @@
             this.btnShowSelected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnShowSelected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnShowSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShowSelected.Location = new System.Drawing.Point(20, 289);
+            this.btnShowSelected.Location = new System.Drawing.Point(15, 200);
             this.btnShowSelected.Name = "btnShowSelected";
-            this.btnShowSelected.Size = new System.Drawing.Size(110, 38);
+            this.btnShowSelected.Size = new System.Drawing.Size(90, 37);
             this.btnShowSelected.TabIndex = 3;
             this.btnShowSelected.UseVisualStyleBackColor = true;
             this.btnShowSelected.Click += new System.EventHandler(this.btnShowSelected_Click);
@@ -783,7 +894,7 @@
             // 
             this.dtpSelectTo.Enabled = false;
             this.dtpSelectTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectTo.Location = new System.Drawing.Point(134, 185);
+            this.dtpSelectTo.Location = new System.Drawing.Point(255, 180);
             this.dtpSelectTo.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectTo.MinDate = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
             this.dtpSelectTo.Name = "dtpSelectTo";
@@ -793,9 +904,10 @@
             // 
             // dtpSelectFrom
             // 
+            this.dtpSelectFrom.CalendarMonthBackground = System.Drawing.Color.White;
             this.dtpSelectFrom.Enabled = false;
             this.dtpSelectFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectFrom.Location = new System.Drawing.Point(39, 185);
+            this.dtpSelectFrom.Location = new System.Drawing.Point(160, 180);
             this.dtpSelectFrom.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectFrom.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectFrom.Name = "dtpSelectFrom";
@@ -847,7 +959,7 @@
             // 
             // tbpThree
             // 
-            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.insideTab2;
+            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.imgTab;
             this.tbpThree.Controls.Add(this.btnDelEmail);
             this.tbpThree.Controls.Add(this.cboDelEmail);
             this.tbpThree.Controls.Add(this.dgvEmail);
@@ -1066,7 +1178,7 @@
             // btnLog
             // 
             this.btnLog.BackColor = System.Drawing.Color.Transparent;
-            this.btnLog.BackgroundImage = global::Polakken.Properties.Resources.buttonLogg;
+            this.btnLog.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLog.BackgroundImage")));
             this.btnLog.FlatAppearance.BorderSize = 0;
             this.btnLog.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnLog.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -1086,7 +1198,7 @@
             // btnZoomIn
             // 
             this.btnZoomIn.BackColor = System.Drawing.Color.Transparent;
-            this.btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.Minus;
+            this.btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnMinus;
             this.btnZoomIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnZoomIn.FlatAppearance.BorderSize = 0;
             this.btnZoomIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -1102,7 +1214,7 @@
             // btnZoomOut
             // 
             this.btnZoomOut.BackColor = System.Drawing.Color.Transparent;
-            this.btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.PlusDisabeld;
+            this.btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnPlusDisabeld;
             this.btnZoomOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnZoomOut.FlatAppearance.BorderSize = 0;
             this.btnZoomOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -1127,12 +1239,36 @@
             this.label6.TabIndex = 71;
             this.label6.Text = "Zoom Grafen";
             // 
+            // lblDate1
+            // 
+            this.lblDate1.AutoSize = true;
+            this.lblDate1.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate1.ForeColor = System.Drawing.Color.White;
+            this.lblDate1.Location = new System.Drawing.Point(167, 59);
+            this.lblDate1.Name = "lblDate1";
+            this.lblDate1.Size = new System.Drawing.Size(0, 16);
+            this.lblDate1.TabIndex = 80;
+            // 
+            // lblDate2
+            // 
+            this.lblDate2.AutoSize = true;
+            this.lblDate2.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDate2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate2.ForeColor = System.Drawing.Color.White;
+            this.lblDate2.Location = new System.Drawing.Point(263, 59);
+            this.lblDate2.Name = "lblDate2";
+            this.lblDate2.Size = new System.Drawing.Size(0, 16);
+            this.lblDate2.TabIndex = 81;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.BackgroundImage = global::Polakken.Properties.Resources.BetaV2;
+            this.BackgroundImage = global::Polakken.Properties.Resources.imgGuiForm;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(908, 702);
             this.Controls.Add(this.label6);
@@ -1163,7 +1299,7 @@
             this.tbcPage.ResumeLayout(false);
             this.tbpOne.ResumeLayout(false);
             this.tbpOne.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPower)).EndInit();
             this.tbpTwo.ResumeLayout(false);
             this.tbpTwo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).EndInit();
@@ -1239,15 +1375,24 @@
         //private GUI.CustomTabControl tbcPage;
         private System.Windows.Forms.TabControl tbcPage;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblDelType;
         private System.Windows.Forms.Timer tmrUpdateSettings;
         public System.Windows.Forms.TextBox txtCurrent;
         private System.Windows.Forms.Button btnZoomIn;
         private System.Windows.Forms.Button btnZoomOut;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkMsgDis;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picPower;
+        private System.Windows.Forms.Label lblPowerInfo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblReg;
+        private System.Windows.Forms.Label lblMsgDis;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblFilter;
+        private System.Windows.Forms.Label lblDate2;
+        private System.Windows.Forms.Label lblDate1;
 
     
 

@@ -107,7 +107,7 @@ namespace Polakken
                 catch (Exception ex)
                 {
                     Logger.Error(ex, module);
-                    E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, from);
+                    sendMail.sendToOne("Ugyldig kommando", ugyldig, from);
                     success = false;
                 }
                 if (success == true)
@@ -119,13 +119,13 @@ namespace Polakken
                             if (intvalue < 0)
                             {
                                 response = "Setpunktet kan ikke være mindre enn null, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
-                                E_mail_handler.sendToOne("Feil i endring av setpunkt", response, from);
+                                sendMail.sendToOne("Feil i endring av setpunkt", response, from);
                                 loggerInfo = "Setpunktet har blitt forsøkt endret til en verdi utenfor grensene (0-100) ved e-mail kommando fra " + from + " setpunktet forblir uendret.";
                             }
                             else if (intvalue > 100)
                             {
                                 response = "Setpunktet kan ikke være høyere enn 100, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
-                                E_mail_handler.sendToOne("Feil i endring av setpunkt", response, from);
+                                sendMail.sendToOne("Feil i endring av setpunkt", response, from);
                                 loggerInfo = "Setpunktet har blitt forsøkt endret til en verdi utenfor grensene (0-100) ved e-mail kommando fra " + from + " setpunktet forblir uendret.";
                             }
                             else
@@ -134,7 +134,7 @@ namespace Polakken
                                 Settings.Default.setpoint = intvalue;
                                 response = "Setpunktet har blitt endret til " + Convert.ToString(Regulation.setpoint);
                                 loggerInfo = "Setpunktet har blitt endret til " + Convert.ToString(Regulation.setpoint) + " ved e-mail kommando fra " + from + ".";
-                                E_mail_handler.sendToOne("Endring av setpunkt", response, from);
+                                sendMail.sendToOne("Endring av setpunkt", response, from);
                             }
                             Logger.Info(loggerInfo, module);
                             break;
@@ -143,13 +143,13 @@ namespace Polakken
                             if (intvalue < 1)
                             {
                                 response = "Måleintervallet kan ikke være mindre enn 1, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
-                                E_mail_handler.sendToOne("Feil i endring av måleinterval", response, from);
+                                sendMail.sendToOne("Feil i endring av måleinterval", response, from);
                                 loggerInfo = "Måleintervallet har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " + from + " måleintervallet forblir uendret.";
                             }
                             if (intvalue > 999)
                             {
                                 response = "Måleintervallet kan ikke være høyere enn 999, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
-                                E_mail_handler.sendToOne("Feil i endring av måleinterval", response, from);
+                                sendMail.sendToOne("Feil i endring av måleinterval", response, from);
                                 loggerInfo = "Måleintervallet har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " + from + " måleintervallet forblir uendret.";
                             }
                             else
@@ -157,8 +157,8 @@ namespace Polakken
                                 SensorCom.mesInterval = intvalue;
                                 Settings.Default.mesInterval = intvalue;
                                 response = "Måleintervallet har blitt endret til " + Convert.ToString(SensorCom.mesInterval);
-                                loggerInfo = "Måleintervallet har blitt endret til " + Convert.ToString(Regulation.setpoint) + " ved e-mail kommando fra " + from + ".";
-                                E_mail_handler.sendToOne("Endring av måleinterval", response, from);
+                                loggerInfo = "Måleintervallet har blitt endret til " + Convert.ToString(SensorCom.mesInterval) + " ved e-mail kommando fra " + from + ".";
+                                sendMail.sendToOne("Endring av måleinterval", response, from);
                             }
                             Logger.Info(loggerInfo, module);
                             break;
@@ -183,7 +183,7 @@ namespace Polakken
                             }
                             loggerInfo = from + "har send kommando for å få tilsendt status.";
                             Logger.Info(loggerInfo, module);
-                            E_mail_handler.sendToOne("Status", response, from);
+                            sendMail.sendToOne("Status", response, from);
                             break;
                         case "TLR":
                             //E-mail kommando for endring av toleranse. 
@@ -192,23 +192,23 @@ namespace Polakken
                                 response = "Toleransen kan ikke være mindre enn null, toleransen forblir på siste verdi som er " + Convert.ToString(Regulation.tolerance);
                                 loggerInfo = "Toleransen har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " + from + " toleransen forblir uendret.";
                                 Logger.Info(loggerInfo, module);
-                                E_mail_handler.sendToOne("Feil i endring av toleranse", response, from);
+                                sendMail.sendToOne("Feil i endring av toleranse", response, from);
                             }
                             if (intvalue > 20)
                             {
                                 response = "Toleransen kan ikke være høyere enn 20, toleransen forblir på siste verdi som er " + Convert.ToString(Regulation.tolerance);
                                 loggerInfo = "Toleransen har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " + from + " toleransen forblir uendret.";
                                 Logger.Info(loggerInfo, module);
-                                E_mail_handler.sendToOne("Feil i endring av toleranse", response, from);
+                                sendMail.sendToOne("Feil i endring av toleranse", response, from);
                             }
                             else
                             {
                                 Regulation.tolerance = intvalue;
                                 Settings.Default.tolerance = intvalue;
                                 response = "Toleransen har blitt endret til " + Convert.ToString(Regulation.tolerance);
-                                loggerInfo = "Toleransen har blitt endret til " + Convert.ToString(Regulation.setpoint) + " ved e-mail kommando fra " + from + ".";
+                                loggerInfo = "Toleransen har blitt endret til " + Convert.ToString(Regulation.tolerance) + " ved e-mail kommando fra " + from + ".";
                                 Logger.Info(loggerInfo, module);
-                                E_mail_handler.sendToOne("Endring av toleranse", response, from);
+                                sendMail.sendToOne("Endring av toleranse", response, from);
                             }
                             break;
                         case "ALG":
@@ -217,21 +217,21 @@ namespace Polakken
                             {
                                 response = "Alarmgrensen kan ikke være mindre enn null, Alarmgrensen forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
                                 loggerInfo = "Alarmgrensen har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " + from + " alarmgrensen forblir uendret.";
-                                E_mail_handler.sendToOne("Feil i endring av alarmgrensen", response, from);
+                                sendMail.sendToOne("Feil i endring av alarmgrensen", response, from);
                             }
                             else if (intvalue > 100)
                             {
                                 response = "Alarmgrensen kan ikke være høyere enn 100, alarmgrensen forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
                                 loggerInfo = "Alarmgrensen har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " + from + " alarmgrensen forblir uendret.";
-                                E_mail_handler.sendToOne("Feil i endring av alarmgrensen", response, from);
+                                sendMail.sendToOne("Feil i endring av alarmgrensen", response, from);
                             }
                             else
                             {
                                 SensorCom.alarmLimit = intvalue;
                                 Settings.Default.alarmLimit = intvalue;
                                 response = "Alarmgrensen har blitt endret til " + Convert.ToString(SensorCom.alarmLimit);
-                                loggerInfo = "Alarmgrensen har blitt endret til " + Convert.ToString(Regulation.setpoint) + " ved e-mail kommando fra " + from + ".";
-                                E_mail_handler.sendToOne("Endring av alarmgrense", response, from);
+                                loggerInfo = "Alarmgrensen har blitt endret til " + Convert.ToString(SensorCom.alarmLimit) + " ved e-mail kommando fra " + from + ".";
+                                sendMail.sendToOne("Endring av alarmgrense", response, from);
                             }
                             Logger.Info(loggerInfo, module);
                             break;
@@ -251,7 +251,7 @@ namespace Polakken
                             }
                             loggerInfo = from + "har sendt kommando for å få tilsendt hjelp teksten.";
                             Logger.Info(loggerInfo, module);
-                            E_mail_handler.sendToOne("Hjelp", response, from);
+                            sendMail.sendToOne("Hjelp", response, from);
                             break;
                         case "LOG":
                             //E-mail kommando for uthenting av siste logg.
@@ -265,7 +265,7 @@ namespace Polakken
                                     response = sr.ReadToEnd();
                                     loggerInfo = from + "har sendt kommando for å få tilsendt log.";
                                     Logger.Info(loggerInfo, module);
-                                    E_mail_handler.sendToOne("Logg", response, from);
+                                    sendMail.sendToOne("Logg", response, from);
                                 }
                             }
                             finally
@@ -277,7 +277,7 @@ namespace Polakken
                         default:
                             loggerInfo = "Har mottatt en ugyldig kommando på mail fra " + from;
                             Logger.Info(loggerInfo, module);
-                            E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, from);
+                            sendMail.sendToOne("Ugyldig kommando", ugyldig, from);
                             break;
                     }
                     Settings.Default.Save();
@@ -288,7 +288,7 @@ namespace Polakken
             {
                 loggerInfo = "";
                 Logger.Info(loggerInfo, module);
-                E_mail_handler.sendToOne("Ugyldig kommando", ugyldig, from);
+                sendMail.sendToOne("Ugyldig kommando", ugyldig, from);
             }
             MottaMail.from = null;
             MottaMail.subject = null;

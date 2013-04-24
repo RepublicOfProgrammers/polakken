@@ -54,7 +54,7 @@
             // btnLukk
             // 
             this.btnLukk.BackColor = System.Drawing.Color.Transparent;
-            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.Close;
+            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.btnClose;
             this.btnLukk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnLukk.FlatAppearance.BorderSize = 0;
             this.btnLukk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -86,7 +86,7 @@
             // 
             // tmrUpdateText
             // 
-            this.tmrUpdateText.Interval = 1000;
+            this.tmrUpdateText.Interval = 6000;
             this.tmrUpdateText.Tick += new System.EventHandler(this.tmrUpdateText_Tick);
             // 
             // Log
