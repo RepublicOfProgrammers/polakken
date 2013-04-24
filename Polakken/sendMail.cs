@@ -26,7 +26,7 @@ namespace Polakken
                     client.Credentials = mCredentials;
                     client.EnableSsl = true;
                     //Løkke som henter ut alle e-mails fra databasen
-                    foreach (DataRow dtRow in lblDelEmail.dtEmails.Rows)
+                    foreach (DataRow dtRow in GUI_FORM.dtEmails.Rows)
                     {
                         mailTo = dtRow["Adresser"].ToString();
                         client.Send(email, mailTo, subject, body);

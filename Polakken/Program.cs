@@ -33,7 +33,7 @@ namespace Polakken
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new lblDelEmail());
+            Application.Run(new GUI_FORM());
         }
 
         /// <summary>
@@ -58,9 +58,9 @@ namespace Polakken
                     }
                     else
                     {
-                        if (lblDelEmail.test == false)
+                        if (GUI_FORM.test == false)
                         {
-                            mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), lblDelEmail.test);
+                            mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI_FORM.test);
                             //lastTemp = (int)SensorCom.temp();
                         }
                         else

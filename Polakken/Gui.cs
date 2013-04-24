@@ -9,7 +9,7 @@ using Polakken.Properties;
 
 namespace Polakken
 {
-    public partial class lblDelEmail : Form
+    public partial class GUI_FORM : Form
     {
         int CountRows = 0;
         int Mover;
@@ -33,6 +33,14 @@ namespace Polakken
         public static string LastRT;
         public static DateTime now;
         public static string stsStatus;
+        string minute = " Min.";
+        string celcius = "°C";
+        string maxValue = "Øvre Grense Nådd";
+        string minValue = "Nedre Grense Nådd";
+        string minError = "Nedre Grense";
+        string MaxError = "Øvre Grense";
+        MessageBoxButtons msgButton = MessageBoxButtons.OK;
+        MessageBoxIcon msgIcon = MessageBoxIcon.Information;
         Image imgArrowUp = global::Polakken.Properties.Resources.btnArrowUp;
         Image imgArrowUpDown = global::Polakken.Properties.Resources.btnArrowUpDown;
         Image imgArrowDownUp = global::Polakken.Properties.Resources.btnArrowDown;
@@ -43,7 +51,7 @@ namespace Polakken
 
 
 
-        public lblDelEmail()
+        public GUI_FORM()
         {
             InitializeComponent();
 
@@ -62,10 +70,10 @@ namespace Polakken
             alarmLimit = SensorCom.alarmLimit;
             setPoint = Regulation.setpoint;
             tolerance = Regulation.tolerance;
-            txtInt.Text = Convert.ToString(mesurInterval);
-            txtAlarm.Text = Convert.ToString(alarmLimit);
-            txtSetPoint.Text = Convert.ToString(setPoint);
-            txtTol.Text = Convert.ToString(tolerance); 
+            txtInt.Text = Convert.ToString(mesurInterval) + minute;
+            txtAlarm.Text = Convert.ToString(alarmLimit) + celcius;
+            txtSetPoint.Text = Convert.ToString(setPoint) + celcius;
+            txtTol.Text = Convert.ToString(tolerance) + celcius; 
             lblDate1.Visible = false;
             lblDate2.Visible = false;
             lastR = txtCurrent.Text;
@@ -363,10 +371,10 @@ namespace Polakken
             alarmLimit = SensorCom.alarmLimit;
             setPoint = Regulation.setpoint;
             tolerance = Regulation.tolerance;
-            txtInt.Text = Convert.ToString(mesurInterval);
-            txtAlarm.Text = Convert.ToString(alarmLimit);
-            txtSetPoint.Text = Convert.ToString(setPoint);
-            txtTol.Text = Convert.ToString(tolerance);
+            txtInt.Text = Convert.ToString(mesurInterval) + minute;
+            txtAlarm.Text = Convert.ToString(alarmLimit) + celcius;
+            txtSetPoint.Text = Convert.ToString(setPoint) + celcius;
+            txtTol.Text = Convert.ToString(tolerance) + celcius;
         }
 
 
@@ -416,11 +424,10 @@ namespace Polakken
             int minTemp = int.MaxValue;
             int minTempTest = int.MaxValue;
             string tempString = "";
-            string Celcius = "°C";
             DateTime dt = DateTime.MinValue;
             foreach (DataRow row in dataTable.Rows)
             {
-                tempString = row["Temprature"].ToString() + Celcius;
+                tempString = row["Temprature"].ToString() + celcius;
                 dt = DateTime.Parse(row["ReadTime"].ToString());
                 txtCurrentTime.Text = dt.ToString();
                 CountRows++;
@@ -430,7 +437,7 @@ namespace Polakken
                     maxTemp = maxTempTest;
                     DateTime maxDT = DateTime.Parse(row["ReadTime"].ToString());
                     txtMaxTime.Text = maxDT.ToString();
-                    txtMax.Text = maxTemp.ToString() + Celcius;
+                    txtMax.Text = maxTemp.ToString() + celcius;
                 }
                 minTempTest = int.Parse(row["Temprature"].ToString());
                 if (minTemp > minTempTest)
@@ -438,7 +445,7 @@ namespace Polakken
                     minTemp = minTempTest;
                     DateTime minDT = DateTime.Parse(row["ReadTime"].ToString());
                     txtMinTime.Text = minDT.ToString();
-                    txtMin.Text = minTemp.ToString() + Celcius;
+                    txtMin.Text = minTemp.ToString() + celcius;
                 }
 
             }
@@ -467,19 +474,18 @@ namespace Polakken
         {
             this.btnSetPointUp.BackgroundImage = imgArrowUpDown;
             this.btnSetPointDown.BackgroundImage = imgArrowDownUp;
-            txtSetPoint.Enabled = true;
+            btnSetPointDown.Enabled = true;
             int ChangeSetPointAdd = setPoint;
             ChangeSetPointAdd = ChangeSetPointAdd + 1;
             setPoint = ChangeSetPointAdd;
-            txtSetPoint.Text = ChangeSetPointAdd.ToString();
-            if (ChangeSetPointAdd == 100)
+            txtSetPoint.Text = ChangeSetPointAdd.ToString() + celcius;
+            if (ChangeSetPointAdd > 100)
             {
-                MessageBox.Show("Øvre Grense Nådd", "FEIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ChangeSetPointAdd = setPoint;
-                txtSetPoint.Text = ChangeSetPointAdd.ToString();
+                ChangeSetPointAdd -= 1 ;
+                txtSetPoint.Text = ChangeSetPointAdd.ToString() + celcius;
                 setPoint = ChangeSetPointAdd;
+                MessageBox.Show(maxValue,MaxError,msgButton,msgIcon);
                 btnSetPointUp.Enabled = false;
-                txtSetPoint.Enabled = false;
                 this.btnSetPointUp.BackgroundImage = imgArrowUpDown;
 
             }
@@ -500,30 +506,43 @@ namespace Polakken
         {
             btnSetPointUp.Enabled = true;
             btnSetPointUp.BackgroundImage = imgArrowUp;
-            txtSetPoint.Enabled = true;
             this.btnSetPointDown.BackgroundImage = imgArrowDownUp;
             int ChangeSetPointSub = setPoint;
             ChangeSetPointSub = ChangeSetPointSub - 1;
+            txtSetPoint.Text = ChangeSetPointSub.ToString() + celcius;
+            setPoint = ChangeSetPointSub;
             if (ChangeSetPointSub < 0)
             {
-                MessageBox.Show("Nedre Grense Nådd", "FEIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ChangeSetPointSub = setPoint;
-                txtSetPoint.Text = ChangeSetPointSub.ToString();
+                ChangeSetPointSub += 1;
+                txtSetPoint.Text = ChangeSetPointSub.ToString() + celcius;
                 setPoint = ChangeSetPointSub;
+                MessageBox.Show(minValue, minError, msgButton, msgIcon);
                 btnSetPointDown.Enabled = false;
-                txtSetPoint.Enabled = false;
                 this.btnSetPointDown.BackgroundImage = imgArrowDownDown;
 
             }
-            txtSetPoint.Text = ChangeSetPointSub.ToString();
-            setPoint = ChangeSetPointSub;
+            
         }
 
         private void btnToleranceUp_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnToleranceUp.BackgroundImage = imgArrowUpDown;
-            tolerance = tolerance + 1;
-            txtTol.Text = tolerance.ToString();
+            this.btnToleranceDown.BackgroundImage = imgArrowDownUp;
+            btnToleranceDown.Enabled = true;
+            int ChangeTolAdd = tolerance;
+            ChangeTolAdd += 1;
+            tolerance = ChangeTolAdd;
+            txtTol.Text = ChangeTolAdd.ToString() + celcius;
+            if (ChangeTolAdd > 20)
+            {
+                ChangeTolAdd -= 1;
+                txtTol.Text = ChangeTolAdd.ToString() + celcius;
+                tolerance = ChangeTolAdd;
+                MessageBox.Show(maxValue, MaxError, msgButton, msgIcon);
+                btnToleranceUp.Enabled = false;
+                this.btnToleranceUp.BackgroundImage = imgArrowUpDown;
+
+            }
         }
 
         private void btnToleranceUp_MouseUp(object sender, MouseEventArgs e)
@@ -553,29 +572,45 @@ namespace Polakken
 
             if (clickCount == 0)
             {
+                
                 crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 48;
-                btnZoomIn.Enabled = true;
-                btnZoomOut.Enabled = false;
-                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnPlusDisabeld;
-                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnMinus;
+                btnZoomOut.Enabled = true;
+                btnZoomIn.Enabled = false;
+                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnPlusDisabeld;
+                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnMinus;
                 clickCount = 0;
             }
             if (clickCount == 1)
             {
                 crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 96;
-                btnZoomIn.Enabled = false;
-                btnZoomOut.Enabled = true;
-                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnMinusDisabled;
-                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnPlus;
+                btnZoomOut.Enabled = false;
+                btnZoomIn.Enabled = true;
+                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnMinusDisabled;
+                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnPlus;
                 clickCount = 0;
+
             }
 
         }
         private void btnToleranceDown_MouseDown(object sender, MouseEventArgs e)
         {
+            this.btnToleranceUp.BackgroundImage = imgArrowUp;
             this.btnToleranceDown.BackgroundImage = imgArrowDownDown;
-            tolerance = tolerance - 1;
-            txtTol.Text = tolerance.ToString();
+            this.btnToleranceUp.Enabled = true;
+            int ChangeTolSub = tolerance;
+            ChangeTolSub -= 1;
+            tolerance = ChangeTolSub;
+            txtTol.Text = ChangeTolSub.ToString() + celcius;
+            if (ChangeTolSub < 0 )
+            {
+                ChangeTolSub += 1;
+                txtTol.Text = ChangeTolSub.ToString() + celcius;
+                tolerance = ChangeTolSub;
+                MessageBox.Show(minValue, minError, msgButton, msgIcon);
+                btnToleranceDown.Enabled = false;
+                this.btnToleranceDown.BackgroundImage = imgArrowDownDown;
+
+            }
         }
 
         private void btnToleranceDown_MouseUp(object sender, MouseEventArgs e)
@@ -586,8 +621,21 @@ namespace Polakken
         private void btnMesIUp_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnMesIUp.BackgroundImage = imgArrowUpDown;
-            mesurInterval = mesurInterval + 1;
-            txtInt.Text = mesurInterval.ToString();
+            this.btnMesIDown.BackgroundImage = imgArrowDownUp;
+            btnMesIDown.Enabled = true;
+            int ChangeMesIAdd = mesurInterval;
+            ChangeMesIAdd += 1;
+            mesurInterval = ChangeMesIAdd;
+            txtInt.Text = ChangeMesIAdd.ToString() + minute;
+            if (ChangeMesIAdd > 999)
+            {
+               ChangeMesIAdd -= 1;
+               txtInt.Text = ChangeMesIAdd.ToString() + minute;
+               mesurInterval = ChangeMesIAdd;
+               MessageBox.Show(maxValue, MaxError, msgButton, msgIcon);
+               btnMesIUp.Enabled = false;
+               this.btnMesIUp.BackgroundImage = imgArrowUpDown;
+            }
         }
 
         private void btnMesIUp_MouseUp(object sender, MouseEventArgs e)
@@ -598,8 +646,22 @@ namespace Polakken
         private void btnMesIDown_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnMesIDown.BackgroundImage = imgArrowDownDown;
-            mesurInterval = mesurInterval - 1;
-            txtInt.Text = mesurInterval.ToString();
+            this.btnMesIUp.BackgroundImage = imgArrowUp;
+            btnMesIUp.Enabled = true;
+            int ChangeMesISub = mesurInterval;
+            ChangeMesISub -= 1;
+            mesurInterval = ChangeMesISub;
+            txtInt.Text = ChangeMesISub.ToString() + minute;
+            if (ChangeMesISub < 1)
+            {
+               
+                ChangeMesISub += 1;
+                txtInt.Text = ChangeMesISub.ToString() + minute;
+                mesurInterval = ChangeMesISub;
+                MessageBox.Show(minValue, minError, msgButton, msgIcon);
+                btnMesIDown.Enabled = false;
+                this.btnMesIDown.BackgroundImage = imgArrowDownDown;
+            }
         }
 
         private void btnMesIDown_MouseUp(object sender, MouseEventArgs e)
@@ -609,9 +671,25 @@ namespace Polakken
 
         private void btnAlarmUp_MouseDown(object sender, MouseEventArgs e)
         {
+
+
             this.btnAlarmUp.BackgroundImage = imgArrowUpDown;
-            alarmLimit = alarmLimit + 1;
-            txtAlarm.Text = alarmLimit.ToString();
+            this.btnAlarmDown.BackgroundImage = imgArrowDownUp;
+            btnAlarmDown.Enabled = true;
+            txtAlarm.Enabled = true;
+            int ChangeAlarmAdd = alarmLimit;
+            ChangeAlarmAdd += 1;
+            alarmLimit = ChangeAlarmAdd;
+            txtAlarm.Text = ChangeAlarmAdd.ToString() + celcius;
+            if (ChangeAlarmAdd > 100)
+            {
+                ChangeAlarmAdd -= 1;
+                txtAlarm.Text = ChangeAlarmAdd.ToString() + celcius;
+                alarmLimit = ChangeAlarmAdd;
+                MessageBox.Show(maxValue, MaxError, msgButton, msgIcon);
+                btnAlarmUp.Enabled = false;
+                this.btnAlarmUp.BackgroundImage = imgArrowUpDown;
+            }
         }
 
         private void btnAlarmUp_MouseUp(object sender, MouseEventArgs e)
@@ -621,9 +699,23 @@ namespace Polakken
 
         private void btnAlarmDown_MouseDown(object sender, MouseEventArgs e)
         {
+           
             this.btnAlarmDown.BackgroundImage = imgArrowDownDown;
-            alarmLimit = alarmLimit - 1;
-            txtAlarm.Text = alarmLimit.ToString();
+            this.btnAlarmUp.BackgroundImage = imgArrowUp;
+            btnAlarmUp.Enabled = true;
+            int ChangeAlarmISub = alarmLimit;
+            ChangeAlarmISub -= 1;
+            alarmLimit = ChangeAlarmISub;
+            txtAlarm.Text = ChangeAlarmISub.ToString() + celcius;
+            if (ChangeAlarmISub < 0)
+            {
+                ChangeAlarmISub += 1;
+                txtAlarm.Text = ChangeAlarmISub.ToString() + celcius;
+                alarmLimit = ChangeAlarmISub;
+                MessageBox.Show(minValue, minError, msgButton, msgIcon);
+                btnAlarmDown.Enabled = false;
+                this.btnAlarmDown.BackgroundImage = imgArrowDownDown;
+            }
         }
 
         private void btnAlarmDown_MouseUp(object sender, MouseEventArgs e)
@@ -642,9 +734,8 @@ namespace Polakken
             string filterString = null;
             string dateSpan = null;
 
-
-            if (chkFilterDate.Checked)
-            {
+               if (chkFilterDate.Checked)
+             {
                 string dates = null;
                 DateTime startDate;
                 DateTime endDate;
@@ -653,10 +744,6 @@ namespace Polakken
                 dates = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
                 view.RowFilter = dates;
                 dateSpan = String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, "AND ReadTime >= #{0}#", startDate) + String.Format(System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, " AND ReadTime <= #{0}#", endDate);
-
-
-
-
             }
             if (chkFilterStatus.Checked)
             {
@@ -1048,14 +1135,14 @@ namespace Polakken
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnMinus_Click(object sender, EventArgs e)
         {
             clickCount = 1;
             xMin -= 600;
             Zoom();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnPlus_Click(object sender, EventArgs e)
         {
             clickCount = 0;
             xMin += 600;
@@ -1120,6 +1207,51 @@ namespace Polakken
             Logger.showMsgBoxes = chkMsgDis.Checked;
             Settings.Default.hideMsgBox = chkMsgDis.Checked;
             Settings.Default.Save();
+        }
+
+        private void txtInt_TextChanged(object sender, EventArgs e)
+        {
+            if (999 > mesurInterval & mesurInterval > 1)
+            {
+                btnMesIUp.BackgroundImage = imgArrowUp;
+                btnMesIUp.Enabled = true;
+                btnMesIDown.BackgroundImage = imgArrowDownUp;
+                btnMesIDown.Enabled = true;
+            }
+
+        }
+
+        private void txtSetPoint_TextChanged(object sender, EventArgs e)
+        {
+            if (100 > setPoint & setPoint > 0)
+            {
+                btnSetPointUp.BackgroundImage = imgArrowUp;
+                btnSetPointUp.Enabled = true;
+                btnSetPointDown.BackgroundImage = imgArrowDownUp;
+                btnSetPointDown.Enabled = true;
+            }
+        }
+
+        private void txtAlarm_TextChanged(object sender, EventArgs e)
+        {
+            if (100 > alarmLimit & alarmLimit > 0)
+            {
+                btnAlarmUp.BackgroundImage = imgArrowUp;
+                btnAlarmUp.Enabled = true;
+                btnAlarmDown.BackgroundImage = imgArrowDownUp;
+                btnAlarmDown.Enabled = true;
+            }
+        }
+
+        private void txtTol_TextChanged(object sender, EventArgs e)
+        {
+            if (20 > tolerance & tolerance > 0)
+            {
+                btnToleranceUp.BackgroundImage = imgArrowUp;
+                btnToleranceUp.Enabled = true;
+                btnToleranceDown.BackgroundImage = imgArrowDownUp;
+                btnToleranceDown.Enabled = true;
+            }
         }
 
    
