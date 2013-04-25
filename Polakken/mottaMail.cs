@@ -91,7 +91,7 @@ namespace Polakken
             string loggerInfo;
             bool success = true;
 
-            string ugyldig = "Du har oppgitt en ugyldig kommando, send \"HLP 1\" for liste over kommandoer eller \"HLP 0\" for hele hjelp filen";
+            string ugyldig = "Du har oppgitt en ugyldig kommando, send \"HLP 0\" for liste over kommandoer.";
 
             body = body.TrimEnd('\r', '\n');
             if (body.Length > 3)
