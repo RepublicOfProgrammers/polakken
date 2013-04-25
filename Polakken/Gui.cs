@@ -87,7 +87,7 @@ namespace Polakken
             fillDataTable(dataTable);//Kjører metoden fillDatatable som fyller datatabellen som sendes med som en parameter
             dgvDataBase.DataSource = dataTable;//Setter datagridviewens datasource til den utfylte datatabellen
             GetEmail(GetEmails);// gjør akuratt det samme som fillDatatable, men bare for emails
-            lblAdd.DataSource = GetEmails;//Samme som for datagridviewt til databasen
+            dgvEmail.DataSource = GetEmails;//Samme som for datagridviewt til databasen
             using (DataTable Equals = new DataTable())
             {//Oppretter en datatabell som skal brukes til å fylle en combobox
                 populateTxtbox();//Kjører en metode som kjører tester og fyller textboxene med data fra datatabellen dataTable
@@ -165,8 +165,10 @@ namespace Polakken
             //
             //Email TabellVisning
             //
-            dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            lblAdd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvEmail.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvEmail.Columns[0].Visible = false;
+            dgvEmail.Columns[1].Width = dgvEmail.Width;
+            dgvEmail.ScrollBars = ScrollBars.Vertical;
 
             //
             //DateTimePickers
@@ -567,13 +569,13 @@ namespace Polakken
         }
         private void SensorCheck()
         {
-            if ((int)SensorCom.temp() == 999)
+            if (Program.sensorSent == true)
             {
                 picSensor.Image = global::Polakken.Properties.Resources.imgSensorOut;
                 lblSensorInfo.ForeColor = Color.Red;
                 lblSensorInfo.Text = "Sensoren er ikke tilkoblet";
             }
-            else
+            if (Program.sensorSent == false) 
             {
                 picSensor.Image = global::Polakken.Properties.Resources.imgSensorIn;
                 lblSensorInfo.ForeColor = Color.White;
@@ -898,10 +900,10 @@ namespace Polakken
                 else
                 {
                     db.AddEmail(inputText);
-                    lblAdd.DataSource = null;
+                    dgvEmail.DataSource = null;
                     GetEmails.Clear();
                     GetEmail(GetEmails);
-                    lblAdd.DataSource = GetEmails;
+                    dgvEmail.DataSource = GetEmails;
                     txtAddEmail.Clear();
                 }
 
@@ -991,10 +993,10 @@ namespace Polakken
         {
             int DelIndex = Convert.ToInt32(cboDelEmail.SelectedValue);
             db.DelEmail(DelIndex);
-            lblAdd.DataSource = null;
+            dgvEmail.DataSource = null;
             GetEmails.Clear();
             GetEmail(GetEmails);
-            lblAdd.DataSource = GetEmails;
+            dgvEmail.DataSource = GetEmails;
 
         }
 
@@ -1038,6 +1040,12 @@ namespace Polakken
                 btnToleranceUp.Enabled = false;
                 txtSetPoint.Enabled = false;
                 txtTol.Enabled = false;
+                lblFilterStatus.Enabled = false;
+                cboFilterStatus.Enabled = false;
+                chkFilterStatus.Enabled = false;
+                lblFilterStatus.Visible = false;
+                cboFilterStatus.Visible = false;
+                chkFilterStatus.Visible = false;
                 this.btnSetPointDown.BackgroundImage = imgArrowDownDown;
                 this.btnSetPointUp.BackgroundImage = imgArrowUpDown;
                 this.btnToleranceUp.BackgroundImage = imgArrowUpDown;
@@ -1116,7 +1124,7 @@ namespace Polakken
             Settings.Default.alarmLimit = alarmLimit;
             Settings.Default.setpoint = setPoint;
             Settings.Default.Save();
-            Regulation.tolerance = mesurInterval;
+            Regulation.tolerance = tolerance;
             Regulation.setpoint = setPoint;
             SensorCom.alarmLimit = alarmLimit;
             SensorCom.mesInterval = mesurInterval;
@@ -1271,6 +1279,17 @@ namespace Polakken
                 btnToleranceDown.Enabled = true;
             }
         }
+
+        private void dgvEmail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvEmail.Columns[0].Visible = false;
+            dgvEmail.Columns[1].Width = dgvEmail.Width;
+            dgvEmail.Columns[1].HeaderText = "Brukere";
+            dgvEmail.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvEmail.ScrollBars = ScrollBars.Vertical;
+        }
+
+       
 
    
     }
