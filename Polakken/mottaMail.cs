@@ -71,15 +71,6 @@ namespace Polakken
             }
         }
 
-        public static string help()
-        //Leser teksfila fra den angitte banen og returnerer den som string
-        {
-            string help = "";
-
-            help = System.IO.File.ReadAllText(Environment.CurrentDirectory + "\\..\\..\\Resources\\hjelpPolakken.txt");
-
-            return help;
-        }
 
         public static void getCommand()
         {
