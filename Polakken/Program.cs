@@ -8,9 +8,10 @@ namespace Polakken
     {
         private static DbHandler mDbHandler;
         public static bool needRefresh { get; set; }
-        public static int readingCounter { get; set; }
+        public static bool readingSent { get; set; }
         private static bool alarmSent;
-        private static bool batterySent { get; set; }
+        public static bool sensorSent { get; set; }
+        private static bool batterySent;
         public static bool isRunningOnBattery { get; set; }
 
         [STAThread]
@@ -20,8 +21,9 @@ namespace Polakken
             isRunningOnBattery = (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
 
             needRefresh = false;
-            readingCounter = 0;
-            alarmSent = true;
+            readingSent = false;
+            alarmSent = false;
+            sensorSent = false;
             new Logger(); // kaller konstruktøren til logger classen kun for å opprette ny logg tekstfil. 
             mDbHandler = new DbHandler(); // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
 
@@ -48,13 +50,21 @@ namespace Polakken
                 //{
                     if ((int)SensorCom.temp() == 999)
                     {
-                        Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, Polakken blunder en times tid.", "Polakken");
-
-                        //Sjekker om datamaskinen har strøm
                         isRunningOnBattery = (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
+                        if (sensorSent == false)
+                        {
+                            Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender mail til alarm abonnenter, Polakken blunder en times tid.", "Polakken");
 
-                        //E_mail_handler.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");                    
-                        Thread.Sleep(36000);
+                            //Sjekker om datamaskinen har strøm
+                            sensorSent = true;
+                            sendMail.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");
+                            Thread.Sleep(3600000);
+                        }
+                        else
+                        {
+                            Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender ikke ny mail, Polakken blunder en times tid.", "Polakken");
+                            Thread.Sleep(3600000);
+                        }
                     }
                     else
                     {
@@ -72,10 +82,10 @@ namespace Polakken
                         Logger.Info("Utført måling, og skrevet til database.", "Polakken");
 
                         needRefresh = true;
-                        readingCounter++;
+                        readingSent = true;
                         if (SensorCom.temp() < SensorCom.alarmLimit)
                         {
-                            if (alarmSent == true)
+                            if (alarmSent == false)
                             {
                                 sendMail.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
                                 Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
@@ -84,26 +94,26 @@ namespace Polakken
                             {
                                 Logger.Warning("Måling er fremdeles under alarmgrensen, sender ikke mail", "Polakken");
                             }
-                            alarmSent = false;
+                            alarmSent = true;
                         }
                         else if (SensorCom.temp() > SensorCom.alarmLimit)
                         {
-                            alarmSent = true;
+                            alarmSent = false;
                         }
 
                         //Sjekker om datamaskinen har strøm
                         isRunningOnBattery = (System.Windows.Forms.SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
-                        if (isRunningOnBattery == true & batterySent == true)
+                        if (isRunningOnBattery == true & batterySent == false)
                         {
                             sendMail.sendToAll("Strøm advarsel", "Datamaskinen kjører nå på batteristrøm");
-                            batterySent = false;
-                        }
-                        else if (isRunningOnBattery == false & batterySent == false)
-                        {
-                            E_mail_handler.sendToAll("Strøm varsel", "Datamaskinen kjører ikke lenger på batteristrøm");
                             batterySent = true;
                         }
-
+                        else if (isRunningOnBattery == false & batterySent == true)
+                        {
+                            sendMail.sendToAll("Strøm varsel", "Datamaskinen kjører ikke lenger på batteristrøm");
+                            batterySent = false;
+                        }
+                        sensorSent = false;
 
                         //Venter gitt måleintervall, ganget opp med 60 000, for å få i minutter.
                         Thread.Sleep(SensorCom.mesInterval * 60000);
