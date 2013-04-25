@@ -1056,8 +1056,9 @@
             this.dgvDataBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDataBase.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvDataBase.ShowEditingIcon = false;
-            this.dgvDataBase.Size = new System.Drawing.Size(290, 339);
+            this.dgvDataBase.Size = new System.Drawing.Size(288, 339);
             this.dgvDataBase.TabIndex = 0;
+            this.dgvDataBase.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDataBase_DataBindingComplete);
             // 
             // tbpThree
             // 
@@ -1321,7 +1322,7 @@
             // 
             // tmrUpdateSettings
             // 
-            this.tmrUpdateSettings.Interval = 20000;
+            this.tmrUpdateSettings.Interval = 10000;
             this.tmrUpdateSettings.Tick += new System.EventHandler(this.tmrUpdateSettings_Tick);
             // 
             // btnZoomOut

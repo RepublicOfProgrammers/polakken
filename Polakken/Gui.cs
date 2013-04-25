@@ -158,8 +158,23 @@ namespace Polakken
             //
             //TabellVisning
             //
-            dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvDataBase.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            if (!test)
+            {
+                chkSetTol.Checked = false;
+                dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvDataBase.Columns[0].Width = 190;
+                dgvDataBase.Columns[1].Width = 100;
+                dgvDataBase.Columns[2].Visible = false;
+            }
+            else
+            {
+                chkSetTol.Checked = true;
+                dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvDataBase.Columns[0].Width = 190;
+                dgvDataBase.Columns[1].Width = 50;
+                dgvDataBase.Columns[2].Visible = true;
+                dgvDataBase.Columns[2].Width = 50;
+            }
 
 
             //
@@ -569,13 +584,13 @@ namespace Polakken
         }
         private void SensorCheck()
         {
-            if (Program.sensorSent == true)
+            
+            if (!SensorCom.connected())
             {
                 picSensor.Image = global::Polakken.Properties.Resources.imgSensorOut;
                 lblSensorInfo.ForeColor = Color.Red;
                 lblSensorInfo.Text = "Sensoren er ikke tilkoblet";
-            }
-            if (Program.sensorSent == false) 
+            }else
             {
                 picSensor.Image = global::Polakken.Properties.Resources.imgSensorIn;
                 lblSensorInfo.ForeColor = Color.White;
@@ -1291,6 +1306,29 @@ namespace Polakken
             dgvEmail.Columns[1].HeaderText = "Brukere";
             dgvEmail.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgvEmail.ScrollBars = ScrollBars.Vertical;
+        }
+
+        private void dgvDataBase_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (!test)
+            {
+                chkSetTol.Checked = false;
+                dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvDataBase.Columns[0].Width = 178;
+                dgvDataBase.Columns[0].HeaderText = "Tidspunkt";
+                dgvDataBase.Columns[1].Width = 75;
+                dgvDataBase.Columns[1].HeaderText = "Tempratur";
+                dgvDataBase.Columns[2].Visible = false;
+            }
+            else
+            {
+                chkSetTol.Checked = true;
+                dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvDataBase.Columns[0].Width = 138;
+                dgvDataBase.Columns[1].Width = 63;
+                dgvDataBase.Columns[2].Visible = true;
+                dgvDataBase.Columns[2].Width = 52;
+            }
         }
 
        
