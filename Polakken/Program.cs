@@ -36,7 +36,14 @@ namespace Polakken
             // Starter GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI_FORM());
+            DialogResult result;
+            using (var loginForm = new LogIn())
+                result = loginForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                // login was successful
+                Application.Run(new GUI_FORM());
+            }
         }
 
         /// <summary>

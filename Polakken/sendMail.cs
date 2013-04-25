@@ -9,8 +9,8 @@ namespace Polakken
     {
         private static string host = "smtp.gmail.com";
         private static int port = 587;
-        private static string email = "republicofprogrammers@gmail.com";
-        private static string password = "polakken";
+        public static string email;
+        public static string password;
         private static string module = "sendMail";
         private static NetworkCredential mCredentials = new NetworkCredential(email, password);
         public static bool warningSentSend { get; set; }
