@@ -20,9 +20,10 @@ namespace Polakken
             try
             {
                 string mailTo;
-
+                //Oppretter ny SmtpClient
                 using (SmtpClient client = new SmtpClient(host, port))
                 {
+                    //Login info for programmets email
                     client.Credentials = mCredentials;
                     client.EnableSsl = true;
                     //Løkke som henter ut alle e-mails fra databasen
@@ -45,8 +46,10 @@ namespace Polakken
         {
             try
             {
+                //Oppretter ny SmtpClient
                 using (SmtpClient client = new SmtpClient(host, port))
                 {
+                    //Login info for programmets email
                     client.Credentials = mCredentials;
                     client.EnableSsl = true;
 

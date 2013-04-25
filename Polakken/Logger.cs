@@ -9,13 +9,16 @@ namespace Polakken
     {
         //Mappen hvor alle log filene skal ligge
         private string dirLogs = "Logs";
+
+        // Klasseegenskaper som forteller hva dagens log-fil heter og en variabel som bestemmer dersom alarmer skal vises i msgBox'er.
         public static string currentLog { get; set; }
         public static bool showMsgBoxes { get; set;}
         
         //Konstruktør som kun brukes i oppstart av programmet for å opprette en ny logg fil med dagens dato
         public Logger() 
         {
-            showMsgBoxes = Settings.Default.hideMsgBox;// Henter inn config settpunkt på valg om skjuling av error message boxes.
+            // Henter inn config settpunkt på valg om skjuling av error message boxes.
+            showMsgBoxes = Settings.Default.hideMsgBox;
             
             if (!Directory.Exists(dirLogs)) 
             {
