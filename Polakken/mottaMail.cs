@@ -59,7 +59,7 @@ namespace Polakken
 
             catch (Exception ex)
             {
-                Logger.Error(ex, "mottaMail");
+                Logger.Error(ex, module);
             }
 
             finally
