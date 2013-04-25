@@ -41,8 +41,8 @@ namespace Polakken
             {
                 if (warningSentSend == false)
                 {
-                    Logger.Error(ex, module);
                     warningSentSend = true;
+                    Logger.Error(ex, module);
                 }
                 
             }
@@ -70,8 +70,8 @@ namespace Polakken
             {
                 if (warningSentSend == false)
                 {
-                    Logger.Error(ex, module);
                     warningSentSend = true;
+                    Logger.Error(ex, module);
                 }
             }
         }
