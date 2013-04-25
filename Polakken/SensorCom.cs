@@ -16,6 +16,7 @@ namespace Polakken
         /// <returns>Returnerer temperaturen i double. </returns>
         public static double temp()
         {
+            double analogData;
             Task temperatureTask = new Task();
             try
             {
@@ -24,34 +25,45 @@ namespace Polakken
                     AIThermocoupleType.J, AITemperatureUnits.DegreesC);
 
                 AnalogSingleChannelReader reader = new AnalogSingleChannelReader(temperatureTask.Stream);
-                double analogData = reader.ReadSingleSample(); 
-                return analogData;
+                analogData = reader.ReadSingleSample(); 
             }
             catch (Exception e)
             {
                 Logger.Error(e, module); //Logger feil. 
-                return 999;
+                analogData = 999;
                 //999 vil være en "feilkode"
             }
             finally
             {
                 temperatureTask.Dispose();
             }
+            return analogData;
         }
 
+        /// <summary>
+        /// Tester om Måleenhet er koblet til maskinen.
+        /// </summary>
+        /// <returns>bool som er true dersom tilkoblet, false i motsatt tilfelle.</returns>
         public static bool connected()
         {
-            bool connected;
             Task checkConnection = new Task();
-            int connections = checkConnection.AIChannels.Count;
-            checkConnection.Dispose();
-            if (connections > 0)
+            AIChannel myAIChannel = null;
+            bool connected = true;
+
+            // Tester om programmet klarer å opprette en AIChannel, kun for å se om enhet er koblet til. 
+            try
             {
-                connected = true;
+                myAIChannel = checkConnection.AIChannels.CreateThermocoupleChannel("Dev1/ai0", "Temperature", 0, 100,
+                    AIThermocoupleType.J, AITemperatureUnits.DegreesC);
             }
-            else
+            catch (Exception) 
             {
+                // Bruker ikke error.
                 connected = false;
+            }
+            finally {
+                if(myAIChannel != null) checkConnection.Dispose();
+                myAIChannel.Dispose();
             }
             return connected;
         }
