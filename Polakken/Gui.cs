@@ -1324,8 +1324,8 @@ namespace Polakken
             {
                 chkSetTol.Checked = true;
                 dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvDataBase.Columns[0].Width = 138;
-                dgvDataBase.Columns[1].Width = 63;
+                dgvDataBase.Columns[0].Width = 148;
+                dgvDataBase.Columns[1].Width = 53;
                 dgvDataBase.Columns[2].Visible = true;
                 dgvDataBase.Columns[2].Width = 52;
             }
