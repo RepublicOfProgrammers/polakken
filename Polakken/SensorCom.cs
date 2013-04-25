@@ -62,7 +62,7 @@ namespace Polakken
                 connected = false;
             }
             finally {
-                if(myAIChannel != null) checkConnection.Dispose();
+                checkConnection.Dispose();
                 myAIChannel.Dispose();
             }
             return connected;
