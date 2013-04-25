@@ -26,6 +26,7 @@ namespace Polakken
             needRefresh = false;
             alarmSent = false;
             sensorSent = false;
+
             new Logger(); // kaller konstruktøren til logger classen kun for å opprette ny logg tekstfil. 
             mDbHandler = new DbHandler(); // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
 

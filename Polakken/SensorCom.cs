@@ -51,20 +51,26 @@ namespace Polakken
             // Tester om programmet klarer å opprette en AIChannel, kun for å se om enhet er koblet til. 
             try
             {
-                connected = true;
+                // Dette er en u-elegant måte å teste tilkobling til sensor på.
+                // Men det er desverre den måten vi har tid og know-how til å implementere.
 
+                // Følgende linje er ikke pålitelig nok til dette bruket. Noenganger kaster ikke dette en exception av en eller annen obskur årsak... 
                 checkConnection.AIChannels.CreateThermocoupleChannel("Dev1/ai0", "Temperature", 0, 100,
                     AIThermocoupleType.J, AITemperatureUnits.DegreesC);
 
+                // ...Derfor må dette gjøres for å garantere en exception dersom ikke sensor er koblet til. 
                 AnalogSingleChannelReader reader = new AnalogSingleChannelReader(checkConnection.Stream);
-                reader.ReadSingleSample(); 
+                reader.ReadSingleSample(); // Lagrer ikke svar fra sensor, fordi det er denne linjen som kaster exception.  
+                connected = true;
+
             }
             catch (Exception) 
             {
                 // Bruker ikke error.
                 connected = false;
             }
-            finally {
+            finally 
+            {
                 checkConnection.Dispose();
             }
             return connected;
