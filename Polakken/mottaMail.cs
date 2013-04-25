@@ -10,8 +10,6 @@ namespace Polakken
     class MottaMail
     {
         private static string host = "imap.gmail.com";
-        private static string username = "republicofprogrammers@gmail.com";
-        private static string password = "polakken";
         private static int port = 993;
         private static bool secure = true;
         public static string from { get; private set; }
@@ -28,7 +26,7 @@ namespace Polakken
             {
                 warningSentMotta = false;
                 //Lager nytt objekt av klassen ImapClient
-                ic = new ImapClient(host, username, password,
+                ic = new ImapClient(host, sendMail.email, sendMail.password,
                      ImapClient.AuthMethods.Login, port, secure);
                 ic.SelectMailbox("INBOX");
                 //Array som henter inn alle mail i innboksen
@@ -63,8 +61,8 @@ namespace Polakken
             {
                 if (warningSentMotta == false)
                 {
-                    Logger.Error(ex, module);
                     warningSentMotta = true; //Unngår spam
+                    Logger.Error(ex, module);
                 }
             }
 

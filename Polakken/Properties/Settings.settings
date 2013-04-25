@@ -25,5 +25,11 @@
     <Setting Name="hideMsgBox" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="Email" Type="System.String" Scope="User">
+      <Value Profile="(Default)">republicofprogrammers@gmail.com</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">polakken</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

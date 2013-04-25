@@ -45,6 +45,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(33, 290);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(260, 20);
             this.txtPassword.TabIndex = 1;
             // 
@@ -56,11 +57,14 @@
             this.btnEnter.TabIndex = 2;
             this.btnEnter.Text = "Logg Inn";
             this.btnEnter.UseVisualStyleBackColor = true;
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // chkSave
             // 
             this.chkSave.AutoSize = true;
             this.chkSave.BackColor = System.Drawing.Color.Transparent;
+            this.chkSave.Checked = true;
+            this.chkSave.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkSave.Location = new System.Drawing.Point(33, 317);
             this.chkSave.Name = "chkSave";
             this.chkSave.Size = new System.Drawing.Size(15, 14);
@@ -84,6 +88,7 @@
             this.Name = "LogIn";
             this.Text = "LogIn";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.Load += new System.EventHandler(this.LogIn_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
