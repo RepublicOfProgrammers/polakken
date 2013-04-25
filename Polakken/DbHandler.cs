@@ -5,6 +5,9 @@ using System.IO;
 
 namespace Polakken
 {
+    /// <summary>
+    /// Mange kommentarer er utelatt, men Logger bruk forklarer mye det samme. 
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable")]//Unødvendig, disposer sqlceConnection i dekonstruktør.
     class DbHandler
     {
