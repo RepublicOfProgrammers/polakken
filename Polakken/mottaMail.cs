@@ -18,6 +18,7 @@ namespace Polakken
         public static string subject { get; private set; }
         public static string body { get; private set; }
         private static string module = "mottaMail";
+        public static bool warningSent { get; set; }
 
         //Metode for å hente inn mail
         public static void mottaMail()
@@ -25,6 +26,7 @@ namespace Polakken
             ImapClient ic = null;
             try
             {
+                warningSent = false;
                 //Lager nytt objekt av klassen ImapClient
                 ic = new ImapClient(host, username, password,
                      ImapClient.AuthMethods.Login, port, secure);
@@ -59,7 +61,11 @@ namespace Polakken
 
             catch (Exception ex)
             {
-                Logger.Error(ex, module);
+                if (warningSent == false)
+                {
+                    Logger.Error(ex, module);
+                    warningSent = true; //Unngår spam
+                }
             }
 
             finally
