@@ -115,7 +115,7 @@ namespace Polakken
                         }
                         sensorSent = false;
 
-                        //Venter gitt måleintervall, ganget opp med 60 000, for å få i minutter.
+                        //Venter gitt måleintervall, ganget opp med 60 000 siden det er oppgitt i minutter.
                         Thread.Sleep(SensorCom.mesInterval * 60000);
                     }
                 //}
