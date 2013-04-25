@@ -13,12 +13,14 @@ namespace Polakken
         private static string password = "polakken";
         private static string module = "sendMail";
         private static NetworkCredential mCredentials = new NetworkCredential(email, password);
+        public static bool warningSentSend { get; set; }
 
         //Metode som sender mail til alle som er oppført i databasen
         public static void sendToAll(string subject, string body)
         {
             try
             {
+                warningSentSend = false;
                 string mailTo;
                 //Oppretter ny SmtpClient
                 using (SmtpClient client = new SmtpClient(host, port))
@@ -37,7 +39,12 @@ namespace Polakken
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, module);
+                if (warningSentSend == false)
+                {
+                    Logger.Error(ex, module);
+                    warningSentSend = true;
+                }
+                
             }
         }
 
@@ -46,6 +53,7 @@ namespace Polakken
         {
             try
             {
+                warningSentSend = false;
                 //Oppretter ny SmtpClient
                 using (SmtpClient client = new SmtpClient(host, port))
                 {
@@ -60,7 +68,11 @@ namespace Polakken
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, module);
+                if (warningSentSend == false)
+                {
+                    Logger.Error(ex, module);
+                    warningSentSend = true;
+                }
             }
         }
     }
