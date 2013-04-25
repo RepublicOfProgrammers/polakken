@@ -1132,6 +1132,10 @@ namespace Polakken
 
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
+
+            //Sjekker om datamaskinen har strøm
+            Program.isRunningOnBattery = (SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
+
             PowerCheck();
             SensorCheck();
             now = DateTime.Now;
