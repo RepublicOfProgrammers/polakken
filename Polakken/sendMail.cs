@@ -5,13 +5,13 @@ using System.Data;
 
 namespace Polakken
 {
-    static class E_mail_handler
+    static class sendMail
     {
         private static string host = "smtp.gmail.com";
         private static int port = 587;
         private static string email = "republicofprogrammers@gmail.com";
         private static string password = "polakken";
-        private static string module = "E-mail handler";
+        private static string module = "sendMail";
         private static NetworkCredential mCredentials = new NetworkCredential(email, password);
 
         //Metode som sender mail til alle som er oppført i databasen
@@ -26,7 +26,7 @@ namespace Polakken
                     client.Credentials = mCredentials;
                     client.EnableSsl = true;
                     //Løkke som henter ut alle e-mails fra databasen
-                    foreach (DataRow dtRow in GUI.dtEmails.Rows)
+                    foreach (DataRow dtRow in GUI_FORM.dtEmails.Rows)
                     {
                         mailTo = dtRow["Adresser"].ToString();
                         client.Send(email, mailTo, subject, body);

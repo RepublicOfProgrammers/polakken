@@ -1,6 +1,6 @@
 ﻿namespace Polakken
 {
-    partial class GUI
+    partial class GUI_FORM
     {
         
         /// <summary>
@@ -30,16 +30,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_FORM));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.crtView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnLukk = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.tbcPage = new System.Windows.Forms.TabControl();
             this.tbpOne = new System.Windows.Forms.TabPage();
+            this.lblSensor = new System.Windows.Forms.Label();
+            this.lblSensorInfo = new System.Windows.Forms.Label();
+            this.picSensor = new System.Windows.Forms.PictureBox();
+            this.lblChkReg = new System.Windows.Forms.Label();
+            this.lblChkDis = new System.Windows.Forms.Label();
+            this.lblReg = new System.Windows.Forms.Label();
+            this.lblMsgDis = new System.Windows.Forms.Label();
+            this.lblPower = new System.Windows.Forms.Label();
+            this.lblPowerInfo = new System.Windows.Forms.Label();
+            this.picPower = new System.Windows.Forms.PictureBox();
             this.chkMsgDis = new System.Windows.Forms.CheckBox();
             this.chkSetTol = new System.Windows.Forms.CheckBox();
             this.txtAlarm = new System.Windows.Forms.TextBox();
@@ -60,9 +70,14 @@
             this.btnSetPointDown = new System.Windows.Forms.Button();
             this.btnSetPointUp = new System.Windows.Forms.Button();
             this.tbpTwo = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblDate2 = new System.Windows.Forms.Label();
+            this.lblDate1 = new System.Windows.Forms.Label();
+            this.lblFilterStatus = new System.Windows.Forms.Label();
+            this.lblFilterTemp = new System.Windows.Forms.Label();
+            this.lblFilterDate = new System.Windows.Forms.Label();
+            this.lblFilter = new System.Windows.Forms.Label();
+            this.lblChooseDel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblDelType = new System.Windows.Forms.Label();
             this.cboSelectDelete = new System.Windows.Forms.ComboBox();
             this.dtpSelectToTime = new System.Windows.Forms.DateTimePicker();
             this.dtpSelectFromTime = new System.Windows.Forms.DateTimePicker();
@@ -83,9 +98,11 @@
             this.dtpSelectFrom = new System.Windows.Forms.DateTimePicker();
             this.dgvDataBase = new System.Windows.Forms.DataGridView();
             this.tbpThree = new System.Windows.Forms.TabPage();
+            this.lblDelEmail = new System.Windows.Forms.Label();
+            this.lblAddEmail = new System.Windows.Forms.Label();
             this.btnDelEmail = new System.Windows.Forms.Button();
             this.cboDelEmail = new System.Windows.Forms.ComboBox();
-            this.dgvEmail = new System.Windows.Forms.DataGridView();
+            this.lblAdd = new System.Windows.Forms.DataGridView();
             this.btnAddEmail = new System.Windows.Forms.Button();
             this.txtAddEmail = new System.Windows.Forms.TextBox();
             this.btnMove = new System.Windows.Forms.Button();
@@ -100,16 +117,18 @@
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.btnLog = new System.Windows.Forms.Button();
             this.tmrUpdateSettings = new System.Windows.Forms.Timer(this.components);
-            this.btnZoomIn = new System.Windows.Forms.Button();
             this.btnZoomOut = new System.Windows.Forms.Button();
+            this.btnZoomIn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.crtView)).BeginInit();
             this.tbcPage.SuspendLayout();
             this.tbpOne.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSensor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPower)).BeginInit();
             this.tbpTwo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).BeginInit();
             this.tbpThree.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // crtView
@@ -126,7 +145,7 @@
             // btnLukk
             // 
             this.btnLukk.BackColor = System.Drawing.Color.Transparent;
-            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.Close;
+            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.btnClose;
             this.btnLukk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnLukk.FlatAppearance.BorderSize = 0;
             this.btnLukk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -142,7 +161,7 @@
             // btnMinimize
             // 
             this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.btnMinimize.BackgroundImage = global::Polakken.Properties.Resources.Minimize;
+            this.btnMinimize.BackgroundImage = global::Polakken.Properties.Resources.btnMinimize;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -170,7 +189,17 @@
             // tbpOne
             // 
             this.tbpOne.BackColor = System.Drawing.Color.Black;
-            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.insideTab2;
+            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.imgTab;
+            this.tbpOne.Controls.Add(this.lblSensor);
+            this.tbpOne.Controls.Add(this.lblSensorInfo);
+            this.tbpOne.Controls.Add(this.picSensor);
+            this.tbpOne.Controls.Add(this.lblChkReg);
+            this.tbpOne.Controls.Add(this.lblChkDis);
+            this.tbpOne.Controls.Add(this.lblReg);
+            this.tbpOne.Controls.Add(this.lblMsgDis);
+            this.tbpOne.Controls.Add(this.lblPower);
+            this.tbpOne.Controls.Add(this.lblPowerInfo);
+            this.tbpOne.Controls.Add(this.picPower);
             this.tbpOne.Controls.Add(this.chkMsgDis);
             this.tbpOne.Controls.Add(this.chkSetTol);
             this.tbpOne.Controls.Add(this.txtAlarm);
@@ -197,10 +226,130 @@
             this.tbpOne.TabIndex = 0;
             this.tbpOne.Text = "Instillinger";
             // 
+            // lblSensor
+            // 
+            this.lblSensor.AutoSize = true;
+            this.lblSensor.BackColor = System.Drawing.Color.Transparent;
+            this.lblSensor.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSensor.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblSensor.Location = new System.Drawing.Point(335, 143);
+            this.lblSensor.Name = "lblSensor";
+            this.lblSensor.Size = new System.Drawing.Size(87, 16);
+            this.lblSensor.TabIndex = 80;
+            this.lblSensor.Text = "SensorInfo";
+            // 
+            // lblSensorInfo
+            // 
+            this.lblSensorInfo.AutoSize = true;
+            this.lblSensorInfo.BackColor = System.Drawing.Color.Transparent;
+            this.lblSensorInfo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSensorInfo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblSensorInfo.Location = new System.Drawing.Point(389, 183);
+            this.lblSensorInfo.Name = "lblSensorInfo";
+            this.lblSensorInfo.Size = new System.Drawing.Size(81, 16);
+            this.lblSensorInfo.TabIndex = 79;
+            this.lblSensorInfo.Text = "StrømInfo";
+            this.lblSensorInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // picSensor
+            // 
+            this.picSensor.BackColor = System.Drawing.Color.Transparent;
+            this.picSensor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picSensor.Location = new System.Drawing.Point(332, 164);
+            this.picSensor.Name = "picSensor";
+            this.picSensor.Size = new System.Drawing.Size(53, 56);
+            this.picSensor.TabIndex = 78;
+            this.picSensor.TabStop = false;
+            // 
+            // lblChkReg
+            // 
+            this.lblChkReg.AutoSize = true;
+            this.lblChkReg.BackColor = System.Drawing.Color.Transparent;
+            this.lblChkReg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblChkReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChkReg.ForeColor = System.Drawing.Color.White;
+            this.lblChkReg.Location = new System.Drawing.Point(48, 165);
+            this.lblChkReg.Name = "lblChkReg";
+            this.lblChkReg.Size = new System.Drawing.Size(193, 16);
+            this.lblChkReg.TabIndex = 77;
+            this.lblChkReg.Text = "(Kun ved tilkoblet Ovnregulator)";
+            // 
+            // lblChkDis
+            // 
+            this.lblChkDis.AutoSize = true;
+            this.lblChkDis.BackColor = System.Drawing.Color.Transparent;
+            this.lblChkDis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblChkDis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChkDis.ForeColor = System.Drawing.Color.White;
+            this.lblChkDis.Location = new System.Drawing.Point(363, 308);
+            this.lblChkDis.Name = "lblChkDis";
+            this.lblChkDis.Size = new System.Drawing.Size(257, 16);
+            this.lblChkDis.TabIndex = 76;
+            this.lblChkDis.Text = "(Slår av popup feilmeldinger på skjermen)";
+            // 
+            // lblReg
+            // 
+            this.lblReg.AutoSize = true;
+            this.lblReg.BackColor = System.Drawing.Color.Transparent;
+            this.lblReg.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReg.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblReg.Location = new System.Drawing.Point(48, 144);
+            this.lblReg.Name = "lblReg";
+            this.lblReg.Size = new System.Drawing.Size(214, 16);
+            this.lblReg.TabIndex = 75;
+            this.lblReg.Text = "Skru på tempraturregulering";
+            // 
+            // lblMsgDis
+            // 
+            this.lblMsgDis.AutoSize = true;
+            this.lblMsgDis.BackColor = System.Drawing.Color.Transparent;
+            this.lblMsgDis.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMsgDis.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblMsgDis.Location = new System.Drawing.Point(363, 287);
+            this.lblMsgDis.Name = "lblMsgDis";
+            this.lblMsgDis.Size = new System.Drawing.Size(99, 16);
+            this.lblMsgDis.TabIndex = 74;
+            this.lblMsgDis.Text = "Borte Modus";
+            // 
+            // lblPower
+            // 
+            this.lblPower.AutoSize = true;
+            this.lblPower.BackColor = System.Drawing.Color.Transparent;
+            this.lblPower.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPower.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblPower.Location = new System.Drawing.Point(335, 43);
+            this.lblPower.Name = "lblPower";
+            this.lblPower.Size = new System.Drawing.Size(84, 16);
+            this.lblPower.TabIndex = 73;
+            this.lblPower.Text = "Strøminfo:";
+            // 
+            // lblPowerInfo
+            // 
+            this.lblPowerInfo.AutoSize = true;
+            this.lblPowerInfo.BackColor = System.Drawing.Color.Transparent;
+            this.lblPowerInfo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPowerInfo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblPowerInfo.Location = new System.Drawing.Point(389, 83);
+            this.lblPowerInfo.Name = "lblPowerInfo";
+            this.lblPowerInfo.Size = new System.Drawing.Size(81, 16);
+            this.lblPowerInfo.TabIndex = 72;
+            this.lblPowerInfo.Text = "StrømInfo";
+            this.lblPowerInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // picPower
+            // 
+            this.picPower.BackColor = System.Drawing.Color.Transparent;
+            this.picPower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picPower.Location = new System.Drawing.Point(332, 64);
+            this.picPower.Name = "picPower";
+            this.picPower.Size = new System.Drawing.Size(53, 56);
+            this.picPower.TabIndex = 31;
+            this.picPower.TabStop = false;
+            // 
             // chkMsgDis
             // 
             this.chkMsgDis.AutoSize = true;
-            this.chkMsgDis.Location = new System.Drawing.Point(68, 63);
+            this.chkMsgDis.Location = new System.Drawing.Point(342, 289);
             this.chkMsgDis.Name = "chkMsgDis";
             this.chkMsgDis.Size = new System.Drawing.Size(15, 14);
             this.chkMsgDis.TabIndex = 30;
@@ -210,7 +359,7 @@
             // chkSetTol
             // 
             this.chkSetTol.AutoSize = true;
-            this.chkSetTol.Location = new System.Drawing.Point(12, 63);
+            this.chkSetTol.Location = new System.Drawing.Point(27, 146);
             this.chkSetTol.Name = "chkSetTol";
             this.chkSetTol.Size = new System.Drawing.Size(15, 14);
             this.chkSetTol.TabIndex = 29;
@@ -219,43 +368,46 @@
             // 
             // txtAlarm
             // 
-            this.txtAlarm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtAlarm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
             this.txtAlarm.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAlarm.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtAlarm.Location = new System.Drawing.Point(523, 143);
+            this.txtAlarm.Location = new System.Drawing.Point(180, 79);
             this.txtAlarm.Name = "txtAlarm";
             this.txtAlarm.ReadOnly = true;
             this.txtAlarm.Size = new System.Drawing.Size(71, 22);
             this.txtAlarm.TabIndex = 28;
             this.txtAlarm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAlarm.TextChanged += new System.EventHandler(this.txtAlarm_TextChanged);
             // 
             // txtInt
             // 
-            this.txtInt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtInt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
             this.txtInt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtInt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInt.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtInt.Location = new System.Drawing.Point(370, 143);
+            this.txtInt.Location = new System.Drawing.Point(27, 79);
             this.txtInt.Name = "txtInt";
             this.txtInt.ReadOnly = true;
             this.txtInt.Size = new System.Drawing.Size(71, 22);
             this.txtInt.TabIndex = 27;
             this.txtInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInt.TextChanged += new System.EventHandler(this.txtInt_TextChanged);
             // 
             // txtSetPoint
             // 
-            this.txtSetPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtSetPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.txtSetPoint.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSetPoint.Enabled = false;
             this.txtSetPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSetPoint.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtSetPoint.Location = new System.Drawing.Point(12, 143);
+            this.txtSetPoint.Location = new System.Drawing.Point(27, 230);
             this.txtSetPoint.Name = "txtSetPoint";
             this.txtSetPoint.ReadOnly = true;
             this.txtSetPoint.Size = new System.Drawing.Size(71, 22);
             this.txtSetPoint.TabIndex = 9;
             this.txtSetPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSetPoint.TextChanged += new System.EventHandler(this.txtSetPoint_TextChanged);
             // 
             // btnSaveAll
             // 
@@ -267,7 +419,7 @@
             this.btnSaveAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSaveAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveAll.ForeColor = System.Drawing.Color.DimGray;
-            this.btnSaveAll.Location = new System.Drawing.Point(276, 245);
+            this.btnSaveAll.Location = new System.Drawing.Point(109, 289);
             this.btnSaveAll.Name = "btnSaveAll";
             this.btnSaveAll.Size = new System.Drawing.Size(104, 39);
             this.btnSaveAll.TabIndex = 25;
@@ -283,7 +435,7 @@
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(520, 107);
+            this.label4.Location = new System.Drawing.Point(177, 43);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 16);
             this.label4.TabIndex = 24;
@@ -297,7 +449,7 @@
             this.btnAlarmDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlarmDown.Location = new System.Drawing.Point(605, 169);
+            this.btnAlarmDown.Location = new System.Drawing.Point(262, 95);
             this.btnAlarmDown.Name = "btnAlarmDown";
             this.btnAlarmDown.Size = new System.Drawing.Size(30, 30);
             this.btnAlarmDown.TabIndex = 23;
@@ -313,7 +465,7 @@
             this.btnAlarmUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAlarmUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlarmUp.Location = new System.Drawing.Point(605, 123);
+            this.btnAlarmUp.Location = new System.Drawing.Point(262, 55);
             this.btnAlarmUp.Name = "btnAlarmUp";
             this.btnAlarmUp.Size = new System.Drawing.Size(30, 30);
             this.btnAlarmUp.TabIndex = 22;
@@ -328,7 +480,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(367, 105);
+            this.label3.Location = new System.Drawing.Point(24, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 16);
             this.label3.TabIndex = 20;
@@ -342,7 +494,7 @@
             this.btnMesIDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMesIDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMesIDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMesIDown.Location = new System.Drawing.Point(452, 167);
+            this.btnMesIDown.Location = new System.Drawing.Point(109, 94);
             this.btnMesIDown.Name = "btnMesIDown";
             this.btnMesIDown.Size = new System.Drawing.Size(30, 30);
             this.btnMesIDown.TabIndex = 19;
@@ -358,7 +510,7 @@
             this.btnMesIUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMesIUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMesIUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMesIUp.Location = new System.Drawing.Point(452, 121);
+            this.btnMesIUp.Location = new System.Drawing.Point(109, 55);
             this.btnMesIUp.Name = "btnMesIUp";
             this.btnMesIUp.Size = new System.Drawing.Size(30, 30);
             this.btnMesIUp.TabIndex = 18;
@@ -368,17 +520,18 @@
             // 
             // txtTol
             // 
-            this.txtTol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtTol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.txtTol.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTol.Enabled = false;
             this.txtTol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTol.ForeColor = System.Drawing.Color.LawnGreen;
-            this.txtTol.Location = new System.Drawing.Point(182, 143);
+            this.txtTol.Location = new System.Drawing.Point(180, 230);
             this.txtTol.Name = "txtTol";
             this.txtTol.ReadOnly = true;
             this.txtTol.Size = new System.Drawing.Size(71, 22);
             this.txtTol.TabIndex = 26;
             this.txtTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTol.TextChanged += new System.EventHandler(this.txtTol_TextChanged);
             // 
             // lblTol
             // 
@@ -388,7 +541,7 @@
             this.lblTol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTol.ForeColor = System.Drawing.Color.White;
-            this.lblTol.Location = new System.Drawing.Point(179, 105);
+            this.lblTol.Location = new System.Drawing.Point(177, 195);
             this.lblTol.Name = "lblTol";
             this.lblTol.Size = new System.Drawing.Size(70, 16);
             this.lblTol.TabIndex = 16;
@@ -403,7 +556,7 @@
             this.btnToleranceDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToleranceDown.Location = new System.Drawing.Point(264, 167);
+            this.btnToleranceDown.Location = new System.Drawing.Point(262, 245);
             this.btnToleranceDown.Name = "btnToleranceDown";
             this.btnToleranceDown.Size = new System.Drawing.Size(30, 30);
             this.btnToleranceDown.TabIndex = 15;
@@ -414,13 +567,13 @@
             // btnToleranceUp
             // 
             this.btnToleranceUp.BackColor = System.Drawing.Color.Transparent;
-            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.arrowUp;
+            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.btnArrowUp;
             this.btnToleranceUp.Enabled = false;
             this.btnToleranceUp.FlatAppearance.BorderSize = 0;
             this.btnToleranceUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnToleranceUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToleranceUp.Location = new System.Drawing.Point(264, 121);
+            this.btnToleranceUp.Location = new System.Drawing.Point(262, 207);
             this.btnToleranceUp.Name = "btnToleranceUp";
             this.btnToleranceUp.Size = new System.Drawing.Size(30, 30);
             this.btnToleranceUp.TabIndex = 14;
@@ -436,7 +589,7 @@
             this.lblSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSet.ForeColor = System.Drawing.Color.White;
-            this.lblSet.Location = new System.Drawing.Point(9, 104);
+            this.lblSet.Location = new System.Drawing.Point(24, 195);
             this.lblSet.Name = "lblSet";
             this.lblSet.Size = new System.Drawing.Size(60, 16);
             this.lblSet.TabIndex = 12;
@@ -451,7 +604,7 @@
             this.btnSetPointDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetPointDown.Location = new System.Drawing.Point(94, 166);
+            this.btnSetPointDown.Location = new System.Drawing.Point(109, 244);
             this.btnSetPointDown.Name = "btnSetPointDown";
             this.btnSetPointDown.Size = new System.Drawing.Size(30, 30);
             this.btnSetPointDown.TabIndex = 5;
@@ -464,12 +617,12 @@
             this.btnSetPointUp.BackColor = System.Drawing.Color.Transparent;
             this.btnSetPointUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSetPointUp.BackgroundImage")));
             this.btnSetPointUp.Enabled = false;
-            this.btnSetPointUp.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnSetPointUp.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.btnSetPointUp.FlatAppearance.BorderSize = 0;
             this.btnSetPointUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSetPointUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetPointUp.Location = new System.Drawing.Point(94, 120);
+            this.btnSetPointUp.Location = new System.Drawing.Point(109, 206);
             this.btnSetPointUp.Name = "btnSetPointUp";
             this.btnSetPointUp.Size = new System.Drawing.Size(30, 30);
             this.btnSetPointUp.TabIndex = 4;
@@ -479,10 +632,15 @@
             // 
             // tbpTwo
             // 
-            this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.insideTab2;
-            this.tbpTwo.Controls.Add(this.label5);
+            this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.imgTab;
+            this.tbpTwo.Controls.Add(this.lblDate2);
+            this.tbpTwo.Controls.Add(this.lblDate1);
+            this.tbpTwo.Controls.Add(this.lblFilterStatus);
+            this.tbpTwo.Controls.Add(this.lblFilterTemp);
+            this.tbpTwo.Controls.Add(this.lblFilterDate);
+            this.tbpTwo.Controls.Add(this.lblFilter);
+            this.tbpTwo.Controls.Add(this.lblChooseDel);
             this.tbpTwo.Controls.Add(this.label2);
-            this.tbpTwo.Controls.Add(this.lblDelType);
             this.tbpTwo.Controls.Add(this.cboSelectDelete);
             this.tbpTwo.Controls.Add(this.dtpSelectToTime);
             this.tbpTwo.Controls.Add(this.dtpSelectFromTime);
@@ -511,47 +669,113 @@
             this.tbpTwo.UseVisualStyleBackColor = true;
             this.tbpTwo.Click += new System.EventHandler(this.tbpTwo_Click);
             // 
-            // label5
+            // lblDate2
             // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(21, 143);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Filrering";
+            this.lblDate2.AutoSize = true;
+            this.lblDate2.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDate2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate2.ForeColor = System.Drawing.Color.White;
+            this.lblDate2.Location = new System.Drawing.Point(263, 59);
+            this.lblDate2.Name = "lblDate2";
+            this.lblDate2.Size = new System.Drawing.Size(0, 16);
+            this.lblDate2.TabIndex = 81;
+            // 
+            // lblDate1
+            // 
+            this.lblDate1.AutoSize = true;
+            this.lblDate1.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate1.ForeColor = System.Drawing.Color.White;
+            this.lblDate1.Location = new System.Drawing.Point(167, 59);
+            this.lblDate1.Name = "lblDate1";
+            this.lblDate1.Size = new System.Drawing.Size(0, 16);
+            this.lblDate1.TabIndex = 80;
+            // 
+            // lblFilterStatus
+            // 
+            this.lblFilterStatus.AutoSize = true;
+            this.lblFilterStatus.BackColor = System.Drawing.Color.Transparent;
+            this.lblFilterStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblFilterStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFilterStatus.ForeColor = System.Drawing.Color.White;
+            this.lblFilterStatus.Location = new System.Drawing.Point(181, 282);
+            this.lblFilterStatus.Name = "lblFilterStatus";
+            this.lblFilterStatus.Size = new System.Drawing.Size(120, 16);
+            this.lblFilterStatus.TabIndex = 79;
+            this.lblFilterStatus.Text = "Filtrer på ovnstatus";
+            // 
+            // lblFilterTemp
+            // 
+            this.lblFilterTemp.AutoSize = true;
+            this.lblFilterTemp.BackColor = System.Drawing.Color.Transparent;
+            this.lblFilterTemp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblFilterTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFilterTemp.ForeColor = System.Drawing.Color.White;
+            this.lblFilterTemp.Location = new System.Drawing.Point(181, 233);
+            this.lblFilterTemp.Name = "lblFilterTemp";
+            this.lblFilterTemp.Size = new System.Drawing.Size(119, 16);
+            this.lblFilterTemp.TabIndex = 78;
+            this.lblFilterTemp.Text = "Filtrer på tempratur";
+            // 
+            // lblFilterDate
+            // 
+            this.lblFilterDate.AutoSize = true;
+            this.lblFilterDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblFilterDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblFilterDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFilterDate.ForeColor = System.Drawing.Color.White;
+            this.lblFilterDate.Location = new System.Drawing.Point(181, 158);
+            this.lblFilterDate.Name = "lblFilterDate";
+            this.lblFilterDate.Size = new System.Drawing.Size(94, 16);
+            this.lblFilterDate.TabIndex = 76;
+            this.lblFilterDate.Text = "Filtrer i tidsrom";
+            // 
+            // lblFilter
+            // 
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.BackColor = System.Drawing.Color.Transparent;
+            this.lblFilter.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFilter.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblFilter.Location = new System.Drawing.Point(12, 158);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(82, 16);
+            this.lblFilter.TabIndex = 77;
+            this.lblFilter.Text = "Velg Filter";
+            // 
+            // lblChooseDel
+            // 
+            this.lblChooseDel.AutoSize = true;
+            this.lblChooseDel.BackColor = System.Drawing.Color.Transparent;
+            this.lblChooseDel.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChooseDel.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblChooseDel.Location = new System.Drawing.Point(12, 26);
+            this.lblChooseDel.Name = "lblChooseDel";
+            this.lblChooseDel.Size = new System.Drawing.Size(143, 16);
+            this.lblChooseDel.TabIndex = 76;
+            this.lblChooseDel.Text = "Velg Slettemetode";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(36, 166);
+            this.label2.Location = new System.Drawing.Point(157, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 20;
-            // 
-            // lblDelType
-            // 
-            this.lblDelType.AutoSize = true;
-            this.lblDelType.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblDelType.Location = new System.Drawing.Point(66, 33);
-            this.lblDelType.Name = "lblDelType";
-            this.lblDelType.Size = new System.Drawing.Size(93, 13);
-            this.lblDelType.TabIndex = 19;
-            this.lblDelType.Text = "Velg Slettemetode";
             // 
             // cboSelectDelete
             // 
             this.cboSelectDelete.AccessibleName = "";
             this.cboSelectDelete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSelectDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboSelectDelete.FormattingEnabled = true;
             this.cboSelectDelete.Items.AddRange(new object[] {
             "Slett alt",
             "Slett siste 30 dager",
             "Slett i egendefinert tidsrom",
-            "Slett en egendefinert Oppføring."});
-            this.cboSelectDelete.Location = new System.Drawing.Point(165, 30);
+            "Slett en en måling"});
+            this.cboSelectDelete.Location = new System.Drawing.Point(158, 21);
             this.cboSelectDelete.Name = "cboSelectDelete";
             this.cboSelectDelete.Size = new System.Drawing.Size(168, 21);
             this.cboSelectDelete.TabIndex = 18;
@@ -561,7 +785,7 @@
             // 
             this.dtpSelectToTime.Enabled = false;
             this.dtpSelectToTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectToTime.Location = new System.Drawing.Point(134, 211);
+            this.dtpSelectToTime.Location = new System.Drawing.Point(255, 206);
             this.dtpSelectToTime.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectToTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectToTime.Name = "dtpSelectToTime";
@@ -573,7 +797,7 @@
             // 
             this.dtpSelectFromTime.Enabled = false;
             this.dtpSelectFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectFromTime.Location = new System.Drawing.Point(39, 211);
+            this.dtpSelectFromTime.Location = new System.Drawing.Point(160, 206);
             this.dtpSelectFromTime.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectFromTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectFromTime.Name = "dtpSelectFromTime";
@@ -584,7 +808,7 @@
             // dtpDelToTime
             // 
             this.dtpDelToTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelToTime.Location = new System.Drawing.Point(260, 90);
+            this.dtpDelToTime.Location = new System.Drawing.Point(255, 106);
             this.dtpDelToTime.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
             this.dtpDelToTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelToTime.Name = "dtpDelToTime";
@@ -595,7 +819,7 @@
             // dtpDelFromTime
             // 
             this.dtpDelFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelFromTime.Location = new System.Drawing.Point(165, 88);
+            this.dtpDelFromTime.Location = new System.Drawing.Point(160, 104);
             this.dtpDelFromTime.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
             this.dtpDelFromTime.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelFromTime.Name = "dtpDelFromTime";
@@ -612,9 +836,9 @@
             this.btnDelReading.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnDelReading.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDelReading.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelReading.Location = new System.Drawing.Point(163, 112);
+            this.btnDelReading.Location = new System.Drawing.Point(15, 68);
             this.btnDelReading.Name = "btnDelReading";
-            this.btnDelReading.Size = new System.Drawing.Size(98, 44);
+            this.btnDelReading.Size = new System.Drawing.Size(90, 44);
             this.btnDelReading.TabIndex = 13;
             this.btnDelReading.UseVisualStyleBackColor = true;
             this.btnDelReading.Click += new System.EventHandler(this.btnDelReading_Click);
@@ -624,7 +848,7 @@
             // dtpDelTo
             // 
             this.dtpDelTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelTo.Location = new System.Drawing.Point(260, 62);
+            this.dtpDelTo.Location = new System.Drawing.Point(255, 78);
             this.dtpDelTo.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpDelTo.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelTo.Name = "dtpDelTo";
@@ -635,7 +859,7 @@
             // dtpDelFrom
             // 
             this.dtpDelFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelFrom.Location = new System.Drawing.Point(165, 62);
+            this.dtpDelFrom.Location = new System.Drawing.Point(160, 78);
             this.dtpDelFrom.MaxDate = new System.DateTime(2113, 3, 8, 0, 0, 0, 0);
             this.dtpDelFrom.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpDelFrom.Name = "dtpDelFrom";
@@ -646,7 +870,7 @@
             // chkFilterDate
             // 
             this.chkFilterDate.AutoSize = true;
-            this.chkFilterDate.Location = new System.Drawing.Point(20, 166);
+            this.chkFilterDate.Location = new System.Drawing.Point(160, 160);
             this.chkFilterDate.Name = "chkFilterDate";
             this.chkFilterDate.Size = new System.Drawing.Size(15, 14);
             this.chkFilterDate.TabIndex = 10;
@@ -656,7 +880,7 @@
             // chkFilterTemp
             // 
             this.chkFilterTemp.AutoSize = true;
-            this.chkFilterTemp.Location = new System.Drawing.Point(115, 239);
+            this.chkFilterTemp.Location = new System.Drawing.Point(160, 235);
             this.chkFilterTemp.Name = "chkFilterTemp";
             this.chkFilterTemp.Size = new System.Drawing.Size(15, 14);
             this.chkFilterTemp.TabIndex = 9;
@@ -666,7 +890,7 @@
             // chkFilterStatus
             // 
             this.chkFilterStatus.AutoSize = true;
-            this.chkFilterStatus.Location = new System.Drawing.Point(20, 240);
+            this.chkFilterStatus.Location = new System.Drawing.Point(160, 284);
             this.chkFilterStatus.Name = "chkFilterStatus";
             this.chkFilterStatus.Size = new System.Drawing.Size(15, 14);
             this.chkFilterStatus.TabIndex = 8;
@@ -682,9 +906,9 @@
             this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Location = new System.Drawing.Point(134, 290);
+            this.btnReset.Location = new System.Drawing.Point(12, 245);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(137, 38);
+            this.btnReset.Size = new System.Drawing.Size(130, 38);
             this.btnReset.TabIndex = 7;
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -693,19 +917,21 @@
             // 
             // cboEqualsFilter
             // 
+            this.cboEqualsFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEqualsFilter.Enabled = false;
             this.cboEqualsFilter.FormattingEnabled = true;
             this.cboEqualsFilter.Items.AddRange(new object[] {
             "Er Lik",
             "Over",
             "Under"});
-            this.cboEqualsFilter.Location = new System.Drawing.Point(134, 258);
+            this.cboEqualsFilter.Location = new System.Drawing.Point(160, 255);
             this.cboEqualsFilter.Name = "cboEqualsFilter";
             this.cboEqualsFilter.Size = new System.Drawing.Size(88, 21);
             this.cboEqualsFilter.TabIndex = 6;
             // 
             // cboFilterTemp
             // 
+            this.cboFilterTemp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterTemp.Enabled = false;
             this.cboFilterTemp.FormattingEnabled = true;
             this.cboFilterTemp.Items.AddRange(new object[] {
@@ -730,19 +956,20 @@
             "23",
             "24",
             "25"});
-            this.cboFilterTemp.Location = new System.Drawing.Point(243, 258);
+            this.cboFilterTemp.Location = new System.Drawing.Point(272, 255);
             this.cboFilterTemp.Name = "cboFilterTemp";
             this.cboFilterTemp.Size = new System.Drawing.Size(56, 21);
             this.cboFilterTemp.TabIndex = 5;
             // 
             // cboFilterStatus
             // 
+            this.cboFilterStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterStatus.Enabled = false;
             this.cboFilterStatus.FormattingEnabled = true;
             this.cboFilterStatus.Items.AddRange(new object[] {
             "True",
             "False"});
-            this.cboFilterStatus.Location = new System.Drawing.Point(39, 258);
+            this.cboFilterStatus.Location = new System.Drawing.Point(160, 304);
             this.cboFilterStatus.Name = "cboFilterStatus";
             this.cboFilterStatus.Size = new System.Drawing.Size(56, 21);
             this.cboFilterStatus.TabIndex = 4;
@@ -756,9 +983,9 @@
             this.btnShowSelected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnShowSelected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnShowSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShowSelected.Location = new System.Drawing.Point(20, 289);
+            this.btnShowSelected.Location = new System.Drawing.Point(15, 200);
             this.btnShowSelected.Name = "btnShowSelected";
-            this.btnShowSelected.Size = new System.Drawing.Size(110, 38);
+            this.btnShowSelected.Size = new System.Drawing.Size(90, 37);
             this.btnShowSelected.TabIndex = 3;
             this.btnShowSelected.UseVisualStyleBackColor = true;
             this.btnShowSelected.Click += new System.EventHandler(this.btnShowSelected_Click);
@@ -769,7 +996,7 @@
             // 
             this.dtpSelectTo.Enabled = false;
             this.dtpSelectTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectTo.Location = new System.Drawing.Point(134, 185);
+            this.dtpSelectTo.Location = new System.Drawing.Point(255, 180);
             this.dtpSelectTo.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectTo.MinDate = new System.DateTime(2013, 3, 14, 0, 0, 0, 0);
             this.dtpSelectTo.Name = "dtpSelectTo";
@@ -779,9 +1006,10 @@
             // 
             // dtpSelectFrom
             // 
+            this.dtpSelectFrom.CalendarMonthBackground = System.Drawing.Color.White;
             this.dtpSelectFrom.Enabled = false;
             this.dtpSelectFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpSelectFrom.Location = new System.Drawing.Point(39, 185);
+            this.dtpSelectFrom.Location = new System.Drawing.Point(160, 180);
             this.dtpSelectFrom.MaxDate = new System.DateTime(2113, 3, 14, 0, 0, 0, 0);
             this.dtpSelectFrom.MinDate = new System.DateTime(2013, 3, 11, 0, 0, 0, 0);
             this.dtpSelectFrom.Name = "dtpSelectFrom";
@@ -791,39 +1019,39 @@
             // 
             // dgvDataBase
             // 
-            this.dgvDataBase.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDataBase.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.dgvDataBase.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LawnGreen;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LawnGreen;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvDataBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDataBase.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvDataBase.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDataBase.GridColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvDataBase.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvDataBase.Location = new System.Drawing.Point(358, -1);
             this.dgvDataBase.Name = "dgvDataBase";
             this.dgvDataBase.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDataBase.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDataBase.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvDataBase.RowHeadersWidth = 20;
             this.dgvDataBase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDataBase.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -833,10 +1061,12 @@
             // 
             // tbpThree
             // 
-            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.insideTab2;
+            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.imgTab;
+            this.tbpThree.Controls.Add(this.lblDelEmail);
+            this.tbpThree.Controls.Add(this.lblAddEmail);
             this.tbpThree.Controls.Add(this.btnDelEmail);
             this.tbpThree.Controls.Add(this.cboDelEmail);
-            this.tbpThree.Controls.Add(this.dgvEmail);
+            this.tbpThree.Controls.Add(this.lblAdd);
             this.tbpThree.Controls.Add(this.btnAddEmail);
             this.tbpThree.Controls.Add(this.txtAddEmail);
             this.tbpThree.Location = new System.Drawing.Point(4, 22);
@@ -845,6 +1075,30 @@
             this.tbpThree.TabIndex = 2;
             this.tbpThree.Text = "Mottaker";
             this.tbpThree.UseVisualStyleBackColor = true;
+            // 
+            // lblDelEmail
+            // 
+            this.lblDelEmail.AutoSize = true;
+            this.lblDelEmail.BackColor = System.Drawing.Color.Transparent;
+            this.lblDelEmail.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDelEmail.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblDelEmail.Location = new System.Drawing.Point(219, 102);
+            this.lblDelEmail.Name = "lblDelEmail";
+            this.lblDelEmail.Size = new System.Drawing.Size(127, 16);
+            this.lblDelEmail.TabIndex = 83;
+            this.lblDelEmail.Text = "Slett en Adresse";
+            // 
+            // lblAddEmail
+            // 
+            this.lblAddEmail.AutoSize = true;
+            this.lblAddEmail.BackColor = System.Drawing.Color.Transparent;
+            this.lblAddEmail.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddEmail.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblAddEmail.Location = new System.Drawing.Point(20, 101);
+            this.lblAddEmail.Name = "lblAddEmail";
+            this.lblAddEmail.Size = new System.Drawing.Size(168, 16);
+            this.lblAddEmail.TabIndex = 82;
+            this.lblAddEmail.Text = "Legg til epost adresse";
             // 
             // btnDelEmail
             // 
@@ -855,7 +1109,7 @@
             this.btnDelEmail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnDelEmail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDelEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelEmail.Location = new System.Drawing.Point(260, 164);
+            this.btnDelEmail.Location = new System.Drawing.Point(235, 150);
             this.btnDelEmail.Name = "btnDelEmail";
             this.btnDelEmail.Size = new System.Drawing.Size(96, 35);
             this.btnDelEmail.TabIndex = 4;
@@ -867,28 +1121,28 @@
             // cboDelEmail
             // 
             this.cboDelEmail.FormattingEnabled = true;
-            this.cboDelEmail.Location = new System.Drawing.Point(238, 137);
+            this.cboDelEmail.Location = new System.Drawing.Point(213, 123);
             this.cboDelEmail.Name = "cboDelEmail";
             this.cboDelEmail.Size = new System.Drawing.Size(143, 21);
             this.cboDelEmail.TabIndex = 3;
             // 
-            // dgvEmail
+            // lblAdd
             // 
-            this.dgvEmail.BackgroundColor = System.Drawing.Color.White;
-            this.dgvEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvEmail.Location = new System.Drawing.Point(436, 0);
-            this.dgvEmail.Name = "dgvEmail";
-            this.dgvEmail.RowHeadersWidth = 20;
-            this.dgvEmail.Size = new System.Drawing.Size(214, 334);
-            this.dgvEmail.TabIndex = 2;
+            this.lblAdd.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.lblAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lblAdd.DefaultCellStyle = dataGridViewCellStyle12;
+            this.lblAdd.Location = new System.Drawing.Point(387, 0);
+            this.lblAdd.Name = "lblAdd";
+            this.lblAdd.RowHeadersWidth = 20;
+            this.lblAdd.Size = new System.Drawing.Size(263, 334);
+            this.lblAdd.TabIndex = 2;
             // 
             // btnAddEmail
             // 
@@ -899,7 +1153,7 @@
             this.btnAddEmail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAddEmail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAddEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddEmail.Location = new System.Drawing.Point(80, 164);
+            this.btnAddEmail.Location = new System.Drawing.Point(55, 150);
             this.btnAddEmail.Name = "btnAddEmail";
             this.btnAddEmail.Size = new System.Drawing.Size(91, 35);
             this.btnAddEmail.TabIndex = 1;
@@ -910,7 +1164,7 @@
             // 
             // txtAddEmail
             // 
-            this.txtAddEmail.Location = new System.Drawing.Point(56, 138);
+            this.txtAddEmail.Location = new System.Drawing.Point(31, 124);
             this.txtAddEmail.Name = "txtAddEmail";
             this.txtAddEmail.Size = new System.Drawing.Size(143, 20);
             this.txtAddEmail.TabIndex = 0;
@@ -934,7 +1188,7 @@
             // 
             // txtCurrent
             // 
-            this.txtCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
             this.txtCurrent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrent.ForeColor = System.Drawing.Color.LawnGreen;
@@ -959,7 +1213,7 @@
             // 
             // txtMax
             // 
-            this.txtMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.txtMax.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMax.ForeColor = System.Drawing.Color.White;
@@ -984,7 +1238,7 @@
             // 
             // txtMaxTime
             // 
-            this.txtMaxTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtMaxTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.txtMaxTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMaxTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaxTime.ForeColor = System.Drawing.Color.White;
@@ -998,7 +1252,7 @@
             // 
             // txtMin
             // 
-            this.txtMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.txtMin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMin.ForeColor = System.Drawing.Color.White;
@@ -1023,7 +1277,7 @@
             // 
             // txtMinTime
             // 
-            this.txtMinTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtMinTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.txtMinTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMinTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMinTime.ForeColor = System.Drawing.Color.White;
@@ -1037,7 +1291,7 @@
             // 
             // txtCurrentTime
             // 
-            this.txtCurrentTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtCurrentTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
             this.txtCurrentTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCurrentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentTime.ForeColor = System.Drawing.Color.White;
@@ -1052,7 +1306,7 @@
             // btnLog
             // 
             this.btnLog.BackColor = System.Drawing.Color.Transparent;
-            this.btnLog.BackgroundImage = global::Polakken.Properties.Resources.buttonLogg;
+            this.btnLog.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLog.BackgroundImage")));
             this.btnLog.FlatAppearance.BorderSize = 0;
             this.btnLog.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnLog.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -1069,37 +1323,37 @@
             this.tmrUpdateSettings.Interval = 20000;
             this.tmrUpdateSettings.Tick += new System.EventHandler(this.tmrUpdateSettings_Tick);
             // 
-            // btnZoomIn
-            // 
-            this.btnZoomIn.BackColor = System.Drawing.Color.Transparent;
-            this.btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.Minus;
-            this.btnZoomIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnZoomIn.FlatAppearance.BorderSize = 0;
-            this.btnZoomIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnZoomIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnZoomIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoomIn.Location = new System.Drawing.Point(807, 629);
-            this.btnZoomIn.Name = "btnZoomIn";
-            this.btnZoomIn.Size = new System.Drawing.Size(35, 33);
-            this.btnZoomIn.TabIndex = 68;
-            this.btnZoomIn.UseVisualStyleBackColor = false;
-            this.btnZoomIn.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btnZoomOut
             // 
             this.btnZoomOut.BackColor = System.Drawing.Color.Transparent;
-            this.btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.PlusDisabeld;
+            this.btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnMinus;
             this.btnZoomOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnZoomOut.FlatAppearance.BorderSize = 0;
             this.btnZoomOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnZoomOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnZoomOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoomOut.Location = new System.Drawing.Point(834, 628);
+            this.btnZoomOut.Location = new System.Drawing.Point(807, 629);
             this.btnZoomOut.Name = "btnZoomOut";
-            this.btnZoomOut.Size = new System.Drawing.Size(33, 32);
-            this.btnZoomOut.TabIndex = 69;
+            this.btnZoomOut.Size = new System.Drawing.Size(35, 33);
+            this.btnZoomOut.TabIndex = 68;
             this.btnZoomOut.UseVisualStyleBackColor = false;
-            this.btnZoomOut.Click += new System.EventHandler(this.button2_Click);
+            this.btnZoomOut.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
+            // btnZoomIn
+            // 
+            this.btnZoomIn.BackColor = System.Drawing.Color.Transparent;
+            this.btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnPlusDisabeld;
+            this.btnZoomIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnZoomIn.FlatAppearance.BorderSize = 0;
+            this.btnZoomIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnZoomIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnZoomIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZoomIn.Location = new System.Drawing.Point(834, 628);
+            this.btnZoomIn.Name = "btnZoomIn";
+            this.btnZoomIn.Size = new System.Drawing.Size(33, 32);
+            this.btnZoomIn.TabIndex = 69;
+            this.btnZoomIn.UseVisualStyleBackColor = false;
+            this.btnZoomIn.Click += new System.EventHandler(this.btnPlus_Click);
             // 
             // label6
             // 
@@ -1113,17 +1367,17 @@
             this.label6.TabIndex = 71;
             this.label6.Text = "Zoom Grafen";
             // 
-            // GUI
+            // GUI_FORM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.BackgroundImage = global::Polakken.Properties.Resources.BetaV2;
+            this.BackgroundImage = global::Polakken.Properties.Resources.imgGuiForm;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(908, 702);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btnZoomOut);
             this.Controls.Add(this.btnZoomIn);
+            this.Controls.Add(this.btnZoomOut);
             this.Controls.Add(this.btnLog);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.btnMove);
@@ -1141,7 +1395,7 @@
             this.Controls.Add(this.txtMaxTime);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "GUI";
+            this.Name = "GUI_FORM";
             this.Text = "Polakken";
             this.TransparencyKey = System.Drawing.Color.Silver;
             this.Load += new System.EventHandler(this.GUI_Load);
@@ -1149,12 +1403,14 @@
             this.tbcPage.ResumeLayout(false);
             this.tbpOne.ResumeLayout(false);
             this.tbpOne.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSensor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPower)).EndInit();
             this.tbpTwo.ResumeLayout(false);
             this.tbpTwo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataBase)).EndInit();
             this.tbpThree.ResumeLayout(false);
             this.tbpThree.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblAdd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1198,7 +1454,7 @@
         private System.Windows.Forms.CheckBox chkFilterDate;
         private System.Windows.Forms.DateTimePicker dtpSelectTo;
         private System.Windows.Forms.DateTimePicker dtpSelectFrom;
-        private System.Windows.Forms.DataGridView dgvEmail;
+        private System.Windows.Forms.DataGridView lblAdd;
         private System.Windows.Forms.Button btnAddEmail;
         private System.Windows.Forms.TextBox txtAddEmail;
         private System.Windows.Forms.ComboBox cboDelEmail;
@@ -1221,17 +1477,33 @@
         private System.Windows.Forms.TextBox txtMinTime;
         private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.Button btnLog;
-        //private GUI.CustomTabControl tbcPage;
         private System.Windows.Forms.TabControl tbcPage;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblDelType;
         private System.Windows.Forms.Timer tmrUpdateSettings;
         public System.Windows.Forms.TextBox txtCurrent;
-        private System.Windows.Forms.Button btnZoomIn;
         private System.Windows.Forms.Button btnZoomOut;
+        private System.Windows.Forms.Button btnZoomIn;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkMsgDis;
+        private System.Windows.Forms.PictureBox picPower;
+        private System.Windows.Forms.Label lblPowerInfo;
+        private System.Windows.Forms.Label lblPower;
+        private System.Windows.Forms.Label lblReg;
+        private System.Windows.Forms.Label lblMsgDis;
+        private System.Windows.Forms.Label lblChooseDel;
+        private System.Windows.Forms.Label lblFilterStatus;
+        private System.Windows.Forms.Label lblFilterTemp;
+        private System.Windows.Forms.Label lblFilterDate;
+        private System.Windows.Forms.Label lblFilter;
+        private System.Windows.Forms.Label lblDate2;
+        private System.Windows.Forms.Label lblDate1;
+        private System.Windows.Forms.Label lblAddEmail;
+        private System.Windows.Forms.Label lblDelEmail;
+        private System.Windows.Forms.Label lblChkDis;
+        private System.Windows.Forms.Label lblChkReg;
+        private System.Windows.Forms.Label lblSensor;
+        private System.Windows.Forms.Label lblSensorInfo;
+        private System.Windows.Forms.PictureBox picSensor;
 
     
 
