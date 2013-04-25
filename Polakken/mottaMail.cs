@@ -71,7 +71,6 @@ namespace Polakken
             }
         }
 
-
         public static void getCommand()
         {
             int length;

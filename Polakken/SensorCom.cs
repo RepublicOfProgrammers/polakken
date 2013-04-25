@@ -20,8 +20,7 @@ namespace Polakken
             Task temperatureTask = new Task();
             try
             {
-                AIChannel myAIChannel;
-                myAIChannel = temperatureTask.AIChannels.CreateThermocoupleChannel("Dev1/ai0", "Temperature", 0, 100,
+                temperatureTask.AIChannels.CreateThermocoupleChannel("Dev1/ai0", "Temperature", 0, 100,
                     AIThermocoupleType.J, AITemperatureUnits.DegreesC);
 
                 AnalogSingleChannelReader reader = new AnalogSingleChannelReader(temperatureTask.Stream);
@@ -47,14 +46,18 @@ namespace Polakken
         public static bool connected()
         {
             Task checkConnection = new Task();
-            AIChannel myAIChannel = null;
-            bool connected = true;
+            bool connected;
 
             // Tester om programmet klarer å opprette en AIChannel, kun for å se om enhet er koblet til. 
             try
             {
-                myAIChannel = checkConnection.AIChannels.CreateThermocoupleChannel("Dev1/ai0", "Temperature", 0, 100,
+                connected = true;
+
+                checkConnection.AIChannels.CreateThermocoupleChannel("Dev1/ai0", "Temperature", 0, 100,
                     AIThermocoupleType.J, AITemperatureUnits.DegreesC);
+
+                AnalogSingleChannelReader reader = new AnalogSingleChannelReader(checkConnection.Stream);
+                reader.ReadSingleSample(); 
             }
             catch (Exception) 
             {
@@ -63,7 +66,6 @@ namespace Polakken
             }
             finally {
                 checkConnection.Dispose();
-                myAIChannel.Dispose();
             }
             return connected;
         }

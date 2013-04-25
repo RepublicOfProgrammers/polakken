@@ -6,13 +6,13 @@ namespace Polakken
     {
         //variabler
         private static string module = "Regulation";
-        public static Boolean status { get; private set; }
-        private static double reading = 999;
+        private static double reading = 999; 
         private static double prevReading;
         private static double difference;
         private static string loggerInfo;
         public static int tolerance { get; set; }
         public static int setpoint { get; set; }
+        public static Boolean status { get; private set; }
 
         /// <summary>
         /// Returnerer status for varmekilde. Må programmeres slik at en varmekilde blir slått av og på ved endring av boolean value fra denne metoden.
