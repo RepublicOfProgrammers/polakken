@@ -106,7 +106,7 @@ namespace Polakken
                     switch (command)
                     {
                         case "STP":
-                            //E-mail kommando for endring av setpunkt. 
+                            //E-mail kommando for endring av setpunkt. Endrer bare dersom verdien er mellom 0 og 100.
                             if (intvalue < 0)
                             {
                                 response = "Setpunktet kan ikke være mindre enn null, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
@@ -130,7 +130,7 @@ namespace Polakken
                             Logger.Info(loggerInfo, module);
                             break;
                         case "INT":
-                            //E-mail kommando for endring av måleinterval. 
+                            //E-mail kommando for endring av måleinterval. Endrer bare dersom verdien er mellom 1 og 999.
                             if (intvalue < 1)
                             {
                                 response = "Måleintervallet kan ikke være mindre enn 1, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
@@ -177,7 +177,7 @@ namespace Polakken
                             sendMail.sendToOne("Status", response, from);
                             break;
                         case "TLR":
-                            //E-mail kommando for endring av toleranse. 
+                            //E-mail kommando for endring av toleranse. Endrer bare dersom verdien er mellom 0 og 20.
                             if (intvalue < 0)
                             {
                                 response = "Toleransen kan ikke være mindre enn null, toleransen forblir på siste verdi som er " + Convert.ToString(Regulation.tolerance);
@@ -203,7 +203,7 @@ namespace Polakken
                             }
                             break;
                         case "ALG":
-                            //E-mail kommando for endring av alarmgrense.
+                            //E-mail kommando for endring av alarmgrense. Endrer bare dersom verdien er mellom 0 og 100.
                             if (intvalue < 0)
                             {
                                 response = "Alarmgrensen kan ikke være mindre enn null, Alarmgrensen forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
@@ -272,10 +272,10 @@ namespace Polakken
                             break;
                     }
                     Settings.Default.Save(); //Lagrer verdiene som har blitt endret i settings. 
-                    GUI_FORM.settingsupdate = true;
+                    GUI_FORM.settingsupdate = true; //Forteller GUI at det er gjort endringer. 
                 }
             }
-            else
+            else //Feilrutine dersom mailen ikke inneholder minst 3 tegn.
             {
                 loggerInfo = "Har mottatt en ugyldig kommando på mail fra " + from;
                 Logger.Info(loggerInfo, module);
