@@ -24,7 +24,7 @@ namespace Polakken
             ImapClient ic = null;
             try
             {
-                warningSentMotta = false;
+                
                 //Lager nytt objekt av klassen ImapClient
                 ic = new ImapClient(host, sendMail.email, sendMail.password,
                      ImapClient.AuthMethods.Login, port, secure);
@@ -53,7 +53,8 @@ namespace Polakken
                     }
 
                 }
-                
+
+                warningSentMotta = false;
             }
 
 

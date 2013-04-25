@@ -20,7 +20,6 @@ namespace Polakken
         {
             try
             {
-                warningSentSend = false;
                 string mailTo;
                 //Oppretter ny SmtpClient
                 mCredentials = new NetworkCredential(email, password);
@@ -37,6 +36,8 @@ namespace Polakken
                         Logger.Info("Sendt email til alle mottakere.", module);
                     }
                 }
+
+                warningSentSend = false;
             }
             catch (Exception ex)
             {
@@ -54,7 +55,7 @@ namespace Polakken
         {
             try
             {
-                warningSentSend = false;
+                
                 //Oppretter ny SmtpClient
                 mCredentials = new NetworkCredential(email, password);
                 using (SmtpClient client = new SmtpClient(host, port))
@@ -67,6 +68,7 @@ namespace Polakken
                     Logger.Info("Sendt email til " + mailTo + ".", module);
                 }
 
+                warningSentSend = false;
             }
             catch (Exception ex)
             {
