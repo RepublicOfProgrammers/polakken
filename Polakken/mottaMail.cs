@@ -36,7 +36,7 @@ namespace Polakken
                 {
                     //Tre variabler som henter ut informasjon fra den siste motatte mailen
                     from = mail[mail.Length - 1].From.Address;
-                    //Løkke som sjekker om mailen er lagt til i databasen
+                    //Løkke med if-setning som sjekker om mailen er lagt til i databasen
                     foreach (DataRow dtRow in GUI_FORM.dtEmails.Rows)
                     {
                         if (from == dtRow["Adresser"].ToString())
