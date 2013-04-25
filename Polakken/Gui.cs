@@ -185,10 +185,10 @@ namespace Polakken
             dtpDelToTime.ShowUpDown = true;
             dtpDelFromTime.ShowUpDown = true;
             dtpDelToTime.ShowUpDown = true;
-            dtpSelectFrom.Value = now.AddDays(-10);
-            dtpSelectTo.Value = now;
-            dtpDelFrom.Value = now.AddDays(-10);
-            dtpDelTo.Value = now;
+            dtpSelectTo.Value = DateTime.Now;
+            dtpSelectFrom.Value = DateTime.Now.AddDays(-10);
+            dtpDelFrom.Value = DateTime.Now.AddDays(-10);
+            dtpDelTo.Value = DateTime.Now;
             dtpDelFrom.Enabled = false;
             dtpDelTo.Enabled = false;
             dtpDelFromTime.Enabled = false;
