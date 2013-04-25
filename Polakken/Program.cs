@@ -38,11 +38,14 @@ namespace Polakken
             Application.SetCompatibleTextRenderingDefault(false);
             DialogResult result;
             using (var loginForm = new LogIn())
-                result = loginForm.ShowDialog();
-            if (result == DialogResult.OK)
             {
-                // login was successful
-                Application.Run(new GUI_FORM());
+                loginForm.StartPosition = FormStartPosition.CenterScreen;
+                result = loginForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    // login was successful
+                    Application.Run(new GUI_FORM());
+                }
             }
         }
 

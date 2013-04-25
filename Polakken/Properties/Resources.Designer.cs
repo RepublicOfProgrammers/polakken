@@ -183,6 +183,26 @@ namespace Polakken.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnLoggInn {
+            get {
+                object obj = ResourceManager.GetObject("btnLoggInn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnLoggInnNed {
+            get {
+                object obj = ResourceManager.GetObject("btnLoggInnNed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnMinimize {
             get {
                 object obj = ResourceManager.GetObject("btnMinimize", resourceCulture);
@@ -273,6 +293,16 @@ namespace Polakken.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgFrmLogIn {
+            get {
+                object obj = ResourceManager.GetObject("imgFrmLogIn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgGuiForm {
             get {
                 object obj = ResourceManager.GetObject("imgGuiForm", resourceCulture);
@@ -336,16 +366,6 @@ namespace Polakken.Properties {
         internal static System.Drawing.Bitmap LogForn {
             get {
                 object obj = ResourceManager.GetObject("LogForn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LogInForm {
-            get {
-                object obj = ResourceManager.GetObject("LogInForm", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
