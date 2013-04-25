@@ -584,17 +584,16 @@ namespace Polakken
         }
         private void SensorCheck()
         {
-            
-            if (!SensorCom.connected())
-            {
-                picSensor.Image = global::Polakken.Properties.Resources.imgSensorOut;
-                lblSensorInfo.ForeColor = Color.Red;
-                lblSensorInfo.Text = "Sensoren er ikke tilkoblet";
-            }else
+            if (SensorCom.connected())
             {
                 picSensor.Image = global::Polakken.Properties.Resources.imgSensorIn;
                 lblSensorInfo.ForeColor = Color.White;
                 lblSensorInfo.Text = "Sensoren er tilkoblet";
+            }else
+            {
+                picSensor.Image = global::Polakken.Properties.Resources.imgSensorOut;
+                lblSensorInfo.ForeColor = Color.Red;
+                lblSensorInfo.Text = "Sensoren er ikke tilkoblet";
             }
         }
         public void Zoom()
