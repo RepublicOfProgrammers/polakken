@@ -9,10 +9,10 @@ namespace Polakken
     {
         private static string host = "smtp.gmail.com";
         private static int port = 587;
-        public static string email;
-        public static string password;
+        public static string email { get; set; }
+        public static string password { get; set; }
         private static string module = "sendMail";
-        private static NetworkCredential mCredentials = new NetworkCredential(email, password);
+        private static NetworkCredential mCredentials;
         public static bool warningSentSend { get; set; }
 
         //Metode som sender mail til alle som er oppført i databasen
@@ -23,6 +23,7 @@ namespace Polakken
                 warningSentSend = false;
                 string mailTo;
                 //Oppretter ny SmtpClient
+                mCredentials = new NetworkCredential(email, password);
                 using (SmtpClient client = new SmtpClient(host, port))
                 {
                     //Login info for programmets email
@@ -55,6 +56,7 @@ namespace Polakken
             {
                 warningSentSend = false;
                 //Oppretter ny SmtpClient
+                mCredentials = new NetworkCredential(email, password);
                 using (SmtpClient client = new SmtpClient(host, port))
                 {
                     //Login info for programmets email
