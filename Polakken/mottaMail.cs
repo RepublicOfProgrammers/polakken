@@ -36,7 +36,7 @@ namespace Polakken
                 {
                     //Tre variabler som henter ut informasjon fra den siste motatte mailen
                     from = mail[mail.Length - 1].From.Address;
-                    //Løkke som sjekker om mailen er lagt til i databasen
+                    //Løkke med if-setning som sjekker om mailen er lagt til i databasen
                     foreach (DataRow dtRow in GUI_FORM.dtEmails.Rows)
                     {
                         if (from == dtRow["Adresser"].ToString())
@@ -59,7 +59,7 @@ namespace Polakken
 
             catch (Exception ex)
             {
-                Logger.Error(ex, "mottaMail");
+                Logger.Error(ex, module);
             }
 
             finally
@@ -71,15 +71,6 @@ namespace Polakken
             }
         }
 
-        public static string help()
-        //Leser teksfila fra den angitte banen og returnerer den som string
-        {
-            string help = "";
-
-            help = System.IO.File.ReadAllText(Environment.CurrentDirectory + "\\..\\..\\Resources\\hjelpPolakken.txt");
-
-            return help;
-        }
 
         public static void getCommand()
         {
@@ -280,7 +271,7 @@ namespace Polakken
                             sendMail.sendToOne("Ugyldig kommando", ugyldig, from);
                             break;
                     }
-                    Settings.Default.Save();
+                    Settings.Default.Save(); //Lagrer verdiene som har blitt endret i settings. 
                     GUI_FORM.settingsupdate = true;
                 }
             }
