@@ -280,7 +280,7 @@ namespace Polakken
                             sendMail.sendToOne("Ugyldig kommando", ugyldig, from);
                             break;
                     }
-                    Settings.Default.Save();
+                    Settings.Default.Save(); //Lagrer verdiene som har blitt endret i settings. 
                     GUI_FORM.settingsupdate = true;
                 }
             }
