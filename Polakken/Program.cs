@@ -7,32 +7,33 @@ namespace Polakken
     static class Program
     {
         private static DbHandler mDbHandler;
-        public static bool needRefresh { get; set; }
-        public static bool readingSent { get; set; }
         private static bool alarmSent;
-        public static bool sensorSent { get; set; }
         private static bool batterySent;
+
+        // Klasse-egenskaper som polakken har nytte av i andre klasser. 
         public static bool isRunningOnBattery { get; set; }
+        public static bool sensorSent { get; set; }
+        public static bool needRefresh { get; set; }
+        public static Thread tMålTemp; // Denne threaden må være public slik at GUI kan stoppe den når GUI lukkes.
 
         [STAThread]
         static void Main()
         {
-            //Sjekker om datamaskinen har strøm
+            // Sjekker om datamaskinen har strøm
             isRunningOnBattery = (SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
 
+            // Initierer variabler og klasser.
             needRefresh = false;
-            readingSent = false;
             alarmSent = false;
             sensorSent = false;
             new Logger(); // kaller konstruktøren til logger classen kun for å opprette ny logg tekstfil. 
             mDbHandler = new DbHandler(); // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
 
-            Thread tMålTemp = new Thread(new ThreadStart(tMålTemp_method));
-            tMålTemp.Start(); // Starter måleprosessen. Main() venter ikke på denne tråden før den går videre.
-
-            //TODO: Sjekke sist innlogging via databasen. Rapportere til bruker at konfigurasjoner er i orden, polakken starter arbeid.
-            //Eventuelt TODO: sletting av eldgammel data som ikke trengs og som tar opp plass/resusser.
-
+            // Starter måleprosessen. Main() venter ikke på denne tråden før den går videre.
+            tMålTemp = new Thread(new ThreadStart(tMålTemp_method));
+            tMålTemp.Start();
+            
+            // Starter GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI_FORM());
@@ -43,39 +44,41 @@ namespace Polakken
         /// </summary>
         private static void tMålTemp_method()
         {
-            while (true)
+            while (true) // Skal alltid være true, bruker threaden til å stoppe loopen. 
             {
                 if ((int)SensorCom.temp() == 999)
                 {
-                    if (sensorSent == false)
+                    if (sensorSent == false) // Sender mail-advarsel dersom brudd med sensor og advarsel ikke er sendt.
                     {
                         Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender mail til alarm abonnenter, Polakken blunder en times tid.", "Polakken");
 
-                        sensorSent = true;
+                        sensorSent = true; // Unngår mail spamming.
                         sendMail.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");
-                        Thread.Sleep(3600000);
+                        Thread.Sleep(3600000); // sover 1 time
                     }
                     else
                     {
                         Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender ikke ny mail, Polakken blunder en times tid.", "Polakken");
-                        Thread.Sleep(3600000);
+                        Thread.Sleep(3600000);// sover 1 time
                     }
                 }
                 else
                 {
-                    if (GUI_FORM.test == false)
+                    if (GUI_FORM.test == false) // Sjekker om regulering er aktiv.
                     {
                         mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI_FORM.test);
                     }
                     else
-                    {
+                    { // Dersom regulering er aktiv spørres Regulation klassen om ovn-status.
                         Regulation.regulator(SensorCom.temp());
                         mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), Regulation.status);
                     }
                     Logger.Info("Utført måling, og skrevet til database.", "Polakken");
 
-                    needRefresh = true;
-                    readingSent = true;
+                    needRefresh = true; // Sier ifra til tickeventen i gui'en at den trenger oppdatering
+
+                    // Sender alarm til mail-abonnenter dersom gitt alarmgrense er brutt. Sender ikke dobbelt opp, men på ny dersom temp 
+                    // kommer innenfor grense og deretter bryter grense. 
                     if (SensorCom.temp() < SensorCom.alarmLimit)
                     {
                         if (alarmSent == false)
@@ -87,13 +90,14 @@ namespace Polakken
                         {
                             Logger.Warning("Måling er fremdeles under alarmgrensen, sender ikke mail", "Polakken");
                         }
-                        alarmSent = true;
+                        alarmSent = true; // Unngår mail spamming.
                     }
                     else if (SensorCom.temp() > SensorCom.alarmLimit)
                     {
                         alarmSent = false;
                     }
 
+                    // Sender alarm til mail-abonnenter dersom maskinen ikke har strøm. Sender ikke dobbelt opp, men sier ifra dersom strøm kommer tilbake. 
                     if (isRunningOnBattery == true & batterySent == false)
                     {
                         sendMail.sendToAll("Strøm advarsel", "Datamaskinen kjører nå på batteristrøm");
@@ -104,11 +108,13 @@ namespace Polakken
                         sendMail.sendToAll("Strøm varsel", "Datamaskinen kjører ikke lenger på batteristrøm");
                         batterySent = false;
                     }
+
+                    // Følgende bool må settes til false igjen slik at mail kan bli sent dersom maskin får kontakt med sensor, og deretter mister kontakt igjen. 
                     sensorSent = false;
 
                     //Venter gitt måleintervall, ganget opp med 60 000 siden det er oppgitt i minutter.
                     Thread.Sleep(SensorCom.mesInterval * 60000);
-                }
+                }                
             }
         }
     }

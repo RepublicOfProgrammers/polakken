@@ -387,7 +387,7 @@ namespace Polakken
 
         private void btnLukk_Click(object sender, EventArgs e)
         {
-            //this.Close();
+            Program.tMålTemp.Abort(); // Stopper måleprossessen slik at programmet lukkes.
             Application.Exit();
         }
 
