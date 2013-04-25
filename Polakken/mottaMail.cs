@@ -173,7 +173,7 @@ namespace Polakken
                                 response = statusDT + "\r\n\r\n Siste Avlesning: " + time + " \r\nTemperatur: " + temp + "\r\nAlarmgrense: " + alarm + "\r\nMåleinterval: " + interval + "\r\nSetpunkt: " +
                                     setpoint + "\r\nToleranse: " + tolerance;
                             }
-                            loggerInfo = from + "har send kommando for å få tilsendt status.";
+                            loggerInfo = from + " har send kommando for å få tilsendt status.";
                             Logger.Info(loggerInfo, module);
                             sendMail.sendToOne("Status", response, from);
                             break;
@@ -241,7 +241,7 @@ namespace Polakken
                                     "STS 0\t\tReturnerer statusen til programmet. \r\nTLR [0-20]\tEndrer toleransen for reguleringen (temperatur i grader celcius)" +
                                     "\r\nALG [0-100]\tEndrer alarmgrensen (temperatur i grader celcius)\r\n\r\nEksempel: \"STP 25\" vil endre setpunktet til 25";
                             }
-                            loggerInfo = from + "har sendt kommando for å få tilsendt hjelp teksten.";
+                            loggerInfo = from + " har sendt kommando for å få tilsendt hjelp teksten.";
                             Logger.Info(loggerInfo, module);
                             sendMail.sendToOne("Hjelp", response, from);
                             break;
@@ -255,7 +255,7 @@ namespace Polakken
                                 {
                                     fs = null;
                                     response = sr.ReadToEnd();
-                                    loggerInfo = from + "har sendt kommando for å få tilsendt log.";
+                                    loggerInfo = from + " har sendt kommando for å få tilsendt log.";
                                     Logger.Info(loggerInfo, module);
                                     sendMail.sendToOne("Logg", response, from);
                                 }
