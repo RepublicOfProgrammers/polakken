@@ -42,10 +42,11 @@
             this.txtEmail.ForeColor = System.Drawing.Color.Silver;
             this.txtEmail.Location = new System.Drawing.Point(33, 252);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(181, 23);
+            this.txtEmail.Size = new System.Drawing.Size(174, 23);
             this.txtEmail.TabIndex = 5;
             this.txtEmail.Text = "Brukernavn";
             this.txtEmail.Click += new System.EventHandler(this.txtEmail_Click);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // txtPassword
             // 
@@ -53,24 +54,27 @@
             this.txtPassword.ForeColor = System.Drawing.Color.Silver;
             this.txtPassword.Location = new System.Drawing.Point(33, 288);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(260, 23);
+            this.txtPassword.Size = new System.Drawing.Size(254, 23);
             this.txtPassword.TabIndex = 6;
             this.txtPassword.Text = "Passord";
             this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
+            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // btnEnter
             // 
+            this.btnEnter.BackColor = System.Drawing.Color.Transparent;
             this.btnEnter.BackgroundImage = global::Polakken.Properties.Resources.btnLoggInn;
             this.btnEnter.FlatAppearance.BorderSize = 0;
             this.btnEnter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnEnter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnter.ForeColor = System.Drawing.Color.Transparent;
             this.btnEnter.Location = new System.Drawing.Point(108, 356);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(99, 27);
-            this.btnEnter.TabIndex = 2;
-            this.btnEnter.UseVisualStyleBackColor = true;
+            this.btnEnter.TabIndex = 9;
+            this.btnEnter.UseVisualStyleBackColor = false;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             this.btnEnter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnEnter_MouseDown);
             this.btnEnter.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnEnter_MouseUp);
@@ -94,12 +98,11 @@
             this.lblGmail.BackColor = System.Drawing.Color.Transparent;
             this.lblGmail.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGmail.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblGmail.Location = new System.Drawing.Point(214, 253);
+            this.lblGmail.Location = new System.Drawing.Point(209, 254);
             this.lblGmail.Name = "lblGmail";
             this.lblGmail.Size = new System.Drawing.Size(81, 18);
             this.lblGmail.TabIndex = 4;
             this.lblGmail.Text = "@gmail.com";
-            this.lblGmail.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // label1
             // 
@@ -117,10 +120,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Honeydew;
-            this.BackgroundImage = global::Polakken.Properties.Resources.imgFrmLogIn;
+            this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImage = global::Polakken.Properties.Resources.imgLoggInn;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(325, 410);
+            this.ClientSize = new System.Drawing.Size(320, 404);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblGmail);
             this.Controls.Add(this.chkSave);

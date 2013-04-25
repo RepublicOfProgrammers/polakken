@@ -23,7 +23,7 @@ namespace Polakken
         {
             string email;
             email = Settings.Default.Email;
-            txtEmail.Text = email.Replace("@gmail.com", "");
+            txtEmail.Text = email.Replace("@gmail.com", ""); 
             txtPassword.Text = Settings.Default.Password;
             if (chkSave.Checked)
             {
@@ -90,8 +90,8 @@ namespace Polakken
             {
                 txtPassword.UseSystemPasswordChar = false;
                 txtEmail.Text = "Brukernavn";
-                txtPassword.Text = "Passord";
                 txtEmail.ForeColor = Color.Silver;
+                txtPassword.Text = "Passord";
                 txtPassword.ForeColor = Color.Silver;
             }
         }
@@ -125,7 +125,28 @@ namespace Polakken
             }
         }
 
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (txtEmail.TextLength == 0)
+            {
+                txtEmail.Text = "Brukernavn";
+                txtEmail.ForeColor = Color.Silver;
 
-        
+            }
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (txtPassword.TextLength == 0)
+            {
+                txtPassword.Text = "Passord";
+                txtPassword.UseSystemPasswordChar = false;
+                txtPassword.ForeColor = Color.Silver;
+
+            }
+        }
+
+
+
     }
 }

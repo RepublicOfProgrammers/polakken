@@ -313,6 +313,16 @@ namespace Polakken.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgLoggInn {
+            get {
+                object obj = ResourceManager.GetObject("imgLoggInn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgPowerOff {
             get {
                 object obj = ResourceManager.GetObject("imgPowerOff", resourceCulture);
@@ -475,6 +485,16 @@ namespace Polakken.Properties {
             get {
                 object obj = ResourceManager.GetObject("NationalInstruments_NiLmClientDLL", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap test {
+            get {
+                object obj = ResourceManager.GetObject("test", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
