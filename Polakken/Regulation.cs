@@ -14,6 +14,11 @@ namespace Polakken
         public static int tolerance { get; set; }
         public static int setpoint { get; set; }
 
+        /// <summary>
+        /// Returnerer status for varmekilde. Må programmeres slik at en varmekilde blir slått av og på ved endring av boolean value fra denne metoden.
+        /// </summary>
+        /// <param name="newread">Temperatur som double</param>
+        /// <returns>Boolean varmekilde status</returns>
         public static Boolean regulator(double newread)
         {
             //Hvis det ikke har blitt hentet inn en verdi for reading vil den lagre den nye målingen i både reading og prevReading

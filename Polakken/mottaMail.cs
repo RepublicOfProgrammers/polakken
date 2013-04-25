@@ -97,8 +97,9 @@ namespace Polakken
                 }
                 catch (Exception ex)
                 {
+                    loggerInfo = "Har mottatt en ugyldig kommando på mail fra " + from;
+                    Logger.Info(loggerInfo, module);
                     Logger.Error(ex, module);
-                    sendMail.sendToOne("Ugyldig kommando", ugyldig, from);
                     success = false;
                 }
                 if (success == true)
@@ -277,7 +278,7 @@ namespace Polakken
             }
             else
             {
-                loggerInfo = "";
+                loggerInfo = "Har mottatt en ugyldig kommando på mail fra " + from;
                 Logger.Info(loggerInfo, module);
                 sendMail.sendToOne("Ugyldig kommando", ugyldig, from);
             }

@@ -46,7 +46,8 @@ namespace Polakken
         {
             while (true) // Skal alltid være true, bruker threaden til å stoppe loopen. 
             {
-                if ((int)SensorCom.temp() == 999)
+                int temp = Convert.ToInt32(SensorCom.temp());
+                if (temp == 999)
                 {
                     if (sensorSent == false) // Sender mail-advarsel dersom brudd med sensor og advarsel ikke er sendt.
                     {
@@ -62,16 +63,32 @@ namespace Polakken
                         Thread.Sleep(3600000);// sover 1 time
                     }
                 }
+                else if (temp > 60)
+                {
+                    if (temp < SensorCom.alarmLimit)
+                    {
+                        if (alarmSent == false)
+                        {
+                            sendMail.sendToAll("Alarm", "Sensoren har målt en temperatur som er over 60 grader celsius. Send \"STS 0\" for status.");
+                            Logger.Warning("Måling er over 60 grader celsius, sendt ut mail til alle abonnenter", "Polakken");
+                        }
+                        else 
+                        {
+                            Logger.Warning("Måling er fremdeles over 60 grader celsius, sender ikke mail", "Polakken");
+                        }
+                        alarmSent = true; // Unngår mail spamming.
+                    }
+                }
                 else
                 {
                     if (GUI_FORM.test == false) // Sjekker om regulering er aktiv.
                     {
-                        mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), GUI_FORM.test);
+                        mDbHandler.SetReading(DateTime.Now, temp, GUI_FORM.test);
                     }
                     else
                     { // Dersom regulering er aktiv spørres Regulation klassen om ovn-status.
-                        Regulation.regulator(SensorCom.temp());
-                        mDbHandler.SetReading(DateTime.Now, (int)SensorCom.temp(), Regulation.status);
+                        Regulation.regulator(temp);
+                        mDbHandler.SetReading(DateTime.Now, temp, Regulation.status);
                     }
                     Logger.Info("Utført måling, og skrevet til database.", "Polakken");
 
@@ -79,7 +96,7 @@ namespace Polakken
 
                     // Sender alarm til mail-abonnenter dersom gitt alarmgrense er brutt. Sender ikke dobbelt opp, men på ny dersom temp 
                     // kommer innenfor grense og deretter bryter grense. 
-                    if (SensorCom.temp() < SensorCom.alarmLimit)
+                    if (temp < SensorCom.alarmLimit)
                     {
                         if (alarmSent == false)
                         {
@@ -92,7 +109,7 @@ namespace Polakken
                         }
                         alarmSent = true; // Unngår mail spamming.
                     }
-                    else if (SensorCom.temp() > SensorCom.alarmLimit)
+                    else if (temp > SensorCom.alarmLimit & temp < 60)
                     {
                         alarmSent = false;
                     }
