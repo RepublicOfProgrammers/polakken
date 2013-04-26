@@ -61,11 +61,12 @@ namespace Polakken
         {
 
             tmrUpdateSettings.Start();
-            chkMsgDis.Checked = Settings.Default.hideMsgBox; // Henter inn config settpunkt på valg om skjuling av error message boxes. 
-            SensorCom.mesInterval = Settings.Default.mesInterval; // Henter inn config settpunkt på måleintervall og sender til SensorCom
-            SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config settpunkt på alarmgrense og sender til SensorCom
-            Regulation.setpoint = Settings.Default.setpoint; //Henter in config settpunkt på settpunkt og sender til Regulation
-            Regulation.tolerance = Settings.Default.tolerance; // Henter inn config settpunkt på toleranse og sender til Regulation
+            chkSetTol.Checked = Settings.Default.RegulationActive; //Henter inn config setting på valg om regulering er aktiv eller ikke. 
+            chkMsgDis.Checked = Settings.Default.hideMsgBox; // Henter inn config setting på valg om skjuling av error message boxes. 
+            SensorCom.mesInterval = Settings.Default.mesInterval; // Henter inn config setting på måleintervall og sender til SensorCom
+            SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config setting på alarmgrense og sender til SensorCom
+            Regulation.setpoint = Settings.Default.setpoint; //Henter in config setting på settpunkt og sender til Regulation
+            Regulation.tolerance = Settings.Default.tolerance; // Henter inn config setting på toleranse og sender til Regulation
             mesurInterval = SensorCom.mesInterval;
             alarmLimit = SensorCom.alarmLimit;
             setPoint = Regulation.setpoint;
@@ -1020,7 +1021,8 @@ namespace Polakken
         //Checkbox change event som sjekker om regulering skal være av eller på.
         private void chkSetTol_CheckedChanged(object sender, EventArgs e)
         {
-
+            Settings.Default.RegulationActive = chkSetTol.Checked;
+            Settings.Default.Save();
             if (chkSetTol.Checked)
             {
                 test = true;

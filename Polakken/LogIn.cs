@@ -19,7 +19,7 @@ namespace Polakken
             InitializeComponent();
         }
 
-        private void LogIn_Load(object sender, EventArgs e)
+        private void LogIn_Load(object sender, EventArgs e) //Henter inn lagret epost og passord fra settings. 
         {
             string email;
             email = Settings.Default.Email;
@@ -58,13 +58,13 @@ namespace Polakken
                 sendMail.email = txtEmail.Text + "@gmail.com";
                 sendMail.password = txtPassword.Text;
 
-                if (chkSave.Checked == true)
+                if (chkSave.Checked == true) //lagrer epost i settings.
                 {
                     Settings.Default.Email = txtEmail.Text + "@gmail.com";
                     Settings.Default.Password = txtPassword.Text;
 
                 }
-                else
+                else //
                 {
                     Settings.Default.Email = "";
                     Settings.Default.Password = "";
