@@ -9,10 +9,11 @@ namespace Polakken
     {
         private static string host = "smtp.gmail.com";
         private static int port = 587;
-        private static string email = "republicofprogrammers@gmail.com";
-        private static string password = "polakken";
+        public static string email { get; set; }
+        public static string password { get; set; }
         private static string module = "sendMail";
-        private static NetworkCredential mCredentials = new NetworkCredential(email, password);
+        private static NetworkCredential mCredentials;
+        public static bool warningSentSend { get; set; }
 
         //Metode som sender mail til alle som er oppført i databasen
         public static void sendToAll(string subject, string body)
@@ -21,6 +22,7 @@ namespace Polakken
             {
                 string mailTo;
                 //Oppretter ny SmtpClient
+                mCredentials = new NetworkCredential(email, password);
                 using (SmtpClient client = new SmtpClient(host, port))
                 {
                     //Login info for programmets email
@@ -34,10 +36,17 @@ namespace Polakken
                         Logger.Info("Sendt email til alle mottakere.", module);
                     }
                 }
+
+                warningSentSend = false;
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, module);
+                if (warningSentSend == false)
+                {
+                    warningSentSend = true;
+                    Logger.Error(ex, module);
+                }
+                
             }
         }
 
@@ -46,7 +55,9 @@ namespace Polakken
         {
             try
             {
+                
                 //Oppretter ny SmtpClient
+                mCredentials = new NetworkCredential(email, password);
                 using (SmtpClient client = new SmtpClient(host, port))
                 {
                     //Login info for programmets email
@@ -57,10 +68,15 @@ namespace Polakken
                     Logger.Info("Sendt email til " + mailTo + ".", module);
                 }
 
+                warningSentSend = false;
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, module);
+                if (warningSentSend == false)
+                {
+                    warningSentSend = true;
+                    Logger.Error(ex, module);
+                }
             }
         }
     }

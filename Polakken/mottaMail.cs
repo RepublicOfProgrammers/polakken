@@ -10,15 +10,13 @@ namespace Polakken
     class MottaMail
     {
         private static string host = "imap.gmail.com";
-        private static string username = "republicofprogrammers@gmail.com";
-        private static string password = "polakken";
         private static int port = 993;
         private static bool secure = true;
         public static string from { get; private set; }
         public static string subject { get; private set; }
         public static string body { get; private set; }
         private static string module = "mottaMail";
-        public static bool warningSent { get; set; }
+        public static bool warningSentMotta { get; set; }
 
         //Metode for å hente inn mail
         public static void mottaMail()
@@ -26,9 +24,9 @@ namespace Polakken
             ImapClient ic = null;
             try
             {
-                warningSent = false;
+                
                 //Lager nytt objekt av klassen ImapClient
-                ic = new ImapClient(host, username, password,
+                ic = new ImapClient(host, sendMail.email, sendMail.password,
                      ImapClient.AuthMethods.Login, port, secure);
                 ic.SelectMailbox("INBOX");
                 //Array som henter inn alle mail i innboksen
@@ -55,16 +53,17 @@ namespace Polakken
                     }
 
                 }
-                
+
+                warningSentMotta = false;
             }
 
 
             catch (Exception ex)
             {
-                if (warningSent == false)
+                if (warningSentMotta == false)
                 {
+                    warningSentMotta = true; //Unngår spam
                     Logger.Error(ex, module);
-                    warningSent = true; //Unngår spam
                 }
             }
 
@@ -76,7 +75,9 @@ namespace Polakken
                 }
             }
         }
-
+        /// <summary>
+        /// Metode som henter ut kommando og verdi fra siste innsendte e-post og gjør endringer eller sender svar deretter. (sendMail.sendToOne)
+        /// </summary>
         public static void getCommand()
         {
             int length;
@@ -87,24 +88,25 @@ namespace Polakken
             string loggerInfo;
             bool success = true;
 
-            string ugyldig = "Du har oppgitt en ugyldig kommando, send \"HLP 0\" for liste over kommandoer.";
+            string ugyldig = "Du har oppgitt en ugyldig kommando, send \"HLP 0\" for liste over kommandoer."; //innhold i mail som sendes ved feil i kommando. 
 
-            body = body.TrimEnd('\r', '\n');
+            body = body.TrimEnd('\r', '\n'); //Fjerner eventuelle linjeskift fra slutten av mailen.
             if (body.Length > 3)
             {
-                command = body.Substring(0, 3);
+                command = body.Substring(0, 3); //Henter ut de første 3 tegnene i mailen som kommando.
                 length = body.Length;
                 value = body.Substring(3, Convert.ToInt32(length - 3));
-                value = value.Trim();
+                value = value.Trim();//Henter ut resten av mailen, med unntak av "blanke felt" (mellomrom) på begynnelsen og slutten av det gjenværende innholdet (uten de 3 første tegnene).
                 try
                 {
                     intvalue = Convert.ToInt32(value);
                 }
-                catch (Exception ex)
+                catch (Exception ex) //Hvis den siste delen av mailen ikke inneholder kun et heltall, leses det som en feil kommando og sendes svar og error deretter. 
                 {
                     loggerInfo = "Har mottatt en ugyldig kommando på mail fra " + from;
-                    Logger.Info(loggerInfo, module);
                     Logger.Error(ex, module);
+                    Logger.Info(loggerInfo, module);
+                    sendMail.sendToOne("Ugyldig kommando", ugyldig, from);
                     success = false;
                 }
                 if (success == true)
@@ -112,7 +114,7 @@ namespace Polakken
                     switch (command)
                     {
                         case "STP":
-                            //E-mail kommando for endring av setpunkt. Endrer bare dersom verdien er mellom 0 og 100.
+                            //E-mail kommando for endring av setpunkt. Endrer bare dersom verdien er mellom 0 og 100. Sender svar om endring er gjort eller ikke.
                             if (intvalue < 0)
                             {
                                 response = "Setpunktet kan ikke være mindre enn null, setpunktet forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
@@ -136,7 +138,7 @@ namespace Polakken
                             Logger.Info(loggerInfo, module);
                             break;
                         case "INT":
-                            //E-mail kommando for endring av måleinterval. Endrer bare dersom verdien er mellom 1 og 999.
+                            //E-mail kommando for endring av måleinterval. Endrer bare dersom verdien er mellom 1 og 999. Sender svar om endring er gjort eller ikke.
                             if (intvalue < 1)
                             {
                                 response = "Måleintervallet kan ikke være mindre enn 1, intervallet forblir på siste verdi som er " + Convert.ToString(SensorCom.mesInterval);
@@ -160,7 +162,7 @@ namespace Polakken
                             Logger.Info(loggerInfo, module);
                             break;
                         case "STS":
-                            //E-mail kommando for å få status sendt på mail. 
+                            //E-mail kommando for å få status sendt på mail.
 
                             string alarm = Convert.ToString(SensorCom.alarmLimit);
                             string interval = Convert.ToString(SensorCom.mesInterval);
@@ -183,7 +185,7 @@ namespace Polakken
                             sendMail.sendToOne("Status", response, from);
                             break;
                         case "TLR":
-                            //E-mail kommando for endring av toleranse. Endrer bare dersom verdien er mellom 0 og 20.
+                            //E-mail kommando for endring av toleranse. Endrer bare dersom verdien er mellom 0 og 20. Sender svar om endring er gjort eller ikke.
                             if (intvalue < 0)
                             {
                                 response = "Toleransen kan ikke være mindre enn null, toleransen forblir på siste verdi som er " + Convert.ToString(Regulation.tolerance);
@@ -209,7 +211,7 @@ namespace Polakken
                             }
                             break;
                         case "ALG":
-                            //E-mail kommando for endring av alarmgrense. Endrer bare dersom verdien er mellom 0 og 100.
+                            //E-mail kommando for endring av alarmgrense. Endrer bare dersom verdien er mellom 0 og 100. Sender svar om endring er gjort eller ikke.
                             if (intvalue < 0)
                             {
                                 response = "Alarmgrensen kan ikke være mindre enn null, Alarmgrensen forblir på siste verdi som er " + Convert.ToString(Regulation.setpoint);
