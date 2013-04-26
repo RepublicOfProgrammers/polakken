@@ -101,7 +101,6 @@ namespace Polakken
                         Regulation.regulator(temp);
                         mDbHandler.SetReading(DateTime.Now, temp, Regulation.status);
                     }
-                    Logger.Info("Utført måling, og skrevet til database.", "Polakken");
 
                     needRefresh = true; // Sier ifra til tickeventen i gui'en at den trenger oppdatering
 

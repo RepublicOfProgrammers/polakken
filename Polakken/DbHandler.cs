@@ -231,8 +231,9 @@ namespace Polakken
             {
                 Logger.Error(e, thismodule);
             }
-            finally 
+            finally
             {
+                if (data_reader != null) Logger.Info("Kjørte sql-kode: " + cmd.CommandText, thismodule);
                 cmd.Dispose();
             }
             return data_reader;
@@ -267,6 +268,7 @@ namespace Polakken
             }
             finally
             {
+                if (affectedRows != 0) Logger.Info("Kjørte sql-kode: " + cmd.CommandText, thismodule);
                 //Lukker databasen.
                 cmd.Dispose();
                 this.CloseDb();
@@ -306,6 +308,7 @@ namespace Polakken
             }
             finally
             {
+                if (affectedRows != 0) Logger.Info("Kjørte sql-kode: " + cmd.CommandText, thismodule);
                 cmd.Dispose();
                 this.CloseDb();
             }
@@ -342,6 +345,7 @@ namespace Polakken
             }
             finally
             {
+                if (affectedRows != 0) Logger.Info("Kjørte sql-kode: " + cmd.CommandText, thismodule);
                 cmd.Dispose();
                 this.CloseDb();
             }
