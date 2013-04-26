@@ -45,7 +45,6 @@ namespace Polakken
         /// <returns>bool som er true dersom tilkoblet, false i motsatt tilfelle.</returns>
         public static bool connected()
         {
-            Task checkConnection = new Task();
             bool connected;
 
             // Hvis sensor allerede er i bruk tolkes dette som at sensor er koblet til å i øyeblikket i bruk av tempmåling prosessen. 
@@ -54,6 +53,7 @@ namespace Polakken
             if (Program.sensorInUse) return true;
             else
             {
+                Task checkConnection = new Task();
 
                 // Tester om programmet klarer å opprette en AIChannel, kun for å se om enhet er koblet til. 
                 try
