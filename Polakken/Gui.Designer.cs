@@ -667,7 +667,7 @@
             this.tbpTwo.TabIndex = 1;
             this.tbpTwo.Text = "Tabelloversikt";
             this.tbpTwo.UseVisualStyleBackColor = true;
-            this.tbpTwo.Click += new System.EventHandler(this.tbpTwo_Click);
+
             // 
             // lblDate2
             // 
