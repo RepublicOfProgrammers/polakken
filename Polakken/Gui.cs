@@ -88,20 +88,20 @@ namespace Polakken
             dgvDataBase.DataSource = dataTable;//Setter datagridviewens datasource til den utfylte datatabellen
             GetEmail(GetEmails);// gjør akuratt det samme som fillDatatable, men bare for emails
             dgvEmail.DataSource = GetEmails;//Samme som for datagridviewt til databasen
-           
-                populateTxtbox();//Kjører en metode som kjører tester og fyller textboxene med data fra datatabellen dataTable
-                xMin = CountRows - 300; // Setter Variablene xMin og xMax som skal brukes til å sette graf grenseverdier.
-                xMax = CountRows + 36;
 
-                using (DataView viewTemp = new DataView(dataTable)) // Her så fyller man en combobox med distingte tempraturer fra datatabellen.
-                {
-                    DataTable distinctTempValues = viewTemp.ToTable(true, "Temprature");
-                    cboFilterTemp.DataSource = distinctTempValues;
-                    cboFilterTemp.DisplayMember = "Temprature";
-                    cboFilterTemp.ValueMember = "Temprature";
+            populateTxtbox();//Kjører en metode som kjører tester og fyller textboxene med data fra datatabellen dataTable
+            xMin = CountRows - 300; // Setter Variablene xMin og xMax som skal brukes til å sette graf grenseverdier.
+            xMax = CountRows + 36;
 
-                }
-            
+            using (DataView viewTemp = new DataView(dataTable)) // Her så fyller man en combobox med distingte tempraturer fra datatabellen.
+            {
+                DataTable distinctTempValues = viewTemp.ToTable(true, "Temprature");
+                cboFilterTemp.DataSource = distinctTempValues;
+                cboFilterTemp.DisplayMember = "Temprature";
+                cboFilterTemp.ValueMember = "Temprature";
+
+            }
+
 
             DataView viewDeleteEmail = new DataView(GetEmails);
             cboDelEmail.DataSource = viewDeleteEmail;
@@ -376,7 +376,7 @@ namespace Polakken
             db.DelReadings(delFromString, delToString);
         }
 
-       
+
 
         private void UpdateSettings()   //Metode som oppdateerer textboxene , da via sensorkomunikasjonen sine variabler, FKS. ved en motatt email med nye verdier.
         {
@@ -406,7 +406,7 @@ namespace Polakken
             this.WindowState = FormWindowState.Minimized;
         }
 
-        #region moveForm 
+        #region moveForm
         //Her så brukes mouse eventer til å kunne flytte programmet rundt på skjermen.
         private void btnMove_MouseDown(object sender, MouseEventArgs e)
         {
@@ -468,7 +468,7 @@ namespace Polakken
             txtCurrent.Text = tempString; //textboxen til siste avlesingen får den siste tempraturen ifra testen.
             lastR = tempString; // public static string som får siste verdi av tempen  og brukes senere i mottaMail
             LastRT = dt.ToString("dd/MM/yyyy HH:mm:ss"); // samme med denne, men bare da for tiden istedenfor tempen
-            
+
         }
         //
         //Hendelser
@@ -496,10 +496,10 @@ namespace Polakken
             txtSetPoint.Text = ChangeSetPointAdd.ToString() + celcius;
             if (ChangeSetPointAdd > 100)
             {
-                ChangeSetPointAdd -= 1 ;
+                ChangeSetPointAdd -= 1;
                 txtSetPoint.Text = ChangeSetPointAdd.ToString() + celcius;
                 setPoint = ChangeSetPointAdd;
-                MessageBox.Show(maxValue,MaxError,msgButton,msgIcon);
+                MessageBox.Show(maxValue, MaxError, msgButton, msgIcon);
                 btnSetPointUp.Enabled = false;   //Disabler knappen når den har nådd grensen
                 this.btnSetPointUp.BackgroundImage = imgArrowUpDown;
 
@@ -536,7 +536,7 @@ namespace Polakken
                 this.btnSetPointDown.BackgroundImage = imgArrowDownDown;
 
             }
-            
+
         }
         //Samme for tolernagse, med en øvre grense
         private void btnToleranceUp_MouseDown(object sender, MouseEventArgs e)
@@ -566,7 +566,7 @@ namespace Polakken
 
         }
         //Metode som tester på datamaskinens strømstatus. Dette ved hjelp av en bool som blir satt i program.
-        
+
         private void PowerCheck()
         {
             if (Program.isRunningOnBattery == false)
@@ -590,7 +590,8 @@ namespace Polakken
                 picSensor.Image = global::Polakken.Properties.Resources.imgSensorIn;
                 lblSensorInfo.ForeColor = Color.White;
                 lblSensorInfo.Text = "Sensoren er tilkoblet";
-            }else
+            }
+            else
             {
                 picSensor.Image = global::Polakken.Properties.Resources.imgSensorOut;
                 lblSensorInfo.ForeColor = Color.Red;
@@ -606,7 +607,7 @@ namespace Polakken
 
             if (clickCount == 0)
             {
-                
+
                 crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 48;
                 btnZoomOut.Enabled = true;
                 btnZoomIn.Enabled = false;
@@ -636,7 +637,7 @@ namespace Polakken
             ChangeTolSub -= 1;
             tolerance = ChangeTolSub;
             txtTol.Text = ChangeTolSub.ToString() + celcius;
-            if (ChangeTolSub < 0 )
+            if (ChangeTolSub < 0)
             {
                 ChangeTolSub += 1;
                 txtTol.Text = ChangeTolSub.ToString() + celcius;
@@ -664,12 +665,12 @@ namespace Polakken
             txtInt.Text = ChangeMesIAdd.ToString() + minute;
             if (ChangeMesIAdd > 999)
             {
-               ChangeMesIAdd -= 1;
-               txtInt.Text = ChangeMesIAdd.ToString() + minute;
-               mesurInterval = ChangeMesIAdd;
-               MessageBox.Show(maxValue, MaxError, msgButton, msgIcon);
-               btnMesIUp.Enabled = false;
-               this.btnMesIUp.BackgroundImage = imgArrowUpDown;
+                ChangeMesIAdd -= 1;
+                txtInt.Text = ChangeMesIAdd.ToString() + minute;
+                mesurInterval = ChangeMesIAdd;
+                MessageBox.Show(maxValue, MaxError, msgButton, msgIcon);
+                btnMesIUp.Enabled = false;
+                this.btnMesIUp.BackgroundImage = imgArrowUpDown;
             }
         }
 
@@ -689,7 +690,7 @@ namespace Polakken
             txtInt.Text = ChangeMesISub.ToString() + minute;
             if (ChangeMesISub < 1)
             {
-               
+
                 ChangeMesISub += 1;
                 txtInt.Text = ChangeMesISub.ToString() + minute;
                 mesurInterval = ChangeMesISub;
@@ -734,7 +735,7 @@ namespace Polakken
         //Metode som trekker fra den nedre alarmgrensen ved klikk.
         private void btnAlarmDown_MouseDown(object sender, MouseEventArgs e)
         {
-           
+
             this.btnAlarmDown.BackgroundImage = imgArrowDownDown;
             this.btnAlarmUp.BackgroundImage = imgArrowUp;
             btnAlarmUp.Enabled = true;
@@ -769,10 +770,10 @@ namespace Polakken
             string filterString = null;
             string dateSpan = null;
 
-               if (chkFilterDate.Checked)
-             {
+            if (chkFilterDate.Checked)
+            {
                 string dates = null;
-                DateTime startDate;         
+                DateTime startDate;
                 DateTime endDate;
                 startDate = dtpSelectFrom.Value.Date + dtpSelectFromTime.Value.TimeOfDay;
                 endDate = dtpSelectTo.Value.Date + dtpSelectToTime.Value.TimeOfDay;
@@ -1004,7 +1005,7 @@ namespace Polakken
             {
                 btnDelReading.Enabled = false;
             }
-            DelReadings();  
+            DelReadings();
             Update_Form();
         }
         //Metode som sletter en email. tar å bruker et indexnummer som den får fra comboxen til å velge den som slettes.
@@ -1064,7 +1065,6 @@ namespace Polakken
                 dgvDataBase.DataSource = dataTable;
             }
             Settings.Default.RegulationActive = chkSetTol.Checked;
-            Settings.Default.Save();
         }
         //Comboxevent som veleger hva som skal være synlig ved valgt element i listen.Den kjører tester.
         private void cboSelectDelete_SelectedIndexChanged(object sender, EventArgs e)
@@ -1119,14 +1119,23 @@ namespace Polakken
             }
 
         }
+
         //Metode som åpner log formen som skal vise log som blir skrevet i Logger klasse.
         private void btnLog_Click(object sender, EventArgs e)
         {
-            logForm = new Log();
-            logForm.StartPosition = FormStartPosition.Manual; // Velger å sette startposisjonen til dette formet manuelt
-            logForm.Location = new Point(700, 40);//Startpossisjonen til formen er i det pointe(x,y)
-            logForm.Show();
+            if (logForm == null)
+            {
+                logForm = new Log();
+                logForm.StartPosition = FormStartPosition.Manual; // Velger å sette startposisjonen til dette formet manuelt
+                logForm.Location = new Point(700, 40);//Startpossisjonen til formen er i det pointe(x,y)
+                logForm.Show();
+            }
+            else
+            {
+                logForm.Focus();
+            }
         }
+
         //Klikk Metode som lagrer det innenfor tabsiden Istillinger. Disse verdiene lagres til settings slik at de ikke forsvinner når programmet lukkes.
         private void btnSaveAll_Click(object sender, EventArgs e)
         {
@@ -1140,6 +1149,7 @@ namespace Polakken
             SensorCom.alarmLimit = alarmLimit;
             SensorCom.mesInterval = mesurInterval;
         }
+
         //Tick eventet som kjører alle de viktige sjekkene som guien har, og update metodene.
         private void tmrUpdateSettings_Tick(object sender, EventArgs e)
         {
@@ -1152,10 +1162,10 @@ namespace Polakken
             stsStatus = "Statusoppdatering den " + now.ToString("dd/MM/yyyy") + " klokken " + now.ToString("HH:mm:ss") + " :"; //Public static string som brukes med datetime now for å få tidpunkt til mottamail status mailen. stringen viser da når mailen ble sendt.
             dtEmails = GetEmails; //Datatabell til mail klassene som inneholder alle motakere. får dette fra den utfylte getEmails. 
             MottaMail.mottaMail(); // Kjører Metode i mottaMail som sjekker inboxen for nye emails.
-           
+
             if (MottaMail.body != null)
             {
-                MottaMail.getCommand(); 
+                MottaMail.getCommand();
             }
             if (Program.needRefresh) //skjer når det har kommet en ny reading. oppdaterer guien
             {
@@ -1169,7 +1179,7 @@ namespace Polakken
             if (settingsupdate)
             {
                 UpdateSettings(); //Oppdaterer instillingsveridenen i tabsiden instillinger.
-                settingsupdate = false; 
+                settingsupdate = false;
             }
         }
 
