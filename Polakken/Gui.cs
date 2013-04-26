@@ -61,7 +61,6 @@ namespace Polakken
         {
 
             tmrUpdateSettings.Start();
-            chkSetTol.Checked = Settings.Default.RegulationActive; //Henter inn config setting på valg om regulering er aktiv eller ikke. 
             chkMsgDis.Checked = Settings.Default.hideMsgBox; // Henter inn config setting på valg om skjuling av error message boxes. 
             SensorCom.mesInterval = Settings.Default.mesInterval; // Henter inn config setting på måleintervall og sender til SensorCom
             SensorCom.alarmLimit = Settings.Default.alarmLimit; // Henter inn config setting på alarmgrense og sender til SensorCom
@@ -207,6 +206,7 @@ namespace Polakken
             //
             //SetPoint Og Tollerangse knappene, Setter disse til false , fordi det ikke er noe regulering på.
             //
+            chkSetTol.Checked = Settings.Default.RegulationActive; //Henter inn config setting på valg om regulering er aktiv eller ikke. 
             this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.btnArrowDownDown;
             this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.btnArrowUpDown;
             this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.btnArrowUpDown;
@@ -1021,8 +1021,6 @@ namespace Polakken
         //Checkbox change event som sjekker om regulering skal være av eller på.
         private void chkSetTol_CheckedChanged(object sender, EventArgs e)
         {
-            Settings.Default.RegulationActive = chkSetTol.Checked;
-            Settings.Default.Save();
             if (chkSetTol.Checked)
             {
                 test = true;
@@ -1065,7 +1063,8 @@ namespace Polakken
                 dgvDataBase.DataSource = null;
                 dgvDataBase.DataSource = dataTable;
             }
-
+            Settings.Default.RegulationActive = chkSetTol.Checked;
+            Settings.Default.Save();
         }
         //Comboxevent som veleger hva som skal være synlig ved valgt element i listen.Den kjører tester.
         private void cboSelectDelete_SelectedIndexChanged(object sender, EventArgs e)
