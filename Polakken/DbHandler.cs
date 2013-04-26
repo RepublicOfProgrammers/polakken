@@ -217,24 +217,27 @@ namespace Polakken
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")] //sql stringen kommer aldri fra bruker-input
         private SqlCeDataReader executeSql_Reader(string sql)
         {
-            SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
             SqlCeDataReader data_reader = null;
-            try
+
+            using (SqlCeCommand cmd = new SqlCeCommand(sql, _connection))
             {
-                data_reader = cmd.ExecuteReader();
-            }
-            catch (SqlCeException ssceE)
-            {
-                Logger.Error(ssceE, thismodule);
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e, thismodule);
-            }
-            finally
-            {
-                if (data_reader != null) Logger.Info("Kjørte sql-kode: " + cmd.CommandText, thismodule);
-                cmd.Dispose();
+                try
+                {
+                    data_reader = cmd.ExecuteReader();
+                }
+                catch (SqlCeException ssceE)
+                {
+                    Logger.Error(ssceE, thismodule);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e, thismodule);
+                }
+                finally
+                {
+                    // Følgende utkommenterte linje spammer loggen veldig, men er nyttig ved debugging
+                    //if (data_reader != null) Logger.Info("Kjørte sql-kode: " + cmd.CommandText, thismodule);
+                }
             }
             return data_reader;
         }
@@ -245,33 +248,36 @@ namespace Polakken
             //kobler til databasen og åpner den
             this.OpenDb();
 
-            //Henter inn sql koden fra metode argumentet sql, og lager en sqlcommand sammen med koblingen til databasen.
-            SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
-
             //variabel som inneholder antall rader som blir påvirket av kommandoen
             int affectedRows = 0;
 
-            //prøver å kjøre kommandoen. fanger opp errorer, men gjør ingenting med dem foreløpig. 
-            try
+            //Henter inn sql koden fra metode argumentet sql, og lager en sqlcommand sammen med koblingen til databasen.
+            using (SqlCeCommand cmd = new SqlCeCommand(sql, _connection))
             {
-                affectedRows = cmd.ExecuteNonQuery();
-            }
-            catch (SqlCeException ssceE)
-            {
-                //Sender error til log tekst filen.
-                Logger.Error(ssceE, thismodule);
-            }
-            catch (Exception e)
-            {
-                //Sender error til log tekst filen.
-                Logger.Error(e, thismodule);
-            }
-            finally
-            {
-                if (affectedRows != 0) Logger.Info("Kjørte sql-kode: " + cmd.CommandText, thismodule);
-                //Lukker databasen.
-                cmd.Dispose();
-                this.CloseDb();
+
+
+                //prøver å kjøre kommandoen. fanger opp errorer, men gjør ingenting med dem foreløpig. 
+                try
+                {
+                    affectedRows = cmd.ExecuteNonQuery();
+                }
+                catch (SqlCeException ssceE)
+                {
+                    //Sender error til log tekst filen.
+                    Logger.Error(ssceE, thismodule);
+                }
+                catch (Exception e)
+                {
+                    //Sender error til log tekst filen.
+                    Logger.Error(e, thismodule);
+                }
+                finally
+                {
+                    // Følgende utkommenterte linje spammer loggen veldig, men er nyttig ved debugging
+                    // if (affectedRows != 0) Logger.Info("Kjørte sql-kode: " + cmd.CommandText, thismodule);
+                    //Lukker databasen.
+                    this.CloseDb();
+                }
             }
             return affectedRows;
         }
@@ -284,33 +290,35 @@ namespace Polakken
             //kobler til databasen og åpner den
             this.OpenDb();
 
-            //Henter inn sql koden fra metode argumentet sql, og lager en sqlcommand sammen med koblingen til databasen.
-            SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
 
             //variabel som inneholder antall rader som blir påvirket av kommandoen
             int affectedRows = 0;
 
-            //prøver å kjøre kommandoen. fanger opp errorer. 
-            try
+            //Henter inn sql koden fra metode argumentet sql, og lager en sqlcommand sammen med koblingen til databasen.
+            using (SqlCeCommand cmd = new SqlCeCommand(sql, _connection))
             {
-                cmd.Parameters.AddWithValue("@date", time);
-                cmd.Parameters.AddWithValue("@value", C);
-                cmd.Parameters.AddWithValue("@status", status);
-                affectedRows = cmd.ExecuteNonQuery();
-            }
-            catch (SqlCeException ssceE)
-            {
-                Logger.Error(ssceE, thismodule);
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e, thismodule);
-            }
-            finally
-            {
-                if (affectedRows != 0) Logger.Info("Kjørte sql-kode: " + cmd.CommandText, thismodule);
-                cmd.Dispose();
-                this.CloseDb();
+                //prøver å kjøre kommandoen. fanger opp errorer. 
+                try
+                {
+                    cmd.Parameters.AddWithValue("@date", time);
+                    cmd.Parameters.AddWithValue("@value", C);
+                    cmd.Parameters.AddWithValue("@status", status);
+                    affectedRows = cmd.ExecuteNonQuery();
+                }
+                catch (SqlCeException ssceE)
+                {
+                    Logger.Error(ssceE, thismodule);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e, thismodule);
+                }
+                finally
+                {
+                    // Følgende utkommenterte linje spammer loggen veldig, men er nyttig ved debugging
+                    //if (affectedRows != 0) Logger.Info("Kjørte sql-kode: " + cmd.CommandText + " med parametere: @date = " + time + " , @value = " + C + " , @status = " + status + ".", thismodule);
+                    this.CloseDb();
+                }
             }
             return affectedRows;
         }
@@ -323,31 +331,34 @@ namespace Polakken
             //kobler til databasen og åpner den
             this.OpenDb();
 
-            //Henter inn sql koden fra metode argumentet sql, og lager en sqlcommand sammen med koblingen til databasen.
-            SqlCeCommand cmd = new SqlCeCommand(sql, _connection);
-
             //variabel som inneholder antall rader som blir påvirket av kommandoen
             int affectedRows = 0;
 
-            //prøver å kjøre kommandoen. fanger opp errorer. 
-            try
+            //Henter inn sql koden fra metode argumentet sql, og lager en sqlcommand sammen med koblingen til databasen.
+            using (SqlCeCommand cmd = new SqlCeCommand(sql, _connection))
             {
-                cmd.Parameters.AddWithValue("@email", email);
-                affectedRows = cmd.ExecuteNonQuery();
-            }
-            catch (SqlCeException ssceE)
-            {
-                Logger.Error(ssceE, thismodule);
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e, thismodule);
-            }
-            finally
-            {
-                if (affectedRows != 0) Logger.Info("Kjørte sql-kode: " + cmd.CommandText, thismodule);
-                cmd.Dispose();
-                this.CloseDb();
+
+
+                //prøver å kjøre kommandoen. fanger opp errorer. 
+                try
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    affectedRows = cmd.ExecuteNonQuery();
+                }
+                catch (SqlCeException ssceE)
+                {
+                    Logger.Error(ssceE, thismodule);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e, thismodule);
+                }
+                finally
+                {
+                    // Følgende utkommenterte linje spammer loggen veldig, men er nyttig ved debugging
+                    //if (affectedRows != 0) Logger.Info("Kjørte sql-kode: " + cmd.CommandText + " med parametere: @email = " + email , thismodule);
+                    this.CloseDb();
+                }
             }
             return affectedRows;
         }

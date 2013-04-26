@@ -14,6 +14,7 @@ namespace Polakken
         public static bool isRunningOnBattery { get; set; }
         public static bool sensorSent { get; set; }
         public static bool needRefresh { get; set; }
+        public static bool sensorInUse { get; set; } // Brukes slik at ikke sensorbruk kan kræsje med bruk av sensor koblingstesten i SensorCom klassen. 
         public static Thread tMålTemp; // Denne threaden må være public slik at GUI kan stoppe den når GUI lukkes.
 
         [STAThread]
@@ -57,6 +58,7 @@ namespace Polakken
         {
             while (true) // Skal alltid være true, bruker threaden til å stoppe loopen. 
             {
+                sensorInUse = true;
                 int temp = Convert.ToInt32(SensorCom.temp());
                 if (temp == 999)
                 {
@@ -66,12 +68,22 @@ namespace Polakken
 
                         sensorSent = true; // Unngår mail spamming.
                         sendMail.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");
+
+                        // Sensoren er ikke lengre i bruk. 
+                        sensorInUse = false;
+
                         Thread.Sleep(3600000); // sover 1 time
+                        continue; // Hopper over resten av denne loop-iterasjonen (starter loopen på nytt)
                     }
                     else
                     {
                         Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender ikke ny mail, Polakken blunder en times tid.", "Polakken");
+                        
+                        // Sensoren er ikke lengre i bruk. 
+                        sensorInUse = false;
+
                         Thread.Sleep(3600000);// sover 1 time
+                        continue; // Hopper over resten av denne loop-iterasjonen (starter loopen på nytt)
                     }
                 }
                 else if (temp > 60)
@@ -138,6 +150,9 @@ namespace Polakken
 
                     // Følgende bool må settes til false igjen slik at mail kan bli sent dersom maskin får kontakt med sensor, og deretter mister kontakt igjen. 
                     sensorSent = false;
+
+                    // Sensoren er ikke lengre i bruk. 
+                    sensorInUse = false;
 
                     //Venter gitt måleintervall, ganget opp med 60 000 siden det er oppgitt i minutter.
                     Thread.Sleep(SensorCom.mesInterval * 60000);
