@@ -116,5 +116,17 @@ namespace Polakken.Properties {
                 this["Password"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RegulationActive {
+            get {
+                return ((bool)(this["RegulationActive"]));
+            }
+            set {
+                this["RegulationActive"] = value;
+            }
+        }
     }
 }
