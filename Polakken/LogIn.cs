@@ -35,6 +35,7 @@ namespace Polakken
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
+            //Tester på at det er skrivd inn et brukernavn og passord. 
             if (txtEmail.TextLength == 0)
             {
                 MessageBox.Show("Du må skrive inn ett brukernavn", "Feil");
@@ -64,13 +65,13 @@ namespace Polakken
                     Settings.Default.Password = txtPassword.Text;
 
                 }
-                else //
+                else //Dersom "Husk meg" checkboksen ikke er checked, setter den email og passord i settings til en tom tekststreng. 
                 {
                     Settings.Default.Email = "";
                     Settings.Default.Password = "";
                 }
                 Settings.Default.Save();
-                DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.OK; //Forteller polakken at den kan loade GUIen.
             }
         }
 
