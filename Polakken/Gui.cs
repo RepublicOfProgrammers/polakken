@@ -1036,6 +1036,8 @@ namespace Polakken
                 this.btnSetPointUp.BackgroundImage = imgArrowUp;
                 this.btnToleranceUp.BackgroundImage = imgArrowUp;
                 this.btnToleranceDown.BackgroundImage = imgArrowDownUp;
+                dgvDataBase.DataSource = null;
+                dgvDataBase.DataSource = dataTable;
             }
             else
             {
@@ -1058,6 +1060,8 @@ namespace Polakken
                 this.btnSetPointUp.BackgroundImage = imgArrowUpDown;
                 this.btnToleranceUp.BackgroundImage = imgArrowUpDown;
                 this.btnToleranceDown.BackgroundImage = imgArrowDownDown;
+                dgvDataBase.DataSource = null;
+                dgvDataBase.DataSource = dataTable;
             }
 
         }
@@ -1311,10 +1315,13 @@ namespace Polakken
             {
                 chkSetTol.Checked = true;
                 dgvDataBase.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvDataBase.Columns[0].Width = 148;
-                dgvDataBase.Columns[1].Width = 53;
+                dgvDataBase.Columns[0].Width = 139;
+                dgvDataBase.Columns[0].HeaderText = "Tidspunkt";
+                dgvDataBase.Columns[1].Width = 57;
+                dgvDataBase.Columns[1].HeaderText = "Tempratur";
                 dgvDataBase.Columns[2].Visible = true;
-                dgvDataBase.Columns[2].Width = 52;
+                dgvDataBase.Columns[2].HeaderText = "OvnStatus";
+                dgvDataBase.Columns[2].Width = 57;
             }
         }
     }

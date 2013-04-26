@@ -59,6 +59,7 @@
             this.txtPassword.Text = "Passord";
             this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // btnEnter
@@ -73,7 +74,7 @@
             this.btnEnter.Location = new System.Drawing.Point(108, 356);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(99, 27);
-            this.btnEnter.TabIndex = 9;
+            this.btnEnter.TabIndex = 0;
             this.btnEnter.UseVisualStyleBackColor = false;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             this.btnEnter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnEnter_MouseDown);
@@ -85,7 +86,7 @@
             this.chkSave.BackColor = System.Drawing.Color.Transparent;
             this.chkSave.Checked = true;
             this.chkSave.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSave.Location = new System.Drawing.Point(34, 325);
+            this.chkSave.Location = new System.Drawing.Point(33, 317);
             this.chkSave.Name = "chkSave";
             this.chkSave.Size = new System.Drawing.Size(15, 14);
             this.chkSave.TabIndex = 3;
@@ -110,7 +111,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(48, 323);
+            this.label1.Location = new System.Drawing.Point(47, 315);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 18);
             this.label1.TabIndex = 5;

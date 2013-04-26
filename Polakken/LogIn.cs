@@ -146,7 +146,52 @@ namespace Polakken
             }
         }
 
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)  
+            {
+                if (txtEmail.TextLength == 0)
+                {
+                    MessageBox.Show("Du må skrive inn ett brukernavn", "Feil");
+                    chkSave.Checked = false;
+                }
+                else if (txtPassword.TextLength == 0)
+                {
+                    MessageBox.Show("Du må skrive inn ett passord", "Feil");
+                    chkSave.Checked = false;
+                }
+                else if (txtEmail.Text == "Brukernavn" & txtEmail.ForeColor == Color.Silver)
+                {
+                    MessageBox.Show("Du må skrive inn ett brukernavn", "Feil");
+                }
+                else if (txtPassword.Text == "Passord" & txtPassword.ForeColor == Color.Silver)
+                {
+                    MessageBox.Show("Du må skrive inn ett passord", "Feil");
+                }
+                else
+                {
+                    sendMail.email = txtEmail.Text + "@gmail.com";
+                    sendMail.password = txtPassword.Text;
+
+                    if (chkSave.Checked == true)
+                    {
+                        Settings.Default.Email = txtEmail.Text + "@gmail.com";
+                        Settings.Default.Password = txtPassword.Text;
+
+                    }
+                    else
+                    {
+                        Settings.Default.Email = "";
+                        Settings.Default.Password = "";
+                    }
+                    Settings.Default.Save();
+                    DialogResult = DialogResult.OK;
+                }
+            }
+               
+        }
+        }
 
 
     }
-}
+
