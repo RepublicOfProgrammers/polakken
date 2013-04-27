@@ -22,23 +22,26 @@ namespace Polakken
         int xMin = 0;
         int xMax = 336;
         int clickCount = 0;
-        DataTable dataTable = new DataTable();
-        DataTable GetEmails = new DataTable();
-        public static DataTable dtEmails = new DataTable();
         string delToString;
         string delFromString;
-        public static bool test = false;
-        public static bool settingsupdate = false;
-        public static string lastR;
-        public static string LastRT;
-        public static DateTime now;
-        public static string stsStatus;
         string minute = " Min.";
         string celcius = "°C";
         string maxValue = "Øvre Grense Nådd";
         string minValue = "Nedre Grense Nådd";
         string minError = "Nedre Grense";
         string MaxError = "Øvre Grense";
+
+        public static Log logForm = null;
+        public static DataTable dtEmails = new DataTable();
+        public static bool test = false;
+        public static bool settingsupdate = false;
+        public static string lastR;
+        public static string LastRT;
+        public static DateTime now;
+        public static string stsStatus;
+
+        DataTable dataTable = new DataTable();
+        DataTable GetEmails = new DataTable();
         MessageBoxButtons msgButton = MessageBoxButtons.OK;
         MessageBoxIcon msgIcon = MessageBoxIcon.Information;
         Image imgArrowUp = global::Polakken.Properties.Resources.btnArrowUp;
@@ -46,9 +49,6 @@ namespace Polakken
         Image imgArrowDownUp = global::Polakken.Properties.Resources.btnArrowDown;
         Image imgArrowDownDown = global::Polakken.Properties.Resources.btnArrowDownDown;
         Image imgDel = global::Polakken.Properties.Resources.btnSlett;
-        public static Log logForm = null;
-
-
 
         public GUI_FORM()
         {
@@ -367,12 +367,11 @@ namespace Polakken
             Program.mDbHandler.DelEmail(indexNumber);
 
         }
+
         private void DelReadings() // Metode som brukes for å slette måling/er i databasen , igjen via DBHandleren.
         {
             Program.mDbHandler.DelReadings(delFromString, delToString);
         }
-
-
 
         private void UpdateSettings()   //Metode som oppdateerer textboxene , da via sensorkomunikasjonen sine variabler, FKS. ved en motatt email med nye verdier.
         {
@@ -387,10 +386,7 @@ namespace Polakken
         }
 
 
-        //
-        //Form Hendelser
-        //
-
+        #region formEvents
         private void btnLukk_Click(object sender, EventArgs e)
         {
             Program.tMålTemp.Abort(); // Stopper måleprossessen slik at programmet lukkes.
@@ -402,73 +398,6 @@ namespace Polakken
             this.WindowState = FormWindowState.Minimized;
         }
 
-        #region moveForm
-        //Her så brukes mouse eventer til å kunne flytte programmet rundt på skjermen.
-        private void btnMove_MouseDown(object sender, MouseEventArgs e)
-        {
-            Mover = 1;
-            MoveX = e.X;
-            MoveY = e.Y;
-        }
-
-        private void btnMove_MouseUp(object sender, MouseEventArgs e)
-        {
-            Mover = 0;
-        }
-
-        private void btnMove_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (Mover == 1)
-            {
-                this.SetDesktopLocation(MousePosition.X - MoveX, MousePosition.Y - MoveY);
-            }
-
-
-        }
-        #endregion
-
-        //Metode som fyller textboxer med verdier , kjøer counter på antall elementer i datatabellen
-        //og henter verdier som skal brukes i mottaMail status.
-        private void populateTxtbox()
-        {
-            int maxTemp = int.MinValue;
-            int maxTempTest = int.MinValue;
-            int minTemp = int.MaxValue;
-            int minTempTest = int.MaxValue;
-            string tempString = "";
-            DateTime dt = DateTime.MinValue;
-            foreach (DataRow row in dataTable.Rows)
-            {
-                tempString = row["Temprature"].ToString() + celcius;    // string som settes lik den nåværende radens temp i kolonnen Tempratur til string.
-                dt = DateTime.Parse(row["ReadTime"].ToString());    // Samme men bare parser en string med tidspunkt om til DateTime
-                txtCurrentTime.Text = dt.ToString();                // textboxen med siste måling datoTid til den parsede datetimen
-                CountRows++;   //Antall elementertelleren legger til en for hver rad.
-                maxTempTest = int.Parse(row["Temprature"].ToString());  //Kjører test i denne if setingen for å finne høyeste verdi
-                if (maxTemp < maxTempTest)
-                {
-                    maxTemp = maxTempTest;
-                    DateTime maxDT = DateTime.Parse(row["ReadTime"].ToString());
-                    txtMaxTime.Text = maxDT.ToString();
-                    txtMax.Text = maxTemp.ToString() + celcius;
-                }
-                minTempTest = int.Parse(row["Temprature"].ToString());  // Og i denne for å finne laveste verdi
-                if (minTemp > minTempTest)
-                {
-                    minTemp = minTempTest;
-                    DateTime minDT = DateTime.Parse(row["ReadTime"].ToString());
-                    txtMinTime.Text = minDT.ToString();
-                    txtMin.Text = minTemp.ToString() + celcius;
-                }
-
-            }
-            txtCurrent.Text = tempString; //textboxen til siste avlesingen får den siste tempraturen ifra testen.
-            lastR = tempString; // public static string som får siste verdi av tempen  og brukes senere i mottaMail
-            LastRT = dt.ToString("dd/MM/yyyy HH:mm:ss"); // samme med denne, men bare da for tiden istedenfor tempen
-
-        }
-        //
-        //Hendelser
-        //
         private void btnSaveAll_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.btnLagreDown;
@@ -561,69 +490,10 @@ namespace Polakken
             this.btnToleranceUp.BackgroundImage = imgArrowUp;
 
         }
-        //Metode som tester på datamaskinens strømstatus. Dette ved hjelp av en bool som blir satt i program.
 
-        private void PowerCheck()
-        {
-            if (Program.isRunningOnBattery == false)
-            {
-                picPower.Image = global::Polakken.Properties.Resources.imgPowerOn;
-                lblPowerInfo.ForeColor = Color.White;
-                lblPowerInfo.Text = "Datamaskinen har strøm";
-            }
-            else if (Program.isRunningOnBattery == true)
-            {
-                picPower.Image = global::Polakken.Properties.Resources.imgPowerOff;
-                lblPowerInfo.ForeColor = Color.Red;
-                lblPowerInfo.Text = "Datamaskinen går på batteri";
-            }
-        }
-        //Metode som tester om sensoren er tilkoblet,kjører en public static metode fra sensorcom.
-        private void SensorCheck()
-        {
-            if (SensorCom.connected())
-            {
-                picSensor.Image = global::Polakken.Properties.Resources.imgSensorIn;
-                lblSensorInfo.ForeColor = Color.White;
-                lblSensorInfo.Text = "Sensoren er tilkoblet";
-            }
-            else
-            {
-                picSensor.Image = global::Polakken.Properties.Resources.imgSensorOut;
-                lblSensorInfo.ForeColor = Color.Red;
-                lblSensorInfo.Text = "Sensoren er ikke tilkoblet";
-            }
-        }
-        //Metode som endrer min verdien på X-aksen i crtView. den har at du kun kan trykke en gang på hver knapp.
-        //og den motsatte blir disablet.
-        public void Zoom()
-        {
-
-            crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
-
-            if (clickCount == 0)
-            {
-
-                crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 48;
-                btnZoomOut.Enabled = true;
-                btnZoomIn.Enabled = false;
-                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnPlusDisabeld;
-                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnMinus;
-                clickCount = 0;
-            }
-            if (clickCount == 1)
-            {
-                crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 96;
-                btnZoomOut.Enabled = false;
-                btnZoomIn.Enabled = true;
-                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnMinusDisabled;
-                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnPlus;
-                clickCount = 0;
-
-            }
-
-        }
-        //En metode som endrer tolerangse nedover ved klikk.
+        /// <summary>
+        /// En metode som endrer toleranse nedover ved klikk.
+        /// </summary>
         private void btnToleranceDown_MouseDown(object sender, MouseEventArgs e)
         {
             this.btnToleranceUp.BackgroundImage = imgArrowUp;
@@ -827,18 +697,6 @@ namespace Polakken
             dgvDataBase.DataSource = view; // Setter tabellvisningens datakilde til det filtrerte datautsnitte.
 
         }
-        //Metode som kjører metoder i GUIEN(Skjer ved tick fra Timer) for å oppdatere de ulike visningene i guien.
-        public void Update_Form()
-        {
-            dgvDataBase.DataSource = null;  //Fjerner tabelvisningens datakilde.
-            crtView.DataSource = null; // Fjerner grafens datakilde
-            dataTable.Clear();  //Tømmer datatabellen. 
-            fillDataTable(dataTable);   //Fyller tabellen på nytt med metoden filldatatable(for info om den se lenger opp)
-            dgvDataBase.DataSource = dataTable; // setter datakilden til tabellvisningen til datatabellen.
-            crtView.DataSource = dataTable;
-            crtView.DataBind(); //databinder grafen så den viser nye punkter.
-            populateTxtbox(); //Kjører metoden som fyller textboxene med verdier(Siste,Mintemp,Maxtemp).
-        }
 
         //Metode som nullstiller tabellvisningen når det er tatt ett utsnitt av den og denne er klikket på
         private void btnReset_Click(object sender, EventArgs e)
@@ -849,6 +707,7 @@ namespace Polakken
             dgvDataBase.DataSource = dataTable;// setter datakilden til tabellvisningen til datatabellen.
 
         }
+
         //Event som skjer når checkboxen til filterstatus endres og endre comboboxen er enabled eller ikke
         private void chkFilterStatus_CheckedChanged(object sender, EventArgs e)
         {
@@ -1333,5 +1192,159 @@ namespace Polakken
                 dgvDataBase.Columns[2].Width = 57;
             }
         }
+        #endregion
+
+        #region moveForm
+        //Her så brukes mouse eventer til å kunne flytte programmet rundt på skjermen.
+        private void btnMove_MouseDown(object sender, MouseEventArgs e)
+        {
+            Mover = 1;
+            MoveX = e.X;
+            MoveY = e.Y;
+        }
+
+        private void btnMove_MouseUp(object sender, MouseEventArgs e)
+        {
+            Mover = 0;
+        }
+
+        private void btnMove_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Mover == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - MoveX, MousePosition.Y - MoveY);
+            }
+
+
+        }
+        #endregion
+
+        /// <summary>
+        /// Metode som fyller textboxer med verdier , kjøer counter på antall elementer i datatabellen
+        /// og henter verdier som skal brukes i mottaMail status.
+        /// </summary>
+        private void populateTxtbox()
+        {
+            int maxTemp = int.MinValue;
+            int maxTempTest = int.MinValue;
+            int minTemp = int.MaxValue;
+            int minTempTest = int.MaxValue;
+            string tempString = "";
+            DateTime dt = DateTime.MinValue;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                tempString = row["Temprature"].ToString() + celcius;    // string som settes lik den nåværende radens temp i kolonnen Tempratur til string.
+                dt = DateTime.Parse(row["ReadTime"].ToString());    // Samme men bare parser en string med tidspunkt om til DateTime
+                txtCurrentTime.Text = dt.ToString();                // textboxen med siste måling datoTid til den parsede datetimen
+                CountRows++;   //Antall elementertelleren legger til en for hver rad.
+                maxTempTest = int.Parse(row["Temprature"].ToString());  //Kjører test i denne if setingen for å finne høyeste verdi
+                if (maxTemp < maxTempTest)
+                {
+                    maxTemp = maxTempTest;
+                    DateTime maxDT = DateTime.Parse(row["ReadTime"].ToString());
+                    txtMaxTime.Text = maxDT.ToString();
+                    txtMax.Text = maxTemp.ToString() + celcius;
+                }
+                minTempTest = int.Parse(row["Temprature"].ToString());  // Og i denne for å finne laveste verdi
+                if (minTemp > minTempTest)
+                {
+                    minTemp = minTempTest;
+                    DateTime minDT = DateTime.Parse(row["ReadTime"].ToString());
+                    txtMinTime.Text = minDT.ToString();
+                    txtMin.Text = minTemp.ToString() + celcius;
+                }
+
+            }
+            txtCurrent.Text = tempString; //textboxen til siste avlesingen får den siste tempraturen ifra testen.
+            lastR = tempString; // public static string som får siste verdi av tempen  og brukes senere i mottaMail
+            LastRT = dt.ToString("dd/MM/yyyy HH:mm:ss"); // samme med denne, men bare da for tiden istedenfor tempen
+
+        }
+
+
+        /// <summary>
+        /// Metode som tester på datamaskinens strømstatus. Dette ved hjelp av en bool som blir satt i program.
+        /// </summary>
+        private void PowerCheck()
+        {
+            if (Program.isRunningOnBattery == false)
+            {
+                picPower.Image = global::Polakken.Properties.Resources.imgPowerOn;
+                lblPowerInfo.ForeColor = Color.White;
+                lblPowerInfo.Text = "Datamaskinen har strøm";
+            }
+            else if (Program.isRunningOnBattery == true)
+            {
+                picPower.Image = global::Polakken.Properties.Resources.imgPowerOff;
+                lblPowerInfo.ForeColor = Color.Red;
+                lblPowerInfo.Text = "Datamaskinen går på batteri";
+            }
+        }
+
+        /// <summary>
+        /// Metode som tester om sensoren er tilkoblet,kjører en public static metode fra sensorcom.
+        /// </summary>
+        private void SensorCheck()
+        {
+            if (SensorCom.connected())
+            {
+                picSensor.Image = global::Polakken.Properties.Resources.imgSensorIn;
+                lblSensorInfo.ForeColor = Color.White;
+                lblSensorInfo.Text = "Sensoren er tilkoblet";
+            }
+            else
+            {
+                picSensor.Image = global::Polakken.Properties.Resources.imgSensorOut;
+                lblSensorInfo.ForeColor = Color.Red;
+                lblSensorInfo.Text = "Sensoren er ikke tilkoblet";
+            }
+        }
+
+        /// <summary>
+        /// Metode som endrer min verdien på X-aksen i crtView. den har at du kun kan trykke en gang på hver knapp.
+        /// og den motsatte blir disablet.
+        /// </summary>
+        public void Zoom()
+        {
+
+            crtView.ChartAreas["tempOversikt"].AxisX.Minimum = xMin;
+
+            if (clickCount == 0)
+            {
+
+                crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 48;
+                btnZoomOut.Enabled = true;
+                btnZoomIn.Enabled = false;
+                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnPlusDisabeld;
+                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnMinus;
+                clickCount = 0;
+            }
+            if (clickCount == 1)
+            {
+                crtView.ChartAreas["tempOversikt"].AxisX.LabelStyle.Interval = 96;
+                btnZoomOut.Enabled = false;
+                btnZoomIn.Enabled = true;
+                btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnMinusDisabled;
+                btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnPlus;
+                clickCount = 0;
+
+            }
+
+        }
+
+        //Metode som kjører metoder i GUIEN(Skjer ved tick fra Timer) for å oppdatere de ulike visningene i guien.
+        public void Update_Form()
+        {
+            dgvDataBase.DataSource = null;  //Fjerner tabelvisningens datakilde.
+            crtView.DataSource = null; // Fjerner grafens datakilde
+            dataTable.Clear();  //Tømmer datatabellen. 
+            fillDataTable(dataTable);   //Fyller tabellen på nytt med metoden filldatatable(for info om den se lenger opp)
+            dgvDataBase.DataSource = dataTable; // setter datakilden til tabellvisningen til datatabellen.
+            crtView.DataSource = dataTable;
+            crtView.DataBind(); //databinder grafen så den viser nye punkter.
+            populateTxtbox(); //Kjører metoden som fyller textboxene med verdier(Siste,Mintemp,Maxtemp).
+        }
+
+        
     }
 }
