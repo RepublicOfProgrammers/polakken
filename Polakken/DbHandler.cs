@@ -53,16 +53,10 @@ namespace Polakken
         {
             Logger.Info("Starter konstruksjon", thismodule);
             //initialiserer databasen, henter ut status/resultat-kode
-            int init_db_status = initDb();
+            // Status-koder ikke i bruk foreløpig. Kun lagt opp til bruk av dem senere, og brukt under utvikling.
+            //int init_db_status = initDb(); 
 
-            if (init_db_status == (int)dbStatus.NEW)
-            {
-                //Her kan det sendes en messagebox til bruker om at programmet har startet for første gang og database er opprettet.
-            }
-            else if (init_db_status == (int)dbStatus.EXISTING)
-            {
-                //her kan det sendes en melding til bruker om at siste innlogging var sånn og sånn f.eks.
-            }
+            initDb(); // dumper status kode, siden de ikke er i bruk.
         }
 
         /// <summary>
@@ -89,9 +83,8 @@ namespace Polakken
             }
         }
 
-        /**
-         * PUBLIC METHODS: Her kan det lages flere metoder som polakken skal utnytte.
-         */
+        // Metoder til bruk av andre klasser for databasebehandling.
+        #region public_methods
 
         /// <summary>
         /// Sletter oppføringer i temp-databasen fra-til dato.
@@ -207,9 +200,10 @@ namespace Polakken
             return executeSql_NonQuery_Email(email);
         }
 
-        /**
-         * END PUBLIC METHODS!
-         */
+#endregion
+
+        // Metoder til bruk for denne klassen for utføre sql koder.
+        #region executeSql
 
         ///<summary>
         /// MERK: Denne metoden trenger at dbhandler objektet åpnes før kjøring, og lukkes etterpå, ved .OpenDb() og .CloseDb()
@@ -362,6 +356,7 @@ namespace Polakken
             }
             return affectedRows;
         }
+        #endregion
 
         private int initDb()
         {

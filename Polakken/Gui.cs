@@ -53,7 +53,6 @@ namespace Polakken
         public GUI_FORM()
         {
             InitializeComponent();
-
         }
 
         private void GUI_Load(object sender, EventArgs e)
@@ -217,10 +216,7 @@ namespace Polakken
 
 
         }
-        //
-        //Koble Til Databasen og hente ut verdier
-        //
-
+       
         public DataTable fillDataTable(DataTable dataTable_toFill)  //Datatabell Metode som fyller en vedlagt tom datatabell med data fra databasen, med metode fra DBHandler.
         {
             if (dataTable_toFill.Columns.Contains("ReadTime") & dataTable_toFill.Columns.Contains("Temprature") & dataTable_toFill.Columns.Contains("Status")) //Sjekker om tabellen allerede eksisterer.
@@ -293,7 +289,6 @@ namespace Polakken
             Program.mDbHandler.CloseDb(); // Lukker så hele databasen
             return dataTable_toFill; // Her blir datatabellen som metoden har utfylt retunert til der den blir kalt opp i en parameter datatabell.
         }
-
 
         public DataTable GetEmail(DataTable GetEmails) //Samme type metode som over, men istedenfor målinger så henter denne emails.
         {
@@ -384,7 +379,6 @@ namespace Polakken
             txtSetPoint.Text = Convert.ToString(setPoint) + celcius;
             txtTol.Text = Convert.ToString(tolerance) + celcius;
         }
-
 
         #region formEvents
         private void btnLukk_Click(object sender, EventArgs e)
@@ -1261,7 +1255,6 @@ namespace Polakken
 
         }
 
-
         /// <summary>
         /// Metode som tester på datamaskinens strømstatus. Dette ved hjelp av en bool som blir satt i program.
         /// </summary>
@@ -1332,7 +1325,9 @@ namespace Polakken
 
         }
 
-        //Metode som kjører metoder i GUIEN(Skjer ved tick fra Timer) for å oppdatere de ulike visningene i guien.
+        /// <summary>
+        /// Metode som kjører metoder i GUIEN(Skjer ved tick fra Timer) for å oppdatere de ulike visningene i guien.
+        /// </summary>
         public void Update_Form()
         {
             dgvDataBase.DataSource = null;  //Fjerner tabelvisningens datakilde.
@@ -1344,7 +1339,5 @@ namespace Polakken
             crtView.DataBind(); //databinder grafen så den viser nye punkter.
             populateTxtbox(); //Kjører metoden som fyller textboxene med verdier(Siste,Mintemp,Maxtemp).
         }
-
-        
     }
 }

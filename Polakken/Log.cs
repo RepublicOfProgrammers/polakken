@@ -26,8 +26,8 @@ namespace Polakken
             this.Close();
         }
 
-        /// <summary>oder for flytting av vinduet.
-        /// Met
+        /// <summary>
+        /// Metoder for flytting av vinduet.
         /// </summary>
         #region Mover
         private void btnMove1_MouseDown(object sender, MouseEventArgs e)
