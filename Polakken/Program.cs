@@ -53,7 +53,8 @@ namespace Polakken
         }
 
         /// <summary>
-        /// Denne metoden for tråden tMålTemp vil skrive en måling til databasen med datotid, temp og status på varmeovner. Deretter vil tråden sove frem til måleintervallet(mesIntervall) er utløpt
+        /// Denne metoden for tråden tMålTemp vil skrive en måling til databasen med datotid, temp og status på varmeovner. Deretter vil tråden sove frem til måleintervallet(mesIntervall) er utløpt.
+        /// Denne metoden sender også mailer og advarsler om nødvendig, og foretar tester på systemet. 
         /// </summary>
         private static void tMålTemp_method()
         {
@@ -64,12 +65,14 @@ namespace Polakken
                 sensorInUse = true;
                 int temp = Convert.ToInt32(SensorCom.temp());
 
+                // Dersom temp == 999 har sensorcom returnert en feil
                 if (temp == 999)
                 {
+                    // Prøver på nytt maksimum 3 ganger, med 5 sekunders mellomrom. 
                     if (retryCount < 4)
                     {
-                        Logger.Error("Får ikke kontakt med sensor. Forsøk nr: " + retryCount + ". Prøver igjen om 5 sekunder.", "Polakken");
                         retryCount++;
+                        Logger.Error("Får ikke kontakt med sensor. Forsøk nr: " + retryCount + ". Prøver igjen om 5 sekunder.", "Polakken");
                         Thread.Sleep(5000);
                         continue;
                     }
