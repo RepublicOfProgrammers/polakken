@@ -46,7 +46,6 @@ namespace Polakken
         Image imgArrowDownUp = global::Polakken.Properties.Resources.btnArrowDown;
         Image imgArrowDownDown = global::Polakken.Properties.Resources.btnArrowDownDown;
         Image imgDel = global::Polakken.Properties.Resources.btnSlett;
-        DbHandler db = new DbHandler();
         public static Log logForm = null;
 
 
@@ -229,8 +228,8 @@ namespace Polakken
         {
             if (dataTable_toFill.Columns.Contains("ReadTime") & dataTable_toFill.Columns.Contains("Temprature") & dataTable_toFill.Columns.Contains("Status")) //Sjekker om tabellen allerede eksisterer.
             {
-                db.OpenDb();              //Hvis den gjør det så åpner den databasen vi DBHandler.
-                SqlCeDataReader mReader = db.GetReadings();   //Opretter en SQL Datareader som settes lik metoden i DBHandler Getreadings.
+                Program.mDbHandler.OpenDb(); // Åpner databasen.
+                SqlCeDataReader mReader = Program.mDbHandler.GetReadings();   //Opretter en SQL Datareader som settes lik metoden i DBHandler Getreadings.
 
                 while (mReader.Read()) // Så lenge det er noe å lese i databasne 
                 {
@@ -264,8 +263,8 @@ namespace Polakken
                 dataTable_toFill.Columns.Add("Temprature", typeof(string));
                 dataTable_toFill.Columns.Add("Status", typeof(string));
 
-                db.OpenDb();
-                SqlCeDataReader mReader = db.GetReadings();
+                Program.mDbHandler.OpenDb();
+                SqlCeDataReader mReader = Program.mDbHandler.GetReadings();
 
                 while (mReader.Read())
                 {
@@ -294,7 +293,7 @@ namespace Polakken
                 mReader.Close();
             }
 
-            db.CloseDb(); // Lukker så hele databasen
+            Program.mDbHandler.CloseDb(); // Lukker så hele databasen
             return dataTable_toFill; // Her blir datatabellen som metoden har utfylt retunert til der den blir kalt opp i en parameter datatabell.
         }
 
@@ -303,8 +302,8 @@ namespace Polakken
         {
             if (GetEmails.Columns.Contains("Adresser"))
             {
-                db.OpenDb();
-                SqlCeDataReader emReader = db.GetEmails(); // Oppretter igjen en leser som går igjennom alle oppføringer i databasen.
+                Program.mDbHandler.OpenDb();
+                SqlCeDataReader emReader = Program.mDbHandler.GetEmails(); // Oppretter igjen en leser som går igjennom alle oppføringer i databasen.
 
                 while (emReader.Read())
                 {
@@ -334,8 +333,8 @@ namespace Polakken
 
                 GetEmails.Columns.Add("Index", typeof(int));  // Her oppretter den da kolonnene hvis de ikke eksisterer.
                 GetEmails.Columns.Add("Adresser", typeof(string));
-                db.OpenDb();
-                SqlCeDataReader emReader = db.GetEmails();
+                Program.mDbHandler.OpenDb();
+                SqlCeDataReader emReader = Program.mDbHandler.GetEmails();
 
                 while (emReader.Read())
                 {
@@ -362,18 +361,18 @@ namespace Polakken
                 emReader.Close();
             }
 
-            db.CloseDb(); // lukker databasen.
+            Program.mDbHandler.CloseDb(); // lukker databasen.
             return GetEmails;   //Returnerer datatabellen GetEmails.
         }
 
         private void DelEmails(int indexNumber) // Metode som brukes for å slette en email vi DBHandleren, sender men en parameter som blir satt lenger ned i guien.
         {
-            db.DelEmail(indexNumber);
+            Program.mDbHandler.DelEmail(indexNumber);
 
         }
         private void DelReadings() // Metode som brukes for å slette måling/er i databasen , igjen via DBHandleren.
         {
-            db.DelReadings(delFromString, delToString);
+            Program.mDbHandler.DelReadings(delFromString, delToString);
         }
 
 
@@ -919,7 +918,7 @@ namespace Polakken
                 }
                 else
                 {
-                    db.AddEmail(inputText);//Metode som legger til eposten ved at stringen som er eposten sendes med som parameter.Metoden for addemail finner du lenger oppe på siden.
+                    Program.mDbHandler.AddEmail(inputText);//Metode som legger til eposten ved at stringen som er eposten sendes med som parameter.Metoden for addemail finner du lenger oppe på siden.
                     dgvEmail.DataSource = null;
                     GetEmails.Clear();
                     GetEmail(GetEmails);                //Oppdaterer så tabellvisningen for email for å vise den nye i tabellvinsingen.
@@ -1012,7 +1011,7 @@ namespace Polakken
         private void btnDelEmail_Click(object sender, EventArgs e)
         {
             int DelIndex = Convert.ToInt32(cboDelEmail.SelectedValue);
-            db.DelEmail(DelIndex);
+            Program.mDbHandler.DelEmail(DelIndex);
             dgvEmail.DataSource = null;
             GetEmails.Clear();
             GetEmail(GetEmails);

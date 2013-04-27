@@ -18,7 +18,11 @@ namespace Polakken
 
         private void btnLukk_Click(object sender, EventArgs e)
         {
-            if(GUI_FORM.logForm != null) GUI_FORM.logForm.Dispose(); // Dispoer Log objektet i GUI klassen for frigjøring av minne. 
+            if (GUI_FORM.logForm != null)
+            {
+                GUI_FORM.logForm.Dispose(); // Dispoer Log objektet i GUI klassen for frigjøring av minne. 
+                GUI_FORM.logForm = null;
+            }
             this.Close();
         }
 

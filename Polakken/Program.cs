@@ -6,7 +6,6 @@ namespace Polakken
 {
     static class Program
     {
-        private static DbHandler mDbHandler;
         private static bool alarmSent;
         private static bool batterySent;
 
@@ -16,6 +15,7 @@ namespace Polakken
         public static bool needRefresh { get; set; }
         public static bool sensorInUse { get; set; } // Brukes slik at ikke sensorbruk kan kræsje med bruk av sensor koblingstesten i SensorCom klassen. 
         public static Thread tMålTemp; // Denne threaden må være public slik at GUI kan stoppe den når GUI lukkes.
+        public static DbHandler mDbHandler;
 
         [STAThread]
         static void Main()
@@ -31,9 +31,6 @@ namespace Polakken
             new Logger(); // kaller konstruktøren til logger classen kun for å opprette ny logg tekstfil. 
             mDbHandler = new DbHandler(); // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
 
-            // Starter måleprosessen. Main() venter ikke på denne tråden før den går videre.
-            tMålTemp = new Thread(new ThreadStart(tMålTemp_method));
-            tMålTemp.Start();
             
             // Starter GUI
             Application.EnableVisualStyles();
@@ -45,6 +42,10 @@ namespace Polakken
                 result = loginForm.ShowDialog();
                 if (result == DialogResult.OK)
                 {
+                    // Starter måleprosessen. Main() venter ikke på denne tråden før den går videre.
+                    tMålTemp = new Thread(new ThreadStart(tMålTemp_method));
+                    tMålTemp.Start();
+
                     // login was successful
                     Application.Run(new GUI_FORM());
                 }
@@ -56,34 +57,48 @@ namespace Polakken
         /// </summary>
         private static void tMålTemp_method()
         {
+            int retryCount = 0;
             while (true) // Skal alltid være true, bruker threaden til å stoppe loopen. 
             {
+
                 sensorInUse = true;
                 int temp = Convert.ToInt32(SensorCom.temp());
+
                 if (temp == 999)
                 {
-                    if (sensorSent == false) // Sender mail-advarsel dersom brudd med sensor og advarsel ikke er sendt.
+                    if (retryCount < 4)
                     {
-                        Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender mail til alarm abonnenter, Polakken blunder en times tid.", "Polakken");
-
-                        sensorSent = true; // Unngår mail spamming.
-                        sendMail.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");
-
-                        // Sensoren er ikke lengre i bruk. 
-                        sensorInUse = false;
-
-                        Thread.Sleep(3600000); // sover 1 time
-                        continue; // Hopper over resten av denne loop-iterasjonen (starter loopen på nytt)
+                        Logger.Error("Får ikke kontakt med sensor. Forsøk nr: " + retryCount + ". Prøver igjen om 5 sekunder.", "Polakken");
+                        retryCount++;
+                        Thread.Sleep(5000);
+                        continue;
                     }
                     else
                     {
-                        Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender ikke ny mail, Polakken blunder en times tid.", "Polakken");
-                        
-                        // Sensoren er ikke lengre i bruk. 
-                        sensorInUse = false;
+                        retryCount = 0;
+                        if (sensorSent == false) // Sender mail-advarsel dersom brudd med sensor og advarsel ikke er sendt.
+                        {
+                            Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender mail til alarm abonnenter, Polakken blunder en times tid.", "Polakken");
 
-                        Thread.Sleep(3600000);// sover 1 time
-                        continue; // Hopper over resten av denne loop-iterasjonen (starter loopen på nytt)
+                            sensorSent = true; // Unngår mail spamming.
+                            sendMail.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");
+
+                            // Sensoren er ikke lengre i bruk. 
+                            sensorInUse = false;
+
+                            Thread.Sleep(3600000); // sover 1 time
+                            continue; // Hopper over resten av denne loop-iterasjonen (starter loopen på nytt)
+                        }
+                        else
+                        {
+                            Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender ikke ny mail, Polakken blunder en times tid.", "Polakken");
+
+                            // Sensoren er ikke lengre i bruk. 
+                            sensorInUse = false;
+
+                            Thread.Sleep(3600000);// sover 1 time
+                            continue; // Hopper over resten av denne loop-iterasjonen (starter loopen på nytt)
+                        }
                     }
                 }
                 else if (temp > 60)
@@ -113,7 +128,7 @@ namespace Polakken
                         Regulation.regulator(temp);
                         mDbHandler.SetReading(DateTime.Now, temp, Regulation.status);
                     }
-
+                    Logger.Info("Utført måling. temp = " + temp + ". Ny måling om: " + SensorCom.mesInterval + " minutt(er).", "Polakken");
                     needRefresh = true; // Sier ifra til tickeventen i gui'en at den trenger oppdatering
 
                     // Sender alarm til mail-abonnenter dersom gitt alarmgrense er brutt. Sender ikke dobbelt opp, men på ny dersom temp 
@@ -131,18 +146,18 @@ namespace Polakken
                         }
                         alarmSent = true; // Unngår mail spamming.
                     }
-                    else if (temp > SensorCom.alarmLimit & temp < 60)
+                    else if (temp > SensorCom.alarmLimit && temp < 60)
                     {
                         alarmSent = false;
                     }
 
                     // Sender alarm til mail-abonnenter dersom maskinen ikke har strøm. Sender ikke dobbelt opp, men sier ifra dersom strøm kommer tilbake. 
-                    if (isRunningOnBattery == true & batterySent == false)
+                    if (isRunningOnBattery == true && batterySent == false)
                     {
                         sendMail.sendToAll("Strøm advarsel", "Datamaskinen kjører nå på batteristrøm");
                         batterySent = true;
                     }
-                    else if (isRunningOnBattery == false & batterySent == true)
+                    else if (isRunningOnBattery == false && batterySent == true)
                     {
                         sendMail.sendToAll("Strøm varsel", "Datamaskinen kjører ikke lenger på batteristrøm");
                         batterySent = false;
