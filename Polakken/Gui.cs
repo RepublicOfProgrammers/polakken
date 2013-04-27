@@ -203,13 +203,10 @@ namespace Polakken
             dtpDelToTime.Enabled = false;
 
             //
-            //SetPoint Og Tollerangse knappene, Setter disse til false , fordi det ikke er noe regulering på.
+            //SetPoint Og Tollerangse checkbox settes om det er aktiv regulering lagret i settings
             //
             chkSetTol.Checked = Settings.Default.RegulationActive; //Henter inn config setting på valg om regulering er aktiv eller ikke. 
-            this.btnSetPointDown.BackgroundImage = global::Polakken.Properties.Resources.btnArrowDownDown;
-            this.btnSetPointUp.BackgroundImage = global::Polakken.Properties.Resources.btnArrowUpDown;
-            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.btnArrowUpDown;
-            this.btnToleranceDown.BackgroundImage = global::Polakken.Properties.Resources.btnArrowDownDown;
+
 
             //
             //Delete btn, Setter bare at denne er ikke aktiv, denne blir det når man velger slettemetode(Se lenger ned).
@@ -834,9 +831,11 @@ namespace Polakken
         public void Update_Form()
         {
             dgvDataBase.DataSource = null;  //Fjerner tabelvisningens datakilde.
-            dataTable.Clear();  //Tømmer datatabellen.
+            crtView.DataSource = null; // Fjerner grafens datakilde
+            dataTable.Clear();  //Tømmer datatabellen. 
             fillDataTable(dataTable);   //Fyller tabellen på nytt med metoden filldatatable(for info om den se lenger opp)
             dgvDataBase.DataSource = dataTable; // setter datakilden til tabellvisningen til datatabellen.
+            crtView.DataSource = dataTable;
             crtView.DataBind(); //databinder grafen så den viser nye punkter.
             populateTxtbox(); //Kjører metoden som fyller textboxene med verdier(Siste,Mintemp,Maxtemp).
         }
