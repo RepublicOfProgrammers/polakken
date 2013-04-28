@@ -138,20 +138,6 @@ namespace Polakken.Properties {
             }
         }
         
-        internal static byte[] NationalInstruments_MStudioCLM {
-            get {
-                object obj = ResourceManager.GetObject("NationalInstruments_MStudioCLM", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        internal static byte[] NationalInstruments_NiLmClientDLL {
-            get {
-                object obj = ResourceManager.GetObject("NationalInstruments_NiLmClientDLL", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap Polakken_btnArrowDown {
             get {
                 object obj = ResourceManager.GetObject("Polakken_btnArrowDown", resourceCulture);
