@@ -21,6 +21,7 @@ namespace Polakken
         private const string Minute = " Min.";
         private const MessageBoxButtons MsgButton = MessageBoxButtons.OK;
         private const MessageBoxIcon MsgIcon = MessageBoxIcon.Information;
+
         public static Log LogForm = null;
         public static DataTable DtEmails = new DataTable();
         public static bool Test = false;
@@ -59,16 +60,18 @@ namespace Polakken
         private void GUI_Load(object sender, EventArgs e)
         {
             tmrUpdateSettings.Start();
+
             chkMsgDis.Checked = Settings.Default.hideMsgBox;
-            // Henter inn config setting på valg om skjuling av error message boxes. 
+                // Henter inn config setting på valg om skjuling av error message boxes. 
             SensorCom.MesInterval = Settings.Default.mesInterval;
-            // Henter inn config setting på måleintervall og sender til SensorCom
+                // Henter inn config setting på måleintervall og sender til SensorCom
             SensorCom.AlarmLimit = Settings.Default.alarmLimit;
-            // Henter inn config setting på alarmgrense og sender til SensorCom
+                // Henter inn config setting på alarmgrense og sender til SensorCom
             Regulation.Setpoint = Settings.Default.setpoint;
-            //Henter in config setting på settpunkt og sender til Regulation
+                //Henter in config setting på settpunkt og sender til Regulation
             Regulation.Tolerance = Settings.Default.tolerance;
-            // Henter inn config setting på toleranse og sender til Regulation
+                // Henter inn config setting på toleranse og sender til Regulation
+
             _mesurInterval = SensorCom.MesInterval;
             _alarmLimit = SensorCom.AlarmLimit;
             _setPoint = Regulation.Setpoint;
@@ -82,13 +85,19 @@ namespace Polakken
             LastR = txtCurrent.Text;
             DtEmails = _getEmails;
             btnDelReading.Enabled = false;
+
             PowerCheck(); //Kjører en metode som sjekker statusen på strømen til maskinen
-            SensorCheck(); //Kjører en metode som teser om sensoren er tilkoblet
+
+            //Setter default som at sensor ikke et koblet til, frem til første SensorCheck() kjøres, for å forhindre dobbelbruk av sensor.
+            picSensor.Image = Resources.Polakken_imgSensorOut;
+            lblSensorInfo.ForeColor = Color.Red;
+            lblSensorInfo.Text = "Sensoren er ikke tilkoblet";
+
             //
             // Opprett DataTabell og fyll DataGridView
             //
             FillDataTable(_dataTable);
-            //Kjører metoden fillDatatable som fyller datatabellen som sendes med som en parameter
+                //Kjører metoden fillDatatable som fyller datatabellen som sendes med som en parameter
             dgvDataBase.DataSource = _dataTable; //Setter datagridviewens datasource til den utfylte datatabellen
             GetEmail(_getEmails); // gjør akuratt det samme som fillDatatable, men bare for emails
             dgvEmail.DataSource = _getEmails; //Samme som for datagridviewt til databasen
@@ -106,7 +115,6 @@ namespace Polakken
                 cboFilterTemp.DisplayMember = "Temprature";
                 cboFilterTemp.ValueMember = "Temprature";
             }
-
 
             var viewDeleteEmail = new DataView(_getEmails);
             cboDelEmail.DataSource = viewDeleteEmail;
@@ -215,7 +223,7 @@ namespace Polakken
             //SetPoint Og Tollerangse checkbox settes om det er aktiv regulering lagret i settings
             //
             chkSetTol.Checked = Settings.Default.RegulationActive;
-            //Henter inn config setting på valg om regulering er aktiv eller ikke. 
+                //Henter inn config setting på valg om regulering er aktiv eller ikke. 
 
 
             //
@@ -233,7 +241,7 @@ namespace Polakken
             {
                 Program.MDbHandler.OpenDb(); // Åpner databasen.
                 SqlCeDataReader mReader = Program.MDbHandler.GetReadings();
-                //Opretter en SQL Datareader som settes lik metoden i DBHandler Getreadings.
+                    //Opretter en SQL Datareader som settes lik metoden i DBHandler Getreadings.
 
                 while (mReader.Read()) // Så lenge det er noe å lese i databasne 
                 {
@@ -263,7 +271,7 @@ namespace Polakken
             else
             {
                 dataTableToFill.Columns.Add("ReadTime", typeof (string));
-                // Samme som metoden over, men datatabellen har ikke kolonnene og derfor oppretter den de.
+                    // Samme som metoden over, men datatabellen har ikke kolonnene og derfor oppretter den de.
                 dataTableToFill.Columns.Add("Temprature", typeof (string));
                 dataTableToFill.Columns.Add("Status", typeof (string));
 
@@ -297,7 +305,7 @@ namespace Polakken
 
             Program.MDbHandler.CloseDb(); // Lukker så hele databasen
             return dataTableToFill;
-            // Her blir datatabellen som metoden har utfylt retunert til der den blir kalt opp i en parameter datatabell.
+                // Her blir datatabellen som metoden har utfylt retunert til der den blir kalt opp i en parameter datatabell.
         }
 
         public DataTable GetEmail(DataTable getEmails)
@@ -307,7 +315,7 @@ namespace Polakken
             {
                 Program.MDbHandler.OpenDb();
                 SqlCeDataReader emReader = Program.MDbHandler.GetEmails();
-                // Oppretter igjen en leser som går igjennom alle oppføringer i databasen.
+                    // Oppretter igjen en leser som går igjennom alle oppføringer i databasen.
 
                 while (emReader.Read())
                 {
@@ -394,13 +402,13 @@ namespace Polakken
             foreach (DataRow row in _dataTable.Rows)
             {
                 tempString = row["Temprature"] + Celcius;
-                // string som settes lik den nåværende radens temp i kolonnen Tempratur til string.
+                    // string som settes lik den nåværende radens temp i kolonnen Tempratur til string.
                 dt = DateTime.Parse(row["ReadTime"].ToString());
-                // Samme men bare parser en string med tidspunkt om til DateTime
+                    // Samme men bare parser en string med tidspunkt om til DateTime
                 txtCurrentTime.Text = dt.ToString(); // textboxen med siste måling datoTid til den parsede datetimen
                 _countRows++; //Antall elementertelleren legger til en for hver rad.
                 maxTempTest = int.Parse(row["Temprature"].ToString());
-                //Kjører test i denne if setingen for å finne høyeste verdi
+                    //Kjører test i denne if setingen for å finne høyeste verdi
                 if (maxTemp < maxTempTest)
                 {
                     maxTemp = maxTempTest;
@@ -815,7 +823,7 @@ namespace Polakken
             dgvDataBase.DataSource = null; //Fjerner tabelvisningens datakilde.
             _dataTable.Clear(); //Tømmer datatabellen.
             FillDataTable(_dataTable);
-                //Fyller tabellen på nytt med metoden filldatatable(for info om den se lenger opp)
+            //Fyller tabellen på nytt med metoden filldatatable(for info om den se lenger opp)
             dgvDataBase.DataSource = _dataTable; // setter datakilden til tabellvisningen til datatabellen.
         }
 
@@ -892,7 +900,7 @@ namespace Polakken
                     dgvEmail.DataSource = null;
                     _getEmails.Clear();
                     GetEmail(_getEmails);
-                        //Oppdaterer så tabellvisningen for email for å vise den nye i tabellvinsingen.
+                    //Oppdaterer så tabellvisningen for email for å vise den nye i tabellvinsingen.
                     dgvEmail.DataSource = _getEmails;
                     txtAddEmail.Clear();
                 }
