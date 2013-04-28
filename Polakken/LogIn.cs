@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Polakken.Properties;
-using System.Text.RegularExpressions;
 
 namespace Polakken
 {
     public partial class LogIn : Form
     {
-
         public LogIn()
         {
             InitializeComponent();
@@ -21,9 +14,8 @@ namespace Polakken
 
         private void LogIn_Load(object sender, EventArgs e) //Henter inn lagret epost og passord fra settings. 
         {
-            string email;
-            email = Settings.Default.Email;
-            txtEmail.Text = email.Replace("@gmail.com", ""); 
+            string email = Settings.Default.Email;
+            txtEmail.Text = email.Replace("@gmail.com", "");
             txtPassword.Text = Settings.Default.Password;
             if (chkSave.Checked)
             {
@@ -56,16 +48,16 @@ namespace Polakken
             }
             else
             {
-                sendMail.email = txtEmail.Text + "@gmail.com";
-                sendMail.password = txtPassword.Text;
+                SendMail.Email = txtEmail.Text + "@gmail.com";
+                SendMail.Password = txtPassword.Text;
 
-                if (chkSave.Checked == true) //lagrer epost i settings.
+                if (chkSave.Checked) //lagrer epost i settings.
                 {
                     Settings.Default.Email = txtEmail.Text + "@gmail.com";
                     Settings.Default.Password = txtPassword.Text;
-
                 }
-                else //Dersom "Husk meg" checkboksen ikke er checked, setter den email og passord i settings til en tom tekststreng. 
+                else
+                    //Dersom "Husk meg" checkboksen ikke er checked, setter den email og passord i settings til en tom tekststreng. 
                 {
                     Settings.Default.Email = "";
                     Settings.Default.Password = "";
@@ -77,12 +69,12 @@ namespace Polakken
 
         private void btnEnter_MouseDown(object sender, MouseEventArgs e)
         {
-            this.btnEnter.BackgroundImage = global::Polakken.Properties.Resources.btnLoggInnNed;
+            btnEnter.BackgroundImage = Resources.Polakken_btnLoggInnNed;
         }
 
         private void btnEnter_MouseUp(object sender, MouseEventArgs e)
         {
-            this.btnEnter.BackgroundImage = global::Polakken.Properties.Resources.btnLoggInn;
+            btnEnter.BackgroundImage = Resources.Polakken_btnLoggInn;
         }
 
         private void chkSave_CheckedChanged(object sender, EventArgs e)
@@ -112,7 +104,7 @@ namespace Polakken
             {
                 txtPassword.Clear();
                 txtPassword.UseSystemPasswordChar = true;
-                txtPassword.ForeColor = Color.FromArgb(122, 184, 0); ;
+                txtPassword.ForeColor = Color.FromArgb(122, 184, 0);
             }
         }
 
@@ -122,7 +114,7 @@ namespace Polakken
             {
                 txtPassword.Clear();
                 txtPassword.UseSystemPasswordChar = true;
-                txtPassword.ForeColor = Color.FromArgb(122, 184, 0); ;
+                txtPassword.ForeColor = Color.FromArgb(122, 184, 0);
             }
         }
 
@@ -132,7 +124,6 @@ namespace Polakken
             {
                 txtEmail.Text = "Brukernavn";
                 txtEmail.ForeColor = Color.Silver;
-
             }
         }
 
@@ -143,13 +134,12 @@ namespace Polakken
                 txtPassword.Text = "Passord";
                 txtPassword.UseSystemPasswordChar = false;
                 txtPassword.ForeColor = Color.Silver;
-
             }
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)  
+            if (e.KeyCode == Keys.Enter)
             {
                 if (txtEmail.TextLength == 0)
                 {
@@ -171,14 +161,13 @@ namespace Polakken
                 }
                 else
                 {
-                    sendMail.email = txtEmail.Text + "@gmail.com";
-                    sendMail.password = txtPassword.Text;
+                    SendMail.Email = txtEmail.Text + "@gmail.com";
+                    SendMail.Password = txtPassword.Text;
 
-                    if (chkSave.Checked == true)
+                    if (chkSave.Checked)
                     {
                         Settings.Default.Email = txtEmail.Text + "@gmail.com";
                         Settings.Default.Password = txtPassword.Text;
-
                     }
                     else
                     {
@@ -189,10 +178,6 @@ namespace Polakken
                     DialogResult = DialogResult.OK;
                 }
             }
-               
         }
-        }
-
-
     }
-
+}

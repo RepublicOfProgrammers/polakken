@@ -1,81 +1,78 @@
 ﻿using System;
+using System.Data;
 using System.Net;
 using System.Net.Mail;
-using System.Data;
 
 namespace Polakken
 {
-    static class sendMail
+    internal static class SendMail
     {
-        private static string host = "smtp.gmail.com";
-        private static int port = 587;
-        public static string email { get; set; }
-        public static string password { get; set; }
-        private static string module = "sendMail";
-        private static NetworkCredential mCredentials;
-        public static bool warningSentSend { get; set; }
+        private const string Host = "smtp.gmail.com";
+        private const int Port = 587;
+        private const string Module = "sendMail";
+        private static NetworkCredential _mCredentials;
+        public static string Email { get; set; }
+        public static string Password { get; set; }
+        public static bool WarningSentSend { get; set; }
 
         //Metode som sender mail til alle som er oppført i databasen
-        public static void sendToAll(string subject, string body)
+        public static void SendToAll(string subject, string body)
         {
             try
             {
-                string mailTo;
                 //Oppretter ny SmtpClient
-                mCredentials = new NetworkCredential(email, password);
-                using (SmtpClient client = new SmtpClient(host, port))
+                _mCredentials = new NetworkCredential(Email, Password);
+                using (var client = new SmtpClient(Host, Port))
                 {
                     //Login info for programmets email
-                    client.Credentials = mCredentials;
+                    client.Credentials = _mCredentials;
                     client.EnableSsl = true;
                     //Løkke som henter ut alle e-mails fra databasen
-                    foreach (DataRow dtRow in GUI_FORM.dtEmails.Rows)
+                    foreach (DataRow dtRow in GuiForm.DtEmails.Rows)
                     {
-                        mailTo = dtRow["Adresser"].ToString();
-                        client.Send(email, mailTo, subject, body);
-                        Logger.Info("Sendt email til alle mottakere.", module);
+                        string mailTo = dtRow["Adresser"].ToString();
+                        client.Send(Email, mailTo, subject, body);
+                        Logger.Info("Sendt email til alle mottakere.", Module);
                     }
                 }
 
-                warningSentSend = false;
+                WarningSentSend = false;
             }
             catch (Exception ex)
             {
-                if (warningSentSend == false)
+                if (WarningSentSend == false)
                 {
-                    warningSentSend = true;
-                    Logger.Error(ex, module);
+                    WarningSentSend = true;
+                    Logger.Error(ex, Module);
                 }
-                
             }
         }
 
         //Metode som bare sender mail til en person
-        public static void sendToOne(string subject, string body, string mailTo)
+        public static void SendToOne(string subject, string body, string mailTo)
         {
             try
             {
-                
                 //Oppretter ny SmtpClient
-                mCredentials = new NetworkCredential(email, password);
-                using (SmtpClient client = new SmtpClient(host, port))
+                _mCredentials = new NetworkCredential(Email, Password);
+                using (var client = new SmtpClient(Host, Port))
                 {
                     //Login info for programmets email
-                    client.Credentials = mCredentials;
+                    client.Credentials = _mCredentials;
                     client.EnableSsl = true;
 
-                    client.Send(email, mailTo, subject, body);
-                    Logger.Info("Sendt email til " + mailTo + ".", module);
+                    client.Send(Email, mailTo, subject, body);
+                    Logger.Info("Sendt email til " + mailTo + ".", Module);
                 }
 
-                warningSentSend = false;
+                WarningSentSend = false;
             }
             catch (Exception ex)
             {
-                if (warningSentSend == false)
+                if (WarningSentSend == false)
                 {
-                    warningSentSend = true;
-                    Logger.Error(ex, module);
+                    WarningSentSend = true;
+                    Logger.Error(ex, Module);
                 }
             }
         }

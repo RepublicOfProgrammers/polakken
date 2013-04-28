@@ -54,7 +54,7 @@
             // btnLukk
             // 
             this.btnLukk.BackColor = System.Drawing.Color.Transparent;
-            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.btnClose;
+            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnClose;
             this.btnLukk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnLukk.FlatAppearance.BorderSize = 0;
             this.btnLukk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -94,7 +94,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.BackgroundImage = global::Polakken.Properties.Resources.LogForn;
+            this.BackgroundImage = global::Polakken.Properties.Resources.Polakken_LogForn;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(965, 423);
             this.Controls.Add(this.btnMove1);

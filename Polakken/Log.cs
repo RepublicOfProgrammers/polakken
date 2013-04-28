@@ -1,66 +1,69 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Polakken
 {
     public partial class Log : Form
     {
-
-        int Mover;
-        int MoveX;
-        int MoveY;
+        private int _moveX;
+        private int _moveY;
+        private int _mover;
 
         public Log()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void btnLukk_Click(object sender, EventArgs e)
         {
-            if (GUI_FORM.logForm != null)
+            if (GuiForm.LogForm != null)
             {
-                GUI_FORM.logForm.Dispose(); // Dispoer Log objektet i GUI klassen for frigjøring av minne. 
-                GUI_FORM.logForm = null;
+                GuiForm.LogForm.Dispose(); // Dispoer Log objektet i GUI klassen for frigjøring av minne. 
+                GuiForm.LogForm = null;
             }
-            this.Close();
+            Close();
         }
 
         /// <summary>
-        /// Metoder for flytting av vinduet.
+        ///     Metoder for flytting av vinduet.
         /// </summary>
+
         #region Mover
         private void btnMove1_MouseDown(object sender, MouseEventArgs e)
         {
-            Mover = 1;
-            MoveX = e.X;
-            MoveY = e.Y;
+            _mover = 1;
+            _moveX = e.X;
+            _moveY = e.Y;
         }
+
         private void btnMove1_MouseUp(object sender, MouseEventArgs e)
         {
-            Mover = 0;
+            _mover = 0;
         }
+
         private void btnMove1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (Mover == 1)
+            if (_mover == 1)
             {
-                this.SetDesktopLocation(MousePosition.X - MoveX, MousePosition.Y - MoveY);
+                SetDesktopLocation(MousePosition.X - _moveX, MousePosition.Y - _moveY);
             }
         }
+
         #endregion Mover. 
 
         /// <summary>
-        /// Oppdaterer loggen fortløpende. 
+        ///     Oppdaterer loggen fortløpende.
         /// </summary>
         private void tmrUpdateText_Tick(object sender, EventArgs e)
-        {            
+        {
             FileStream fs = null; // initierer filestream. 
             try
             {
                 // Henter dagens logfilnavn fra logger
                 // Åpner filen i ReadOnly, men fileshare Readwrite slik at logger fortsatt kan skrive til filen. 
-                fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                using (StreamReader sr = new StreamReader(fs)) // bruker using slik at sr automatisk blir disposed. 
+                fs = new FileStream(Logger.CurrentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using (var sr = new StreamReader(fs)) // bruker using slik at sr automatisk blir disposed. 
                 {
                     fs = null;
                     txtRead.Text = sr.ReadToEnd(); // fyller txtRead med tekst fra logfil. 
@@ -68,7 +71,9 @@ namespace Polakken
                     txtRead.ScrollToCaret(); // Autoscroller til bunnen av loggen. 
                 }
             }
-            catch (Exception) { } // gjør ingenting med en eventuell error. 
+            catch (Exception)
+            {
+            } // gjør ingenting med en eventuell error. 
             finally
             {
                 // disposer fs dersom StreamReaderen sr ikke har fått lest filestreamen. 
@@ -76,9 +81,9 @@ namespace Polakken
                     fs.Dispose();
             }
         }
-      
+
         /// <summary>
-        /// Fyller tekstområdet med dagens log-fil. 
+        ///     Fyller tekstområdet med dagens log-fil.
         /// </summary>
         private void Log_Load(object sender, EventArgs e)
         {
@@ -87,8 +92,8 @@ namespace Polakken
             FileStream fs = null;
             try
             {
-                fs = new FileStream(Logger.currentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                using (StreamReader sr = new StreamReader(fs))
+                fs = new FileStream(Logger.CurrentLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using (var sr = new StreamReader(fs))
                 {
                     fs = null;
                     txtRead.Text = sr.ReadToEnd();
@@ -96,16 +101,14 @@ namespace Polakken
                     // Scroller ikke til bunnen av loggen her.                     
                 }
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
             finally
             {
-                if(fs != null)
+                if (fs != null)
                     fs.Dispose();
             }
-            
         }
-
-        
     }
 }
-

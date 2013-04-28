@@ -1,69 +1,69 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Polakken
 {
-    static class Program
+    internal static class Program
     {
-        private static bool alarmSent;
-        private static bool batterySent;
+        private static bool _alarmSent;
+        private static bool _batterySent;
+        public static Thread MålTemp; // Denne threaden må være public slik at GUI kan stoppe den når GUI lukkes.
+        public static DbHandler MDbHandler;
 
         // Klasse-egenskaper som polakken har nytte av i andre klasser. 
-        public static bool isRunningOnBattery { get; set; }
-        public static bool sensorSent { get; set; }
-        public static bool needRefresh { get; set; }
-        public static bool sensorInUse { get; set; } // Brukes slik at ikke sensorbruk kan kræsje med bruk av sensor koblingstesten i SensorCom klassen. 
-        public static Thread tMålTemp; // Denne threaden må være public slik at GUI kan stoppe den når GUI lukkes.
-        public static DbHandler mDbHandler;
+        public static bool IsRunningOnBattery { get; set; }
+        public static bool SensorSent { get; set; }
+        public static bool NeedRefresh { get; set; }
+        public static bool SensorInUse { get; set; }
+        // Brukes slik at ikke sensorbruk kan kræsje med bruk av sensor koblingstesten i SensorCom klassen. 
 
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             // Sjekker om datamaskinen har strøm
-            isRunningOnBattery = (SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
+            IsRunningOnBattery = (SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline);
 
             // Initierer variabler og klasser.
-            needRefresh = false;
-            alarmSent = false;
-            sensorSent = false;
+            NeedRefresh = false;
+            _alarmSent = false;
+            SensorSent = false;
 
             new Logger(); // kaller konstruktøren til logger classen kun for å opprette ny logg tekstfil. 
-            mDbHandler = new DbHandler(); // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
+            MDbHandler = new DbHandler();
+            // Fungerer som en sjekk på at databasen fungerer. brukes også i tråden for tempmåling tMålTemp_method()
 
-            
+
             // Starter GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DialogResult result;
             using (var loginForm = new LogIn())
             {
                 loginForm.StartPosition = FormStartPosition.CenterScreen;
-                result = loginForm.ShowDialog();
+                DialogResult result = loginForm.ShowDialog();
                 if (result == DialogResult.OK)
                 {
                     // Starter måleprosessen. Main() venter ikke på denne tråden før den går videre.
-                    tMålTemp = new Thread(new ThreadStart(tMålTemp_method));
-                    tMålTemp.Start();
+                    MålTemp = new Thread(tMålTemp_method);
+                    MålTemp.Start();
 
                     // login was successful
-                    Application.Run(new GUI_FORM());
+                    Application.Run(new GuiForm());
                 }
             }
         }
 
         /// <summary>
-        /// Denne metoden for tråden tMålTemp vil skrive en måling til databasen med datotid, temp og status på varmeovner. Deretter vil tråden sove frem til måleintervallet(mesIntervall) er utløpt.
-        /// Denne metoden sender også mailer og advarsler om nødvendig, og foretar tester på systemet. 
+        ///     Denne metoden for tråden tMålTemp vil skrive en måling til databasen med datotid, temp og status på varmeovner. Deretter vil tråden sove frem til måleintervallet(mesIntervall) er utløpt.
+        ///     Denne metoden sender også mailer og advarsler om nødvendig, og foretar tester på systemet.
         /// </summary>
         private static void tMålTemp_method()
         {
             int retryCount = 0;
             while (true) // Skal alltid være true, bruker threaden til å stoppe loopen. 
             {
-
-                sensorInUse = true;
-                int temp = Convert.ToInt32(SensorCom.temp());
+                SensorInUse = true;
+                int temp = Convert.ToInt32(SensorCom.Temp());
 
                 // Dersom temp == 999 har sensorcom returnert en feil
                 if (temp == 999)
@@ -72,109 +72,117 @@ namespace Polakken
                     if (retryCount < 4)
                     {
                         retryCount++;
-                        Logger.Error("Får ikke kontakt med sensor. Forsøk nr: " + retryCount + ". Prøver igjen om 5 sekunder.", "Polakken");
+                        Logger.Error(
+                            "Får ikke kontakt med sensor. Forsøk nr: " + retryCount + ". Prøver igjen om 5 sekunder.",
+                            "Polakken");
                         Thread.Sleep(5000);
                         continue;
                     }
-                    else
+                    retryCount = 0;
+                    if (SensorSent == false)
+                        // Sender mail-advarsel dersom brudd med sensor og advarsel ikke er sendt.
                     {
-                        retryCount = 0;
-                        if (sensorSent == false) // Sender mail-advarsel dersom brudd med sensor og advarsel ikke er sendt.
+                        Logger.Warning(
+                            "Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender mail til alarm abonnenter, Polakken blunder en times tid.",
+                            "Polakken");
+
+                        SensorSent = true; // Unngår mail spamming.
+                        SendMail.SendToAll("Brudd med sensor",
+                                           "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");
+
+                        // Sensoren er ikke lengre i bruk. 
+                        SensorInUse = false;
+
+                        Thread.Sleep(3600000); // sover 1 time
+                        continue; // Hopper over resten av denne loop-iterasjonen (starter loopen på nytt)
+                    }
+                    Logger.Warning(
+                        "Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender ikke ny mail, Polakken blunder en times tid.",
+                        "Polakken");
+
+                    // Sensoren er ikke lengre i bruk. 
+                    SensorInUse = false;
+
+                    Thread.Sleep(3600000); // sover 1 time
+                    continue; // Hopper over resten av denne loop-iterasjonen (starter loopen på nytt)
+                }
+                if (temp > 60)
+                {
+                    if (temp < SensorCom.AlarmLimit)
+                    {
+                        if (_alarmSent == false)
                         {
-                            Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender mail til alarm abonnenter, Polakken blunder en times tid.", "Polakken");
-
-                            sensorSent = true; // Unngår mail spamming.
-                            sendMail.sendToAll("Brudd med sensor", "Får ikke kontakt med sensor, skriver ikke til database, Polakken blunder en times tid.");
-
-                            // Sensoren er ikke lengre i bruk. 
-                            sensorInUse = false;
-
-                            Thread.Sleep(3600000); // sover 1 time
-                            continue; // Hopper over resten av denne loop-iterasjonen (starter loopen på nytt)
+                            SendMail.SendToAll("Alarm",
+                                               "Sensoren har målt en temperatur som er over 60 grader celsius. Send \"STS 0\" for status.");
+                            Logger.Warning("Måling er over 60 grader celsius, sendt ut mail til alle abonnenter",
+                                           "Polakken");
                         }
                         else
                         {
-                            Logger.Warning("Får ikke kontakt med måleenhet (se foregående error fra SensorCom), skriver ikke til database, sender ikke ny mail, Polakken blunder en times tid.", "Polakken");
-
-                            // Sensoren er ikke lengre i bruk. 
-                            sensorInUse = false;
-
-                            Thread.Sleep(3600000);// sover 1 time
-                            continue; // Hopper over resten av denne loop-iterasjonen (starter loopen på nytt)
-                        }
-                    }
-                }
-                else if (temp > 60)
-                {
-                    if (temp < SensorCom.alarmLimit)
-                    {
-                        if (alarmSent == false)
-                        {
-                            sendMail.sendToAll("Alarm", "Sensoren har målt en temperatur som er over 60 grader celsius. Send \"STS 0\" for status.");
-                            Logger.Warning("Måling er over 60 grader celsius, sendt ut mail til alle abonnenter", "Polakken");
-                        }
-                        else 
-                        {
                             Logger.Warning("Måling er fremdeles over 60 grader celsius, sender ikke mail", "Polakken");
                         }
-                        alarmSent = true; // Unngår mail spamming.
+                        _alarmSent = true; // Unngår mail spamming.
                     }
                 }
                 else
                 {
-                    if (GUI_FORM.test == false) // Sjekker om regulering er aktiv.
+                    if (GuiForm.Test == false) // Sjekker om regulering er aktiv.
                     {
-                        mDbHandler.SetReading(DateTime.Now, temp, GUI_FORM.test);
+                        MDbHandler.SetReading(DateTime.Now, temp, GuiForm.Test);
                     }
                     else
-                    { // Dersom regulering er aktiv spørres Regulation klassen om ovn-status.
-                        Regulation.regulator(temp);
-                        mDbHandler.SetReading(DateTime.Now, temp, Regulation.status);
+                    {
+                        // Dersom regulering er aktiv spørres Regulation klassen om ovn-status.
+                        Regulation.Regulator(temp);
+                        MDbHandler.SetReading(DateTime.Now, temp, Regulation.Status);
                     }
-                    Logger.Info("Utført måling. temp = " + temp + ". Ny måling om: " + SensorCom.mesInterval + " minutt(er).", "Polakken");
-                    needRefresh = true; // Sier ifra til tickeventen i gui'en at den trenger oppdatering
+                    Logger.Info(
+                        "Utført måling. temp = " + temp + ". Ny måling om: " + SensorCom.MesInterval + " minutt(er).",
+                        "Polakken");
+                    NeedRefresh = true; // Sier ifra til tickeventen i gui'en at den trenger oppdatering
 
                     // Sender alarm til mail-abonnenter dersom gitt alarmgrense er brutt. Sender ikke dobbelt opp, men på ny dersom temp 
                     // kommer innenfor grense og deretter bryter grense. 
-                    if (temp < SensorCom.alarmLimit)
+                    if (temp < SensorCom.AlarmLimit)
                     {
-                        if (alarmSent == false)
+                        if (_alarmSent == false)
                         {
-                            sendMail.sendToAll("Alarm", "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
+                            SendMail.SendToAll("Alarm",
+                                               "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
                             Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
                         }
                         else
                         {
                             Logger.Warning("Måling er fremdeles under alarmgrensen, sender ikke mail", "Polakken");
                         }
-                        alarmSent = true; // Unngår mail spamming.
+                        _alarmSent = true; // Unngår mail spamming.
                     }
-                    else if (temp > SensorCom.alarmLimit && temp < 60)
+                    else if (temp > SensorCom.AlarmLimit && temp < 60)
                     {
-                        alarmSent = false;
+                        _alarmSent = false;
                     }
 
                     // Sender alarm til mail-abonnenter dersom maskinen ikke har strøm. Sender ikke dobbelt opp, men sier ifra dersom strøm kommer tilbake. 
-                    if (isRunningOnBattery == true && batterySent == false)
+                    if (IsRunningOnBattery && _batterySent == false)
                     {
-                        sendMail.sendToAll("Strøm advarsel", "Datamaskinen kjører nå på batteristrøm");
-                        batterySent = true;
+                        SendMail.SendToAll("Strøm advarsel", "Datamaskinen kjører nå på batteristrøm");
+                        _batterySent = true;
                     }
-                    else if (isRunningOnBattery == false && batterySent == true)
+                    else if (IsRunningOnBattery == false && _batterySent)
                     {
-                        sendMail.sendToAll("Strøm varsel", "Datamaskinen kjører ikke lenger på batteristrøm");
-                        batterySent = false;
+                        SendMail.SendToAll("Strøm varsel", "Datamaskinen kjører ikke lenger på batteristrøm");
+                        _batterySent = false;
                     }
 
                     // Følgende bool må settes til false igjen slik at mail kan bli sent dersom maskin får kontakt med sensor, og deretter mister kontakt igjen. 
-                    sensorSent = false;
+                    SensorSent = false;
 
                     // Sensoren er ikke lengre i bruk. 
-                    sensorInUse = false;
+                    SensorInUse = false;
 
                     //Venter gitt måleintervall, ganget opp med 60 000 siden det er oppgitt i minutter.
-                    Thread.Sleep(SensorCom.mesInterval * 60000);
-                }                
+                    Thread.Sleep(SensorCom.MesInterval*60000);
+                }
             }
         }
     }

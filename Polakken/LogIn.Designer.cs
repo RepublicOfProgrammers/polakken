@@ -65,7 +65,7 @@
             // btnEnter
             // 
             this.btnEnter.BackColor = System.Drawing.Color.Transparent;
-            this.btnEnter.BackgroundImage = global::Polakken.Properties.Resources.btnLoggInn;
+            this.btnEnter.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnLoggInn;
             this.btnEnter.FlatAppearance.BorderSize = 0;
             this.btnEnter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnEnter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -122,7 +122,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = global::Polakken.Properties.Resources.imgLoggInn;
+            this.BackgroundImage = global::Polakken.Properties.Resources.Polakken_imgLoggInn;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(320, 404);
             this.Controls.Add(this.label1);

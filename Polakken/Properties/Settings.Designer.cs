@@ -23,16 +23,6 @@ namespace Polakken.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\Database.sdf")]
-        public string DatabaseConnectionString {
-            get {
-                return ((string)(this["DatabaseConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("60")]
@@ -83,7 +73,7 @@ namespace Polakken.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool hideMsgBox {
             get {
                 return ((bool)(this["hideMsgBox"]));
@@ -126,6 +116,16 @@ namespace Polakken.Properties {
             }
             set {
                 this["RegulationActive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\Database.sdf")]
+        public string DatabaseConnectionString {
+            get {
+                return ((string)(this["DatabaseConnectionString"]));
             }
         }
     }

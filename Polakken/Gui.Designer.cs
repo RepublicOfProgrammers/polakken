@@ -1,6 +1,6 @@
 ﻿namespace Polakken
 {
-    partial class GUI_FORM
+    partial class GuiForm
     {
         
         /// <summary>
@@ -30,7 +30,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_FORM));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GuiForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -145,7 +145,7 @@
             // btnLukk
             // 
             this.btnLukk.BackColor = System.Drawing.Color.Transparent;
-            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.btnClose;
+            this.btnLukk.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnClose;
             this.btnLukk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnLukk.FlatAppearance.BorderSize = 0;
             this.btnLukk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -161,7 +161,7 @@
             // btnMinimize
             // 
             this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.btnMinimize.BackgroundImage = global::Polakken.Properties.Resources.btnMinimize;
+            this.btnMinimize.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnMinimize;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -189,7 +189,7 @@
             // tbpOne
             // 
             this.tbpOne.BackColor = System.Drawing.Color.Black;
-            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.imgTab;
+            this.tbpOne.BackgroundImage = global::Polakken.Properties.Resources.Polakken_imgTab;
             this.tbpOne.Controls.Add(this.lblSensor);
             this.tbpOne.Controls.Add(this.lblSensorInfo);
             this.tbpOne.Controls.Add(this.picSensor);
@@ -412,7 +412,7 @@
             // btnSaveAll
             // 
             this.btnSaveAll.BackColor = System.Drawing.Color.Transparent;
-            this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.btnLagre;
+            this.btnSaveAll.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnLagre;
             this.btnSaveAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnSaveAll.FlatAppearance.BorderSize = 0;
             this.btnSaveAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -567,7 +567,7 @@
             // btnToleranceUp
             // 
             this.btnToleranceUp.BackColor = System.Drawing.Color.Transparent;
-            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.btnArrowUp;
+            this.btnToleranceUp.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnArrowUp;
             this.btnToleranceUp.Enabled = false;
             this.btnToleranceUp.FlatAppearance.BorderSize = 0;
             this.btnToleranceUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -632,7 +632,7 @@
             // 
             // tbpTwo
             // 
-            this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.imgTab;
+            this.tbpTwo.BackgroundImage = global::Polakken.Properties.Resources.Polakken_imgTab;
             this.tbpTwo.Controls.Add(this.lblDate2);
             this.tbpTwo.Controls.Add(this.lblDate1);
             this.tbpTwo.Controls.Add(this.lblFilterStatus);
@@ -829,7 +829,7 @@
             // 
             // btnDelReading
             // 
-            this.btnDelReading.BackgroundImage = global::Polakken.Properties.Resources.btnSlettDown;
+            this.btnDelReading.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnSlettDown;
             this.btnDelReading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnDelReading.FlatAppearance.BorderSize = 0;
             this.btnDelReading.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
@@ -899,7 +899,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.BackgroundImage = global::Polakken.Properties.Resources.btnNullstillFilter;
+            this.btnReset.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnNullstillFilter;
             this.btnReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
@@ -976,7 +976,7 @@
             // 
             // btnShowSelected
             // 
-            this.btnShowSelected.BackgroundImage = global::Polakken.Properties.Resources.btnFiltrer;
+            this.btnShowSelected.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnFiltrer;
             this.btnShowSelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnShowSelected.FlatAppearance.BorderSize = 0;
             this.btnShowSelected.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
@@ -1062,7 +1062,7 @@
             // 
             // tbpThree
             // 
-            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.imgTab;
+            this.tbpThree.BackgroundImage = global::Polakken.Properties.Resources.Polakken_imgTab;
             this.tbpThree.Controls.Add(this.lblDelEmail);
             this.tbpThree.Controls.Add(this.lblAddEmail);
             this.tbpThree.Controls.Add(this.btnDelEmail);
@@ -1103,7 +1103,7 @@
             // 
             // btnDelEmail
             // 
-            this.btnDelEmail.BackgroundImage = global::Polakken.Properties.Resources.btnSlett;
+            this.btnDelEmail.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnSlett;
             this.btnDelEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnDelEmail.FlatAppearance.BorderSize = 0;
             this.btnDelEmail.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
@@ -1148,7 +1148,7 @@
             // 
             // btnAddEmail
             // 
-            this.btnAddEmail.BackgroundImage = global::Polakken.Properties.Resources.btnLeggTil;
+            this.btnAddEmail.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnLeggTil;
             this.btnAddEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAddEmail.FlatAppearance.BorderSize = 0;
             this.btnAddEmail.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
@@ -1328,7 +1328,7 @@
             // btnZoomOut
             // 
             this.btnZoomOut.BackColor = System.Drawing.Color.Transparent;
-            this.btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.btnMinus;
+            this.btnZoomOut.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnMinus;
             this.btnZoomOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnZoomOut.FlatAppearance.BorderSize = 0;
             this.btnZoomOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -1344,7 +1344,7 @@
             // btnZoomIn
             // 
             this.btnZoomIn.BackColor = System.Drawing.Color.Transparent;
-            this.btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.btnPlusDisabeld;
+            this.btnZoomIn.BackgroundImage = global::Polakken.Properties.Resources.Polakken_btnPlusDisabeld;
             this.btnZoomIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnZoomIn.FlatAppearance.BorderSize = 0;
             this.btnZoomIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -1374,7 +1374,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.BackgroundImage = global::Polakken.Properties.Resources.imgGuiForm;
+            this.BackgroundImage = global::Polakken.Properties.Resources.Polakken_imgGuiForm;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(908, 702);
             this.Controls.Add(this.label6);
@@ -1397,7 +1397,7 @@
             this.Controls.Add(this.txtMaxTime);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "GUI_FORM";
+            this.Name = "GuiForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Polakken";
             this.TransparencyKey = System.Drawing.Color.Silver;
