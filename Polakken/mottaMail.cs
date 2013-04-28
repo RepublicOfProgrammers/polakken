@@ -12,10 +12,11 @@ namespace Polakken
         private static string host = "imap.gmail.com";
         private static int port = 993;
         private static bool secure = true;
+        private static string module = "mottaMail";
+
         public static string from { get; private set; }
         public static string subject { get; private set; }
         public static string body { get; private set; }
-        private static string module = "mottaMail";
         public static bool warningSentMotta { get; set; }
 
         //Metode for å hente inn mail
@@ -24,18 +25,20 @@ namespace Polakken
             ImapClient ic = null;
             try
             {
-                
                 //Lager nytt objekt av klassen ImapClient
                 ic = new ImapClient(host, sendMail.email, sendMail.password,
                      ImapClient.AuthMethods.Login, port, secure);
                 ic.SelectMailbox("INBOX");
+
                 //Array som henter inn alle mail i innboksen
                 MailMessage[] mail = ic.GetMessages(0, 1, false, true);
+
                 //If-setning som sjekker om det er mail i innboksen
                 if (mail.Length != 0)
                 {
                     //Tre variabler som henter ut informasjon fra den siste motatte mailen
                     from = mail[mail.Length - 1].From.Address;
+
                     //Løkke med if-setning som sjekker om mailen er lagt til i databasen
                     foreach (DataRow dtRow in GUI_FORM.dtEmails.Rows)
                     {
@@ -47,17 +50,11 @@ namespace Polakken
 
                     }
                     //Løkke som sletter alle mail etter den har hentet inn den siste
-                    foreach (MailMessage m in mail)
-                    {
-                        ic.DeleteMessage(m);
-                    }
+                    foreach (MailMessage m in mail) ic.DeleteMessage(m);
 
                 }
-
                 warningSentMotta = false;
             }
-
-
             catch (Exception ex)
             {
                 if (warningSentMotta == false)
@@ -66,15 +63,12 @@ namespace Polakken
                     Logger.Error(ex, module);
                 }
             }
-
             finally
             {
-                if (ic != null)
-                {
-                    ic.Dispose();
-                }
+                if (ic != null) ic.Dispose();
             }
         }
+
         /// <summary>
         /// Metode som henter ut kommando og verdi fra siste innsendte e-post og gjør endringer eller sender svar deretter. (sendMail.sendToOne)
         /// </summary>
