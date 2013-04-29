@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Polakken.DbHandler">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAGACAQKACAAAQABAAACAgAAAIAIAQKCABAAAhQBEM=</HashCode>
+      <FileName>DbHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.GuiForm">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SN1OezRW+22+lFxpHSfrCJL+/OQ1ETSGsFJ0bDB6Ieo=</HashCode>
+      <FileName>GUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.Log">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAJAECAAAAAACACIAAICIAAAAAAEAAEAhEAAAAA=</HashCode>
+      <FileName>Log.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.Logger">
+    <Position X="3.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAQAAAAAAABAACAAAAAIAAAAAEEAAAAA=</HashCode>
+      <FileName>Logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.LogIn">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAgAAFAAACAAABAAQACIBQACAAEAAICIABAQgCAAAAA=</HashCode>
+      <FileName>LogIn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.MottaMail">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwAgAAAAAAAAAAAAAIABAAAACAAACAAAAAAACABAACA=</HashCode>
+      <FileName>MottaMail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.Program">
+    <Position X="2" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQCgAAAAgAIAAIAAAAAAAAAAAAAAAABCQABAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.Regulation">
+    <Position X="2" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAACAAAEAAACgAAAAAABAAAAAAAAAAIAAAAACAAAAAA=</HashCode>
+      <FileName>Regulation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.SendMail">
+    <Position X="2" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAACAAAAAAgAAACAAACABCAAAACAAAABI=</HashCode>
+      <FileName>SendMail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.SensorCom">
+    <Position X="0.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAQAABAAAAAAAAAAAAAAAAAAAAiAAAAAA=</HashCode>
+      <FileName>SensorCom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.Properties.Resources">
+    <Position X="3.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBKAwQAjAAgAAFgQBDUEGJASAAAQCJECAAhAAEAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Polakken.Properties.Settings">
+    <Position X="2" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIIAiAAAAAAAAAAIQAAAAABAAAGAAAAAAAAQgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
