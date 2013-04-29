@@ -15,6 +15,7 @@ namespace Polakken
         public static string CurrentLog { get; set; }
         public static bool ShowMsgBoxes { get; set; }
 
+        //Konstruktør som kun brukes i oppstart av programmet for å opprette en ny logg fil med dagens dato
         public Logger()
         {
             // Henter inn config settpunkt på valg om skjuling av error message boxes.
@@ -35,8 +36,6 @@ namespace Polakken
             Trace.WriteLine("Tidspunkt \tType \tKlasse \t\tMelding");
             Trace.WriteLine("-------------------------------------------------------------");
         }
-
-        //Konstruktør som kun brukes i oppstart av programmet for å opprette en ny logg fil med dagens dato
 
         //Følgende metoder brukes i de forskjellige trace event'ene vi har definert.
         public static void Error(string message, string module)
