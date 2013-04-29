@@ -148,7 +148,7 @@ namespace Polakken
                         if (_alarmSent == false)
                         {
                             SendMail.SendToAll("Alarm",
-                                               "Sensoren har målt en temperatur som er under den alarmgrensen. Send \"STS 0\" for status.");
+                                               "Sensoren har målt en temperatur som er under alarmgrensen. Send \"STS 0\" for status.");
                             Logger.Warning("Måling er under alarmgrensen, sendt ut mail til alle abonnenter", "Polakken");
                         }
                         else
