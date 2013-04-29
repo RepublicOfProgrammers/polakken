@@ -69,7 +69,7 @@ namespace Polakken
                 if (temp == 999)
                 {
                     // Prøver på nytt maksimum 3 ganger, med 5 sekunders mellomrom. 
-                    if (retryCount < 4)
+                    if (retryCount < 3)
                     {
                         retryCount++;
                         Logger.Error(

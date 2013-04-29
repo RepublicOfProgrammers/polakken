@@ -89,9 +89,9 @@ namespace Polakken
             PowerCheck(); //Kjører en metode som sjekker statusen på strømen til maskinen
 
             //Setter default som at sensor ikke et koblet til, frem til første SensorCheck() kjøres, for å forhindre dobbelbruk av sensor.
-            picSensor.Image = Resources.Polakken_imgSensorOut;
-            lblSensorInfo.ForeColor = Color.Red;
-            lblSensorInfo.Text = "Sensoren er ikke tilkoblet";
+            picSensor.Image = Resources.Polakken_greySensor;
+            lblSensorInfo.ForeColor = Color.LightGray;
+            lblSensorInfo.Text = "Sjekker tilkobling";
 
             //
             // Opprett DataTabell og fyll DataGridView
@@ -454,7 +454,15 @@ namespace Polakken
         /// </summary>
         private void SensorCheck()
         {
-            if (SensorCom.Connected())
+
+            // Hvis sensor allerede er i bruk kan dette bety at målingsprossesen forsøker å få kontakt, og dermed må denne sjekken vente. 
+            // Dette gjøres for å unngå dobbelt sensorbruk som forårsaker feiltolkning i GUI og tempmåling prosessen.
+            if (Program.SensorInUse)
+            {
+                picSensor.Image = Resources.Polakken_greySensor;
+                lblSensorInfo.ForeColor = Color.LightGray;
+                lblSensorInfo.Text = "Sjekker tilkobling";
+            }else if (SensorCom.Connected())
             {
                 picSensor.Image = Resources.Polakken_imgSensorIn;
                 lblSensorInfo.ForeColor = Color.White;

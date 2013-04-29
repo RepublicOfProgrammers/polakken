@@ -46,10 +46,6 @@ namespace Polakken
         /// <returns>bool som er true dersom tilkoblet, false i motsatt tilfelle.</returns>
         public static bool Connected()
         {
-            // Hvis sensor allerede er i bruk tolkes dette som at sensor er koblet til å i øyeblikket i bruk av tempmåling prosessen. 
-            // Dermed avsluttes metoden her og sier ifra til GUI at sensor (sansynelighvis er koblet til). 
-            // Dette gjøres for å unngå dobbelt sensorbruk som forårsaker feiltolkning i GUI og tempmåling prosessen.
-            if (Program.SensorInUse) return true;
             var checkConnection = new Task();
 
             // Tester om programmet klarer å opprette en AIChannel, kun for å se om enhet er koblet til. 

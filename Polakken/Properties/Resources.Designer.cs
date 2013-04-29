@@ -292,6 +292,13 @@ namespace Polakken.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Polakken_greySensor {
+            get {
+                object obj = ResourceManager.GetObject("Polakken_greySensor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Polakken_imgGuiForm {
             get {
                 object obj = ResourceManager.GetObject("Polakken_imgGuiForm", resourceCulture);
