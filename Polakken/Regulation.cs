@@ -9,7 +9,7 @@ namespace Polakken
         private const string Module = "Regulation";
         private static int _reading = 999;
         private static int _prevReading;
-        private static int _difference;
+        private static double _difference;
         private static string _loggerInfo;
         public static int Tolerance { get; set; }
         public static int Setpoint { get; set; }
@@ -18,7 +18,7 @@ namespace Polakken
         /// <summary>
         ///     Returnerer status for varmekilde. Må programmeres slik at en varmekilde blir slått av og på ved endring av boolean value fra denne metoden.
         /// </summary>
-        /// <param name="newread">Temperatur som double</param>
+        /// <param name="newread">Temperatur som integer</param>
         /// <returns>Boolean varmekilde status</returns>
         public static Boolean Regulator(int newread)
         {

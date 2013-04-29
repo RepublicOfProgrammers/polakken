@@ -72,7 +72,7 @@ namespace Polakken
             }
             catch (Exception)
             {
-                // Bruker ikke error.
+                // Bruker ikke error, da programmet logger error dersom det er feil ved en faktisk måling. 
                 connected = false;
             }
             finally

@@ -193,9 +193,6 @@
   <data name="Polakken_imgSensorIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgSensorIn.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NationalInstruments_NiLmClientDLL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NationalInstruments.NiLmClientDLL.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="NationalInstruments_Common1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NationalInstruments.Common.msl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -222,9 +219,6 @@
   </data>
   <data name="NationalInstruments_DAQmx2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NationalInstruments.DAQmx.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="NationalInstruments_MStudioCLM" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NationalInstruments.MStudioCLM.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Polakken_btnMinus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
