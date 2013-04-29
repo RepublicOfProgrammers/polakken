@@ -11,6 +11,11 @@ namespace Polakken
         //Mappen hvor alle log filene skal ligge
         private const string DirLogs = "Logs";
 
+        // Klasseegenskaper som forteller hva dagens log-fil heter og en variabel som bestemmer dersom alarmer skal vises i msgBox'er.
+        public static string CurrentLog { get; set; }
+        public static bool ShowMsgBoxes { get; set; }
+
+        //Konstruktør som kun brukes i oppstart av programmet for å opprette en ny logg fil med dagens dato
         public Logger()
         {
             // Henter inn config settpunkt på valg om skjuling av error message boxes.
@@ -31,12 +36,6 @@ namespace Polakken
             Trace.WriteLine("Tidspunkt \tType \tKlasse \t\tMelding");
             Trace.WriteLine("-------------------------------------------------------------");
         }
-
-        // Klasseegenskaper som forteller hva dagens log-fil heter og en variabel som bestemmer dersom alarmer skal vises i msgBox'er.
-        public static string CurrentLog { get; set; }
-        public static bool ShowMsgBoxes { get; set; }
-
-        //Konstruktør som kun brukes i oppstart av programmet for å opprette en ny logg fil med dagens dato
 
         //Følgende metoder brukes i de forskjellige trace event'ene vi har definert.
         public static void Error(string message, string module)
