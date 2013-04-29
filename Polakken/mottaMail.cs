@@ -16,7 +16,7 @@ namespace Polakken
         public static string From { get; private set; }
         public static string Subject { get; private set; }
         public static string Body { get; private set; }
-        private static int ConnectionAttempts = 0;
+        private static int _connectionAttempts = 0;
 
         //Metode for å hente inn mail
         public static void HentMail()
@@ -50,12 +50,12 @@ namespace Polakken
                     //Løkke som sletter alle mail etter den har hentet inn den siste
                     foreach (MailMessage m in mail) ic.DeleteMessage(m);
                 }
-                ConnectionAttempts = 0;
+                _connectionAttempts = 0;
             }
             catch (Exception ex)
             {
-                ConnectionAttempts++;
-                if (ConnectionAttempts == 3)
+                _connectionAttempts++;
+                if (_connectionAttempts == 3)
                 {
                     Logger.Error(ex, Module);
                 }
