@@ -2,6 +2,7 @@
 using System.Data;
 using System.IO;
 using AE.Net.Mail;
+using AE.Net.Mail.Imap;
 using Polakken.Properties;
 
 namespace Polakken
@@ -30,7 +31,7 @@ namespace Polakken
                 ic.SelectMailbox("INBOX");
 
                 //Array som henter inn alle mail i innboksen
-                MailMessage[] mail = ic.GetMessages(0, 1, false, true);
+                MailMessage[] mail = ic.GetMessages(0, 10, false, true);
 
                 //If-setning som sjekker om det er mail i innboksen
                 if (mail.Length != 0)
@@ -149,7 +150,7 @@ namespace Polakken
                                     "Måleintervallet har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " +
                                     From + " måleintervallet forblir uendret.";
                             }
-                            if (intvalue > 999)
+                            else if (intvalue > 999)
                             {
                                 response =
                                     "Måleintervallet kan ikke være høyere enn 999, intervallet forblir på siste verdi som er " +
@@ -212,7 +213,7 @@ namespace Polakken
                                 Logger.Info(loggerInfo, Module);
                                 SendMail.SendToOne("Feil i endring av toleranse", response, From);
                             }
-                            if (intvalue > 20)
+                            else if (intvalue > 20)
                             {
                                 response =
                                     "Toleransen kan ikke være høyere enn 20, toleransen forblir på siste verdi som er " +
