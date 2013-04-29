@@ -149,8 +149,12 @@ namespace Polakken
                                 loggerInfo =
                                     "Måleintervallet har blitt forsøkt endret til en verdi utenfor grensene (1-999) ved e-mail kommando fra " +
                                     From + " måleintervallet forblir uendret.";
+
+                                Logger.Info(loggerInfo, Module);
+                                break;
                             }
-                            else if (intvalue > 999)
+                            
+                            if (intvalue > 999)
                             {
                                 response =
                                     "Måleintervallet kan ikke være høyere enn 999, intervallet forblir på siste verdi som er " +
