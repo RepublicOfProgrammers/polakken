@@ -21,7 +21,7 @@ namespace Polakken
         //Metode som sender mail til alle som er oppført i databasen
         public static void SendToAll(string subject, string body)
         {
-            if (_retrying == true)
+            if (_retrying) //Test på om RetrySendToAll prøver å sende en mail.
             {
                 Thread.Sleep(300000);
                 Logger.Warning("En annen epost prøver å bli sendt. Venter 5 minutter.", Module);
@@ -43,12 +43,12 @@ namespace Polakken
                         Logger.Info("Sendt email til alle mottakere.", Module);
                     }
                 }
-                _retryCounter = 0;
+                _retryCounter = 0; //Resetter retryCounter ved en suksessfull mail sending.
                 WarningSentSend = false;
             }
             catch
             {
-                if (WarningSentSend == false)
+                if (WarningSentSend == false) //Unngår spam til logg.
                 {
                     WarningSentSend = true;
                     Logger.Warning("Får ikke kontakt med epost servere, prøver igjen om 1 minutt.", Module);
@@ -86,12 +86,12 @@ namespace Polakken
             catch
             {
                 _retryCounter++;
-                if (_retryCounter <= 2)
+                if (_retryCounter <= 2) //begrenser antall ganger som programmet forsøker å sende mail på nytt.
                 {
                     Logger.Warning("Får ikke kontakt med epost servere, prøver igjen om 1 minutt.", Module);
                     RetrySendToAll(subject, body);
                 }
-                else if (_retryCounter == 3)
+                else if (_retryCounter == 3) //Avslutter forsøket på å få sendt mail.
                 {
                     _retrying = false;
                     Logger.Error("Får ikke kontakt med epost servere, alarmen kan ikke bli sendt.", Module);
