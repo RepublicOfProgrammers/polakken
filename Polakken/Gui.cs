@@ -1100,6 +1100,8 @@ namespace Polakken
         }
 
         //Metode som åpner log formen som skal vise log som blir skrevet i Logger klasse.
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")] // Jo den blir disposet i det øyeblikk x på logform blir trykket. 
+            // analysen blir forvirret av else'en i if-test i metoden under. (tror vi).
         private void btnLog_Click(object sender, EventArgs e)
         {
             if (LogForm == null)
