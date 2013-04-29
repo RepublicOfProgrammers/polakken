@@ -72,7 +72,7 @@ namespace Polakken
                     if (retryCount < 3)
                     {
                         retryCount++;
-                        Logger.Error(
+                        Logger.Warning(
                             "Får ikke kontakt med sensor. Forsøk nr: " + retryCount + ". Prøver igjen om 5 sekunder.",
                             "Polakken");
                         Thread.Sleep(5000);
