@@ -32,3 +32,5 @@ E:\Skole\IA2112\git\nygit220413\polakken\Polakken\bin\Debug\AE.Net.Mail.dll
 E:\Skole\IA2112\git\nygit220413\polakken\Polakken\obj\x86\Debug\Polakken.pdb
 E:\Skole\IA2112\git\nygit220413\polakken\Polakken\bin\Debug\Polakken.exe.CodeAnalysisLog.xml
 E:\Skole\IA2112\git\nygit220413\polakken\Polakken\bin\Debug\Polakken.exe.lastcodeanalysissucceeded
+C:\Users\Pravuz\Source\Repos\Github pres\Test\Polakken\Polakken\bin\Debug\Polakken.exe.config
+C:\Users\Pravuz\Source\Repos\Github pres\Test\Polakken\Polakken\obj\x86\Debug\Polakken.exe

@@ -4,6 +4,9 @@ using System.Threading;
 
 namespace Polakken
 {
+
+    //TEST ENDRING FOR GITHUB PRESENTASJON
+
     static class Program
     {
         private static bool alarmSent;
